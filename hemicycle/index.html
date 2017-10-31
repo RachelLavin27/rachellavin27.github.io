@@ -1,0 +1,146 @@
+<!DOCTYPE html>
+<html>
+  <head>
+  <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<script src="http://d3js.org/d3.v3.min.js"></script>
+<script src="https://code.jquery.com/jquery-1.11.1.js"></script>
+<style>
+
+      /*http://www.d3noob.org/2013/01/adding-drop-shadow-to-allow-text-to.html*/
+      text.shadow {
+        stroke: gray;
+        stroke-width: 1px;
+        opacity: 0.9;
+    }
+    /* D3 tips */
+    .d3-tip {
+      line-height: 1;
+      font-weight: bold;
+      padding: 12px;
+      background: rgba(0, 0, 0, 0.8);
+      color: #fff;
+      border-radius: 2px;
+    }
+    /* Creates a small triangle extender for the tooltip */
+    .d3-tip:after {
+      box-sizing: border-box;
+      display: inline;
+      font-size: 10px;
+      width: 100%;
+      line-height: 1;
+      color: rgba(0, 0, 0, 0.8);
+      content: "\25BC";
+      position: absolute;
+      text-align: center;
+    }
+    /* Style northward tooltips differently */
+    .d3-tip.n:after {
+      margin: -1px 0 0 0;
+      top: 100%;
+      left: 0;
+    }
+    .stronger {
+      color: yellow;
+    }
+
+        </style>
+
+    <script src="d3.hemicycle.js"></script>
+    <script src="d3.tip.js"></script>
+    <link href="//netdna.bootstrapcdn.com/font-awesome/4.0.3/css/font-awesome.css" rel="stylesheet">
+    <link rel="stylesheet" href="//maxcdn.bootstrapcdn.com/bootswatch/3.2.0/cerulean/bootstrap.min.css">
+  </head>
+<body>
+<div id="chart" style="width:400px;margin-left:100px;margin-top:35px;"></div>
+<div id="legend" style="width:700px;padding:15px;margin-left:100px;">
+    <div class="row" style="text-align:center">How they voted:</div>
+    <div class="row" style="border-bottom:1px solid #ccc;">
+        <div class="col-xs-2"></div>
+              <div class="col-xs-3"><i class="fa fa-certificate" style="color:green;font-size:20px;"> </i> For </div>
+        <div class="col-xs-3"><i class="fa fa-certificate" style="color:red;font-size:20px;"> </i><strong> Against </strong></div>
+        <div class="col-xs-3"><i class="fa fa-certificate" style="color:grey;font-size:20px;"> </i> Abstained</div>
+    </div>
+    </div>
+
+    <div class="row" id="legendin">
+
+    </div>
+
+</div>
+
+
+<script type="text/javascript">
+  d3.csv("single_vote_event.csv",function(error,data) {
+
+    /*var json = (function () {
+        var json = null;
+        $.ajax({
+            'async': false,
+            'global': false,
+            'url': "./hemicycle.json",
+            'dataType': "json",
+            'success': function (data) {
+                json = data;
+            }
+        });
+        return json;
+    })();*/
+    var hemicycle = [{
+      //"n":[9,13,16,20,23],
+      "n": [7,9,13,15,19,21,23,24,26],
+      "gap": 1.20,
+      "widthIcon": 0.39,
+      "width": 700,
+      "people": data
+    }];
+   /* Initialize tooltip */
+    tip = d3.tip().attr("class", "d3-tip").html(function(d) {
+      foragaints = "Abstained";
+      if (parseInt(d["option_code"]) == 1) foragaints = "For";
+      if (parseInt(d["option_code"]) == -1) foragaints = "Against";
+
+      return "<span class=\'stronger\'>" + d["name"] + "</span><br>" + d["party"] + "<br>" + foragaints;
+    });
+    var w=700,h=355,
+        svg=d3.select("#chart")
+            .append("svg")
+            .attr("width",w)
+            .attr("height",h);
+    var hc = d3.hemicycle()
+                .n(function(d) {return d.n;})
+                .gap(function(d) {return d.gap;})
+                .widthIcon(function(d) {return d.widthIcon;})
+                .width(function(d) {return d.width;})
+                .people(function(d) {return d.people;});
+
+    var item = svg.selectAll(".hc")
+          .data(hemicycle)
+       .enter()
+        .append("svg:g")
+        .call(hc);
+
+	/* Invoke the tip in the context of your visualization */
+    svg.call(tip);
+
+	// Add tooltip div
+    var div = d3.select("body").append("div")
+    .attr("class", "tooltip")
+    .style("opacity", 1e-6);
+
+
+    /*inhtml = '';
+    for (k in data) {
+      if (k == 12) break;
+      group = data[k];
+      if (k % 4 == 0) {
+        inhtml = inhtml + "<div class='row'>";
+      }
+      inhtml = inhtml + '<div class="col-xs-3"><i class="fa fa-user" style="color:' + group['color'] + ';font-size:15px;">&nbsp;</i>' + group["abbreviation"] + "</div> ";
+      if (k % 4 == 3) {
+        inhtml = inhtml + "</div>";
+      }
+    }
+    $("#legendin").html(inhtml)*/
+  })
+</script>
+</body>
