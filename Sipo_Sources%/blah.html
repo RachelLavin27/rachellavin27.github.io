@@ -1,0 +1,196 @@
+<html>
+<head>
+    <title>Frames for FT graphics</title>
+    <script type="text/javascript" src="styles.js"></script>
+    <link rel="stylesheet" type="text/css" href="./frameGlobalStyles.css">
+</head>
+<body>
+    <style>
+
+      text{font-family:metric}
+
+
+      .weblogo {
+        display:none
+        }
+
+        .tick {
+          display; none
+        }
+
+  </style>
+
+
+    </style>
+    <script src="d3.min.js"></script>
+    <script src="drawFrame.js"></script>
+    <script src="bar-stacked.js"></script>
+    <script src="saveSvgAsPng.js"></script>
+    <script>
+
+        //datafile
+        var dataURL = "data.csv"
+
+        //titles, footnotes
+        var title = "Sourcing of Facebook Ads ";
+        var subtitle = "% of Ads that came from SIPO Registered or Unregistered Groups";//comment out subtitle assignment if not needed
+        var source = "Source: The Transparent Referendum Initiative";
+
+        //put custom graph options here
+        var xMin=0;
+        var xMax=20;
+        var xAxisHighlight//=10;
+        var labels=true;//show numbers on bars
+        var numTicksx = 0;//rough number of ticks for y axis
+        var sort="ascending"//specify 'ascending', 'descending', 'alpha' or 'none'
+
+        //Use the frames array to set unique values for each media type of frame
+        // Print column sizes-- 1col 53.71mm: 2col 112.25mm: 3col 170.8mm: 4col 229.34mm: 5col 287.88mm: 6col 346.43
+        var frames=[
+          {name:"web",width:900,height:320,units:'px',margins:[{top:50,right:29,bottom:5,left:00}],stylesheet:styleweb,legend:"hori",yLabel:"right"}
+        //{name:"social",width:560,height:750,units:'px',margins:[{top:36,right:50, bottom:25, left:50}],stylesheet:stylesoc,legend:"vert",yLabel:"left"},
+          ]
+
+        //sets the padding inside the chart area
+        var chartpadding=[
+        {name:"web",margin:[{top:-10, right:10, bottom:20, left:10}]},
+          ]
+        //Calls the functions that adds the balnk frames before loading the data
+        drawFrames()
+        //Load the data
+        d3.csv(dataURL,function(error, data){
+            //date formatter, matching the format of the incoming csv...
+            //var parseDate = d3.time.format("%d-%b-%y").parse;
+            /*
+            some common formatting parsers....
+            d3.time.format("%Y %b") 1986 Jan
+            d3.time.format("%d-%b-%y")  28-Jan-86
+            d3.time.format("%Y-%m-%d")  1986-01-28
+            d3.time.format("%m/%d/%Y")  01/28/1986
+            d3.time.format("%H:%M") 11:39
+            d3.time.format("%H:%M %p")  11:39 AM
+            d3.time.format("%B %d") January 28
+            d3.time.format("%d %b") 28 Jan
+             */
+
+            //parse the data if needed
+            /*data.forEach(function(d) {
+                d.date=parseDate(d.date);
+            });*/
+
+
+         /*SHOULD NOT NEED TO CHANGE MUCH BELOW HERE*/
+
+            for (var i=0;i<frames.length;i++){
+                var stylename=frames[i].stylesheet;
+                var media = frames[i].name;
+                var legend=frames[i].legend;
+                var subYoffset=stylename.subOffset
+                var yLabel=frames[i].yLabel
+                stackedChart(data, stylename, media, chartpadding,legend, yLabel, xMin, xMax, xAxisHighlight, labels, numTicksx, sort);
+            }
+        })//end data load
+
+        function drawFrames(){
+            for (var i=0;i<frames.length;i++){
+                var stylename=frames[i].stylesheet;
+                var media = frames[i].name;
+                if(frames[i].units=="mm") {
+                    framewidth = mmToPx(frames[i].width);
+                    frameheight = mmToPx(frames[i].height);
+                }
+                else{
+                    framewidth = frames[i].width;
+                    frameheight = frames[i].height;
+                }
+                var framemargin = frames[i].margins[0];
+                var titleYoffset=stylename.titleOffset;
+                var subYoffset=stylename.subOffset
+                var frame = new drawFrame(stylename.classes,media,titleYoffset,subYoffset)
+                    .width(framewidth)
+                    .height(frameheight)
+                    .margin(framemargin)
+                    .title(title)
+                    .source(source)
+                //optional elements
+                if (subtitle){
+                    frame.subtitle(subtitle)
+                }
+                d3.select("body").call(frame)
+            }
+        }
+
+        function mmToPx(mm){
+            var px = mm*2.83464480558843;
+            return px;
+        }
+
+    </script>
+    <body>
+      <svg id="webchart" class="chart" width="900" height="320" viewBox="0 0 900 320"><rect width="900" height="320" class="webbackground"></rect><g id="webheader"><text id="webTitle" class="webtitle" x="0" y="71" dy="0"><tspan class="webtitle" x="0" y="71" dy="0em">Sourcing of Facebook Ads</tspan></text><text id="webSubtitle" class="websubtitle" x="0" y="100.5" dy="0"><tspan class="websubtitle" x="0" y="100.5" dy="0em">% of Ads that came from SIPO Registered or Unregistered Groups</tspan>
+</text>
+</g>
+<g><text id="webFooter" y="299"><tspan class="websource" x="0" dy="1.1em">Source: The Transparent Referendum Initiative</tspan></text>
+    <g transform="translate(871,304)" class="weblogo">
+        <path d="M0,16h7.6v-0.6c-0.5,0-0.9,0-1.2-0.1c-0.3,0-0.5-0.1-0.7-0.3c-0.2-0.1-0.3-0.3-0.4-0.6c-0.1-0.2-0.1-0.6-0.1-1V8.2h1.2c1.1,0,1.9,0.2,2.3,0.5c0.5,0.3,0.8,0.9,1,1.9h0.6V5H9.8C9.7,5.6,9.5,6,9.3,6.3c-0.2,0.3-0.5,0.5-1,0.6C7.9,7,7.3,7.1,6.5,7.1H5.3V2c0-0.3,0.1-0.5,0.2-0.7c0.1-0.1,0.3-0.2,0.7-0.2h2.4c0.8,0,1.4,0,1.9,0.1c0.5,0.1,0.9,0.2,1.2,0.4c0.3,0.2,0.6,0.4,0.7,0.7c0.2,0.3,0.3,0.7,0.5,1.1h0.7L13.4,0H0v0.6c0.4,0,0.8,0.1,1,0.1c0.2,0,0.4,0.1,0.6,0.3C1.8,1.1,1.9,1.3,2,1.5c0.1,0.2,0.1,0.6,0.1,1v10.9c0,0.4,0,0.8-0.1,1c-0.1,0.2-0.2,0.4-0.4,0.6c-0.2,0.1-0.4,0.2-0.6,0.3c-0.2,0-0.6,0.1-1,0.1V16z M14.2,3.5H15c0.3-0.9,0.6-1.5,1-1.8c0.4-0.4,1.1-0.5,1.9-0.5h2v12.3c0,0.4,0,0.8-0.1,1c-0.1,0.2-0.2,0.4-0.4,0.6c-0.2,0.1-0.4,0.2-0.7,0.3c-0.3,0-0.6,0.1-1.1,0.1V16h7.7v-0.6c-0.5,0-0.9,0-1.1-0.1c-0.3,0-0.5-0.1-0.7-0.3c-0.2-0.1-0.3-0.3-0.4-0.6c-0.1-0.2-0.1-0.6-0.1-1V1.2h2c0.8,0,1.5,0.2,1.9,0.5c0.4,0.4,0.8,1,1,1.8h0.8L28.5,0H14.6L14.2,3.5z"></path>
+    </g>
+</g>
+<g class="webchartholder" id="webplot" transform="translate(0,105)">
+    <rect id="webChart" width="871" height="191.890625"></rect>
+    <g class="webyAxis" transform="translate(62.96875,-10)">
+        <g class="tick weborigin" transform="translate(0,34.10449218750001)" style="opacity: 1;">
+            <line x2="0" y2="0"></line><text dy=".32em" x="-3" y="0" style="text-anchor: end;"></text></g>
+        <g class="tick" transform="translate(0,90.94531250000001)" style="opacity: 1;">
+            <line x2="0" y2="0"></line><text dy=".32em" x="-3" y="0" style="text-anchor: end;">Retain</text></g>
+        <g class="tick" transform="translate(0,147.78613281250003)" style="opacity: 1;">
+            <line x2="0" y2="0"></line><text dy=".32em" x="-3" y="0" style="text-anchor: end;">Repeal</text></g>
+    </g>
+    <g class="webxAxis" transform="translate(10,-10)"></g>
+    <g class="webcategory" transform="translate(0,11.368164062500002)">
+        <rect height="45.47265625000001" x="52.96875" width="0" transform="translate(10,-10)" style="fill: rgb(0, 106, 147);"></rect>
+        <rect height="45.47265625000001" x="52.96875" width="0" transform="translate(10,-10)" style="fill: rgb(110, 217, 244);"></rect><text class="weblabels" x="45.76875" y="27.283593750000005" transform="translate(10,-10)" style="text-anchor: end;">0</text><text class="weblabels" x="45.76875" y="27.283593750000005" transform="translate(10,-10)" style="text-anchor: end;">0</text></g>
+    <g
+        class="webcategory" transform="translate(0,11.368164062500002)">
+        <rect height="45.47265625000001" x="52.96875" width="0" transform="translate(10,-10)" style="fill: rgb(0, 106, 147);"></rect>
+        <rect height="45.47265625000001" x="52.96875" width="0" transform="translate(10,-10)" style="fill: rgb(110, 217, 244);"></rect><text class="weblabels" x="45.76875" y="27.283593750000005" transform="translate(10,-10)" style="text-anchor: end;">0</text><text class="weblabels" x="45.76875" y="27.283593750000005" transform="translate(10,-10)" style="text-anchor: end;">0</text></g>
+<g
+    class="webcategory" transform="translate(0,11.368164062500002)">
+    <rect height="45.47265625000001" x="52.96875" width="0" transform="translate(10,-10)" style="fill: rgb(0, 106, 147);"></rect>
+    <rect height="45.47265625000001" x="52.96875" width="0" transform="translate(10,-10)" style="fill: rgb(110, 217, 244);"></rect><text class="weblabels" x="45.76875" y="27.283593750000005" transform="translate(10,-10)" style="text-anchor: end;">0</text><text class="weblabels" x="45.76875" y="27.283593750000005" transform="translate(10,-10)" style="text-anchor: end;">0</text></g>
+    <g
+        class="webcategory" transform="translate(0,11.368164062500002)">
+        <rect height="45.47265625000001" x="52.96875" width="0" transform="translate(10,-10)" style="fill: rgb(0, 106, 147);"></rect>
+        <rect height="45.47265625000001" x="52.96875" width="0" transform="translate(10,-10)" style="fill: rgb(110, 217, 244);"></rect><text class="weblabels" x="45.76875" y="27.283593750000005" transform="translate(10,-10)" style="text-anchor: end;">0</text><text class="weblabels" x="45.76875" y="27.283593750000005" transform="translate(10,-10)" style="text-anchor: end;">0</text></g>
+        <g
+            class="webcategory" transform="translate(0,11.368164062500002)">
+            <rect height="45.47265625000001" x="52.96875" width="0" transform="translate(10,-10)" style="fill: rgb(0, 106, 147);"></rect>
+            <rect height="45.47265625000001" x="52.96875" width="0" transform="translate(10,-10)" style="fill: rgb(110, 217, 244);"></rect><text class="weblabels" x="45.76875" y="27.283593750000005" transform="translate(10,-10)" style="text-anchor: end;">0</text><text class="weblabels" x="45.76875" y="27.283593750000005" transform="translate(10,-10)" style="text-anchor: end;">0</text></g>
+            <g
+                class="webcategory" transform="translate(0,11.368164062500002)">
+                <rect height="45.47265625000001" x="52.96875" width="0" transform="translate(10,-10)" style="fill: rgb(0, 106, 147);"></rect>
+                <rect height="45.47265625000001" x="52.96875" width="0" transform="translate(10,-10)" style="fill: rgb(110, 217, 244);"></rect><text class="weblabels" x="45.76875" y="27.283593750000005" transform="translate(10,-10)" style="text-anchor: end;">0</text><text class="weblabels" x="45.76875" y="27.283593750000005" transform="translate(10,-10)" style="text-anchor: end;">0</text></g>
+                <g
+                    class="webcategory" transform="translate(0,11.368164062500002)">
+                    <rect height="45.47265625000001" x="52.96875" width="0" transform="translate(10,-10)" style="fill: rgb(0, 106, 147);"></rect>
+                    <rect height="45.47265625000001" x="52.96875" width="NaN" transform="translate(10,-10)" style="fill: rgb(110, 217, 244);"></rect><text class="weblabels" x="45.76875" y="27.283593750000005" transform="translate(10,-10)" style="text-anchor: end;">0</text><text class="weblabels" x="45.76875" y="27.283593750000005" transform="translate(10,-10)" style="text-anchor: end;">NaN</text></g>
+                    <g
+                        class="webcategory" transform="translate(0,68.20898437500001)">
+                        <rect height="45.47265625000001" x="52.96875" width="494.77937499999996" transform="translate(10,-10)" style="fill: rgb(0, 106, 147);"></rect>
+                        <rect height="45.47265625000001" x="547.748125" width="303.251875" transform="translate(10,-10)" style="fill: rgb(110, 217, 244);"></rect><text class="weblabels" x="540.5481249999999" y="27.283593750000005" transform="translate(10,-10)" style="text-anchor: end;">62</text><text class="weblabels" x="843.8" y="27.283593750000005" transform="translate(10,-10)"
+                            style="text-anchor: end;">38</text></g>
+                        <g class="webcategory" transform="translate(0,125.04980468750001)">
+                            <rect height="45.47265625000001" x="52.96875" width="662.3659375" transform="translate(10,-10)" style="fill: rgb(0, 106, 147);"></rect>
+                            <rect height="45.47265625000001" x="715.3346875" width="135.66531250000003" transform="translate(10,-10)" style="fill: rgb(110, 217, 244);"></rect><text class="weblabels" x="708.1346874999999" y="27.283593750000005" transform="translate(10,-10)" style="text-anchor: end;">83</text><text class="weblabels" x="843.8" y="27.283593750000005" transform="translate(10,-10)"
+                                style="text-anchor: end;">17</text></g>
+                        <g id="weblegend">
+                            <g id="webl0" transform="translate(0,20.5)"><text id="webt0" x="21.6" y="0" class="websubtitle">Registered</text>
+                                <rect x="0" y="-12" width="15.299999999999999" height="12.6" style="fill: rgb(0, 106, 147);"></rect>
+                            </g>
+                            <g id="webl1" transform="translate(113.5625,20.5)"><text id="webt1" x="21.6" y="0" class="websubtitle">Unregistered</text>
+                                <rect x="0" y="-12" width="15.299999999999999" height="12.6" style="fill: rgb(110, 217, 244);"></rect>
+                            </g>
+                        </g>
+                        </g>
+                        </svg>
+                      </body>
+                      </html>

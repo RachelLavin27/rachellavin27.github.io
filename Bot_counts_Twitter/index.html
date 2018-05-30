@@ -1,0 +1,149 @@
+<html>
+<head>
+    <title>Bot Accounts</title>
+    <script type="text/javascript" src="styles.js"></script>
+    <link rel="stylesheet" type="text/css" href="./frameGlobalStyles.css">
+</head>
+<body>
+    <style>
+        text{
+          font-family:roboto
+        }
+
+        .weblogo {
+          display:none
+          }
+
+    </style>
+    <script src="d3.min.js"></script>
+    <script src="drawFrame.js"></script>
+    <script src="bar-grouped.js"></script>
+    <script src="saveSvgAsPng.js"></script>
+    <script>
+
+        //datafile
+        var dataURL = "data.csv"
+
+      
+        //put custom graph options here
+        var xMin=0;
+        var xMax=15;
+        var xAxisHighlight=-10;
+        var logScale=false;
+        var logScaleStart=1000;
+        var labels=true;//show numbers on bars
+        var numTicksx = 10;//rough number of ticks for y axis
+
+        //Use the frames array to set unique values for each media type of frame
+        // Print column sizes-- 1col 53.71mm: 2col 112.25mm: 3col 170.8mm: 4col 229.34mm: 5col 287.88mm: 6col 346.43
+        var frames=[
+        {name:"web",width:900,height:422,units:'px',margins:[{top:0,right:29,bottom:5,left:00}],stylesheet:styleweb,legend:"hori",yLabel:"right"}
+        //{name:"social",width:560,height:750,units:'px',margins:[{top:36,right:50, bottom:25, left:50}],stylesheet:stylesoc,legend:"vert",yLabel:"left"},
+        ]
+
+        //sets the padding inside the chart area
+        var chartpadding=[
+          {name:"web",margin:[{top:20, right:10, bottom:20, left:10}]}
+            ]
+        //Calls the functions that adds the balnk frames before loading the data
+        drawFrames()
+        //Load the data
+        d3.csv(dataURL,function(error, data){
+            //date formatter, matching the format of the incoming csv...
+            //var parseDate = d3.time.format("%d-%b-%y").parse;
+            /*
+            some common formatting parsers....
+            d3.time.format("%Y %b") 1986 Jan
+            d3.time.format("%d-%b-%y")  28-Jan-86
+            d3.time.format("%Y-%m-%d")  1986-01-28
+            d3.time.format("%m/%d/%Y")  01/28/1986
+            d3.time.format("%H:%M") 11:39
+            d3.time.format("%H:%M %p")  11:39 AM
+            d3.time.format("%B %d") January 28
+            d3.time.format("%d %b") 28 Jan
+             */
+
+            //parse the data if needed
+            /*data.forEach(function(d) {
+                d.date=parseDate(d.date);
+            });*/
+
+
+         /*SHOULD NOT NEED TO CHANGE MUCH BELOW HERE*/
+
+            for (var i=0;i<frames.length;i++){
+                var stylename=frames[i].stylesheet;
+                var media = frames[i].name;
+                var legend=frames[i].legend;
+                var subYoffset=stylename.subOffset
+                var yLabel=frames[i].yLabel
+                stackedChart(data, stylename, media, chartpadding,legend, yLabel, xMin, xMax, xAxisHighlight, logScale,logScaleStart,labels, numTicksx);
+            }
+        })//end data load
+
+        function drawFrames(){
+            for (var i=0;i<frames.length;i++){
+                var stylename=frames[i].stylesheet;
+                var media = frames[i].name;
+                if(frames[i].units=="mm") {
+                    framewidth = mmToPx(frames[i].width);
+                    frameheight = mmToPx(frames[i].height);
+                }
+                else{
+                    framewidth = frames[i].width;
+                    frameheight = frames[i].height;
+                }
+                var framemargin = frames[i].margins[0];
+                var titleYoffset=stylename.titleOffset;
+                var subYoffset=stylename.subOffset
+                var frame = new drawFrame(stylename.classes,media,titleYoffset,subYoffset)
+                    .width(framewidth)
+                    .height(frameheight)
+                    .margin(framemargin)
+                    .title(title)
+                    .source(source)
+                //optional elements
+                if (subtitle){
+                    frame.subtitle(subtitle)
+                }
+                d3.select("body").call(frame)
+            }
+        }
+
+        function mmToPx(mm){
+            var px = mm*2.83464480558843;
+            return px;
+        }
+
+    </script>
+
+<svg id="webchart" class="chart" width="900" height="422" viewBox="0 0 900 422"><rect width="900" height="422" class="webbackground"></rect><g id="webheader">
+  <text id="webTitle" class="webtitle" x="0" y="21" dy="0"><tspan class="webtitle" x="0" y="21" dy="0em">Suspected bot-like activity in Ireland's abortion debate</tspan></text>
+  <text id="webSubtitle" class="websubtitle" x="0" y="49.75" dy="0">
+    <tspan class="websubtitle" x="0" y="49.75" dy="0em">% of tweets using the hashtags #Savethe8th (pro-life) and #Repealthe8th (pro-choice) from bot-like accounts</tspan></text></g>
+    <g><text id="webFooter" y="400.75"><tspan class="websource" x="0" dy="1.1em">Source: Roland Adorjani</tspan></text>
+      <g transform="translate(871,406)" class="weblogo"><path d="M0,16h7.6v-0.6c-0.5,0-0.9,0-1.2-0.1c-0.3,0-0.5-0.1-0.7-0.3c-0.2-0.1-0.3-0.3-0.4-0.6c-0.1-0.2-0.1-0.6-0.1-1V8.2h1.2c1.1,0,1.9,0.2,2.3,0.5c0.5,0.3,0.8,0.9,1,1.9h0.6V5H9.8C9.7,5.6,9.5,6,9.3,6.3c-0.2,0.3-0.5,0.5-1,0.6C7.9,7,7.3,7.1,6.5,7.1H5.3V2c0-0.3,0.1-0.5,0.2-0.7c0.1-0.1,0.3-0.2,0.7-0.2h2.4c0.8,0,1.4,0,1.9,0.1c0.5,0.1,0.9,0.2,1.2,0.4c0.3,0.2,0.6,0.4,0.7,0.7c0.2,0.3,0.3,0.7,0.5,1.1h0.7L13.4,0H0v0.6c0.4,0,0.8,0.1,1,0.1c0.2,0,0.4,0.1,0.6,0.3C1.8,1.1,1.9,1.3,2,1.5c0.1,0.2,0.1,0.6,0.1,1v10.9c0,0.4,0,0.8-0.1,1c-0.1,0.2-0.2,0.4-0.4,0.6c-0.2,0.1-0.4,0.2-0.6,0.3c-0.2,0-0.6,0.1-1,0.1V16z M14.2,3.5H15c0.3-0.9,0.6-1.5,1-1.8c0.4-0.4,1.1-0.5,1.9-0.5h2v12.3c0,0.4,0,0.8-0.1,1c-0.1,0.2-0.2,0.4-0.4,0.6c-0.2,0.1-0.4,0.2-0.7,0.3c-0.3,0-0.6,0.1-1.1,0.1V16h7.7v-0.6c-0.5,0-0.9,0-1.1-0.1c-0.3,0-0.5-0.1-0.7-0.3c-0.2-0.1-0.3-0.3-0.4-0.6c-0.1-0.2-0.1-0.6-0.1-1V1.2h2c0.8,0,1.5,0.2,1.9,0.5c0.4,0.4,0.8,1,1,1.8h0.8L28.5,0H14.6L14.2,3.5z"></path></g></g>
+      <g class="webchartholder" id="webplot" transform="translate(0,54.734375)"><rect id="webChart" width="871" height="343.90625"></rect><g class="webyAxis" transform="translate(108.90625,20)">
+        <g class="tick" transform="translate(0,82.88352272727272)" style="opacity: 1;"><line x2="0" y2="0"></line><text dy=".32em" x="-3" y="0" style="text-anchor: end;">#Savethe8th</text></g>
+        <g class="tick" transform="translate(0,221.02272727272725)" style="opacity: 1;"><line x2="0" y2="0"></line><text dy=".32em" x="-3" y="0" style="text-anchor: end;">#Repealth8th</text></g></g>
+        <g class="webxAxis" transform="translate(10,20)"><g class="tick weborigin" transform="translate(98.90625,0)" style="opacity: 1;"><line y2="303.90625" x2="0"></line><text dy=".71em" y="306.90625" x="0" style="text-anchor: middle;">0</text></g>
+        <g class="tick" transform="translate(199.18541666666667,0)" style="opacity: 1;"><line y2="303.90625" x2="0"></line><text dy=".71em" y="306.90625" x="0" style="text-anchor: middle;">2</text></g><g class="tick" transform="translate(299.46458333333334,0)" style="opacity: 1;">
+          <line y2="303.90625" x2="0"></line><text dy=".71em" y="306.90625" x="0" style="text-anchor: middle;">4</text></g><g class="tick" transform="translate(399.74375000000003,0)" style="opacity: 1;"><line y2="303.90625" x2="0"></line>
+            <text dy=".71em" y="306.90625" x="0" style="text-anchor: middle;">6</text></g><g class="tick" transform="translate(500.0229166666667,0)" style="opacity: 1;"><line y2="303.90625" x2="0"></line>
+              <text dy=".71em" y="306.90625" x="0" style="text-anchor: middle;">8</text></g><g class="tick" transform="translate(600.3020833333333,0)" style="opacity: 1;"><line y2="303.90625" x2="0"></line>
+                <text dy=".71em" y="306.90625" x="0" style="text-anchor: middle;">10</text></g><g class="tick" transform="translate(700.5812500000001,0)" style="opacity: 1;"><line y2="303.90625" x2="0"></line>
+                  <text dy=".71em" y="306.90625" x="0" style="text-anchor: middle;">12</text></g><g class="tick" transform="translate(800.8604166666667,0)" style="opacity: 1;"><line y2="303.90625" x2="0"></line>
+                    <text dy=".71em" y="306.90625" x="0" style="text-anchor: middle;">14</text></g></g><g class="webcategory" transform="translate(0,27.627840909090907)">
+                      <rect height="36.83712121212121" y="0" x="98.90625" width="701.9541666666667" transform="translate(10,20)" style="fill: rgb(0, 106, 147);"></rect>
+                      <rect height="36.83712121212121" y="36.83712121212121" x="98.90625" width="300.83750000000003" transform="translate(10,20)" style="fill: rgb(110, 217, 244);"></rect>
+                      <rect height="36.83712121212121" y="73.67424242424242" x="98.90625" width="100.27916666666667" transform="translate(10,20)" style="fill: rgb(131, 200, 234);"></rect></g>
+                      <g class="webcategory" transform="translate(0,165.76704545454544)"><rect height="36.83712121212121" y="0" x="98.90625" width="350.9770833333333" transform="translate(10,20)" style="fill: rgb(0, 106, 147);"></rect>
+                        <rect height="36.83712121212121" y="36.83712121212121" x="98.90625" width="150.41875000000002" transform="translate(10,20)" style="fill: rgb(110, 217, 244);"></rect>
+                        <rect height="36.83712121212121" y="73.67424242424242" x="98.90625" width="50.13958333333335" transform="translate(10,20)" style="fill: rgb(131, 200, 234);"></rect></g>
+                        <g id="weblegend"><g id="webl0" transform="translate(0,21.25)"><text id="webt0" x="21.6" y="0" class="websubtitle">Account with 3+ numbers in handle</text>
+                          <rect x="0" y="-12" width="15.299999999999999" height="12.6" style="fill: rgb(0, 106, 147);"></rect></g><g id="webl1" transform="translate(295.015625,21.25)">
+                            <text id="webt1" x="21.6" y="0" class="websubtitle"> 3+ numbers &amp; no location</text><rect x="0" y="-12" width="15.299999999999999" height="12.6" style="fill: rgb(110, 217, 244);"></rect></g>
+                            <g id="webl2" transform="translate(520.59375,21.25)"><text id="webt2" x="21.6" y="0" class="websubtitle"> 3+ numbers, no location &amp; no bio</text>
+                              <rect x="0" y="-12" width="15.299999999999999" height="12.6" style="fill: rgb(131, 200, 234);"></rect></g></g></g></svg>
+</body>
+</html>
