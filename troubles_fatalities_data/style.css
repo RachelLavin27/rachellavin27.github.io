@@ -1,0 +1,135 @@
+body {
+  font-size: 14px;
+  font-family: "Futura",sans-serif;
+  background-color: white;
+}
+
+.subunit.SCT { fill: grey; opacity: 0.7; }
+.subunit.WLS { fill: grey; opacity: 0.7; }
+.subunit.NIR { fill: grey; opacity: 0.7; }
+.subunit.ENG { fill: grey; opacity: 0.7; }
+.subunit.IRL { fill: grey; opacity: 0.7; }
+
+
+.subunit-boundary {
+  fill: none;
+  stroke: grey;
+  stroke-dasharray: 2,2;
+  stroke-linejoin: round;
+}
+
+apr 1970
+.subunit-boundary.IRL {
+  stroke: black;
+}
+
+.farm {
+  stroke-width: 1px;
+  stroke: white;
+  fill: white;
+  fill-opacity: 10;
+}
+
+.axis {
+  fill: black;
+}
+
+.axis .slider-bar {
+  stroke: gray;
+  stroke-width: 4px;
+  stroke-linecap: round;
+}
+
+.progress-bar {
+  stroke: black;
+  stroke-width: 4px;
+  stroke-linecap: round;
+}
+
+.slider .handle circle {
+  fill: black;
+  stroke-linecap: round;
+  pointer-events: none;
+}
+
+.slider .handle text {
+  fill: black;
+  text-align: center;
+  font-size: 18px;
+}
+
+.ticker {
+  fill: black;
+  text-align: center;
+  font-size: 18px;
+}
+
+.ticknumber {
+  font-size: 78px;
+  fill: grey;
+}
+
+.play-button {
+  fill: black;
+}
+
+.playbtn {
+  position: absolute;
+  top: 50px;
+}
+
+/*TITLES*/
+.vis-title {
+  margin-top: 1em;
+  font-size: 26px;
+  line-height: 30px;
+  font-family: futura;
+  color: grey;
+  text-align: center;
+}
+
+.caveat {
+  font-size: 9px;
+}
+
+/* SMALL SCREEN */
+@media screen and (max-width: 600px) {
+
+  .ticker {
+    font-size: 16px;
+  }
+
+  .ticknumber {
+    font-size: 75px;
+  }
+
+  .slider .handle text {
+    font-size: 16px;
+  }
+
+  .caveat {
+    font-size: 8px;
+  }
+
+}
+
+/* MOBILE */
+@media screen and (max-width: 400px) {
+
+  .ticker {
+    font-size: 14px;
+  }
+
+  .ticknumber {
+    font-size: 72px;
+  }
+
+  .slider .handle text {
+    font-size: 14px;
+  }
+
+  .caveat {
+    font-size: 8px;
+  }
+
+}
