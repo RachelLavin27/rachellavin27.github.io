@@ -1,0 +1,143 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>leaflet-map-csv</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta charset="utf-8">
+
+  <!-- Load Leaflet code library - see updates at http://leafletjs.com/download.html -->
+  <link rel="stylesheet" href="https://unpkg.com/leaflet@1.0.3/dist/leaflet.css"/>
+  <script src="https://unpkg.com/leaflet@1.0.3/dist/leaflet.js"></script>
+
+  <!-- Load Omnivore plugin to convert CSV to GeoJSON format -->
+  <script src='https://api.tiles.mapbox.com/mapbox.js/plugins/leaflet-omnivore/v0.3.1/leaflet-omnivore.min.js'></script>
+
+
+  <style>
+  body { margin:0; padding:0; }
+  #map { position: absolute; top:0; bottom:0; right:0; left:0; }
+
+  .info {
+    padding: 16px 8px;
+    font: 14px/16px Arial, Helvetica, sans-serif;
+    height: 550px;
+    width: 300px;
+    background: rgba(0,0,0, 0.5);
+    box-shadow: 0 0 15px rgba(0,0,0,0.5);
+    border-radius: 5px;
+    margin: 0 5px 5px;
+}
+.info h4 {
+    margin: 0 0 5px;
+    color: white;
+  opacity: 1.5;
+}
+
+  </style>
+
+</head>
+<body>
+
+  <!-- Insert HTML division tag to layout the map -->
+  <div id="map"></div>
+
+  <!-- Insert Javascript (.js) code to create the map -->
+  <script>
+
+  // Set up initial map center and zoom level
+  var map = L.map('map', {
+    center: [58.824185, 32.260819], // EDIT latitude, longitude to re-center map
+    zoom: 3.5,  // EDIT from 1 to 18 -- decrease to zoom out, increase to zoom in
+
+  });
+
+  // display Carto basemap tiles with light features and labels
+  L.tileLayer('https://cartodb-basemaps-{s}.global.ssl.fastly.net/light_all/{z}/{x}/{y}.png', {
+    attribution: '&copy; <a href="http://www.openstreetmap.org/copyright">OpenStreetMap</a>, &copy; <a href="https://carto.com/attribution">CARTO</a>'
+  }).addTo(map); // EDIT - insert or remove ".addTo(map)" before last semicolon to display by default
+
+  // display Stamen basemap tiles with colored terrain and labels
+  L.tileLayer('https://stamen-tiles.a.ssl.fastly.net/terrain/{z}/{x}/{y}.png', {
+    attribution: 'Map tiles by <a href="http://stamen.com">Stamen Design</a>, under <a href="http://creativecommons.org/licenses/by/3.0">CC BY 3.0</a>. Data by <a href="http://openstreetmap.org">OpenStreetMap</a>, under <a href="http://www.openstreetmap.org/copyright">ODbL</a>.'
+  }); // EDIT - insert or remove ".addTo(map)" before last semicolon to display by default
+
+  // upload CSV file from local directory and display latitude and longitude coordinates as default blue markers on map
+  //omnivore.csv('data.csv')
+  //  .bindPopup("Every marker has same message")
+  //  .addTo(map);
+
+  var customIcon = L.icon({
+  iconUrl: 'red-icon.png',
+  iconSize: [15, 20], //size of the icon in pixels
+  iconAnchor: [9, 9], //point of the icon which will correspond to marker's
+  });
+
+  omnivore.csv('data.csv')
+    .on('ready', function(layer) {
+
+
+    this.eachLayer(function(marker) {
+         //change the icons for each point on the map
+        marker.setIcon(customIcon);
+         //create popup with text and image - click image in popup, large
+
+
+})
+
+.eachLayer(function(layer) {
+            // See the `.bindPopup` documentation for full details. This
+            // dataset has a property called `name`: your dataset might not,
+            // so inspect it and customize to taste.
+            layer.bindPopup("Border crossing: " + layer.feature.properties.Title + "<br>Crossing Type: " + layer.feature.properties.Type);
+
+})
+}).addTo(map);
+
+var info = L.control();
+
+info.onAdd = function (map) {
+    this._div = L.DomUtil.create('div', 'info'); // create a div with a class "info"
+    this.update();
+    return this._div;
+};
+
+// method that we will use to update the control based on feature properties passed
+info.update = function (props) {
+    this._div.innerHTML =
+    '<h4><br>EU Land Border Crossings<br></h4>'
+    +  (props ?
+
+    + feature.properties.Title
+
+    + ' people / mi<sup>2</sup>'
+        : 'From the most northernly tip of FInland down to the Baltic Sea, there are 120 established land border crossings between the European Union and the rest of the world.<br><br> But along the land border between Northern Ireland (the UK) and the Republic of Ireland (the EU) there are 208 road crossings, making it potentially the most porous land border in Europe post-Brexit. <br> <br> Hover on a crossing to find out more.');
+};
+
+info.addTo(map);
+
+var customLayer = L.geoJson(null,
+  {
+  onEachFeature: function(feature, layer) {
+
+    layer.bind(
+      "Border crossing: "
+      "From the most northernly tip of FInland down to the Baltic Sea, there are 120 established land border crossings between the European Union and the rest of the world.<br><br> But along the land border between Northern Ireland (the UK) and the Republic of Ireland (the EU) there are 208 road crossings, making it potentially the most porous land border in Europe post-Brexit. "
+      + feature.properties.Title
+      + "<br>Crossing Type: "
+      + feature.properties.Type);
+    }
+
+});
+
+function highlightFeature() {
+
+    info.update(layer.feature.properties);
+}
+
+function resetHighlight(e) {
+
+    info.update();
+}
+</script>
+</body>
+</html>

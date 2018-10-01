@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+
+<html>
+<head>
+    <meta charset="utf-8">
+
+    <title>Leaflet Everything!</title>
+    <meta content='width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no' name='viewport'>
+    <script src='//api.tiles.mapbox.com/mapbox.js/v1.6.1/mapbox.js'></script>
+    <link href='//api.tiles.mapbox.com/mapbox.js/v1.6.1/mapbox.css' rel='stylesheet'>
+    <script src='//api.tiles.mapbox.com/mapbox.js/plugins/leaflet-omnivore/v0.0.1/leaflet-omnivore.min.js'></script>
+    <script src='//api.tiles.mapbox.com/mapbox.js/plugins/leaflet-markercluster/v0.4.0/leaflet.markercluster.js'></script>
+    <link href='//api.tiles.mapbox.com/mapbox.js/plugins/leaflet-markercluster/v0.4.0/MarkerCluster.css' rel='stylesheet'>
+    <link href='//api.tiles.mapbox.com/mapbox.js/plugins/leaflet-markercluster/v0.4.0/MarkerCluster.Default.css' rel='stylesheet'>
+    <style>
+body { margin:0; padding:0; }
+    #map { position:absolute; top:0; bottom:0; width:100%; }
+    </style>
+</head>
+
+<body>
+    <div id='map'></div>
+    <script>
+    var map = L.mapbox.map('map', 'faraday2.hb90naie', {
+    detectRetina: true,
+    zoomControl: true,
+    //take away the zoom controls on the top left
+    infoControl: false,
+    maxZoom: 15
+});
+map.setView([34.0153, -93.1673], 7);
+
+function eachLayer(layer) {
+    var feature = layer.toGeoJSON();
+    if (feature.properties && feature.properties.data.title) {
+        layer.bindPopup("Name - " + feature.properties.title);
+    }
+}
+var points = omnivore.csv('data.csv', {
+    icon: L.mapbox.marker.icon({
+        'marker-symbol': 'airport',
+        'marker-color': '59245f'
+    })
+}).on('ready', function() {
+    map.fitBounds(points.getBounds());
+    var markers = L.markerClusterGroup({
+        showCoverageOnHover: false,
+        maxClusterRadius: 50
+    });
+    markers.addLayer(points);
+    map.addLayer(markers);
+    points.eachLayer(eachLayer);
+});
+
+    </script>
+</body>
+</html>
