@@ -1,0 +1,87 @@
+<!DOCTYPE html>
+<html>
+  <head>
+
+    <meta charset="utf-8">
+
+    <script src="//d3js.org/d3.v3.min.js" charset="utf-8"></script>
+    <script src="//d3js.org/topojson.v1.min.js"></script>
+    <script src="https://d3js.org/queue.v1.min.js"></script>
+
+    <link href="style.css" rel="stylesheet">
+
+
+    <style>
+
+        .country {
+            fill: darkgrey;
+            stroke: white;
+            stroke-width: 0.5px;
+        }
+
+        .country:hover {
+            fill: darkgrey;
+        }
+
+
+    </style>
+
+  </head>
+
+  <body>
+    <div id="map"></div>
+    <script src="http://d3js.org/d3.v4.min.js"></script>
+    <script src="http://d3js.org/topojson.v1.min.js"></script>
+    <script src="https://d3js.org/queue.v1.min.js"></script>
+
+<script>
+
+
+
+      function drawMap(originName, originGeo, destinations) {
+        var countries, height, path, projection, scale, svg, width;
+        var width = 800;
+        var height = 600;
+        var center = [9.5, 63.6];
+        var scale = 750;
+
+        projection = d3.geoMercator()
+        .scale(scale)
+        .translate([width / 2, 0])
+        .center(center);
+
+        path = d3.geoPath()
+        .projection(projection);
+
+        svg = d3.select('#map').append('svg')
+          .attr('height', height)
+          .attr('width', width)
+          .style('background', 'white');
+
+        countries = svg.append("g");
+
+        d3.json('europe.json', function(data) {
+          countries.selectAll('.country')
+          .data(topojson.feature(data, data.objects.europe).features)
+          .enter()
+          .append('path')
+          .attr('class', 'country')
+          .attr('d', path)
+          return;
+        });
+
+        svg.selectAll("circle")
+        		.data([aa,bb]).enter()
+        		.append("circle")
+        		.attr("cx", function (d) { console.log(projection(d)); return projection(d)[0]; })
+        		.attr("cy", function (d) { return projection(d)[1]; })
+        		.attr("r", "8px")
+        		.attr("fill", "red")
+
+        this.projection = projection;
+
+      };
+      this.drawMap(this.originName, this.originGeo, this.destinations);
+    </script>
+  </body>
+</html>
