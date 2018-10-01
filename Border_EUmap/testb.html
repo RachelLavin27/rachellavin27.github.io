@@ -223,7 +223,7 @@
   var map = L.map('map', {
     center: [58.824185, 32.260819], // EDIT latitude, longitude to re-center map
     zoom: 3.5,  // EDIT from 1 to 18 -- decrease to zoom out, increase to zoom in
-
+ 		scrollWheelZoom: false,
   });
 
   // display Carto basemap tiles with light features and labels
@@ -598,6 +598,7 @@
 			}
 
 			map.on('click', onMapClick);
+
 		}
 
 
