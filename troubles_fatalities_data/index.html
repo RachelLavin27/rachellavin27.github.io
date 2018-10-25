@@ -27,8 +27,10 @@
 
 <style type="text/css">
 
-
-
+.ticksource {
+  font-size: 10px;
+  font-style; italic;
+}
 
 </style>
 
@@ -182,6 +184,11 @@
                 .attr("class", "ticklabel")
                 .attr("transform", "translate(" + 0 + "," + (height/tickerprojection + 22) + ")")
                 .text("Fatalaties from 1970-present").call(wrap, width/1.1);
+
+		ticker.append("text")
+                            .attr("class", "ticksource")
+                            .attr("transform", "translate(" + 320 + "," + (height/tickerprojection + 600) + ")")
+                            .text("Source: Global Terrorism Database").call(wrap, width/1.1);
 
           // ---------- END OF TICKER -----------
 
