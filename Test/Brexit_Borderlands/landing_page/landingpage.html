@@ -1,0 +1,281 @@
+<!DOCTYPE html>
+<html>
+
+
+<head>
+
+  <title>Border Master</title>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+
+  <!--Jquery --->
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+
+  <!--UIKit 3 --->
+  <link rel="stylesheet" href="css/uikit.min.css" />
+  <script src="js/uikit.min.js"></script>
+  <script src="js/uikit-icons.min.js"></script>
+
+</head>
+
+
+<style>
+
+  .uk-navbar {
+    height: 50px;
+  }
+
+  .uk-navbar-container:not(.uk-navbar-transparent) {
+  background: black;
+  }
+
+  .uk-navbar-item,
+  .uk-navbar-nav>li>a,
+  .uk-navbar-toggle {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    box-sizing: border-box;
+    height: 0px;
+    padding: 0 15px;
+    font-size: .875rem;
+    font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif;
+    text-decoration: none;
+  }
+
+  .post-fade {
+    color: white;
+  }
+
+h1 {
+  color: white;
+  font-size: 5em;
+}
+
+h8 {
+    font-size: 5rem;
+    margin-bottom: 0px;
+    padding-bottom: 0px;
+    color: grey;
+  }
+
+  h7 {
+    font-family: Times New Roman Pro Bold;
+    color: white;
+    font-size: 22px;
+  }
+
+  .uk-button-primary {
+      background-color: #F3C13A;
+      color: #fff;
+      border: 1px solid transparent;
+  }
+
+  .uk-button-text {
+      padding: 0;
+      line-height: 1.5;
+      background: 0 0;
+      color: white;
+      position: relative;
+  }
+
+  .uk-divider-small::after {
+  content: "";
+  display: inline-block;
+  width: 100px;
+  max-width: 100%;
+  border-top: 3px solid #F3C13A;
+  vertical-align: top;
+}
+</style>
+
+
+<body>
+
+  <!--IT Navigation Bar --->
+	<nav class="uk-navbar-container uk-margin" uk-navbar uk-sticky>
+		<div class="uk-navbar-center">
+          <h7> THE IRISH TIMES  </h7>
+		</div>
+	</nav>
+
+
+  <!---Landing Page Cover --->
+  <div class="uk-cover-container uk-background-norepeat uk-background-cover uk-background-center-center uk-section uk-flex uk-flex-middle" uk-height-viewport="offset-top: true">
+
+
+    <iframe id="myiframe" uk-cover width="560" height="325" src="https://rachellavin27.github.io/static_border_map/blackmap_static.html" frameborder="0" allow="autoplay"></iframe>
+
+    <!---Brexit Borderlands cover heading-->
+    <div class="uk-width-1-2 uk-width-large">
+      <div class="uk-container uk-position-relative">
+        <div class="uk-grid-margin uk-grid-stack" uk-grid>
+
+          <div class="uk-width-1-1@m">
+
+            <div class="overlay">
+              <h1 class="uk-width-large">Brexit<br> Borderlands
+           </h1>
+            </div>
+
+            <div class="overlay">
+              <p class="uk-width-large">
+                A forgotten hinterland with a dark past: Explore Britain's oldest problem, Europe's newest land border and Brexit's biggest obstacle.
+              </p>
+            </div>
+          </div>
+
+
+          <!---Brexit Borderlands cover buttons-->
+          <div class="el-item">
+            <div class="overlay">
+              <div class="uk-width-large">
+                <a class="el-content uk-button uk-button-primary">
+            Explore Map
+            </a>
+
+                <a id="mybutton" class="playbutton el-content uk-button uk-button-text">
+            <span  uk-icon="play-circle"></span>
+           <span> Play Video</span>
+            </a></div>
+
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+
+  <!---Text section-->
+
+  <div class="uk-section-default uk-section uk-section-large">
+
+    <div class="uk-width-1-1">
+
+      <div class="uk-container uk-position-relative">
+
+        <div class="uk-grid-margin" uk-grid>
+
+          <div class="uk-width-1-1@m">
+
+            <div class="uk-divider-small uk-text-center" ></div>
+
+              <div class="uk-margin uk-text-center uk-text-lead uk-width-xxlarge uk-margin-auto ">
+
+              <h8> 208</h8>
+              <h2> Land Border Crossings
+              </h2>
+
+            </div>
+
+            <div class="uk-margin uk-width-xxlarge uk-margin-auto uk-text-center uk-text-lead" >
+              will make the Northern Irish Border the most porous in Europe. </div>
+
+            <div class="uk-margin-large uk-text-center uk-column-1-1@s" >
+              Lorem ipsum dolor sit amet, consectetuer adipiscing elit. Aenean commodo ligula eget dolor. Aenean massa. Cum sociis natoque penatibus et magnis dis parturent montes, nascetur ridiculus mus. Donec quam felis, ultricies nec, pellentesque eu, pretium quis,
+              sem. Nulla consequat massa quis enim. Vivamus elementum semper nisi vulputate tellus. Lorem ipsum dolor sit amet, consectetuer adipiscing elit. Aenean commodo ligula eget dolor. Aenean massa. Cum sociis natoque penatibus et magnis dis parturent
+              montes, nascetur ridiculus mus. Donec quam felis, ultricies nec, pellentesque eu, pretium quis, sem. Nulla consequat massa quis enim.
+
+            </div>
+          </div>
+        </div>
+      </div>
+
+  <!--- Three evergreen feature icons --->
+
+      <div class="uk-section-default uk-section uk-padding-remove-bottom">
+
+        <div class="uk-container">
+
+          <div class="uk-margin-xlarge" uk-grid>
+
+            <div class="uk-width-expand@s">
+
+              <div class="uk-margin uk-text-center uk-panel">
+
+                <img src="img/freedom.jpg" style=" width="260" height="650" class="el-image">
+
+                <h3 class="el-title uk-margin">
+                  Op-ed on the <br>Significance of the Border
+                </h3>
+
+                <div class="el-content uk-margin">
+                  Op-ed reflecting on border/brexit past-present-future and the project itself. </div>
+
+              </div>
+
+            </div>
+
+          <div class="uk-width-expand@s">
+
+   <div class="uk-margin uk-text-center uk-panel" >
+
+              <img src="img/man.jpg" style=" width="260" height="650" class="el-image">
+                <h3 class="el-title uk-margin">
+                  310 Mile Divide: <br>Walking the Border   </h3>
+
+                <div class="el-content uk-margin">Writer walks the border <br>accompanied by digital storytelling <br> storymaps style.</div>
+
+              </div>
+
+            </div>
+
+            <div class="uk-width-expand@s">
+
+              <div class="uk-margin uk-text-center uk-panel" >
+
+                <img src="img/conflict2.jpg" style=" width="260" height="650" class="el-image">
+                <h3 class="el-title uk-margin">
+                  The Conflict Connection: Taking the Toll </h3>
+
+                <div class="el-content uk-margin">Data quantifying the scale of violence <br> during the Troubles. <br> How it relates to the border. </div>
+              </div>
+            </div>
+          </div>
+
+          <h3 class="uk-heading-divider uk-text-center">Latest Border News</h3>
+
+            <!--- Insert RSS Feed --->
+
+        </div>
+      </div>
+    </div>
+
+    <br>
+    <br>
+    <br>
+    <br>
+
+    <div class="uk-section-muted uk-section uk-section-large" >
+
+  <!--- Footer --->
+
+    <footer id="footer">
+
+        <br>
+        <br>
+        <br>
+        <br>
+    </div>
+    <br>
+
+
+  </footer>
+
+
+  <!--- Script that actions video iframe on click --->
+    <script>
+      $("#mybutton").click(function() {
+        $("#myiframe").attr("src", "https://player.vimeo.com/video/297207691");
+        $('.overlay').fadeOut('fast').delay(45000).fadeIn('fast').delay(20000);
+        $('.overlay').addClass("post-fade").delay(45000);
+        $('h1').addClass("post-fade").delay(45000);
+      });
+    </script>
+
+
+
+</body>
+
+</html>

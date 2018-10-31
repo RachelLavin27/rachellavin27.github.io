@@ -1,0 +1,261 @@
+<html>
+
+<head>
+
+  <title>Border Master</title>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+
+
+  <!-- Add icon library -->
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+
+  <!-- Add wee people (people icons) -->
+  <link rel="stylesheet" type="text/css" href="weepeople.css">
+
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+
+
+  <!--UIKit 3 --->
+  <link rel="stylesheet" href="css/uikit.min.css" />
+  <script src="js/uikit.min.js"></script>
+  <script src="js/uikit-icons.min.js"></script>
+
+  <!-- D3 --->
+  <script src="//d3js.org/d3.v3.min.js" charset="utf-8"></script>
+  </script>
+  <script src="//d3js.org/topojson.v1.min.js"></script>
+  <script src="https://d3js.org/queue.v1.min.js"></script>
+  <script src="../post-frame-height.js"></script>
+
+  <!-- D3 stylesheet--->
+  <link href="style.css" rel="stylesheet">
+
+</head>
+
+<style>
+  .uk-navbar {
+    height: 50px;
+  }
+
+  .uk-navbar-container:not(.uk-navbar-transparent) {
+    background: black;
+  }
+
+  .uk-navbar-item,
+  .uk-navbar-nav>li>a,
+  .uk-navbar-toggle {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    box-sizing: border-box;
+    height: 0px;
+    padding: 0 15px;
+    font-size: .875rem;
+    font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif;
+    text-decoration: none;
+  }
+
+  audio,
+  canvas,
+  img,
+  video {
+    max-width: 100%;
+    height: auto;
+    box-sizing: border-box;
+  }
+
+  .firstcharacter {
+    font-size: 72px;
+    font-family: serif;
+    padding: 0px;
+    line-height: 0px;
+    margin-bottom: 0px;
+  }
+
+  .tooltip {
+    position: relative;
+    display: inline-block;
+  }
+
+  .tooltip .tooltiptext {
+    font-family: Arial;
+    letter-spacing: 2px;
+    line-height: 15px;
+    font-size: 18px;
+    visibility: hidden;
+    width: 300px;
+    background-color: grey;
+    color: #fff;
+    text-align: left;
+    border-color: black;
+    padding: 8px 8px 8px 8px;
+    /* Position the tooltip */
+    position: absolute;
+    z-index: 1;
+  }
+
+  .tooltip:hover .tooltiptext {
+    visibility: visible;
+  }
+
+  .tooltip:hover {
+    color: #cc0000;
+  }
+
+  .weepeople {
+    font-size: 48px;
+    letter-spacing: -14px;
+    line-height: 1;
+  }
+
+  h7 {
+    font-family: Times New Roman Pro Bold;
+    color: white;
+    font-size: 22px;
+  }
+</style>
+
+<body>
+
+  <!--IT Navigation Bar --->
+  <nav class="uk-navbar-container uk-margin" uk-navbar uk-sticky>
+    <div class="uk-navbar-center">
+      <h7> THE IRISH TIMES </h7>
+    </div>
+  </nav>
+
+
+
+  <h2 class="uk-text-center" style="margin-bottom:0px">The </h2>
+  <h1 class="uk-heading-line uk-text-center" style="margin-top:0px">Conflict <br> Connection</h1>
+  <div class="uk-container uk-text-center uk-width-medium-1-4">
+    <h3> How the politics of the border and Northern Ireland's <br>violent conflict intersect.
+            </h3>
+
+    <div class=" socialbuttons">
+      <a href="" class="uk-icon-button uk-margin-small-right" uk-icon="twitter"></a>
+      <a href="" class="uk-icon-button  uk-margin-small-right" uk-icon="facebook"></a>
+      <a href="" class="uk-icon-button" uk-icon="google-plus"></a>
+    </div>
+  </div>
+  </div>
+
+
+
+
+  <div class="uk-width-medium-3-6">
+
+    <div class="uk-container uk-container-small">
+      <hr class="uk-margin-remove">
+    </div>
+
+    <!-- large image -->
+    <div class="uk-container uk-container-small uk-section">
+
+      <img src="img/conflict.jpg" alt="" style="width:1100px">
+    </div>
+
+
+    <!-- text -->
+    <div class="uk-container uk-section uk-width-1-2@m ">
+      <div class="uk-container uk-width-medium-2-5">
+
+        <h3 class="uk-text-center uk-article-meta uk-center"><i class="fa fa-clock-o"></i> 01.09.2018 | By Rachel Lavin</h3>
+
+        </h3>
+
+      </div>
+
+      <p><span class="firstcharacter">L</span>orem ipsum dolor sit amet, sea falli dicit officiis cu, eu denique nostrum interesset mei. Regione denique minimum an qui, doctus epicuri cu mea. Eu pro oporteat concludaturque, ne per aliquip graecis officiis,
+        ex pri elitr primis. Ei eam copiosae facilisis, at est comprehensam conclusionemque. Accusamus conclusionemque mel in, has an eligendi molestie constituam.
+        <br><br> Dicant epicuri mediocrem ne sed, velit audire omittantur quo no. Ne nonumy facilisis pro, ex purto primis aliquid ius. In decore qualisque referrentur qui. His unum lorem et, sit eu labores accommodare. Sonet dolores officiis no pri,
+        tantas soluta labitur mei no. At his partiendo forensibus dissentias, ut agam maiestatis nam, ei duo quot everti verear.
+        <br><br> Graeci mentitum complectitur has id. Id qui feugiat maluisset. Debitis scripserit per te. Te diam justo oportere duo, saepe cetero impedit ad quo. Cum ea omnis graeco aperiam, est ex aperiri placerat.
+        <br><br> Nec regione ponderum ea, cu pri veri causae fierent. Patrioque conclusionemque no quo, has libris deserunt te, ius ei rebum iudico consequat. Dicit reformidans in ius, pro voluptaria ullamcorper in. An movet everti recusabo vix.
+        <br><br> Alii malorum eam ei. Graece mandamus pri at, ea magna voluptatum sit. Labores commune consequat eum no, ea mei everti melius. Ea saepe molestiae sea, singulis adversarium pro cu. Cu nec libris menandri, pro vituperata argumentum ut. An
+        oblique mediocritatem his, lorem fabulas at est, has ut ancillae mediocrem mediocritatem.Lorem ipsum dolor sit amet, sea falli dicit officiis cu, eu denique nostrum interesset mei. Regione denique minimum an qui, doctus epicuri cu mea. Eu pro
+        oporteat concludaturque, ne per aliquip graecis officiis, ex pri elitr primis. Ei eam copiosae facilisis, at est comprehensam conclusionemque. Accusamus conclusionemque mel in, has an eligendi molestie constituam.
+        <br><br>
+
+    </div>
+
+  </div>
+
+
+  <div class="uk-section uk-section-secondary  uk-text-center">
+
+
+
+
+    <iframe width="100%" height="800" src="https://rachellavin27.github.io/Troubles_deaths_svg/deaths_of_the_Troubles.html" frameborder="0" allowfullscreen></iframe>
+
+  </div>
+  <!-- text -->
+  <div class="uk-container uk-section uk-width-1-2@m ">
+
+
+    <p>Lorem ipsum dolor sit amet, sea falli dicit officiis cu, eu denique nostrum interesset mei. Regione denique minimum an qui, doctus epicuri cu mea. Eu pro oporteat concludaturque, ne per aliquip graecis officiis, ex pri elitr primis. Ei eam copiosae
+      facilisis, at est comprehensam conclusionemque. Accusamus conclusionemque mel in, has an eligendi molestie constituam.
+      <br><br> Dicant epicuri mediocrem ne sed, velit audire omittantur quo no. Ne nonumy facilisis pro, ex purto primis aliquid ius. In decore qualisque referrentur qui. His unum lorem et, sit eu labores accommodare. Sonet dolores officiis no pri, tantas
+      soluta labitur mei no. At his partiendo forensibus dissentias, ut agam maiestatis nam, ei duo quot everti verear.
+      <br><br> Graeci mentitum complectitur has id. Id qui feugiat maluisset. Debitis scripserit per te. Te diam justo oportere duo, saepe cetero impedit ad quo. Cum ea omnis graeco aperiam, est ex aperiri placerat.
+      <br><br> Nec regione ponderum ea, cu pri veri causae fierent. Patrioque conclusionemque no quo, has libris deserunt te, ius ei rebum iudico consequat. Dicit reformidans in ius, pro voluptaria ullamcorper in. An movet everti recusabo vix.
+      <br><br> Alii malorum eam ei. Graece mandamus pri at, ea magna voluptatum sit. Labores commune consequat eum no, ea mei everti melius. Ea saepe molestiae sea, singulis adversarium pro cu. Cu nec libris menandri, pro vituperata argumentum ut. An
+      oblique mediocritatem his, lorem fabulas at est, has ut ancillae mediocrem mediocritatem.Lorem ipsum dolor sit amet, sea falli dicit officiis cu, eu denique nostrum interesset mei. Regione denique minimum an qui, doctus epicuri cu mea. Eu pro oporteat
+      concludaturque, ne per aliquip graecis officiis, ex pri elitr primis. Eti eam copiosae facilisis, at est comprehensam conclusionemque. Accusamus conclusionemque mel in, has an eligendi molestie constituam.
+      <br><br> </div>
+  <div class="uk-container uk-section uk-width-1-2@m ">
+
+    <iframe width="650" height="850" src="https://rachellavin27.github.io/troubles_fatalities_data/index.html" frameborder="0" allowfullscreen></iframe>
+
+  </div><div class="uk-container uk-section uk-width-1-2@m "> </p>
+  <p>Lorem ipsum dolor sit amet, sea falli dicit officiis cu, eu denique nostrum interesset mei. Regione denique minimum an qui, doctus epicuri cu mea. Eu pro oporteat concludaturque, ne per aliquip graecis officiis, ex pri elitr primis. Ei eam copiosae facilisis, at est comprehensam conclusionemque. Accusamus conclusionemque mel in, has an eligendi molestie constituam.
+  <br><br>
+  Dicant epicuri mediocrem ne sed, velit audire omittantur quo no. Ne nonumy facilisis pro, ex purto primis aliquid ius. In decore qualisque referrentur qui. His unum lorem et, sit eu labores accommodare. Sonet dolores officiis no pri, tantas soluta labitur mei no. At his partiendo forensibus dissentias, ut agam maiestatis nam, ei duo quot everti verear.
+  <br><br>
+  Graeci mentitum complectitur has id. Id qui feugiat maluisset. Debitis scripserit per te. Te diam justo oportere duo, saepe cetero impedit ad quo. Cum ea omnis graeco aperiam, est ex aperiri placerat.
+  <br><br>Lorem ipsum dolor sit amet, sea falli dicit officiis cu, eu denique nostrum interesset mei. Regione denique minimum an qui, doctus epicuri cu mea. Eu pro oporteat concludaturque, ne per aliquip graecis officiis, ex pri elitr primis. Ei eam copiosae facilisis, at est comprehensam conclusionemque. Accusamus conclusionemque mel in, has an eligendi molestie constituam.
+  <br><br></div><div class="uk-container uk-section uk-width-2-3@m ">
+    <h2>Europe's Fatal 'Terror' Attacks: 1970-Present </h2>
+
+  <img src="eu_deaths.png"> </img>
+
+
+  </div><div class="uk-container uk-section uk-width-1-2@m "> </p>
+
+  Dicant epicuri mediocrem ne sed, velit audire omittantur quo no. Ne nonumy facilisis pro, ex purto primis aliquid ius. In decore qualisque referrentur qui. His unum lorem et, sit eu labores accommodare. Sonet dolores officiis no pri, tantas soluta labitur mei no. At his partiendo forensibus dissentias, ut agam maiestatis nam, ei duo quot everti verear.
+  <br><br>
+  Graeci mentitum complectitur has id. Id qui feugiat maluisset. Debitis scripserit per te. Te diam justo oportere duo, saepe cetero impedit ad quo. Cum ea omnis graeco aperiam, est ex aperiri placerat.
+  <br><br>
+  Nec regione ponderum ea, cu pri veri causae fierent. Patrioque conclusionemque no quo, has libris deserunt te, ius ei rebum iudico consequat. Dicit reformidans in ius, pro voluptaria ullamcorper in. An movet everti recusabo vix.
+  <br><br>
+  Alii malorum eam ei. Graece mandamus pri at, ea magna voluptatum sit. Labores commune consequat eum no, ea mei everti melius. Ea saepe molestiae sea, singulis adversarium pro cu. Cu nec libris menandri, pro vituperata argumentum ut. An oblique mediocritatem his, lorem fabulas at est, has ut ancillae mediocrem mediocritatem.Lorem ipsum dolor sit amet, sea falli dicit officiis cu, eu denique nostrum interesset mei. Regione denique minimum an qui, doctus epicuri cu mea. Eu pro oporteat concludaturque, ne per aliquip graecis officiis, ex pri elitr primis. Ei eam copiosae facilisis, at est comprehensam conclusionemque. Accusamus conclusionemque mel in, has an eligendi molestie constituam.
+  <br><br>    </div><div class="uk-section  ">
+
+    <iframe width="100%" height="800" src="https://rachellavin27.github.io/Border_EUmap/testb.html" frameborder="0" allowfullscreen></iframe>
+
+
+    </div><div class="uk-container uk-section uk-width-1-2@m "> </p>
+   </p>
+    Lorem ipsum dolor sit amet, sea falli dicit officiis cu, eu denique nostrum interesset mei. Regione denique minimum an qui, doctus epicuri cu mea. Eu pro oporteat concludaturque, ne per aliquip graecis officiis, ex pri elitr primis. Ei eam copiosae facilisis, at est comprehensam conclusionemque. Accusamus conclusionemque mel in, has an eligendi molestie constituam.
+    <br><br>
+    Dicant epicuri mediocrem ne sed, velit audire omittantur quo no. Ne nonumy facilisis pro, ex purto primis aliquid ius. In decore qualisque referrentur qui. His unum lorem et, sit eu labores accommodare. Sonet dolores officiis no pri, tantas soluta labitur mei no. At his partiendo forensibus dissentias, ut agam maiestatis nam, ei duo quot everti verear.
+    <br><br>
+    Graeci mentitum complectitur has id. Id qui feugiat maluisset. Debitis scripserit per te. Te diam justo oportere duo, saepe cetero impedit ad quo. Cum ea omnis graeco aperiam, est ex aperiri placerat.
+    <br><br>
+    Nec regione ponderum ea, cu pri veri causae fierent. Patrioque conclusionemque no quo, has libris deserunt te, ius ei rebum iudico consequat. Dicit reformidans in ius, pro voluptaria ullamcorper in. An movet everti recusabo vix.
+    <br><br>
+    Alii malorum eam ei. Graece mandamus pri at, ea magna voluptatum sit. Labores commune consequat eum no, ea mei everti melius. Ea saepe molestiae sea, singulis adversarium pro cu. Cu nec libris menandri, pro vituperata argumentum ut. An oblique mediocritatem his, lorem fabulas at est, has ut ancillae mediocrem mediocritatem.Lorem ipsum dolor sit amet, sea falli dicit officiis cu, eu denique nostrum interesset mei. Regione denique minimum an qui, doctus epicuri cu mea. Eu pro oporteat concludaturque, ne per aliquip graecis officiis, ex pri elitr primis. Ei eam copiosae facilisis, at est comprehensam conclusionemque. Accusamus conclusionemque mel in, has an eligendi molestie constituam.
+    <br><br>
+  </div><div class="uk-container uk-section  uk-width-3-4@m "> </p>
+      <iframe width="100%" height="800" src="https://rachellavin27.github.io/border_stackedbarchart/border.html" frameborder="0" allowfullscreen></iframe>
+
+                              </body>
+
+
+
+                              </div>
+                              </html>
