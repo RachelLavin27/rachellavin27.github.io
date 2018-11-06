@@ -48,13 +48,13 @@
       y=w.innerHeight||e.clientHeight||g.clientHeight;
       // parameters
       var margin = {
-          top: 26,
-          right: 40,
-          bottom: 8,
-          left: 2
+          top: 0,
+          right: 0,
+          bottom: 0,
+          left: 0
         },
-        width = 650 - margin.left - margin.right,
-        height = 800 - margin.bottom - margin.top;
+        width = 500,
+        height = 800;
         var smallScreenProjection = d3.geo.albers()
             .center([0, 54.6])
             .rotate([3.3, 0])
@@ -69,23 +69,23 @@
             .translate([width / 2, height / 2]);
             // change map projection according to screen size
             if (x <= 600) {
-              height = 700 - margin.bottom - margin.top;
+              height = 500;
               projection = smallScreenProjection
             } else if (x >= 650) {
-              width = 650 - margin.left - margin.right;
+              width = 500;
             }
         var path = d3.geo.path()
             .projection(projection);
             // scale function
             var timeScale = d3.time.scale()
-                .domain([new Date('1970-04-03'), new Date('2016-12-07')])
+                .domain([new Date('1970-04-03'), new Date('199-12-31')])
                 .range([75, width])
                 .clamp(true);
                 // initial value
                 var startValue = timeScale(new Date('1970-04-03'));
                     startingValue = new Date('1999-12-31');
         // icons
-        var playWidth = 30,
+        var playWidth = 20,
             playD = 'M' + [
               0, 0,
               playWidth/1.2, playWidth/2,
@@ -147,10 +147,10 @@
           ticker.append("text")
                 .attr("class", "ticklabel")
                 .attr("transform", "translate(" + 0 + "," + (height/tickerprojection + 22) + ")")
-                .text("Fatalaties from 1970-present").call(wrap, width/1.1);
+                .text("Fatalaties from 1969 - 1999").call(wrap, width/1.1);
 		ticker.append("text")
                             .attr("class", "ticksource")
-                            .attr("transform", "translate(" + 320 + "," + (height/tickerprojection + 600) + ")")
+                            .attr("transform", "translate(" + 320 + "," + (height/tickerprojection + 500) + ")")
                             .text("Source: Global Terrorism Database").call(wrap, width/1.1);
           // ---------- END OF TICKER -----------
           // ---------- SLIDER ----------
@@ -391,15 +391,3 @@
 
 
 </html>
-© 2018 GitHub, Inc.
-Terms
-Privacy
-Security
-Status
-Help
-Contact GitHub
-Pricing
-API
-Training
-Blog
-About
