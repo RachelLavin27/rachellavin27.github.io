@@ -53,7 +53,7 @@
           bottom: 8,
           left: 2
         },
-        width = 650 - margin.left - margin.right,
+        width = 500 - margin.left - margin.right,
         height = 800 - margin.bottom - margin.top;
         var smallScreenProjection = d3.geo.albers()
             .center([0, 54.6])
@@ -83,7 +83,7 @@
                 .clamp(true);
                 // initial value
                 var startValue = timeScale(new Date('1970-04-03'));
-                    startingValue = new Date('1999-12-31');
+                    startingValue = new Date('2000-12-31');
         // icons
         var playWidth = 30,
             playD = 'M' + [
@@ -147,7 +147,7 @@
           ticker.append("text")
                 .attr("class", "ticklabel")
                 .attr("transform", "translate(" + 0 + "," + (height/tickerprojection + 22) + ")")
-                .text("Fatalaties from 1970-present").call(wrap, width/1.1);
+                .text("Fatalaties from 1970-2000").call(wrap, width/1.1);
 		ticker.append("text")
                             .attr("class", "ticksource")
                             .attr("transform", "translate(" + 320 + "," + (height/tickerprojection + 600) + ")")
