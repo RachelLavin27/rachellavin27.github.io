@@ -1,0 +1,238 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+
+  <meta charset="utf-8">
+
+  <script src="https://d3js.org/d3.v3.min.js" charset="utf-8"></script>
+  <script src="https://d3js.org/topojson.v1.min.js"></script>
+  <script src="https://d3js.org/queue.v1.min.js"></script>
+
+  <link href="style.css" rel="stylesheet">
+
+
+  <style>
+    .country {
+      fill: darkgrey;
+      stroke: white;
+      stroke-width: 0.5px;
+    }
+
+    .country:hover {
+      fill: darkgrey;
+      stroke: white;
+      stroke-width: 0.5px;
+    }
+
+    .vis-title {
+      font-size: 36px;
+      font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif;
+      ;
+      padding-bottom: 0;
+    }
+
+    .sub-title {
+      font-size: 18px;
+      font-family: "Futura", sans-serif;
+      padding-bottom: 0;
+    }
+
+    .source {
+      font-size: 10px;
+      font-family: "Futura", sans-serif;
+      padding-bottom: 0;
+    }
+
+    h1 {
+      font-size: 24px;
+      font-family: "Futura", sans-serif;
+      padding-bottom: 0;
+    }
+
+    .country {
+      stroke-width: 1px;
+      stroke: white;
+    }
+
+    div.tooltip {
+      position: absolute;
+      width: 150px;
+      height: 280px;
+      padding: 60px;
+      line-height: 40px;
+      font-style: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif;
+      font-size: 16px;
+      text-align: center;
+      color: white;
+      border-radius: 5px;
+      text-shadow: rgba(0, 0, 0, 0.6) 0px 0px 0px;
+      box-shadow: gray -4px 15px 14px 0px;
+      top: 300px;
+    }
+
+    .circle:hover {
+      color: black;
+    }
+
+    div.tooltip:after {
+      content: "";
+      position: absolute;
+      width: 0;
+      height: 0;
+      border-radius: 0px;
+      border-width: 24px;
+      border-style: solid;
+      border-color: transparent transparent transparent Black;
+      top: 10px;
+      left: 165px;
+    }
+
+
+
+    .tip_number {
+      font-size: 18px;
+    }
+  </style>
+
+</head>
+
+<body>
+
+  <div id="map"></div>
+  <script src="http://d3js.org/d3.v4.min.js"></script>
+  <script src="http://d3js.org/topojson.v1.min.js"></script>
+  <script src="https://d3js.org/queue.v1.min.js"></script>
+
+  <script>
+    function drawMap(originName, originGeo, destinations) {
+
+
+
+      var countries, height, path, projection, scale, svg, width;
+      var width = 970;
+      var height = 610;
+      var center = [9.75, 60.8];
+      var scale = 900;
+
+      var tooltip = d3.select("#map").append("div")
+        .attr("class", "tooltip")
+        .style('opacity', 0)
+        .style('position', 'absolute')
+        .style('padding', '0 10px');
+
+      projection = d3.geoMercator()
+        .scale(scale)
+        .translate([width / 2, 0])
+        .center(center);
+
+      path = d3.geoPath()
+        .projection(projection);
+
+
+      svg = d3.select('#map')
+        .append('svg')
+        .attr('height', height)
+        .attr('width', width)
+
+
+      svg.append("text")
+        .attr("y", 30)
+        .attr("class", "vis-title")
+
+        .text("Conflict in Europe");
+
+      svg.append("text")
+        .attr("y", 55)
+        .attr("class", "sub-title")
+        .text(" Fatal Terror Attacks: 1970-Present");
+
+
+      svg.append("text")
+        .attr("y", 75)
+        .attr("class", "source")
+        .text("Hover on a circle for details of attack.");
+
+      svg.append("text")
+        .attr("y", 600)
+        .attr("class", "source")
+        .text("Source: Global Terrorism Database");
+
+
+
+      countries = svg.append("g");
+
+      d3.json('europe.json', function(data) {
+        countries.selectAll('.country')
+          .data(topojson.feature(data, data.objects.europe).features)
+          .enter()
+          .append('path')
+          .attr('class', 'country')
+
+          .attr('d', path)
+
+        return;
+      });
+
+
+      d3.csv("deathseu.csv", function(data) {
+
+        svg.selectAll("circle")
+          .data(data)
+          .enter()
+          .append("circle")
+
+          .attr("class", "tooltip")
+          .attr("cx", function(d) {
+            return projection([d.longitude, d.latitude])[0];
+          })
+          .attr("cy", function(d) {
+            return projection([d.longitude, d.latitude])[1];
+          })
+          .attr("r", function(d) {
+            return Math.sqrt(parseInt(d.capacity) * 2.5);
+          })
+
+          .on("mouseover", function(d) {
+            tooltip.transition()
+              .style('opacity', .9)
+              .style('background', 'black')
+              .text(+d.capacity +
+                ' killed in ' + d.city +
+                ", " + d.country_txt +
+                " in " + d.attacktype +
+                " in " + d.iyear +
+                ".")
+
+          })
+          .on("mouseout", function(d) {
+            tooltip.transition()
+              .style("opacity", "0")
+              .duration(500);
+          })
+
+
+          .style("fill", "#b30000")
+          .style("opacity", "0.75")
+          .style("stroke", "white")
+          .style("stroke-width", "0.5")
+
+
+
+
+      });
+
+
+
+
+      // ---------- TITLE -----------
+
+
+
+
+    };
+    this.drawMap(this.originName, this.originGeo, this.destinations);
+  </script>
+</body>
+
+</html>

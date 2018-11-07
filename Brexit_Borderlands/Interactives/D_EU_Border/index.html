@@ -1,0 +1,612 @@
+<html>
+
+<head>
+
+	<title>Border Map</title>
+
+	<meta charset="utf-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+
+	<link rel="stylesheet" href="https://unpkg.com/leaflet@1.3.3/dist/leaflet.css"
+	   integrity="sha512-Rksm5RenBEKSKFjgI3a41vrjkw4EVPlJ3+OiI65vTjIdo9brlAacEuKOiQ5OFh7cOI1bkDwLqdLw3Zg0cRJAAQ=="
+	   crossorigin=""/>
+
+		 <!-- Make sure you put this AFTER Leaflet's CSS -->
+ <script src="https://unpkg.com/leaflet@1.3.3/dist/leaflet.js"
+   integrity="sha512-tAGcCfR4Sc5ZP5ZoVz0quoZDYX5aCtEm/eu1KhSLj2c9eFrylXZknQYmxUssFaVJKvvc0dJQixhGjG2yXWiV9Q=="
+   crossorigin=""></script>
+
+	<script src="dist/leaflet-search.src.js"></script>
+	<script src="src/leaflet-search.js"></script>
+
+	<script src='https://api.mapbox.com/mapbox.js/v3.1.1/mapbox.js'></script>
+	<link href='https://api.mapbox.com/mapbox.js/v3.1.1/mapbox.css' rel='stylesheet' />
+
+	<!--UIKit 3 --->
+	<link rel="stylesheet" href="css/uikit.min.css" />
+	<script src="js/uikit.min.js"></script>
+	<script src="js/uikit-icons.min.js"></script>
+
+	<!-- Add icon library -->
+	<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+
+	<!--Jquery --->
+	<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+
+
+
+	<style>
+		html,
+		body {
+			height: 100%;
+			margin: 0;
+			font-family: Futura;
+		}
+
+		#map {
+			width: 100%;
+			height: 100%;
+		}
+
+
+
+
+		h1 {
+			font-size: 78px;
+			padding-bottom: 0px;
+			margin-bottom: 0px;
+			color: white;
+			line-spacing: 12px;
+		}
+
+		h5 {
+				font-size: 12px;
+		}
+
+		h6 {
+				font-size: 12px;
+				line-height: 0px;
+				color: lightgray;
+				margin-block-start: 0.75em;
+				margin-block-end: 0.75em;
+		}
+
+		h4 {
+			font-size: 22px;
+			color: white;
+			font-family: Arial;
+		}
+
+		h7 {
+			font-size: 26px;
+		}
+
+		#map {
+			z-index: 1;
+			position: absolute;
+		}
+
+
+		#sign {
+			z-index: 100;
+			position: fixed;
+			background-color: white;
+			padding: 10px;
+			width: 350px;
+			height: 500px;
+			margin-top: -560px;
+			left: 60%;
+      background: rgba(0,0,0, 0.5);
+      box-shadow: 0 0 15px rgba(0,0,0,0.5);
+      border-radius: 5px;
+
+		}
+	</style>
+
+
+</head>
+
+<body>
+
+
+
+
+	<!--Map --->
+	<div id="map" class="leaflet-container leaflet-touch leaflet-fade-anim leaflet-grab leaflet-touch-drag leaflet-touch-zoom" tabindex="0" style="position: relative; outline: none;">
+		<div class="leaflet-pane leaflet-map-pane" style="transform: translate3d(-261px, -133px, 0px);">
+			<div class="leaflet-pane leaflet-tile-pane">
+				<div class="leaflet-layer" style="z-index: 1; opacity: 1;">
+					<div class="leaflet-tile-container leaflet-zoom-animated" style="z-index: 18; transform: translate3d(0px, 0px, 0px) scale(1);">
+						<img alt="" role="presentation" src="http://a.tiles.wmflabs.org/bw-mapnik/8/123/81.png" class="leaflet-tile leaflet-tile-loaded" style="width: 256px; height: 256px; transform: translate3d(696px, 154px, 0px); opacity: 1;"><img alt="" role="presentation"
+						  src="http://c.tiles.wmflabs.org/bw-mapnik/8/122/81.png" class="leaflet-tile leaflet-tile-loaded" style="width: 256px; height: 256px; transform: translate3d(440px, 154px, 0px); opacity: 1;">
+						<img alt="" role="presentation" src="http://c.tiles.wmflabs.org/bw-mapnik/8/123/80.png" class="leaflet-tile leaflet-tile-loaded" style="width: 256px; height: 256px; transform: translate3d(696px, -102px, 0px); opacity: 1;"><img alt="" role="presentation"
+						  src="http://b.tiles.wmflabs.org/bw-mapnik/8/123/82.png" class="leaflet-tile leaflet-tile-loaded" style="width: 256px; height: 256px; transform: translate3d(696px, 410px, 0px); opacity: 1;">
+						<img alt="" role="presentation" src="http://b.tiles.wmflabs.org/bw-mapnik/8/122/80.png" class="leaflet-tile leaflet-tile-loaded" style="width: 256px; height: 256px; transform: translate3d(440px, -102px, 0px); opacity: 1;"><img alt="" role="presentation"
+						  src="http://a.tiles.wmflabs.org/bw-mapnik/8/122/82.png" class="leaflet-tile leaflet-tile-loaded" style="width: 256px; height: 256px; transform: translate3d(440px, 410px, 0px); opacity: 1;">
+						<img alt="" role="presentation" src="http://b.tiles.wmflabs.org/bw-mapnik/8/121/81.png" class="leaflet-tile leaflet-tile-loaded" style="width: 256px; height: 256px; transform: translate3d(184px, 154px, 0px); opacity: 1;"><img alt="" role="presentation"
+						  src="http://b.tiles.wmflabs.org/bw-mapnik/8/124/81.png" class="leaflet-tile leaflet-tile-loaded" style="width: 256px; height: 256px; transform: translate3d(952px, 154px, 0px); opacity: 1;">
+						<img alt="" role="presentation" src="http://c.tiles.wmflabs.org/bw-mapnik/8/124/82.png" class="leaflet-tile leaflet-tile-loaded" style="width: 256px; height: 256px; transform: translate3d(952px, 410px, 0px); opacity: 1;"><img alt="" role="presentation"
+						  src="http://a.tiles.wmflabs.org/bw-mapnik/8/124/80.png" class="leaflet-tile leaflet-tile-loaded" style="width: 256px; height: 256px; transform: translate3d(952px, -102px, 0px); opacity: 1;"><img alt="" role="presentation" src="http://c.tiles.wmflabs.org/bw-mapnik/8/121/82.png"
+						  class="leaflet-tile leaflet-tile-loaded" style="width: 256px; height: 256px; transform: translate3d(184px, 410px, 0px); opacity: 1;"><img alt="" role="presentation" src="http://a.tiles.wmflabs.org/bw-mapnik/8/121/80.png" class="leaflet-tile leaflet-tile-loaded"
+						  style="width: 256px; height: 256px; transform: translate3d(184px, -102px, 0px); opacity: 1;"><img alt="" role="presentation" src="http://c.tiles.wmflabs.org/bw-mapnik/8/125/81.png" class="leaflet-tile leaflet-tile-loaded" style="width: 256px; height: 256px; transform: translate3d(1208px, 154px, 0px); opacity: 1;">
+						<img alt="" role="presentation" src="http://a.tiles.wmflabs.org/bw-mapnik/8/120/81.png" class="leaflet-tile leaflet-tile-loaded" style="width: 256px; height: 256px; transform: translate3d(-72px, 154px, 0px); opacity: 1;"><img alt="" role="presentation"
+						  src="http://b.tiles.wmflabs.org/bw-mapnik/8/125/80.png" class="leaflet-tile leaflet-tile-loaded" style="width: 256px; height: 256px; transform: translate3d(1208px, -102px, 0px); opacity: 1;"><img alt="" role="presentation" src="http://b.tiles.wmflabs.org/bw-mapnik/8/120/82.png"
+						  class="leaflet-tile leaflet-tile-loaded" style="width: 256px; height: 256px; transform: translate3d(-72px, 410px, 0px); opacity: 1;"><img alt="" role="presentation" src="http://c.tiles.wmflabs.org/bw-mapnik/8/120/80.png" class="leaflet-tile leaflet-tile-loaded"
+						  style="width: 256px; height: 256px; transform: translate3d(-72px, -102px, 0px); opacity: 1;"><img alt="" role="presentation" src="http://a.tiles.wmflabs.org/bw-mapnik/8/125/82.png" class="leaflet-tile leaflet-tile-loaded" style="width: 256px; height: 256px; transform: translate3d(1208px, 410px, 0px); opacity: 1;"></div>
+				</div>
+			</div>
+		</div>
+
+		<!--Map text overlay--->
+
+		<div class="leaflet-control-container">
+			<div class="leaflet-top leaflet-left">
+				<div class="leaflet-control-zoom leaflet-bar leaflet-control"><a class="leaflet-control-zoom-in" href="#" title="Zoom in" role="button" aria-label="Zoom in">+</a><a class="leaflet-control-zoom-out" href="#" title="Zoom out" role="button" aria-label="Zoom out">−</a></div>
+			</div>
+			<div class="leaflet-top leaflet-right">
+				<div class="info leaflet-control"></div>
+			</div>
+
+			<div class="leaflet-bottom leaflet-right">
+				<div class="leaflet-control-attribution leaflet-control"><a href="http://leafletjs.com" title="A JS library for interactive maps">Leaflet</a> | © <a href="http://www.openstreetmap.org/copyright">OpenStreetMap</a></div>
+			</div>
+		</div>
+	</div>
+	</div>
+	</div>
+
+
+	<div class="container uk-card uk-card-body">
+		<div class= "information">
+			    <div id="sign">
+            <h4> EU Land Border Crossings<br></h4>
+						<h5>From the most northernly tip of FInland down to the Baltic Sea, there are 120 established land border crossings between the European Union and the rest of the world.<br><br> But along the land border between Northern Ireland (the UK) and the Republic of Ireland (the EU) there are 208 road crossings, making it potentially the most porous land border in Europe post-Brexit.</h5>
+
+          <h6 >
+        <i class="fa fa-hand-o-up"></i> Click on a crossing to view.<br>
+			</h6>
+    </div>
+		</div>
+	</div>
+
+  <!--geojson data--->
+	<script type="text/javascript">
+  var map = L.map('map', {
+    center: [58.824185, 32.260819], // EDIT latitude, longitude to re-center map
+    zoom: 3.5,  // EDIT from 1 to 18 -- decrease to zoom out, increase to zoom in
+ 		scrollWheelZoom: false,
+  });
+
+  // display Carto basemap tiles with light features and labels
+  L.tileLayer('https://cartodb-basemaps-{s}.global.ssl.fastly.net/light_all/{z}/{x}/{y}.png', {
+    attribution: '&copy; <a href="http://www.openstreetmap.org/copyright">OpenStreetMap</a>, &copy; <a href="https://carto.com/attribution">CARTO</a>'
+  }).addTo(map); // EDIT - insert or remove ".addTo(map)" before last semicolon to display by default
+
+  // display Stamen basemap tiles with colored terrain and labels
+  L.tileLayer('https://stamen-tiles.a.ssl.fastly.net/terrain/{z}/{x}/{y}.png', {
+    attribution: 'Map tiles by <a href="http://stamen.com">Stamen Design</a>, under <a href="http://creativecommons.org/licenses/by/3.0">CC BY 3.0</a>. Data by <a href="http://openstreetmap.org">OpenStreetMap</a>, under <a href="http://www.openstreetmap.org/copyright">ODbL</a>.'
+  });
+
+
+		var locations = [{ "type": "Feature", "properties": { "Title": "Koidula, Estonia", "Country": "Estonia", "Type": " Road", "Latitude": 57.838009, "Longitude": 27.599623 }, "geometry": { "type": "Point", "coordinates": [ 27.599623, 57.838009 ] } },
+    { "type": "Feature", "properties": { "Title": "Koidula, Estonia", "Country": "Estonia", "Type": "Railway", "Latitude": 57.838009, "Longitude": 27.599623 }, "geometry": { "type": "Point", "coordinates": [ 27.599623, 57.838009 ] } },
+    { "type": "Feature", "properties": { "Title": "Luhamaa, Estonia", "Country": "Estonia", "Type": "Road", "Latitude": 57.637086, "Longitude": 27.347375 }, "geometry": { "type": "Point", "coordinates": [ 27.347375, 57.637086 ] } },
+    { "type": "Feature", "properties": { "Title": "Narva, Estonia", "Country": "Estonia", "Type": "Railway", "Latitude": 59.379693, "Longitude": 28.179075 }, "geometry": { "type": "Point", "coordinates": [ 28.179075, 59.379693 ] } },
+    { "type": "Feature", "properties": { "Title": "Narva 1, Estonia", "Country": "Estonia", "Type": "Road", "Latitude": 59.379693, "Longitude": 28.179075 }, "geometry": { "type": "Point", "coordinates": [ 28.179075, 59.379693 ] } },
+    { "type": "Feature", "properties": { "Title": "Saatse, Estonia", "Country": "Estonia", "Type": "Road", "Latitude": 57.88366, "Longitude": 27.784834 }, "geometry": { "type": "Point", "coordinates": [ 27.784834, 57.88366 ] } },
+    { "type": "Feature", "properties": { "Title": "Imatra, Finland", "Country": "Finland", "Type": "Railway", "Latitude": 61.169598, "Longitude": 28.764546 }, "geometry": { "type": "Point", "coordinates": [ 28.764546, 61.169598 ] } },
+    { "type": "Feature", "properties": { "Title": "Imatra, Finland", "Country": "Finland", "Type": "Road", "Latitude": 61.169598, "Longitude": 28.764546 }, "geometry": { "type": "Point", "coordinates": [ 28.764546, 61.169598 ] } },
+    { "type": "Feature", "properties": { "Title": "Inari, Finland", "Country": "Finland", "Type": "Road", "Latitude": 68.906221, "Longitude": 27.027766 }, "geometry": { "type": "Point", "coordinates": [ 27.027766, 68.906221 ] } },
+    { "type": "Feature", "properties": { "Title": "Kuusamo, Finland", "Country": "Finland", "Type": "Road", "Latitude": 65.964588, "Longitude": 29.188665 }, "geometry": { "type": "Point", "coordinates": [ 29.188665, 65.964588 ] } },
+    { "type": "Feature", "properties": { "Title": "Niirala, Finland", "Country": "Finland", "Type": "Road", "Latitude": 62.175269, "Longitude": 30.593533 }, "geometry": { "type": "Point", "coordinates": [ 30.593533, 62.175269 ] } },
+    { "type": "Feature", "properties": { "Title": "Niirala, Finland", "Country": "Finland", "Type": "Railway", "Latitude": 62.175269, "Longitude": 30.593533 }, "geometry": { "type": "Point", "coordinates": [ 30.593533, 62.175269 ] } },
+    { "type": "Feature", "properties": { "Title": "Nuijamaa, Finland", "Country": "Finland", "Type": "Road", "Latitude": 60.960322, "Longitude": 28.540105 }, "geometry": { "type": "Point", "coordinates": [ 28.540105, 60.960322 ] } },
+    { "type": "Feature", "properties": { "Title": "Parikkala, Finland", "Country": "Finland", "Type": "Road", "Latitude": 61.550187, "Longitude": 29.502402 }, "geometry": { "type": "Point", "coordinates": [ 29.502402, 61.550187 ] } },
+    { "type": "Feature", "properties": { "Title": "Raja-Jooseppi, Finland", "Country": "Finland", "Type": "Road", "Latitude": 68.475925, "Longitude": 28.47013 }, "geometry": { "type": "Point", "coordinates": [ 28.47013, 68.475925 ] } },
+    { "type": "Feature", "properties": { "Title": "Salla, Finland", "Country": "Finland", "Type": "Road", "Latitude": 66.832652, "Longitude": 28.670118 }, "geometry": { "type": "Point", "coordinates": [ 28.670118, 66.832652 ] } },
+    { "type": "Feature", "properties": { "Title": "Vaalimaa, Finland", "Country": "Finland", "Type": "Road", "Latitude": 60.597934, "Longitude": 27.808941 }, "geometry": { "type": "Point", "coordinates": [ 27.808941, 60.597934 ] } },
+    { "type": "Feature", "properties": { "Title": "Vainikkala , Finland", "Country": "Finland", "Type": "Railway", "Latitude": 60.866427, "Longitude": 28.299857 }, "geometry": { "type": "Point", "coordinates": [ 28.299857, 60.866427 ] } },
+    { "type": "Feature", "properties": { "Title": "Vartius, Finland", "Country": "Finland", "Type": "Road", "Latitude": 64.495577, "Longitude": 29.907499 }, "geometry": { "type": "Point", "coordinates": [ 29.907499, 64.495577 ] } },
+    { "type": "Feature", "properties": { "Title": "Vartius, Finland", "Country": "Finland", "Type": "Railway", "Latitude": 64.495577, "Longitude": 29.907499 }, "geometry": { "type": "Point", "coordinates": [ 29.907499, 64.495577 ] } },
+    { "type": "Feature", "properties": { "Title": "Barab�s, Hungary", "Country": "Hungary", "Type": "NOT SPECIFIED", "Latitude": 48.231032, "Longitude": 22.430712 }, "geometry": { "type": "Point", "coordinates": [ 22.430712, 48.231032 ] } },
+    { "type": "Feature", "properties": { "Title": "Beregsur�ny, Hungary", "Country": "Hungary", "Type": "Road", "Latitude": 48.161742, "Longitude": 22.549046 }, "geometry": { "type": "Point", "coordinates": [ 22.549046, 48.161742 ] } },
+    { "type": "Feature", "properties": { "Title": "Eperjeske, Hungary", "Country": "Hungary", "Type": "Railway", "Latitude": 48.34481, "Longitude": 22.212508 }, "geometry": { "type": "Point", "coordinates": [ 22.212508, 48.34481 ] } },
+    { "type": "Feature", "properties": { "Title": "L�nya, Hungary", "Country": "Hungary", "Type": "Road", "Latitude": 48.321447, "Longitude": 22.270337 }, "geometry": { "type": "Point", "coordinates": [ 22.270337, 48.321447 ] } },
+    { "type": "Feature", "properties": { "Title": "Nagyh�dos, Hungary", "Country": "Hungary", "Type": "Road", "Latitude": 47.962561, "Longitude": 22.847365 }, "geometry": { "type": "Point", "coordinates": [ 22.847365, 47.962561 ] } },
+    { "type": "Feature", "properties": { "Title": "Tiszabecs , Hungary", "Country": "Hungary", "Type": "River", "Latitude": 48.097166, "Longitude": 22.819914 }, "geometry": { "type": "Point", "coordinates": [ 22.819914, 48.097166 ] } },
+    { "type": "Feature", "properties": { "Title": "Tiszabecs  , Hungary", "Country": "Hungary", "Type": "Road", "Latitude": 48.097166, "Longitude": 22.819914 }, "geometry": { "type": "Point", "coordinates": [ 22.819914, 48.097166 ] } },
+    { "type": "Feature", "properties": { "Title": "Z�hony, Hungary", "Country": "Hungary", "Type": "Road", "Latitude": 48.404683, "Longitude": 22.177433 }, "geometry": { "type": "Point", "coordinates": [ 22.177433, 48.404683 ] } },
+    { "type": "Feature", "properties": { "Title": "Z�hony, Hungary", "Country": "Hungary", "Type": "Railway", "Latitude": 48.404683, "Longitude": 22.177433 }, "geometry": { "type": "Point", "coordinates": [ 22.177433, 48.404683 ] } },
+    { "type": "Feature", "properties": { "Title": "Greb_eva-Ubi_inka, Latvia", "Country": "Latvia", "Type": "Road", "Latitude": 56.855854, "Longitude": 27.821019 }, "geometry": { "type": "Point", "coordinates": [ 27.821019, 56.855854 ] } },
+    { "type": "Feature", "properties": { "Title": "Indra-Bigosova, Latvia", "Country": "Latvia", "Type": "Railway", "Latitude": 56.879635, "Longitude": 24.603189 }, "geometry": { "type": "Point", "coordinates": [ 24.603189, 56.879635 ] } },
+    { "type": "Feature", "properties": { "Title": "Kaplava-P_usi, Latvia", "Country": "Latvia", "Type": "Road", "Latitude": 55.857171, "Longitude": 27.047484 }, "geometry": { "type": "Point", "coordinates": [ 27.047484, 55.857171 ] } },
+    { "type": "Feature", "properties": { "Title": "K_rsava-Skanga_i, Latvia", "Country": "Latvia", "Type": "Railway", "Latitude": 56.783781, "Longitude": 27.681978 }, "geometry": { "type": "Point", "coordinates": [ 27.681978, 56.783781 ] } },
+    { "type": "Feature", "properties": { "Title": "Meik__ni-Gavri_ino , Latvia", "Country": "Latvia", "Type": "Road", "Latitude": 56.174616, "Longitude": 28.094546 }, "geometry": { "type": "Point", "coordinates": [ 28.094546, 56.174616 ] } },
+    { "type": "Feature", "properties": { "Title": "Pededze-Bruni_eva, Latvia", "Country": "Latvia", "Type": "Road", "Latitude": 57.527682, "Longitude": 27.460694 }, "geometry": { "type": "Point", "coordinates": [ 27.460694, 57.527682 ] } },
+    { "type": "Feature", "properties": { "Title": "P_ternieki-Grigorov__ina , Latvia", "Country": "Latvia", "Type": "Road", "Latitude": 56.762528, "Longitude": 23.934816 }, "geometry": { "type": "Point", "coordinates": [ 23.934816, 56.762528 ] } },
+    { "type": "Feature", "properties": { "Title": "Piedruja-Druja, Latvia", "Country": "Latvia", "Type": "Road", "Latitude": 55.796318, "Longitude": 27.443598 }, "geometry": { "type": "Point", "coordinates": [ 27.443598, 55.796318 ] } },
+    { "type": "Feature", "properties": { "Title": "Silene-Urbani , Latvia", "Country": "Latvia", "Type": "Road", "Latitude": 55.749507, "Longitude": 26.787599 }, "geometry": { "type": "Point", "coordinates": [ 26.787599, 55.749507 ] } },
+    { "type": "Feature", "properties": { "Title": "Terehova-Bura_ki, Latvia", "Country": "Latvia", "Type": "Road", "Latitude": 56.353064, "Longitude": 28.184854 }, "geometry": { "type": "Point", "coordinates": [ 28.184854, 56.353064 ] } },
+    { "type": "Feature", "properties": { "Title": "Vientu_i-Ludonka , Latvia", "Country": "Latvia", "Type": "Road", "Latitude": 57.122457, "Longitude": 27.731353 }, "geometry": { "type": "Point", "coordinates": [ 27.731353, 57.122457 ] } },
+    { "type": "Feature", "properties": { "Title": "Zilupe-Posi_i, Latvia", "Country": "Latvia", "Type": "Railway", "Latitude": 56.387721, "Longitude": 28.119561 }, "geometry": { "type": "Point", "coordinates": [ 28.119561, 56.387721 ] } },
+    { "type": "Feature", "properties": { "Title": "Aduti_kis � Moldevi_iai, Lithuania", "Country": "Lithuania", "Type": "Road", "Latitude": 55.15942, "Longitude": 26.584677 }, "geometry": { "type": "Point", "coordinates": [ 26.584677, 55.15942 ] } },
+    { "type": "Feature", "properties": { "Title": "Ei_i_k_s � Doti_k_s, Lithuania", "Country": "Lithuania", "Type": "Road", "Latitude": 54.174252, "Longitude": 24.999369 }, "geometry": { "type": "Point", "coordinates": [ 24.999369, 54.174252 ] } },
+    { "type": "Feature", "properties": { "Title": "Jurbarkas � Sovetsk, Lithuania", "Country": "Lithuania", "Type": "River-Ferry", "Latitude": 55.077407, "Longitude": 22.741957 }, "geometry": { "type": "Point", "coordinates": [ 22.741957, 55.077407 ] } },
+    { "type": "Feature", "properties": { "Title": "Kena � Gudagojis, Lithuania", "Country": "Lithuania", "Type": "Railway", "Latitude": 54.648999, "Longitude": 25.621686 }, "geometry": { "type": "Point", "coordinates": [ 25.621686, 54.648999 ] } },
+    { "type": "Feature", "properties": { "Title": "Krak_nai � Geranainys, Lithuania", "Country": "Lithuania", "Type": "Road", "Latitude": 54.149191, "Longitude": 25.617992 }, "geometry": { "type": "Point", "coordinates": [ 25.617992, 54.149191 ] } },
+    { "type": "Feature", "properties": { "Title": "Kybartai � _erny_evskoje, Lithuania", "Country": "Lithuania", "Type": "Road", "Latitude": 54.640092, "Longitude": 22.733626 }, "geometry": { "type": "Point", "coordinates": [ 22.733626, 54.640092 ] } },
+    { "type": "Feature", "properties": { "Title": "Kybartai � Nesterov, Lithuania", "Country": "Lithuania", "Type": "Railway", "Latitude": 54.630547, "Longitude": 22.569125 }, "geometry": { "type": "Point", "coordinates": [ 22.569125, 54.630547 ] } },
+    { "type": "Feature", "properties": { "Title": "Late_eris � Parie__, Lithuania", "Country": "Lithuania", "Type": "Road", "Latitude": 53.987227, "Longitude": 24.098794 }, "geometry": { "type": "Point", "coordinates": [ 24.098794, 53.987227 ] } },
+    { "type": "Feature", "properties": { "Title": "Lavori_k_s � Kotlovka, Lithuania", "Country": "Lithuania", "Type": "Road", "Latitude": 54.716599, "Longitude": 25.747523 }, "geometry": { "type": "Point", "coordinates": [ 25.747523, 54.716599 ] } },
+    { "type": "Feature", "properties": { "Title": "Medininkai � Kamenyj Log, Lithuania", "Country": "Lithuania", "Type": "Road", "Latitude": 54.523201, "Longitude": 25.723865 }, "geometry": { "type": "Point", "coordinates": [ 25.723865, 54.523201 ] } },
+    { "type": "Feature", "properties": { "Title": "Nida � Morskoje, Lithuania", "Country": "Lithuania", "Type": "Road", "Latitude": 55.228846, "Longitude": 20.916739 }, "geometry": { "type": "Point", "coordinates": [ 20.916739, 55.228846 ] } },
+    { "type": "Feature", "properties": { "Title": "Nida � Ryba_yj, Lithuania", "Country": "Lithuania", "Type": "River-Ferry", "Latitude": 55.302965, "Longitude": 21.004113 }, "geometry": { "type": "Point", "coordinates": [ 21.004113, 55.302965 ] } },
+    { "type": "Feature", "properties": { "Title": "Norvili_k_s � Pick_nai, Lithuania", "Country": "Lithuania", "Type": "Road", "Latitude": 54.237437, "Longitude": 25.760797 }, "geometry": { "type": "Point", "coordinates": [ 25.760797, 54.237437 ] } },
+    { "type": "Feature", "properties": { "Title": "Pag_giai � Sovetsk, Lithuania", "Country": "Lithuania", "Type": "Railway", "Latitude": 55.134312, "Longitude": 21.904681 }, "geometry": { "type": "Point", "coordinates": [ 21.904681, 55.134312 ] } },
+    { "type": "Feature", "properties": { "Title": "Panemun_ � Sovetsk, Lithuania", "Country": "Lithuania", "Type": "Road", "Latitude": 55.08944, "Longitude": 21.902155 }, "geometry": { "type": "Point", "coordinates": [ 21.902155, 55.08944 ] } },
+    { "type": "Feature", "properties": { "Title": "Papelekis � Lentupis, Lithuania", "Country": "Lithuania", "Type": "Road", "Latitude": 55.082622, "Longitude": 26.256693 }, "geometry": { "type": "Point", "coordinates": [ 26.256693, 55.082622 ] } },
+    { "type": "Feature", "properties": { "Title": "Prienai � Kiemeli_k_s, Lithuania", "Country": "Lithuania", "Type": "Road", "Latitude": 54.680498, "Longitude": 25.02213 }, "geometry": { "type": "Point", "coordinates": [ 25.02213, 54.680498 ] } },
+    { "type": "Feature", "properties": { "Title": "Raigardas � Privalka, Lithuania", "Country": "Lithuania", "Type": "Road", "Latitude": 53.944241, "Longitude": 23.918448 }, "geometry": { "type": "Point", "coordinates": [ 23.918448, 53.944241 ] } },
+    { "type": "Feature", "properties": { "Title": "Rakai � Petiulevcai, Lithuania", "Country": "Lithuania", "Type": "Road", "Latitude": 53.974543, "Longitude": 24.705869 }, "geometry": { "type": "Point", "coordinates": [ 24.705869, 53.974543 ] } },
+    { "type": "Feature", "properties": { "Title": "Ramoni_kiai � Pograni_nyj, Lithuania", "Country": "Lithuania", "Type": "Road", "Latitude": 54.675679, "Longitude": 23.275987 }, "geometry": { "type": "Point", "coordinates": [ 23.275987, 54.675679 ] } },
+    { "type": "Feature", "properties": { "Title": "Rusn_ � Sovetsk, Lithuania", "Country": "Lithuania", "Type": "River-Ferry", "Latitude": 55.298648, "Longitude": 21.372322 }, "geometry": { "type": "Point", "coordinates": [ 21.372322, 55.298648 ] } },
+    { "type": "Feature", "properties": { "Title": "_al_ininkai � Benekainys, Lithuania", "Country": "Lithuania", "Type": "Road", "Latitude": 54.309767, "Longitude": 25.387564 }, "geometry": { "type": "Point", "coordinates": [ 25.387564, 54.309767 ] } },
+    { "type": "Feature", "properties": { "Title": "Stasylos � Benekainys, Lithuania", "Country": "Lithuania", "Type": "Railway", "Latitude": 54.342497, "Longitude": 25.334284 }, "geometry": { "type": "Point", "coordinates": [ 25.334284, 54.342497 ] } },
+    { "type": "Feature", "properties": { "Title": "_umskas � Lo_a, Lithuania", "Country": "Lithuania", "Type": "Road", "Latitude": 54.608805, "Longitude": 25.722445 }, "geometry": { "type": "Point", "coordinates": [ 25.722445, 54.608805 ] } },
+    { "type": "Feature", "properties": { "Title": "_vendubr_ � Privalka, Lithuania", "Country": "Lithuania", "Type": "River-Ferry", "Latitude": 53.979923, "Longitude": 23.935861 }, "geometry": { "type": "Point", "coordinates": [ 23.935861, 53.979923 ] } },
+    { "type": "Feature", "properties": { "Title": "Tvere_ius � Vid_iai, Lithuania", "Country": "Lithuania", "Type": "Road", "Latitude": 55.311677, "Longitude": 26.6023 }, "geometry": { "type": "Point", "coordinates": [ 26.6023, 55.311677 ] } },
+    { "type": "Feature", "properties": { "Title": "Ureliai � Klevy_ia, Lithuania", "Country": "Lithuania", "Type": "Road", "Latitude": 54.251862, "Longitude": 25.712304 }, "geometry": { "type": "Point", "coordinates": [ 25.712304, 54.251862 ] } },
+    { "type": "Feature", "properties": { "Title": "Storskog, Norway", "Country": "Norway", "Type": "Road", "Latitude": 64.540799, "Longitude": 13.590435 }, "geometry": { "type": "Point", "coordinates": [ 13.590435, 64.540799 ] } },
+    { "type": "Feature", "properties": { "Title": "Bezledy (road), Poland", "Country": "Poland", "Type": "Road", "Latitude": 54.323533, "Longitude": 20.731149 }, "geometry": { "type": "Point", "coordinates": [ 20.731149, 54.323533 ] } },
+    { "type": "Feature", "properties": { "Title": "Bialowieza (road), Poland", "Country": "Poland", "Type": "Road", "Latitude": 52.722885, "Longitude": 23.655567 }, "geometry": { "type": "Point", "coordinates": [ 23.655567, 52.722885 ] } },
+    { "type": "Feature", "properties": { "Title": "Bobrowniki (road), Poland", "Country": "Poland", "Type": "Road", "Latitude": 52.779573, "Longitude": 18.959199 }, "geometry": { "type": "Point", "coordinates": [ 18.959199, 52.779573 ] } },
+    { "type": "Feature", "properties": { "Title": "Braniewo (railway), Poland", "Country": "Poland", "Type": "Railway", "Latitude": 54.379713, "Longitude": 19.820054 }, "geometry": { "type": "Point", "coordinates": [ 19.820054, 54.379713 ] } },
+    { "type": "Feature", "properties": { "Title": "Budomierz (road), Poland", "Country": "Poland", "Type": "Road", "Latitude": 50.101516, "Longitude": 23.266381 }, "geometry": { "type": "Point", "coordinates": [ 23.266381, 50.101516 ] } },
+    { "type": "Feature", "properties": { "Title": "Czeremcha (railway), Poland", "Country": "Poland", "Type": "Railway", "Latitude": 52.513967, "Longitude": 23.351748 }, "geometry": { "type": "Point", "coordinates": [ 23.351748, 52.513967 ] } },
+    { "type": "Feature", "properties": { "Title": "Dolhobyczow (road), Poland", "Country": "Poland", "Type": "Road", "Latitude": 50.578089, "Longitude": 24.090424 }, "geometry": { "type": "Point", "coordinates": [ 24.090424, 50.578089 ] } },
+    { "type": "Feature", "properties": { "Title": "Dorohusk (railway), Poland", "Country": "Poland", "Type": "Railway", "Latitude": 51.154901, "Longitude": 23.802976 }, "geometry": { "type": "Point", "coordinates": [ 23.802976, 51.154901 ] } },
+    { "type": "Feature", "properties": { "Title": "Dorohusk (road), Poland", "Country": "Poland", "Type": "Road", "Latitude": 51.154901, "Longitude": 23.802976 }, "geometry": { "type": "Point", "coordinates": [ 23.802976, 51.154901 ] } },
+    { "type": "Feature", "properties": { "Title": "Goldap (road), Poland", "Country": "Poland", "Type": "Road", "Latitude": 54.306911, "Longitude": 22.303448 }, "geometry": { "type": "Point", "coordinates": [ 22.303448, 54.306911 ] } },
+    { "type": "Feature", "properties": { "Title": "Gronowo (road), Poland", "Country": "Poland", "Type": "Road", "Latitude": 53.103012, "Longitude": 18.790244 }, "geometry": { "type": "Point", "coordinates": [ 18.790244, 53.103012 ] } },
+    { "type": "Feature", "properties": { "Title": "Grzechotki (road), Poland", "Country": "Poland", "Type": "Road", "Latitude": 54.419617, "Longitude": 20.032969 }, "geometry": { "type": "Point", "coordinates": [ 20.032969, 54.419617 ] } },
+    { "type": "Feature", "properties": { "Title": "Hrebenne (road), Poland", "Country": "Poland", "Type": "Road", "Latitude": 50.282311, "Longitude": 23.58021 }, "geometry": { "type": "Point", "coordinates": [ 23.58021, 50.282311 ] } },
+    { "type": "Feature", "properties": { "Title": "Hrubieszow (railway), Poland", "Country": "Poland", "Type": "Railway", "Latitude": 50.80518, "Longitude": 23.89091 }, "geometry": { "type": "Point", "coordinates": [ 23.89091, 50.80518 ] } },
+    { "type": "Feature", "properties": { "Title": "Korczowa (road), Poland", "Country": "Poland", "Type": "Road", "Latitude": 49.955714, "Longitude": 23.08044 }, "geometry": { "type": "Point", "coordinates": [ 23.08044, 49.955714 ] } },
+    { "type": "Feature", "properties": { "Title": "Kroscienko (road), Poland", "Country": "Poland", "Type": "Road", "Latitude": 49.436836, "Longitude": 20.432917 }, "geometry": { "type": "Point", "coordinates": [ 20.432917, 49.436836 ] } },
+    { "type": "Feature", "properties": { "Title": "Kukuryki (road), Poland", "Country": "Poland", "Type": "Road", "Latitude": 52.10846, "Longitude": 23.563766 }, "geometry": { "type": "Point", "coordinates": [ 23.563766, 52.10846 ] } },
+    { "type": "Feature", "properties": { "Title": "Kuznica Bialostocka (railway), Poland", "Country": "Poland", "Type": "Railway", "Latitude": 53.511028, "Longitude": 23.642367 }, "geometry": { "type": "Point", "coordinates": [ 23.642367, 53.511028 ] } },
+    { "type": "Feature", "properties": { "Title": "Kuznica Bialostocka (road), Poland", "Country": "Poland", "Type": "Road", "Latitude": 53.510671, "Longitude": 23.649299 }, "geometry": { "type": "Point", "coordinates": [ 23.649299, 53.510671 ] } },
+    { "type": "Feature", "properties": { "Title": "Medyka (road), Poland", "Country": "Poland", "Type": "Road", "Latitude": 49.804916, "Longitude": 22.934503 }, "geometry": { "type": "Point", "coordinates": [ 22.934503, 49.804916 ] } },
+    { "type": "Feature", "properties": { "Title": "Polowce (road), Poland", "Country": "Poland", "Type": "Road", "Latitude": 52.470074, "Longitude": 23.358005 }, "geometry": { "type": "Point", "coordinates": [ 23.358005, 52.470074 ] } },
+    { "type": "Feature", "properties": { "Title": "Przemysl (railway), Poland", "Country": "Poland", "Type": "Railway", "Latitude": 49.783862, "Longitude": 22.767791 }, "geometry": { "type": "Point", "coordinates": [ 22.767791, 49.783862 ] } },
+    { "type": "Feature", "properties": { "Title": "Rudawka (river), Poland", "Country": "Poland", "Type": "River", "Latitude": 50.134024, "Longitude": 19.701895 }, "geometry": { "type": "Point", "coordinates": [ 19.701895, 50.134024 ] } },
+    { "type": "Feature", "properties": { "Title": "Siemianowka (railway), Poland", "Country": "Poland", "Type": "Railway", "Latitude": 52.901449, "Longitude": 23.840396 }, "geometry": { "type": "Point", "coordinates": [ 23.840396, 52.901449 ] } },
+    { "type": "Feature", "properties": { "Title": "Skandawa (railway), Poland", "Country": "Poland", "Type": "Railway", "Latitude": 54.272807, "Longitude": 21.252867 }, "geometry": { "type": "Point", "coordinates": [ 21.252867, 54.272807 ] } },
+    { "type": "Feature", "properties": { "Title": "Slawatycze (road), Poland", "Country": "Poland", "Type": "Road", "Latitude": 51.762919, "Longitude": 23.554476 }, "geometry": { "type": "Point", "coordinates": [ 23.554476, 51.762919 ] } },
+    { "type": "Feature", "properties": { "Title": "Terespol (railway), Poland", "Country": "Poland", "Type": "Railway", "Latitude": 52.073226, "Longitude": 23.608072 }, "geometry": { "type": "Point", "coordinates": [ 23.608072, 52.073226 ] } },
+    { "type": "Feature", "properties": { "Title": "Terespol (road), Poland", "Country": "Poland", "Type": "Road", "Latitude": 52.073226, "Longitude": 23.608072 }, "geometry": { "type": "Point", "coordinates": [ 23.608072, 52.073226 ] } },
+    { "type": "Feature", "properties": { "Title": "Werchrata (railway), Poland", "Country": "Poland", "Type": "Railway", "Latitude": 50.25636, "Longitude": 23.472217 }, "geometry": { "type": "Point", "coordinates": [ 23.472217, 50.25636 ] } },
+    { "type": "Feature", "properties": { "Title": "Zosin (road), Poland", "Country": "Poland", "Type": "Road", "Latitude": 50.85, "Longitude": 24.1 }, "geometry": { "type": "Point", "coordinates": [ 24.1, 50.85 ] } },
+    { "type": "Feature", "properties": { "Title": "Albita, Romania", "Country": "Romania", "Type": "Road", "Latitude": 46.797994, "Longitude": 28.143579 }, "geometry": { "type": "Point", "coordinates": [ 28.143579, 46.797994 ] } },
+    { "type": "Feature", "properties": { "Title": "Braila, Romania", "Country": "Romania", "Type": "Port", "Latitude": 45.265246, "Longitude": 27.959471 }, "geometry": { "type": "Point", "coordinates": [ 27.959471, 45.265246 ] } },
+    { "type": "Feature", "properties": { "Title": "Galati, Romania", "Country": "Romania", "Type": "Port", "Latitude": 45.435321, "Longitude": 28.007994 }, "geometry": { "type": "Point", "coordinates": [ 28.007994, 45.435321 ] } },
+    { "type": "Feature", "properties": { "Title": "Galati, Romania", "Country": "Romania", "Type": "Road", "Latitude": 45.435321, "Longitude": 28.007994 }, "geometry": { "type": "Point", "coordinates": [ 28.007994, 45.435321 ] } },
+    { "type": "Feature", "properties": { "Title": "Galati, Romania", "Country": "Romania", "Type": "Railway", "Latitude": 45.435321, "Longitude": 28.007994 }, "geometry": { "type": "Point", "coordinates": [ 28.007994, 45.435321 ] } },
+    { "type": "Feature", "properties": { "Title": "Halmeu, Romania", "Country": "Romania", "Type": "Road", "Latitude": 47.97995, "Longitude": 23.013257 }, "geometry": { "type": "Point", "coordinates": [ 23.013257, 47.97995 ] } },
+    { "type": "Feature", "properties": { "Title": "Iasi (Ungheni), Romania", "Country": "Romania", "Type": "Railway", "Latitude": 47.196931, "Longitude": 27.781735 }, "geometry": { "type": "Point", "coordinates": [ 27.781735, 47.196931 ] } },
+    { "type": "Feature", "properties": { "Title": "Oancea, Romania", "Country": "Romania", "Type": "Road", "Latitude": 45.917782, "Longitude": 28.109492 }, "geometry": { "type": "Point", "coordinates": [ 28.109492, 45.917782 ] } },
+    { "type": "Feature", "properties": { "Title": "Radauti Prut, Romania", "Country": "Romania", "Type": "Road", "Latitude": 48.239289, "Longitude": 26.806398 }, "geometry": { "type": "Point", "coordinates": [ 26.806398, 48.239289 ] } },
+    { "type": "Feature", "properties": { "Title": "Sculeni, Romania", "Country": "Romania", "Type": "Road", "Latitude": 47.314543, "Longitude": 27.607123 }, "geometry": { "type": "Point", "coordinates": [ 27.607123, 47.314543 ] } },
+    { "type": "Feature", "properties": { "Title": "Sighetul Marmatiei, Romania", "Country": "Romania", "Type": "Road", "Latitude": 47.927707, "Longitude": 23.897651 }, "geometry": { "type": "Point", "coordinates": [ 23.897651, 47.927707 ] } },
+    { "type": "Feature", "properties": { "Title": "Siret, Romania", "Country": "Romania", "Type": "Road", "Latitude": 47.955267, "Longitude": 26.064168 }, "geometry": { "type": "Point", "coordinates": [ 26.064168, 47.955267 ] } },
+    { "type": "Feature", "properties": { "Title": "Stanca, Romania", "Country": "Romania", "Type": "Road", "Latitude": 44.87555, "Longitude": 27.815317 }, "geometry": { "type": "Point", "coordinates": [ 27.815317, 44.87555 ] } },
+    { "type": "Feature", "properties": { "Title": "Sulina, Romania", "Country": "Romania", "Type": "Port", "Latitude": 45.156745, "Longitude": 29.659549 }, "geometry": { "type": "Point", "coordinates": [ 29.659549, 45.156745 ] } },
+    { "type": "Feature", "properties": { "Title": "Tulcea, Romania", "Country": "Romania", "Type": "Port", "Latitude": 45.171617, "Longitude": 28.791444 }, "geometry": { "type": "Point", "coordinates": [ 28.791444, 45.171617 ] } },
+    { "type": "Feature", "properties": { "Title": "Vicsani, Romania", "Country": "Romania", "Type": "Railway", "Latitude": 47.93684, "Longitude": 25.979091 }, "geometry": { "type": "Point", "coordinates": [ 25.979091, 47.93684 ] } },
+    { "type": "Feature", "properties": { "Title": "_ierna nad Tisou, Slovakia", "Country": "Slovakia", "Type": "Railway", "Latitude": 48.416247, "Longitude": 22.089159 }, "geometry": { "type": "Point", "coordinates": [ 22.089159, 48.416247 ] } },
+    { "type": "Feature", "properties": { "Title": "Ma_ovsk� Vojkovce, Slovakia", "Country": "Slovakia", "Type": "Railway", "Latitude": 48.564692, "Longitude": 22.140608 }, "geometry": { "type": "Point", "coordinates": [ 22.140608, 48.564692 ] } },
+    { "type": "Feature", "properties": { "Title": "Ub_a, Slovakia", "Country": "Slovakia", "Type": "NOT SPECIFIED", "Latitude": 48.899219, "Longitude": 22.391791 }, "geometry": { "type": "Point", "coordinates": [ 22.391791, 48.899219 ] } },
+    { "type": "Feature", "properties": { "Title": "Ve_k� Slemence, Slovakia", "Country": "Slovakia", "Type": "Pedestrians", "Latitude": 48.509593, "Longitude": 22.147047 }, "geometry": { "type": "Point", "coordinates": [ 22.147047, 48.509593 ] } },
+    { "type": "Feature", "properties": { "Title": "VYSNE NEMECKE, Slovakia", "Country": "Slovakia", "Type": "Road", "Latitude": 48.661135, "Longitude": 22.263759 }, "geometry": { "type": "Point", "coordinates": [ 22.263759, 48.661135 ] } },
+    { "type": "Feature", "properties": { "Title": "", "Country": "Northern Ireland", "Type": "Road", "Latitude": 54.1121097, "Longitude": -6.2921336 }, "geometry": { "type": "Point", "coordinates": [ -6.2921336, 54.1121097 ] } },
+    { "type": "Feature", "properties": { "Title": "", "Country": "Northern Ireland", "Type": "Road", "Latitude": 54.1090579, "Longitude": -6.2986243 }, "geometry": { "type": "Point", "coordinates": [ -6.2986243, 54.1090579 ] } },
+    { "type": "Feature", "properties": { "Title": "", "Country": "Northern Ireland", "Type": "Road", "Latitude": 54.1114266, "Longitude": -6.3424822 }, "geometry": { "type": "Point", "coordinates": [ -6.3424822, 54.1114266 ] } },
+    { "type": "Feature", "properties": { "Title": "", "Country": "Northern Ireland", "Type": "Road", "Latitude": 54.1127182, "Longitude": -6.3603734 }, "geometry": { "type": "Point", "coordinates": [ -6.3603734, 54.1127182 ] } },
+    { "type": "Feature", "properties": { "Title": "", "Country": "Northern Ireland", "Type": "Road", "Latitude": 54.1137611, "Longitude": -6.3649981 }, "geometry": { "type": "Point", "coordinates": [ -6.3649981, 54.1137611 ] } },
+    { "type": "Feature", "properties": { "Title": "", "Country": "Northern Ireland", "Type": "Road", "Latitude": 54.097828, "Longitude": -6.363359 }, "geometry": { "type": "Point", "coordinates": [ -6.363359, 54.097828 ] } },
+    { "type": "Feature", "properties": { "Title": "", "Country": "Northern Ireland", "Type": "Road", "Latitude": 54.0975003, "Longitude": -6.3625137 }, "geometry": { "type": "Point", "coordinates": [ -6.3625137, 54.0975003 ] } },
+    { "type": "Feature", "properties": { "Title": "", "Country": "Northern Ireland", "Type": "Road", "Latitude": 54.0962782, "Longitude": -6.3623166 }, "geometry": { "type": "Point", "coordinates": [ -6.3623166, 54.0962782 ] } },
+    { "type": "Feature", "properties": { "Title": "", "Country": "Northern Ireland", "Type": "Road", "Latitude": 54.0692184, "Longitude": -6.3749059 }, "geometry": { "type": "Point", "coordinates": [ -6.3749059, 54.0692184 ] } },
+    { "type": "Feature", "properties": { "Title": "", "Country": "Northern Ireland", "Type": "Road", "Latitude": 54.068971, "Longitude": -6.3791586 }, "geometry": { "type": "Point", "coordinates": [ -6.3791586, 54.068971 ] } },
+    { "type": "Feature", "properties": { "Title": "", "Country": "Northern Ireland", "Type": "Road", "Latitude": 54.0665143, "Longitude": -6.3845373 }, "geometry": { "type": "Point", "coordinates": [ -6.3845373, 54.0665143 ] } },
+    { "type": "Feature", "properties": { "Title": "", "Country": "Northern Ireland", "Type": "Road", "Latitude": 54.060215, "Longitude": -6.3899581 }, "geometry": { "type": "Point", "coordinates": [ -6.3899581, 54.060215 ] } },
+    { "type": "Feature", "properties": { "Title": "", "Country": "Northern Ireland", "Type": "Road", "Latitude": 54.0610075, "Longitude": -6.4196043 }, "geometry": { "type": "Point", "coordinates": [ -6.4196043, 54.0610075 ] } },
+    { "type": "Feature", "properties": { "Title": "", "Country": "Northern Ireland", "Type": "Road", "Latitude": 54.0605284, "Longitude": -6.422721 }, "geometry": { "type": "Point", "coordinates": [ -6.422721, 54.0605284 ] } },
+    { "type": "Feature", "properties": { "Title": "", "Country": "Northern Ireland", "Type": "Road", "Latitude": 54.0610346, "Longitude": -6.423404 }, "geometry": { "type": "Point", "coordinates": [ -6.423404, 54.0610346 ] } },
+    { "type": "Feature", "properties": { "Title": "", "Country": "Northern Ireland", "Type": "Road", "Latitude": 54.0589665, "Longitude": -6.4353897 }, "geometry": { "type": "Point", "coordinates": [ -6.4353897, 54.0589665 ] } },
+    { "type": "Feature", "properties": { "Title": "", "Country": "Northern Ireland", "Type": "Road", "Latitude": 54.0708082, "Longitude": -6.4626875 }, "geometry": { "type": "Point", "coordinates": [ -6.4626875, 54.0708082 ] } },
+    { "type": "Feature", "properties": { "Title": "", "Country": "Northern Ireland", "Type": "Road", "Latitude": 54.066624, "Longitude": -6.4845015 }, "geometry": { "type": "Point", "coordinates": [ -6.4845015, 54.066624 ] } },
+    { "type": "Feature", "properties": { "Title": "", "Country": "Northern Ireland", "Type": "Road", "Latitude": 54.062313, "Longitude": -6.4920761 }, "geometry": { "type": "Point", "coordinates": [ -6.4920761, 54.062313 ] } },
+    { "type": "Feature", "properties": { "Title": "", "Country": "Northern Ireland", "Type": "Road", "Latitude": 54.0564583, "Longitude": -6.5098781 }, "geometry": { "type": "Point", "coordinates": [ -6.5098781, 54.0564583 ] } },
+    { "type": "Feature", "properties": { "Title": "", "Country": "Northern Ireland", "Type": "Road", "Latitude": 54.0577909, "Longitude": -6.5260218 }, "geometry": { "type": "Point", "coordinates": [ -6.5260218, 54.0577909 ] } },
+    { "type": "Feature", "properties": { "Title": "", "Country": "Northern Ireland", "Type": "Road", "Latitude": 54.0555296, "Longitude": -6.53852 }, "geometry": { "type": "Point", "coordinates": [ -6.53852, 54.0555296 ] } },
+    { "type": "Feature", "properties": { "Title": "", "Country": "Northern Ireland", "Type": "Road", "Latitude": 54.0530366, "Longitude": -6.5749944 }, "geometry": { "type": "Point", "coordinates": [ -6.5749944, 54.0530366 ] } },
+    { "type": "Feature", "properties": { "Title": "", "Country": "Northern Ireland", "Type": "Road", "Latitude": 54.0558248, "Longitude": -6.5796401 }, "geometry": { "type": "Point", "coordinates": [ -6.5796401, 54.0558248 ] } },
+    { "type": "Feature", "properties": { "Title": "", "Country": "Northern Ireland", "Type": "Road", "Latitude": 54.0449727, "Longitude": -6.6019918 }, "geometry": { "type": "Point", "coordinates": [ -6.6019918, 54.0449727 ] } },
+    { "type": "Feature", "properties": { "Title": "", "Country": "Northern Ireland", "Type": "Road", "Latitude": 54.0395973, "Longitude": -6.6172576 }, "geometry": { "type": "Point", "coordinates": [ -6.6172576, 54.0395973 ] } },
+    { "type": "Feature", "properties": { "Title": "", "Country": "Northern Ireland", "Type": "Road", "Latitude": 54.0586641, "Longitude": -6.6465961 }, "geometry": { "type": "Point", "coordinates": [ -6.6465961, 54.0586641 ] } },
+    { "type": "Feature", "properties": { "Title": "", "Country": "Northern Ireland", "Type": "Road", "Latitude": 54.0691703, "Longitude": -6.6642343 }, "geometry": { "type": "Point", "coordinates": [ -6.6642343, 54.0691703 ] } },
+    { "type": "Feature", "properties": { "Title": "", "Country": "Northern Ireland", "Type": "Road", "Latitude": 54.1027573, "Longitude": -6.6490016 }, "geometry": { "type": "Point", "coordinates": [ -6.6490016, 54.1027573 ] } },
+    { "type": "Feature", "properties": { "Title": "", "Country": "Northern Ireland", "Type": "Road", "Latitude": 54.1190394, "Longitude": -6.6607496 }, "geometry": { "type": "Point", "coordinates": [ -6.6607496, 54.1190394 ] } },
+    { "type": "Feature", "properties": { "Title": "", "Country": "Northern Ireland", "Type": "Road", "Latitude": 54.1301923, "Longitude": -6.6477566 }, "geometry": { "type": "Point", "coordinates": [ -6.6477566, 54.1301923 ] } },
+    { "type": "Feature", "properties": { "Title": "", "Country": "Northern Ireland", "Type": "Road", "Latitude": 54.1381237, "Longitude": -6.6400441 }, "geometry": { "type": "Point", "coordinates": [ -6.6400441, 54.1381237 ] } },
+    { "type": "Feature", "properties": { "Title": "", "Country": "Northern Ireland", "Type": "Road", "Latitude": 54.146207, "Longitude": -6.6343974 }, "geometry": { "type": "Point", "coordinates": [ -6.6343974, 54.146207 ] } },
+    { "type": "Feature", "properties": { "Title": "", "Country": "Northern Ireland", "Type": "Road", "Latitude": 54.1631626, "Longitude": -6.6343605 }, "geometry": { "type": "Point", "coordinates": [ -6.6343605, 54.1631626 ] } },
+    { "type": "Feature", "properties": { "Title": "", "Country": "Northern Ireland", "Type": "Road", "Latitude": 54.1745154, "Longitude": -6.6411355 }, "geometry": { "type": "Point", "coordinates": [ -6.6411355, 54.1745154 ] } },
+    { "type": "Feature", "properties": { "Title": "", "Country": "Northern Ireland", "Type": "Road", "Latitude": 54.1825584, "Longitude": -6.6539698 }, "geometry": { "type": "Point", "coordinates": [ -6.6539698, 54.1825584 ] } },
+    { "type": "Feature", "properties": { "Title": "", "Country": "Northern Ireland", "Type": "Road", "Latitude": 54.1905078, "Longitude": -6.6633068 }, "geometry": { "type": "Point", "coordinates": [ -6.6633068, 54.1905078 ] } },
+    { "type": "Feature", "properties": { "Title": "", "Country": "Northern Ireland", "Type": "Road", "Latitude": 54.1949728, "Longitude": -6.6776231 }, "geometry": { "type": "Point", "coordinates": [ -6.6776231, 54.1949728 ] } },
+    { "type": "Feature", "properties": { "Title": "", "Country": "Northern Ireland", "Type": "Road", "Latitude": 54.1948595, "Longitude": -6.6877444 }, "geometry": { "type": "Point", "coordinates": [ -6.6877444, 54.1948595 ] } },
+    { "type": "Feature", "properties": { "Title": "", "Country": "Northern Ireland", "Type": "Road", "Latitude": 54.2002396, "Longitude": -6.7028739 }, "geometry": { "type": "Point", "coordinates": [ -6.7028739, 54.2002396 ] } },
+    { "type": "Feature", "properties": { "Title": "", "Country": "Northern Ireland", "Type": "Road", "Latitude": 54.1831747, "Longitude": -6.728269 }, "geometry": { "type": "Point", "coordinates": [ -6.728269, 54.1831747 ] } },
+    { "type": "Feature", "properties": { "Title": "", "Country": "Northern Ireland", "Type": "Road", "Latitude": 54.1857394, "Longitude": -6.7340901 }, "geometry": { "type": "Point", "coordinates": [ -6.7340901, 54.1857394 ] } },
+    { "type": "Feature", "properties": { "Title": "", "Country": "Northern Ireland", "Type": "Road", "Latitude": 54.1842731, "Longitude": -6.744592 }, "geometry": { "type": "Point", "coordinates": [ -6.744592, 54.1842731 ] } },
+    { "type": "Feature", "properties": { "Title": "", "Country": "Northern Ireland", "Type": "Road", "Latitude": 54.1940957, "Longitude": -6.7505963 }, "geometry": { "type": "Point", "coordinates": [ -6.7505963, 54.1940957 ] } },
+    { "type": "Feature", "properties": { "Title": "", "Country": "Northern Ireland", "Type": "Road", "Latitude": 54.1951385, "Longitude": -6.7509956 }, "geometry": { "type": "Point", "coordinates": [ -6.7509956, 54.1951385 ] } },
+    { "type": "Feature", "properties": { "Title": "", "Country": "Northern Ireland", "Type": "Road", "Latitude": 54.1975376, "Longitude": -6.7547959 }, "geometry": { "type": "Point", "coordinates": [ -6.7547959, 54.1975376 ] } },
+    { "type": "Feature", "properties": { "Title": "", "Country": "Northern Ireland", "Type": "Road", "Latitude": 54.1988663, "Longitude": -6.7617949 }, "geometry": { "type": "Point", "coordinates": [ -6.7617949, 54.1988663 ] } },
+    { "type": "Feature", "properties": { "Title": "", "Country": "Northern Ireland", "Type": "Road", "Latitude": 54.2087768, "Longitude": -6.7928094 }, "geometry": { "type": "Point", "coordinates": [ -6.7928094, 54.2087768 ] } },
+    { "type": "Feature", "properties": { "Title": "", "Country": "Northern Ireland", "Type": "Road", "Latitude": 54.2131982, "Longitude": -6.8010536 }, "geometry": { "type": "Point", "coordinates": [ -6.8010536, 54.2131982 ] } },
+    { "type": "Feature", "properties": { "Title": "", "Country": "Northern Ireland", "Type": "Road", "Latitude": 54.2204085, "Longitude": -6.800811 }, "geometry": { "type": "Point", "coordinates": [ -6.800811, 54.2204085 ] } },
+    { "type": "Feature", "properties": { "Title": "", "Country": "Northern Ireland", "Type": "Road", "Latitude": 54.2302261, "Longitude": -6.8179273 }, "geometry": { "type": "Point", "coordinates": [ -6.8179273, 54.2302261 ] } },
+    { "type": "Feature", "properties": { "Title": "", "Country": "Northern Ireland", "Type": "Road", "Latitude": 54.2394895, "Longitude": -6.8201642 }, "geometry": { "type": "Point", "coordinates": [ -6.8201642, 54.2394895 ] } },
+    { "type": "Feature", "properties": { "Title": "", "Country": "Northern Ireland", "Type": "Road", "Latitude": 54.265789, "Longitude": -6.8365133 }, "geometry": { "type": "Point", "coordinates": [ -6.8365133, 54.265789 ] } },
+    { "type": "Feature", "properties": { "Title": "", "Country": "Northern Ireland", "Type": "Road", "Latitude": 54.2676138, "Longitude": -6.8391309 }, "geometry": { "type": "Point", "coordinates": [ -6.8391309, 54.2676138 ] } },
+    { "type": "Feature", "properties": { "Title": "", "Country": "Northern Ireland", "Type": "Road", "Latitude": 54.266935, "Longitude": -6.8401896 }, "geometry": { "type": "Point", "coordinates": [ -6.8401896, 54.266935 ] } },
+    { "type": "Feature", "properties": { "Title": "", "Country": "Northern Ireland", "Type": "Road", "Latitude": 54.2664026, "Longitude": -6.8438429 }, "geometry": { "type": "Point", "coordinates": [ -6.8438429, 54.2664026 ] } },
+    { "type": "Feature", "properties": { "Title": "", "Country": "Northern Ireland", "Type": "Road", "Latitude": 54.2663876, "Longitude": -6.8450865 }, "geometry": { "type": "Point", "coordinates": [ -6.8450865, 54.2663876 ] } },
+    { "type": "Feature", "properties": { "Title": "", "Country": "Northern Ireland", "Type": "Road", "Latitude": 54.2654181, "Longitude": -6.8495091 }, "geometry": { "type": "Point", "coordinates": [ -6.8495091, 54.2654181 ] } },
+    { "type": "Feature", "properties": { "Title": "", "Country": "Northern Ireland", "Type": "Road", "Latitude": 54.275232, "Longitude": -6.8667671 }, "geometry": { "type": "Point", "coordinates": [ -6.8667671, 54.275232 ] } },
+    { "type": "Feature", "properties": { "Title": "", "Country": "Northern Ireland", "Type": "Road", "Latitude": 54.291384, "Longitude": -6.8517001 }, "geometry": { "type": "Point", "coordinates": [ -6.8517001, 54.291384 ] } },
+    { "type": "Feature", "properties": { "Title": "", "Country": "Northern Ireland", "Type": "Road", "Latitude": 54.3256913, "Longitude": -6.865141 }, "geometry": { "type": "Point", "coordinates": [ -6.865141, 54.3256913 ] } },
+    { "type": "Feature", "properties": { "Title": "", "Country": "Northern Ireland", "Type": "Road", "Latitude": 54.3384889, "Longitude": -6.8753727 }, "geometry": { "type": "Point", "coordinates": [ -6.8753727, 54.3384889 ] } },
+    { "type": "Feature", "properties": { "Title": "", "Country": "Northern Ireland", "Type": "Road", "Latitude": 54.3507643, "Longitude": -6.8976315 }, "geometry": { "type": "Point", "coordinates": [ -6.8976315, 54.3507643 ] } },
+    { "type": "Feature", "properties": { "Title": "", "Country": "Northern Ireland", "Type": "Road", "Latitude": 54.3696613, "Longitude": -6.9067989 }, "geometry": { "type": "Point", "coordinates": [ -6.9067989, 54.3696613 ] } },
+    { "type": "Feature", "properties": { "Title": "", "Country": "Northern Ireland", "Type": "Road", "Latitude": 54.4001486, "Longitude": -6.9756573 }, "geometry": { "type": "Point", "coordinates": [ -6.9756573, 54.4001486 ] } },
+    { "type": "Feature", "properties": { "Title": "", "Country": "Northern Ireland", "Type": "Road", "Latitude": 54.4083512, "Longitude": -7.0020221 }, "geometry": { "type": "Point", "coordinates": [ -7.0020221, 54.4083512 ] } },
+    { "type": "Feature", "properties": { "Title": "", "Country": "Northern Ireland", "Type": "Road", "Latitude": 54.4177585, "Longitude": -7.0378578 }, "geometry": { "type": "Point", "coordinates": [ -7.0378578, 54.4177585 ] } },
+    { "type": "Feature", "properties": { "Title": "", "Country": "Northern Ireland", "Type": "Road", "Latitude": 54.4110738, "Longitude": -7.0573077 }, "geometry": { "type": "Point", "coordinates": [ -7.0573077, 54.4110738 ] } },
+    { "type": "Feature", "properties": { "Title": "", "Country": "Northern Ireland", "Type": "Road", "Latitude": 54.3880269, "Longitude": -7.0730039 }, "geometry": { "type": "Point", "coordinates": [ -7.0730039, 54.3880269 ] } },
+    { "type": "Feature", "properties": { "Title": "", "Country": "Northern Ireland", "Type": "Road", "Latitude": 54.3823031, "Longitude": -7.0816365 }, "geometry": { "type": "Point", "coordinates": [ -7.0816365, 54.3823031 ] } },
+    { "type": "Feature", "properties": { "Title": "", "Country": "Northern Ireland", "Type": "Road", "Latitude": 54.3716773, "Longitude": -7.0997394 }, "geometry": { "type": "Point", "coordinates": [ -7.0997394, 54.3716773 ] } },
+    { "type": "Feature", "properties": { "Title": "", "Country": "Northern Ireland", "Type": "Road", "Latitude": 54.3682719, "Longitude": -7.1056839 }, "geometry": { "type": "Point", "coordinates": [ -7.1056839, 54.3682719 ] } },
+    { "type": "Feature", "properties": { "Title": "", "Country": "Northern Ireland", "Type": "Road", "Latitude": 54.3108236, "Longitude": -7.1949165 }, "geometry": { "type": "Point", "coordinates": [ -7.1949165, 54.3108236 ] } },
+    { "type": "Feature", "properties": { "Title": "", "Country": "Northern Ireland", "Type": "Road", "Latitude": 54.3042035, "Longitude": -7.2066122 }, "geometry": { "type": "Point", "coordinates": [ -7.2066122, 54.3042035 ] } },
+    { "type": "Feature", "properties": { "Title": "", "Country": "Northern Ireland", "Type": "Road", "Latitude": 54.2854426, "Longitude": -7.1724806 }, "geometry": { "type": "Point", "coordinates": [ -7.1724806, 54.2854426 ] } },
+    { "type": "Feature", "properties": { "Title": "", "Country": "Northern Ireland", "Type": "Road", "Latitude": 54.2732359, "Longitude": -7.1600855 }, "geometry": { "type": "Point", "coordinates": [ -7.1600855, 54.2732359 ] } },
+    { "type": "Feature", "properties": { "Title": "", "Country": "Northern Ireland", "Type": "Road", "Latitude": 54.262265, "Longitude": -7.1525329 }, "geometry": { "type": "Point", "coordinates": [ -7.1525329, 54.262265 ] } },
+    { "type": "Feature", "properties": { "Title": "", "Country": "Northern Ireland", "Type": "Road", "Latitude": 54.2568351, "Longitude": -7.1450225 }, "geometry": { "type": "Point", "coordinates": [ -7.1450225, 54.2568351 ] } },
+    { "type": "Feature", "properties": { "Title": "", "Country": "Northern Ireland", "Type": "Road", "Latitude": 54.2516771, "Longitude": -7.1425625 }, "geometry": { "type": "Point", "coordinates": [ -7.1425625, 54.2516771 ] } },
+    { "type": "Feature", "properties": { "Title": "", "Country": "Northern Ireland", "Type": "Road", "Latitude": 54.2328939, "Longitude": -7.1498602 }, "geometry": { "type": "Point", "coordinates": [ -7.1498602, 54.2328939 ] } },
+    { "type": "Feature", "properties": { "Title": "", "Country": "Northern Ireland", "Type": "Road", "Latitude": 54.2303803, "Longitude": -7.1472163 }, "geometry": { "type": "Point", "coordinates": [ -7.1472163, 54.2303803 ] } },
+    { "type": "Feature", "properties": { "Title": "", "Country": "Northern Ireland", "Type": "Road", "Latitude": 54.2247301, "Longitude": -7.1477854 }, "geometry": { "type": "Point", "coordinates": [ -7.1477854, 54.2247301 ] } },
+    { "type": "Feature", "properties": { "Title": "", "Country": "Northern Ireland", "Type": "Road", "Latitude": 54.2206468, "Longitude": -7.179457 }, "geometry": { "type": "Point", "coordinates": [ -7.179457, 54.2206468 ] } },
+    { "type": "Feature", "properties": { "Title": "", "Country": "Northern Ireland", "Type": "Road", "Latitude": 54.2245968, "Longitude": -7.1848042 }, "geometry": { "type": "Point", "coordinates": [ -7.1848042, 54.2245968 ] } },
+    { "type": "Feature", "properties": { "Title": "", "Country": "Northern Ireland", "Type": "Road", "Latitude": 54.2074486, "Longitude": -7.2317689 }, "geometry": { "type": "Point", "coordinates": [ -7.2317689, 54.2074486 ] } },
+    { "type": "Feature", "properties": { "Title": "", "Country": "Northern Ireland", "Type": "Road", "Latitude": 54.2061094, "Longitude": -7.236634 }, "geometry": { "type": "Point", "coordinates": [ -7.236634, 54.2061094 ] } },
+    { "type": "Feature", "properties": { "Title": "", "Country": "Northern Ireland", "Type": "Road", "Latitude": 54.2056092, "Longitude": -7.2426878 }, "geometry": { "type": "Point", "coordinates": [ -7.2426878, 54.2056092 ] } },
+    { "type": "Feature", "properties": { "Title": "", "Country": "Northern Ireland", "Type": "Road", "Latitude": 54.1987761, "Longitude": -7.2363222 }, "geometry": { "type": "Point", "coordinates": [ -7.2363222, 54.1987761 ] } },
+    { "type": "Feature", "properties": { "Title": "", "Country": "Northern Ireland", "Type": "Road", "Latitude": 54.1984931, "Longitude": -7.2352837 }, "geometry": { "type": "Point", "coordinates": [ -7.2352837, 54.1984931 ] } },
+    { "type": "Feature", "properties": { "Title": "", "Country": "Northern Ireland", "Type": "Road", "Latitude": 54.1934625, "Longitude": -7.2367538 }, "geometry": { "type": "Point", "coordinates": [ -7.2367538, 54.1934625 ] } },
+    { "type": "Feature", "properties": { "Title": "", "Country": "Northern Ireland", "Type": "Road", "Latitude": 54.1939023, "Longitude": -7.2498678 }, "geometry": { "type": "Point", "coordinates": [ -7.2498678, 54.1939023 ] } },
+    { "type": "Feature", "properties": { "Title": "", "Country": "Northern Ireland", "Type": "Road", "Latitude": 54.176836, "Longitude": -7.2573058 }, "geometry": { "type": "Point", "coordinates": [ -7.2573058, 54.176836 ] } },
+    { "type": "Feature", "properties": { "Title": "", "Country": "Northern Ireland", "Type": "Road", "Latitude": 54.1718476, "Longitude": -7.2420464 }, "geometry": { "type": "Point", "coordinates": [ -7.2420464, 54.1718476 ] } },
+    { "type": "Feature", "properties": { "Title": "", "Country": "Northern Ireland", "Type": "Road", "Latitude": 54.1634081, "Longitude": -7.2580537 }, "geometry": { "type": "Point", "coordinates": [ -7.2580537, 54.1634081 ] } },
+    { "type": "Feature", "properties": { "Title": "", "Country": "Northern Ireland", "Type": "Road", "Latitude": 54.159946, "Longitude": -7.2576808 }, "geometry": { "type": "Point", "coordinates": [ -7.2576808, 54.159946 ] } },
+    { "type": "Feature", "properties": { "Title": "", "Country": "Northern Ireland", "Type": "Road", "Latitude": 54.1465621, "Longitude": -7.2628128 }, "geometry": { "type": "Point", "coordinates": [ -7.2628128, 54.1465621 ] } },
+    { "type": "Feature", "properties": { "Title": "", "Country": "Northern Ireland", "Type": "Road", "Latitude": 54.1207442, "Longitude": -7.2983876 }, "geometry": { "type": "Point", "coordinates": [ -7.2983876, 54.1207442 ] } },
+    { "type": "Feature", "properties": { "Title": "", "Country": "Northern Ireland", "Type": "Road", "Latitude": 54.1309545, "Longitude": -7.3078799 }, "geometry": { "type": "Point", "coordinates": [ -7.3078799, 54.1309545 ] } },
+    { "type": "Feature", "properties": { "Title": "", "Country": "Northern Ireland", "Type": "Road", "Latitude": 54.1327392, "Longitude": -7.3046684 }, "geometry": { "type": "Point", "coordinates": [ -7.3046684, 54.1327392 ] } },
+    { "type": "Feature", "properties": { "Title": "", "Country": "Northern Ireland", "Type": "Road", "Latitude": 54.1330997, "Longitude": -7.2973742 }, "geometry": { "type": "Point", "coordinates": [ -7.2973742, 54.1330997 ] } },
+    { "type": "Feature", "properties": { "Title": "", "Country": "Northern Ireland", "Type": "Road", "Latitude": 54.1308892, "Longitude": -7.2918008 }, "geometry": { "type": "Point", "coordinates": [ -7.2918008, 54.1308892 ] } },
+    { "type": "Feature", "properties": { "Title": "", "Country": "Northern Ireland", "Type": "Road", "Latitude": 54.1492377, "Longitude": -7.293882 }, "geometry": { "type": "Point", "coordinates": [ -7.293882, 54.1492377 ] } },
+    { "type": "Feature", "properties": { "Title": "", "Country": "Northern Ireland", "Type": "Road", "Latitude": 54.1625149, "Longitude": -7.2833651 }, "geometry": { "type": "Point", "coordinates": [ -7.2833651, 54.1625149 ] } },
+    { "type": "Feature", "properties": { "Title": "", "Country": "Northern Ireland", "Type": "Road", "Latitude": 54.1710619, "Longitude": -7.2889355 }, "geometry": { "type": "Point", "coordinates": [ -7.2889355, 54.1710619 ] } },
+    { "type": "Feature", "properties": { "Title": "", "Country": "Northern Ireland", "Type": "Road", "Latitude": 54.1671267, "Longitude": -7.2984644 }, "geometry": { "type": "Point", "coordinates": [ -7.2984644, 54.1671267 ] } },
+    { "type": "Feature", "properties": { "Title": "", "Country": "Northern Ireland", "Type": "Road", "Latitude": 54.1665031, "Longitude": -7.3022724 }, "geometry": { "type": "Point", "coordinates": [ -7.3022724, 54.1665031 ] } },
+    { "type": "Feature", "properties": { "Title": "", "Country": "Northern Ireland", "Type": "Road", "Latitude": 54.1654827, "Longitude": -7.310774 }, "geometry": { "type": "Point", "coordinates": [ -7.310774, 54.1654827 ] } },
+    { "type": "Feature", "properties": { "Title": "", "Country": "Northern Ireland", "Type": "Road", "Latitude": 54.1597976, "Longitude": -7.3179285 }, "geometry": { "type": "Point", "coordinates": [ -7.3179285, 54.1597976 ] } },
+    { "type": "Feature", "properties": { "Title": "", "Country": "Northern Ireland", "Type": "Road", "Latitude": 54.1531892, "Longitude": -7.3250777 }, "geometry": { "type": "Point", "coordinates": [ -7.3250777, 54.1531892 ] } },
+    { "type": "Feature", "properties": { "Title": "", "Country": "Northern Ireland", "Type": "Road", "Latitude": 54.1383409, "Longitude": -7.3300147 }, "geometry": { "type": "Point", "coordinates": [ -7.3300147, 54.1383409 ] } },
+    { "type": "Feature", "properties": { "Title": "", "Country": "Northern Ireland", "Type": "Road", "Latitude": 54.1303356, "Longitude": -7.3132953 }, "geometry": { "type": "Point", "coordinates": [ -7.3132953, 54.1303356 ] } },
+    { "type": "Feature", "properties": { "Title": "", "Country": "Northern Ireland", "Type": "Road", "Latitude": 54.1150952, "Longitude": -7.315489 }, "geometry": { "type": "Point", "coordinates": [ -7.315489, 54.1150952 ] } },
+    { "type": "Feature", "properties": { "Title": "", "Country": "Northern Ireland", "Type": "Road", "Latitude": 54.1166829, "Longitude": -7.3374014 }, "geometry": { "type": "Point", "coordinates": [ -7.3374014, 54.1166829 ] } },
+    { "type": "Feature", "properties": { "Title": "", "Country": "Northern Ireland", "Type": "Road", "Latitude": 54.1168608, "Longitude": -7.3416687 }, "geometry": { "type": "Point", "coordinates": [ -7.3416687, 54.1168608 ] } },
+    { "type": "Feature", "properties": { "Title": "", "Country": "Northern Ireland", "Type": "Road", "Latitude": 54.1164424, "Longitude": -7.3457902 }, "geometry": { "type": "Point", "coordinates": [ -7.3457902, 54.1164424 ] } },
+    { "type": "Feature", "properties": { "Title": "", "Country": "Northern Ireland", "Type": "Road", "Latitude": 54.1209684, "Longitude": -7.3896401 }, "geometry": { "type": "Point", "coordinates": [ -7.3896401, 54.1209684 ] } },
+    { "type": "Feature", "properties": { "Title": "", "Country": "Northern Ireland", "Type": "Road", "Latitude": 54.1223245, "Longitude": -7.481592 }, "geometry": { "type": "Point", "coordinates": [ -7.481592, 54.1223245 ] } },
+    { "type": "Feature", "properties": { "Title": "", "Country": "Northern Ireland", "Type": "Road", "Latitude": 54.1300237, "Longitude": -7.567051 }, "geometry": { "type": "Point", "coordinates": [ -7.567051, 54.1300237 ] } },
+    { "type": "Feature", "properties": { "Title": "", "Country": "Northern Ireland", "Type": "Road", "Latitude": 54.1328869, "Longitude": -7.5715381 }, "geometry": { "type": "Point", "coordinates": [ -7.5715381, 54.1328869 ] } },
+    { "type": "Feature", "properties": { "Title": "", "Country": "Northern Ireland", "Type": "Road", "Latitude": 54.1870839, "Longitude": -7.6608059 }, "geometry": { "type": "Point", "coordinates": [ -7.6608059, 54.1870839 ] } },
+    { "type": "Feature", "properties": { "Title": "", "Country": "Northern Ireland", "Type": "Road", "Latitude": 54.1927927, "Longitude": -7.6798147 }, "geometry": { "type": "Point", "coordinates": [ -7.6798147, 54.1927927 ] } },
+    { "type": "Feature", "properties": { "Title": "", "Country": "Northern Ireland", "Type": "Road", "Latitude": 54.1970806, "Longitude": -7.6840158 }, "geometry": { "type": "Point", "coordinates": [ -7.6840158, 54.1970806 ] } },
+    { "type": "Feature", "properties": { "Title": "", "Country": "Northern Ireland", "Type": "Road", "Latitude": 54.2019748, "Longitude": -7.6882521 }, "geometry": { "type": "Point", "coordinates": [ -7.6882521, 54.2019748 ] } },
+    { "type": "Feature", "properties": { "Title": "", "Country": "Northern Ireland", "Type": "Road", "Latitude": 54.2050108, "Longitude": -7.6951848 }, "geometry": { "type": "Point", "coordinates": [ -7.6951848, 54.2050108 ] } },
+    { "type": "Feature", "properties": { "Title": "", "Country": "Northern Ireland", "Type": "Road", "Latitude": 54.2073618, "Longitude": -7.7027342 }, "geometry": { "type": "Point", "coordinates": [ -7.7027342, 54.2073618 ] } },
+    { "type": "Feature", "properties": { "Title": "", "Country": "Northern Ireland", "Type": "Road", "Latitude": 54.288631, "Longitude": -7.868401 }, "geometry": { "type": "Point", "coordinates": [ -7.868401, 54.288631 ] } },
+    { "type": "Feature", "properties": { "Title": "", "Country": "Northern Ireland", "Type": "Road", "Latitude": 54.2942931, "Longitude": -7.8732534 }, "geometry": { "type": "Point", "coordinates": [ -7.8732534, 54.2942931 ] } },
+    { "type": "Feature", "properties": { "Title": "", "Country": "Northern Ireland", "Type": "Road", "Latitude": 54.348621, "Longitude": -8.0004071 }, "geometry": { "type": "Point", "coordinates": [ -8.0004071, 54.348621 ] } },
+    { "type": "Feature", "properties": { "Title": "", "Country": "Northern Ireland", "Type": "Road", "Latitude": 54.3572585, "Longitude": -8.0328257 }, "geometry": { "type": "Point", "coordinates": [ -8.0328257, 54.3572585 ] } },
+    { "type": "Feature", "properties": { "Title": "", "Country": "Northern Ireland", "Type": "Road", "Latitude": 54.3590586, "Longitude": -8.036435 }, "geometry": { "type": "Point", "coordinates": [ -8.036435, 54.3590586 ] } },
+    { "type": "Feature", "properties": { "Title": "", "Country": "Northern Ireland", "Type": "Road", "Latitude": 54.3628637, "Longitude": -8.0447316 }, "geometry": { "type": "Point", "coordinates": [ -8.0447316, 54.3628637 ] } },
+    { "type": "Feature", "properties": { "Title": "", "Country": "Northern Ireland", "Type": "Road", "Latitude": 54.4053884, "Longitude": -8.0964497 }, "geometry": { "type": "Point", "coordinates": [ -8.0964497, 54.4053884 ] } },
+    { "type": "Feature", "properties": { "Title": "", "Country": "Northern Ireland", "Type": "Road", "Latitude": 54.4446855, "Longitude": -8.1562819 }, "geometry": { "type": "Point", "coordinates": [ -8.1562819, 54.4446855 ] } },
+    { "type": "Feature", "properties": { "Title": "", "Country": "Northern Ireland", "Type": "Road", "Latitude": 54.4674383, "Longitude": -8.1730179 }, "geometry": { "type": "Point", "coordinates": [ -8.1730179, 54.4674383 ] } },
+    { "type": "Feature", "properties": { "Title": "", "Country": "Northern Ireland", "Type": "Road", "Latitude": 54.4695328, "Longitude": -8.140176 }, "geometry": { "type": "Point", "coordinates": [ -8.140176, 54.4695328 ] } },
+    { "type": "Feature", "properties": { "Title": "", "Country": "Northern Ireland", "Type": "Road", "Latitude": 54.4772524, "Longitude": -8.0979797 }, "geometry": { "type": "Point", "coordinates": [ -8.0979797, 54.4772524 ] } },
+    { "type": "Feature", "properties": { "Title": "", "Country": "Northern Ireland", "Type": "Road", "Latitude": 54.4769402, "Longitude": -8.0954547 }, "geometry": { "type": "Point", "coordinates": [ -8.0954547, 54.4769402 ] } },
+    { "type": "Feature", "properties": { "Title": "", "Country": "Northern Ireland", "Type": "Road", "Latitude": 54.4790227, "Longitude": -8.0940122 }, "geometry": { "type": "Point", "coordinates": [ -8.0940122, 54.4790227 ] } },
+    { "type": "Feature", "properties": { "Title": "", "Country": "Northern Ireland", "Type": "Road", "Latitude": 54.4844552, "Longitude": -8.0973715 }, "geometry": { "type": "Point", "coordinates": [ -8.0973715, 54.4844552 ] } },
+    { "type": "Feature", "properties": { "Title": "", "Country": "Northern Ireland", "Type": "Road", "Latitude": 54.5365397, "Longitude": -8.0131603 }, "geometry": { "type": "Point", "coordinates": [ -8.0131603, 54.5365397 ] } },
+    { "type": "Feature", "properties": { "Title": "", "Country": "Northern Ireland", "Type": "Road", "Latitude": 54.5382286, "Longitude": -7.9573719 }, "geometry": { "type": "Point", "coordinates": [ -7.9573719, 54.5382286 ] } },
+    { "type": "Feature", "properties": { "Title": "", "Country": "Northern Ireland", "Type": "Road", "Latitude": 54.5346141, "Longitude": -7.8695242 }, "geometry": { "type": "Point", "coordinates": [ -7.8695242, 54.5346141 ] } },
+    { "type": "Feature", "properties": { "Title": "", "Country": "Northern Ireland", "Type": "Road", "Latitude": 54.5490943, "Longitude": -7.8309644 }, "geometry": { "type": "Point", "coordinates": [ -7.8309644, 54.5490943 ] } },
+    { "type": "Feature", "properties": { "Title": "", "Country": "Northern Ireland", "Type": "Road", "Latitude": 54.5497413, "Longitude": -7.8319035 }, "geometry": { "type": "Point", "coordinates": [ -7.8319035, 54.5497413 ] } },
+    { "type": "Feature", "properties": { "Title": "", "Country": "Northern Ireland", "Type": "Road", "Latitude": 54.5520386, "Longitude": -7.8331613 }, "geometry": { "type": "Point", "coordinates": [ -7.8331613, 54.5520386 ] } },
+    { "type": "Feature", "properties": { "Title": "", "Country": "Northern Ireland", "Type": "Road", "Latitude": 54.5661282, "Longitude": -7.8075702 }, "geometry": { "type": "Point", "coordinates": [ -7.8075702, 54.5661282 ] } },
+    { "type": "Feature", "properties": { "Title": "", "Country": "Northern Ireland", "Type": "Road", "Latitude": 54.5737643, "Longitude": -7.7984695 }, "geometry": { "type": "Point", "coordinates": [ -7.7984695, 54.5737643 ] } },
+    { "type": "Feature", "properties": { "Title": "", "Country": "Northern Ireland", "Type": "Road", "Latitude": 54.5808493, "Longitude": -7.7913367 }, "geometry": { "type": "Point", "coordinates": [ -7.7913367, 54.5808493 ] } },
+    { "type": "Feature", "properties": { "Title": "", "Country": "Northern Ireland", "Type": "Road", "Latitude": 54.5952106, "Longitude": -7.7582136 }, "geometry": { "type": "Point", "coordinates": [ -7.7582136, 54.5952106 ] } },
+    { "type": "Feature", "properties": { "Title": "", "Country": "Northern Ireland", "Type": "Road", "Latitude": 54.6051414, "Longitude": -7.7209895 }, "geometry": { "type": "Point", "coordinates": [ -7.7209895, 54.6051414 ] } },
+    { "type": "Feature", "properties": { "Title": "", "Country": "Northern Ireland", "Type": "Road", "Latitude": 54.61093, "Longitude": -7.6972922 }, "geometry": { "type": "Point", "coordinates": [ -7.6972922, 54.61093 ] } },
+    { "type": "Feature", "properties": { "Title": "", "Country": "Northern Ireland", "Type": "Road", "Latitude": 54.6193431, "Longitude": -7.7512679 }, "geometry": { "type": "Point", "coordinates": [ -7.7512679, 54.6193431 ] } },
+    { "type": "Feature", "properties": { "Title": "", "Country": "Northern Ireland", "Type": "Road", "Latitude": 54.6211268, "Longitude": -7.7554214 }, "geometry": { "type": "Point", "coordinates": [ -7.7554214, 54.6211268 ] } },
+    { "type": "Feature", "properties": { "Title": "", "Country": "Northern Ireland", "Type": "Road", "Latitude": 54.6341671, "Longitude": -7.8382521 }, "geometry": { "type": "Point", "coordinates": [ -7.8382521, 54.6341671 ] } },
+    { "type": "Feature", "properties": { "Title": "", "Country": "Northern Ireland", "Type": "Road", "Latitude": 54.6618007, "Longitude": -7.9016281 }, "geometry": { "type": "Point", "coordinates": [ -7.9016281, 54.6618007 ] } },
+    { "type": "Feature", "properties": { "Title": "", "Country": "Northern Ireland", "Type": "Road", "Latitude": 54.7330313, "Longitude": -7.8420701 }, "geometry": { "type": "Point", "coordinates": [ -7.8420701, 54.7330313 ] } },
+    { "type": "Feature", "properties": { "Title": "", "Country": "Northern Ireland", "Type": "Road", "Latitude": 54.7197793, "Longitude": -7.8062381 }, "geometry": { "type": "Point", "coordinates": [ -7.8062381, 54.7197793 ] } },
+    { "type": "Feature", "properties": { "Title": "", "Country": "Northern Ireland", "Type": "Road", "Latitude": 54.7146171, "Longitude": -7.7780304 }, "geometry": { "type": "Point", "coordinates": [ -7.7780304, 54.7146171 ] } },
+    { "type": "Feature", "properties": { "Title": "", "Country": "Northern Ireland", "Type": "Road", "Latitude": 54.7097713, "Longitude": -7.7419164 }, "geometry": { "type": "Point", "coordinates": [ -7.7419164, 54.7097713 ] } },
+    { "type": "Feature", "properties": { "Title": "", "Country": "Northern Ireland", "Type": "Road", "Latitude": 54.7214678, "Longitude": -7.7207743 }, "geometry": { "type": "Point", "coordinates": [ -7.7207743, 54.7214678 ] } },
+    { "type": "Feature", "properties": { "Title": "", "Country": "Northern Ireland", "Type": "Road", "Latitude": 54.2229876, "Longitude": -6.8043411 }, "geometry": { "type": "Point", "coordinates": [ -6.8043411, 54.2229876 ] } },
+    { "type": "Feature", "properties": { "Title": "", "Country": "Northern Ireland", "Type": "Road", "Latitude": 54.2654073, "Longitude": -6.8495569 }, "geometry": { "type": "Point", "coordinates": [ -6.8495569, 54.2654073 ] } },
+    { "type": "Feature", "properties": { "Title": "", "Country": "Northern Ireland", "Type": "Road", "Latitude": 54.7296979, "Longitude": -7.6885446 }, "geometry": { "type": "Point", "coordinates": [ -7.6885446, 54.7296979 ] } },
+    { "type": "Feature", "properties": { "Title": "", "Country": "Northern Ireland", "Type": "Road", "Latitude": 54.7464276, "Longitude": -7.6478283 }, "geometry": { "type": "Point", "coordinates": [ -7.6478283, 54.7464276 ] } },
+    { "type": "Feature", "properties": { "Title": "", "Country": "Northern Ireland", "Type": "Road", "Latitude": 54.7489569, "Longitude": -7.6301758 }, "geometry": { "type": "Point", "coordinates": [ -7.6301758, 54.7489569 ] } },
+    { "type": "Feature", "properties": { "Title": "", "Country": "Northern Ireland", "Type": "Road", "Latitude": 54.7441687, "Longitude": -7.6094436 }, "geometry": { "type": "Point", "coordinates": [ -7.6094436, 54.7441687 ] } },
+    { "type": "Feature", "properties": { "Title": "", "Country": "Northern Ireland", "Type": "Road", "Latitude": 54.7441466, "Longitude": -7.5912938 }, "geometry": { "type": "Point", "coordinates": [ -7.5912938, 54.7441466 ] } },
+    { "type": "Feature", "properties": { "Title": "", "Country": "Northern Ireland", "Type": "Road", "Latitude": 54.7499335, "Longitude": -7.5863693 }, "geometry": { "type": "Point", "coordinates": [ -7.5863693, 54.7499335 ] } },
+    { "type": "Feature", "properties": { "Title": "", "Country": "Northern Ireland", "Type": "Road", "Latitude": 54.7482394, "Longitude": -7.575592 }, "geometry": { "type": "Point", "coordinates": [ -7.575592, 54.7482394 ] } },
+    { "type": "Feature", "properties": { "Title": "", "Country": "Northern Ireland", "Type": "Road", "Latitude": 54.7438585, "Longitude": -7.569783 }, "geometry": { "type": "Point", "coordinates": [ -7.569783, 54.7438585 ] } },
+    { "type": "Feature", "properties": { "Title": "", "Country": "Northern Ireland", "Type": "Road", "Latitude": 54.7409344, "Longitude": -7.5482537 }, "geometry": { "type": "Point", "coordinates": [ -7.5482537, 54.7409344 ] } },
+    { "type": "Feature", "properties": { "Title": "", "Country": "Northern Ireland", "Type": "Road", "Latitude": 54.7509688, "Longitude": -7.5386003 }, "geometry": { "type": "Point", "coordinates": [ -7.5386003, 54.7509688 ] } },
+    { "type": "Feature", "properties": { "Title": "", "Country": "Northern Ireland", "Type": "Road", "Latitude": 54.7883771, "Longitude": -7.5479029 }, "geometry": { "type": "Point", "coordinates": [ -7.5479029, 54.7883771 ] } },
+    { "type": "Feature", "properties": { "Title": "", "Country": "Northern Ireland", "Type": "Road", "Latitude": 54.7929619, "Longitude": -7.5458936 }, "geometry": { "type": "Point", "coordinates": [ -7.5458936, 54.7929619 ] } },
+    { "type": "Feature", "properties": { "Title": "", "Country": "Northern Ireland", "Type": "Road", "Latitude": 54.8314081, "Longitude": -7.4809687 }, "geometry": { "type": "Point", "coordinates": [ -7.4809687, 54.8314081 ] } },
+    { "type": "Feature", "properties": { "Title": "", "Country": "Northern Ireland", "Type": "Road", "Latitude": 54.9604308, "Longitude": -7.4026772 }, "geometry": { "type": "Point", "coordinates": [ -7.4026772, 54.9604308 ] } },
+    { "type": "Feature", "properties": { "Title": "", "Country": "Northern Ireland", "Type": "Road", "Latitude": 54.9668996, "Longitude": -7.4027039 }, "geometry": { "type": "Point", "coordinates": [ -7.4027039, 54.9668996 ] } },
+    { "type": "Feature", "properties": { "Title": "", "Country": "Northern Ireland", "Type": "Road", "Latitude": 54.9782666, "Longitude": -7.4059892 }, "geometry": { "type": "Point", "coordinates": [ -7.4059892, 54.9782666 ] } },
+    { "type": "Feature", "properties": { "Title": "", "Country": "Northern Ireland", "Type": "Road", "Latitude": 54.9791438, "Longitude": -7.4045821 }, "geometry": { "type": "Point", "coordinates": [ -7.4045821, 54.9791438 ] } },
+    { "type": "Feature", "properties": { "Title": "", "Country": "Northern Ireland", "Type": "Road", "Latitude": 54.9889632, "Longitude": -7.4007176 }, "geometry": { "type": "Point", "coordinates": [ -7.4007176, 54.9889632 ] } },
+    { "type": "Feature", "properties": { "Title": "", "Country": "Northern Ireland", "Type": "Road", "Latitude": 54.9947156, "Longitude": -7.391988 }, "geometry": { "type": "Point", "coordinates": [ -7.391988, 54.9947156 ] } },
+    { "type": "Feature", "properties": { "Title": "", "Country": "Northern Ireland", "Type": "Road", "Latitude": 55.0201934, "Longitude": -7.3912037 }, "geometry": { "type": "Point", "coordinates": [ -7.3912037, 55.0201934 ] } },
+    { "type": "Feature", "properties": { "Title": "", "Country": "Northern Ireland", "Type": "Road", "Latitude": 55.0347533, "Longitude": -7.3702527 }, "geometry": { "type": "Point", "coordinates": [ -7.3702527, 55.0347533 ] } },
+    { "type": "Feature", "properties": { "Title": "", "Country": "Northern Ireland", "Type": "Road", "Latitude": 55.0367238, "Longitude": -7.3679719 }, "geometry": { "type": "Point", "coordinates": [ -7.3679719, 55.0367238 ] } },
+    { "type": "Feature", "properties": { "Title": "", "Country": "Northern Ireland", "Type": "Road", "Latitude": 55.0403943, "Longitude": -7.3614417 }, "geometry": { "type": "Point", "coordinates": [ -7.3614417, 55.0403943 ] } },
+    { "type": "Feature", "properties": { "Title": "", "Country": "Northern Ireland", "Type": "Road", "Latitude": 55.0461712, "Longitude": -7.3520452 }, "geometry": { "type": "Point", "coordinates": [ -7.3520452, 55.0461712 ] } },
+    { "type": "Feature", "properties": { "Title": "", "Country": "Northern Ireland", "Type": "Road", "Latitude": 55.0462655, "Longitude": -7.3154204 }, "geometry": { "type": "Point", "coordinates": [ -7.3154204, 55.0462655 ] } },
+    { "type": "Feature", "properties": { "Title": "", "Country": "Northern Ireland", "Type": "Road", "Latitude": 55.0524601, "Longitude": -7.3072279 }, "geometry": { "type": "Point", "coordinates": [ -7.3072279, 55.0524601 ] } },
+    { "type": "Feature", "properties": { "Title": "", "Country": "Northern Ireland", "Type": "Road", "Latitude": 55.0477026, "Longitude": -7.2894434 }, "geometry": { "type": "Point", "coordinates": [ -7.2894434, 55.0477026 ] } },
+    { "type": "Feature", "properties": { "Title": "", "Country": "Northern Ireland", "Type": "Road", "Latitude": 55.0641856, "Longitude": -7.2698926 }, "geometry": { "type": "Point", "coordinates": [ -7.2698926, 55.0641856 ] } },
+    { "type": "Feature", "properties": { "Title": "", "Country": "Northern Ireland", "Type": "Road", "Latitude": 55.0643907, "Longitude": -7.2695008 }, "geometry": { "type": "Point", "coordinates": [ -7.2695008, 55.0643907 ] } },
+    { "type": "Feature", "properties": { "Title": "", "Country": "Northern Ireland", "Type": "Road", "Latitude": 55.0658963, "Longitude": -7.2613919 }, "geometry": { "type": "Point", "coordinates": [ -7.2613919, 55.0658963 ] } },
+    { "type": "Feature", "properties": { "Title": "", "Country": "Northern Ireland", "Type": "Road", "Latitude": 54.0594953, "Longitude": -6.4213784 }, "geometry": { "type": "Point", "coordinates": [ -6.4213784, 54.0594953 ] } },
+    { "type": "Feature", "properties": { "Title": "", "Country": "Northern Ireland", "Type": "Road", "Latitude": 54.7751515, "Longitude": -7.5470344 }, "geometry": { "type": "Point", "coordinates": [ -7.5470344, 54.7751515 ] } },
+    { "type": "Feature", "properties": { "Title": "", "Country": "Northern Ireland", "Type": "Road", "Latitude": 54.0970598, "Longitude": -6.3623285 }, "geometry": { "type": "Point", "coordinates": [ -6.3623285, 54.0970598 ] } }
+    ];
+
+
+		var icon1 = L.icon({
+			iconUrl: 'red-icon.png',
+			iconSize: [15, 18],
+			iconAnchor: [10, 20],
+		});
+
+		var icon2 = L.icon({
+			iconUrl: 'gray-icon.png',
+			iconSize: [31, 21],
+			iconAnchor: [10, 20],
+
+		});
+
+
+
+		function onEachFeature(feature, layer) {
+			layer.on({
+				click: clickFeature,
+			});
+		}
+
+
+		function clickFeature(e) {
+
+			var layer = e.target;
+			layer.setIcon(layer.options.icon = icon2);
+			$('.information').html(info.update(layer.feature.properties));
+
+			layer.setIcon(layer.options.icon = icon2);
+
+			layer.setStyle({
+
+			});
+
+			if (!L.Browser.ie && !L.Browser.opera) {
+				layer.bringToFront();
+			}
+
+			if (clickedFeature) {
+				clickedFeature.setRadius(100)
+			}
+
+			map.on('click', onMapClick);
+
+		}
+
+
+
+		geojson =
+			L.geoJson(locations, {
+				pointToLayer: function(feature, latlng) {
+					return L.marker(latlng, {
+						icon: icon1
+					});
+				},
+				onEachFeature: onEachFeature
+			}).addTo(map);
+
+
+
+		//add custom control
+
+		var info = L.control();
+
+		info.Add = function(map) {
+			this._div = L.DomUtil.create('div', 'info'); // create a div with a class "info"
+			this.update();
+			return this._div;
+		};
+
+		// method that we will use to update the control based on feature properties passed
+		info.update = function(props) {
+			return '' + (props ?
+				' <div><h5 id="sign"><b>'
+        +  '<h4> EU Land Border Crossings<br></h4>'
+				+ '<h5>From the most northernly tip of FInland down to the Baltic Sea, there are 120 established land border crossings between the European Union and the rest of the world.<br><br> But along the land border between Northern Ireland (the UK) and the Republic of Ireland (the EU) there are 208 road crossings, making it potentially the most porous land border in Europe post-Brexit.</h5> '
+        + '<br><h6>Border Crossing:</h6><h7>' + props.Title
+				+ '</h7><br><h6>Crossing Type:</h6><h7> ' + props.Type :
+				'</div>'
+
+			);
+		};
+
+
+	////////////populate map with markers from sample data
+	for(i in data) {
+		var title = data[i].title,	//value searched
+			loc = data[i].loc,		//position found
+			marker = L.Marker(L.latLng(loc), {title: title} );//se property searched
+		marker.bindPopup('title: '+ title );
+		markersLayer.addLayer(marker);
+	}
+
+		info.addTo(map);
+
+
+	</script>
+
+
+</body>
+
+
+</html>
