@@ -4,13 +4,14 @@ Brexit Borderlands code package:
 This is the landing page of the micro-site. 
 Made with uikit: https://getuikit.com/docs/introduction
 Video linked from Vimeo: https://vimeo.com/297207691 (to be updated with different pacing/angle)
-'Explore Map' leads
+'Explore Map' leads to 2.map_page.
 
 To do: 
 - Copy to be updated & edited
 - Video link to be replaced and uploaded on diff host
 - Border related articles to be linked to homepage.
 - Footer and Navbar to be added
+- Controls added to video: ie. 'Play button' changed to 'Pause button' for video when playing
 ...
 
 ![alt text]( https://rachellavin27.github.io/Brexit_Borderlands/img/landingpage.jpg)
@@ -20,13 +21,13 @@ This is the map page.
 Made with uikit: https://getuikit.com/docs/introduction
 Map is made with Leaflet: https://leafletjs.com/
 Geodata is linked by geojson
-Mapbox tilelayer added
+Tilelayer (for black effect) added form Mapbox API
 
 To do:
 - Footer and Navbar to be added
 - Copy to be edited
 - Mobile responsiveness of map
-- Map layers potentially to be added
+- The Irish Times API for Mapbox to be added for tilelayer
 ...
 
 ![alt text]( https://rachellavin27.github.io/Brexit_Borderlands/img/mappage.jpg)
@@ -105,6 +106,11 @@ To do:
    - Add image of viz to replace on mobile screen (also perhaps image of code to be used overall considering it is static)
      
      ![alt text](https://rachellavin27.github.io/Brexit_Borderlands/img/border_barchart.jpg)
+     
+  
+  Border Incidents Map to be added 
+  (probably as preview ad image that takes you to 2.map_page)
+  
   
    
    
