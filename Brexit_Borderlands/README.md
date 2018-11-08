@@ -1,4 +1,6 @@
-Brexit Borderlands code package:
+Brexit Borderlands code package: https://github.com/RachelLavin27/rachellavin27.github.io/tree/master/Brexit_Borderlands
+Zip file for download here: rachellavin27.github.io/Brexit_Borderlands/Brexit_Borderlands.zip
+      
 
 1.Landing_page: rachellavin27.github.io/Brexit_Borderlands/1.Landing_page/landingpage.html <br>
 This is the landing page of the micro-site. <br>
