@@ -85,10 +85,14 @@ To do:
   
   To do:
   - Fix D3 link - not linking from github.io - here it is from my private server (same code): http://igor.gold.ac.uk/~rlavi001/EU_terror_viz/index.html
-  - Add scaled circles size indicator to indicate size on static image
-  - Add image of viz to replace on mobile screen
+  - <strike>Add scaled circles size indicator to indicate size on static image</strike>
+  - <strike>Add image of viz to replace on mobile screen</strike>
   
     ![alt text](https://rachellavin27.github.io/Brexit_Borderlands/img/EU_deaths.jpg)
+    
+    Mobile version:  rachellavin27.github.io/Brexit_Borderlands/Interactives/C_EU_Terror/mobile_image.html
+      
+      ![alt text](https://rachellavin27.github.io/Brexit_Borderlands/img/EU_terror_mobile.png)
   
   D_EU_Border: (https://rachellavin27.github.io/Brexit_Borderlands/Interactives/D_EU_Border/index.html)  <br> 
   Map is made with Leaflet: https://leafletjs.com/ <br>
@@ -97,11 +101,14 @@ To do:
   
   To do;
    - <strike>Add images to map's data window</strike>
-   - Add image of viz to replace on mobile screen
+   - <strike>Add image of viz to replace on mobile screen </strike>
    
      ![alt text](https://rachellavin27.github.io/Brexit_Borderlands/img/EU_border.jpg)
   
-   
+   Mobile version:  rachellavin27.github.io/Brexit_Borderlands/Interactives/D_EU_Border/index_mobile.html
+      
+    ![alt text](https://rachellavin27.github.io/Brexit_Borderlands/img/EU_border_mobile.png)
+  
    border_stackedbarchart: (https://rachellavin27.github.io/Brexit_Borderlands/Interactives/border_stackedbarchart/index.html) <br>
    Made with D3.js: https://github.com/d3/d3/wiki from FT VIsual Vocabulary 
    
