@@ -44,9 +44,9 @@ Features currently linked via Iframes.
 
 To do:
 - Footer and Navbar to be added
-- Copy to be edited
+- <strike>Copy to be edited</strike>
 - Interactives to be made mobile responisve (C, D & E to be replaced with images for mobile)
-- Some interactive updates (see below)
+-Some interactive updates (see below)
 
 
 ![alt text]( https://rachellavin27.github.io/Brexit_Borderlands/img/longread.jpg)
@@ -96,7 +96,7 @@ To do:
   (V similar to code behind 2.Map_Page)
   
   To do;
-   - Add images to map's data window
+   - <strike>Add images to map's data window</strike>
    - Add image of viz to replace on mobile screen
    
      ![alt text](https://rachellavin27.github.io/Brexit_Borderlands/img/EU_border.jpg)
