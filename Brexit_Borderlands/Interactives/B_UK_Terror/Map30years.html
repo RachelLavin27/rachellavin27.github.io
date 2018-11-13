@@ -5,7 +5,7 @@
     <meta charset="utf-8">
 
 
-    <meta name="author" content="Charles Boutaud, Rachel Lavin">
+    <meta name="author" content="Rachel Lavin, credit to Charles Boutaud">
     <title>Taking the Toll</title>
     	<script src="//d3js.org/d3.v3.min.js" charset="utf-8"></script>
 
@@ -125,7 +125,7 @@
             .attr("class", "subunit-boundary IRL");
           // ---------- END OF MAP ----------
           // ---------- TITLE -----------
-          svg.append("text").attr("class", "vis-title").text("Death Toll: Terror Attacks in the UK and Ireland").call(wrap, width/1.05);
+          svg.append("text").attr("class", "vis-title").text("Terror of the Troubles in the UK and Ireland").call(wrap, width/1.05);
           // ---------- END OF TITLES -----------
           // ---------- TICKER -----------
           var ticker = svg.append("g")
@@ -147,7 +147,7 @@
           ticker.append("text")
                 .attr("class", "ticklabel")
                 .attr("transform", "translate(" + 0 + "," + (height/tickerprojection + 22) + ")")
-                .text("Fatalaties from 1970-2000").call(wrap, width/1.1);
+                .text("Fatal Attacks from 1970-2000").call(wrap, width/1.1);
 		ticker.append("text")
                             .attr("class", "ticksource")
                             .attr("transform", "translate(" + 400 + "," + (height/tickerprojection + 470) + ")")
@@ -315,7 +315,7 @@
               .attr("r",0)
               .remove();
           };
-          // function that updates the slider/ticker and chooses the relevant farm to display
+          // function that updates the slider/ticker and chooses the relevant attack to display
           function brushed() {
             if (play == true) {
                 playIcon.attr('d', play ? playD : pauseD);
@@ -349,7 +349,7 @@
               chart(uk)
             });
         };
-        // wrap text function - I learned this nifty trick from the FT
+        // wrap text function 
         function wrap(text, width) {
           text.each(function() {
             var text = d3.select(this),
