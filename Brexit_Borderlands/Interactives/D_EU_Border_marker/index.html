@@ -1,0 +1,412 @@
+<html>
+
+<head>
+
+	<title>Border Map</title>
+
+	<meta charset="utf-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+
+	<link rel="stylesheet" href="https://unpkg.com/leaflet@1.3.3/dist/leaflet.css"
+	   integrity="sha512-Rksm5RenBEKSKFjgI3a41vrjkw4EVPlJ3+OiI65vTjIdo9brlAacEuKOiQ5OFh7cOI1bkDwLqdLw3Zg0cRJAAQ=="
+	   crossorigin=""/>
+
+		 <!-- Make sure you put this AFTER Leaflet's CSS -->
+ <script src="https://unpkg.com/leaflet@1.3.3/dist/leaflet.js"
+   integrity="sha512-tAGcCfR4Sc5ZP5ZoVz0quoZDYX5aCtEm/eu1KhSLj2c9eFrylXZknQYmxUssFaVJKvvc0dJQixhGjG2yXWiV9Q=="
+   crossorigin=""></script>
+
+	<script src="dist/leaflet-search.src.js"></script>
+	<script src="src/leaflet-search.js"></script>
+
+	<script src='https://api.mapbox.com/mapbox.js/v3.1.1/mapbox.js'></script>
+	<link href='https://api.mapbox.com/mapbox.js/v3.1.1/mapbox.css' rel='stylesheet' />
+
+	<!--UIKit 3 --->
+	<link rel="stylesheet" href="css/uikit.min.css" />
+	<script src="js/uikit.min.js"></script>
+	<script src="js/uikit-icons.min.js"></script>
+
+	<!-- Add icon library -->
+	<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+
+	<!--Jquery --->
+	<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+
+
+
+	<style>
+		html,
+		body {
+			height: 100%;
+			margin: 0;
+			font-family: Futura;
+		}
+
+		#map {
+			width: 100%;
+			height: 100%;
+		}
+
+
+
+
+		h1 {
+			font-size: 78px;
+			padding-bottom: 0px;
+			margin-bottom: 0px;
+			color: white;
+			line-spacing: 12px;
+		}
+
+		h5 {
+				font-size: 12px;
+		}
+
+		h6 {
+				font-size: 12px;
+				line-height: 0px;
+				color: lightgray;
+				margin-block-start: 0.75em;
+				margin-block-end: 0.75em;
+				margin-top: 25px;
+		}
+
+		h4 {
+			font-size: 22px;
+			color: white;
+			font-family: Arial;
+		}
+
+		h7 {
+			font-size: 22px;
+		}
+
+		#map {
+			z-index: 1;
+			position: absolute;
+		}
+
+
+	</style>
+
+
+</head>
+
+<body>
+
+
+
+
+	<!--Map --->
+	<div id="map" class="leaflet-container leaflet-touch leaflet-fade-anim leaflet-grab leaflet-touch-drag leaflet-touch-zoom" tabindex="0" style="position: relative; outline: none;">
+		<div class="leaflet-pane leaflet-map-pane" style="transform: translate3d(-261px, -133px, 0px);">
+			<div class="leaflet-pane leaflet-tile-pane">
+				<div class="leaflet-layer" style="z-index: 1; opacity: 1;">
+					<div class="leaflet-tile-container leaflet-zoom-animated" style="z-index: 18; transform: translate3d(0px, 0px, 0px) scale(1);">
+						<img alt="" role="presentation" src="http://a.tiles.wmflabs.org/bw-mapnik/8/123/81.png" class="leaflet-tile leaflet-tile-loaded" style="width: 256px; height: 256px; transform: translate3d(696px, 154px, 0px); opacity: 1;"><img alt="" role="presentation"
+						  src="http://c.tiles.wmflabs.org/bw-mapnik/8/122/81.png" class="leaflet-tile leaflet-tile-loaded" style="width: 256px; height: 256px; transform: translate3d(440px, 154px, 0px); opacity: 1;">
+						<img alt="" role="presentation" src="http://c.tiles.wmflabs.org/bw-mapnik/8/123/80.png" class="leaflet-tile leaflet-tile-loaded" style="width: 256px; height: 256px; transform: translate3d(696px, -102px, 0px); opacity: 1;"><img alt="" role="presentation"
+						  src="http://b.tiles.wmflabs.org/bw-mapnik/8/123/82.png" class="leaflet-tile leaflet-tile-loaded" style="width: 256px; height: 256px; transform: translate3d(696px, 410px, 0px); opacity: 1;">
+						<img alt="" role="presentation" src="http://b.tiles.wmflabs.org/bw-mapnik/8/122/80.png" class="leaflet-tile leaflet-tile-loaded" style="width: 256px; height: 256px; transform: translate3d(440px, -102px, 0px); opacity: 1;"><img alt="" role="presentation"
+						  src="http://a.tiles.wmflabs.org/bw-mapnik/8/122/82.png" class="leaflet-tile leaflet-tile-loaded" style="width: 256px; height: 256px; transform: translate3d(440px, 410px, 0px); opacity: 1;">
+						<img alt="" role="presentation" src="http://b.tiles.wmflabs.org/bw-mapnik/8/121/81.png" class="leaflet-tile leaflet-tile-loaded" style="width: 256px; height: 256px; transform: translate3d(184px, 154px, 0px); opacity: 1;"><img alt="" role="presentation"
+						  src="http://b.tiles.wmflabs.org/bw-mapnik/8/124/81.png" class="leaflet-tile leaflet-tile-loaded" style="width: 256px; height: 256px; transform: translate3d(952px, 154px, 0px); opacity: 1;">
+						<img alt="" role="presentation" src="http://c.tiles.wmflabs.org/bw-mapnik/8/124/82.png" class="leaflet-tile leaflet-tile-loaded" style="width: 256px; height: 256px; transform: translate3d(952px, 410px, 0px); opacity: 1;"><img alt="" role="presentation"
+						  src="http://a.tiles.wmflabs.org/bw-mapnik/8/124/80.png" class="leaflet-tile leaflet-tile-loaded" style="width: 256px; height: 256px; transform: translate3d(952px, -102px, 0px); opacity: 1;"><img alt="" role="presentation" src="http://c.tiles.wmflabs.org/bw-mapnik/8/121/82.png"
+						  class="leaflet-tile leaflet-tile-loaded" style="width: 256px; height: 256px; transform: translate3d(184px, 410px, 0px); opacity: 1;"><img alt="" role="presentation" src="http://a.tiles.wmflabs.org/bw-mapnik/8/121/80.png" class="leaflet-tile leaflet-tile-loaded"
+						  style="width: 256px; height: 256px; transform: translate3d(184px, -102px, 0px); opacity: 1;"><img alt="" role="presentation" src="http://c.tiles.wmflabs.org/bw-mapnik/8/125/81.png" class="leaflet-tile leaflet-tile-loaded" style="width: 256px; height: 256px; transform: translate3d(1208px, 154px, 0px); opacity: 1;">
+						<img alt="" role="presentation" src="http://a.tiles.wmflabs.org/bw-mapnik/8/120/81.png" class="leaflet-tile leaflet-tile-loaded" style="width: 256px; height: 256px; transform: translate3d(-72px, 154px, 0px); opacity: 1;"><img alt="" role="presentation"
+						  src="http://b.tiles.wmflabs.org/bw-mapnik/8/125/80.png" class="leaflet-tile leaflet-tile-loaded" style="width: 256px; height: 256px; transform: translate3d(1208px, -102px, 0px); opacity: 1;"><img alt="" role="presentation" src="http://b.tiles.wmflabs.org/bw-mapnik/8/120/82.png"
+						  class="leaflet-tile leaflet-tile-loaded" style="width: 256px; height: 256px; transform: translate3d(-72px, 410px, 0px); opacity: 1;"><img alt="" role="presentation" src="http://c.tiles.wmflabs.org/bw-mapnik/8/120/80.png" class="leaflet-tile leaflet-tile-loaded"
+						  style="width: 256px; height: 256px; transform: translate3d(-72px, -102px, 0px); opacity: 1;"><img alt="" role="presentation" src="http://a.tiles.wmflabs.org/bw-mapnik/8/125/82.png" class="leaflet-tile leaflet-tile-loaded" style="width: 256px; height: 256px; transform: translate3d(1208px, 410px, 0px); opacity: 1;"></div>
+				</div>
+			</div>
+		</div>
+
+		<!--Map text overlay--->
+
+		<div class="leaflet-control-container">
+			<div class="leaflet-top leaflet-left">
+				<div class="leaflet-control-zoom leaflet-bar leaflet-control"><a class="leaflet-control-zoom-in" href="#" title="Zoom in" role="button" aria-label="Zoom in">+</a><a class="leaflet-control-zoom-out" href="#" title="Zoom out" role="button" aria-label="Zoom out">−</a></div>
+			</div>
+			<div class="leaflet-top leaflet-right">
+				<div class="info leaflet-control"></div>
+			</div>
+
+			<div class="leaflet-bottom leaflet-right">
+				<div class="leaflet-control-attribution leaflet-control"><a href="http://leafletjs.com" title="A JS library for interactive maps">Leaflet</a> | © <a href="http://www.openstreetmap.org/copyright">OpenStreetMap</a></div>
+			</div>
+		</div>
+	</div>
+	</div>
+	</div>
+
+
+	<div class="container uk-card uk-card-body">
+		<div class= "information">
+			    <div id="sign">
+            <h4> EU Land Border Crossings<br></h4>
+						<h5>There are currently 120 official land border crossings in the European Union. And there are 208 crossings between Northern Ireland and the Republic of Ireland.<br> <i>Source: Frontex</i></h5>
+
+          <h6 >
+        <i class="fa fa-hand-o-up"></i> Click on a crossing to view.<br>
+			</h6>
+    </div>
+		</div>
+	</div>
+
+  <!--geojson data--->
+	<script type="text/javascript">
+  var map = L.map('map', {
+    center: [58.824185, 32.260819], // EDIT latitude, longitude to re-center map
+    zoom: 3.5,  // EDIT from 1 to 18 -- decrease to zoom out, increase to zoom in
+ 		scrollWheelZoom: false,
+  });
+
+
+  // display Carto basemap tiles with light features and labels
+	L.tileLayer('https://server.arcgisonline.com/ArcGIS/rest/services/Canvas/World_Light_Gray_Base/MapServer/tile/{z}/{y}/{x}', {
+	 attribution: 'Tiles &copy; Esri &mdash; Esri, DeLorme, NAVTEQ',
+	 maxZoom: 16
+ }).addTo(map); // EDIT - insert or remove ".addTo(map)" before last semicolon to display by default
+
+  // display Stamen basemap tiles with colored terrain and labels
+  L.tileLayer('https://stamen-tiles.a.ssl.fastly.net/terrain/{z}/{x}/{y}.png', {
+    attribution: 'Map tiles by <a href="http://stamen.com">Stamen Design</a>, under <a href="http://creativecommons.org/licenses/by/3.0">CC BY 3.0</a>. Data by <a href="http://openstreetmap.org">OpenStreetMap</a>, under <a href="http://www.openstreetmap.org/copyright">ODbL</a>.'
+  });
+
+
+		var locations = [
+
+	 		{ "type": "Feature", "properties": { "Title": "Back Castle Road, Moiry Castle , Northern Ireland - Republic of Ireland", "Type": "Road", "video": "<iframe width=\"100%\" height=\"200\" src=\"https://www.google.com/maps/embed?pb=!4v1538525915268!6m8!1m7!1swTve3_OxNtjq9I-XtDRZDQ!2m2!1d54.06892292634093!2d-6.3790982792005!3f0!4f0!5f1.1924812503605782frameborder=\"0\" allowfullscreen></iframe>","Latitude": 54.068971 , "Longitude": -6.3791586}, "geometry": { "type": "Point", "coordinates": [ 54.068971, -6.3791586, ] } },
+			{ "type": "Feature", "properties": { "Title": "Rusne, Lithuania", "Type": "River-Ferry,", "video": "<iframe width=\"100%\" height=\"200\" src=\"https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d2271.684368658787!2d21.376654315535088!3d55.29366798043302!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x0%3A0x0!2zNTXCsDE3JzM3LjIiTiAyMcKwMjInNDMuOCJF!5e0!3m2!1sen!2sie!4v1541725637634frameborder=\"0\" allowfullscreen></iframe>", "Latitude":55.293668, "Longitude": 21.378843}, "geometry": { "type": "Point", "coordinates": [21.378843, 55.293668] } },
+			{ "type": "Feature", "properties": { "Title": "Kroscienko (road), Poland - Slovakia", "Type": "Road", "video": "<iframe width=\"100%\" height=\"200\" src=\"https://www.google.com/maps/embed?pb=!4v1541727228319!6m8!1m7!1s7T36YGCBYw-9OI7DzH-JHg!2m2!1d49.48139690038204!2d22.6937762877245!3f71.9338137128528!4f0.8012888868699264!5f3.325193203789971frameborder=\"0\" allowfullscreen></iframe>", "Latitude": 45.471494, "Longitude": 28.197072}, "geometry": { "type": "Point", "coordinates": [ 28.197072,45.471494] } },
+			{ "type": "Feature", "properties": { "Title": "Meiksani, Latvia - Russia", "Type": "Road", "video": "<iframe width=\"100%\" height=\"200\" src=\"https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d1806.160922783526!2d27.991225299089564!3d56.1269974417182!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x46c3ba7afed2fc8d%3A0xf64a9dc4b0435c8e!2zxaDEt2F1bmUgUlNO!5e1!3m2!1sen!2sie!4v1541723782831frameborder=\"0\" allowfullscreen></iframe> ", "Latitude": 56.127251, "Longitude": 27.993525}, "geometry": { "type": "Point", "coordinates": [ 27.993525, 56.127251] } },
+			{ "type": "Feature", "properties": { "Title": "Krakunai , Lithuania", "Type": "Road", "video": "<iframe width=\"100%\" height=\"200\" src=\"https://www.google.com/maps/embed?pb=!4v1541724948777!6m8!1m7!1sWUMc0DavK6sijy0Zf7NW1A!2m2!1d54.14766612061684!2d25.6024755444832!3f199.7029248826776!4f8.793730504380548!5f0.7820865974627469frameborder=\"0\" allowfullscreen></iframe>","Latitude": 54.145906, "Longitude": 25.601753}, "geometry": { "type": "Point", "coordinates": [ 25.601753,54.145906] } },
+			{ "type": "Feature", "properties": { "Title": "Indra, Latvia-Belarus", "Type": "Railway", "video": "<iframe width=\"100%\" height=\"200\" src=\"https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d1820.032938509029!2d27.63664931556175!3d55.844609980578056!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x0%3A0x0!2zNTXCsDUwJzQwLjYiTiAyN8KwMzgnMTkuOCJF!5e1!3m2!1sen!2sie!4v1541722279117frameborder=\"0\" allowfullscreen></iframe> ", "Latitude": 55.844610, "Longitude": 27.638838}, "geometry": { "type": "Point", "coordinates": [ 27.638838, 55.844610] } },
+			{ "type": "Feature", "properties": { "Title": "Jurbarkas, Lithuania-Russia", "Type": "River-Ferry", "video": "<iframe width=\"100%\" height=\"200\" src=\"https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d1856.1417722443805!2d22.58826031558864!3d55.06980398037621!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x0%3A0x0!2zNTXCsDA0JzExLjMiTiAyMsKwMzUnMjUuNiJF!5e1!3m2!1sen!2sie!4v1541723451568frameborder=\"0\" allowfullscreen></iframe>", "Latitude": 55.069804, "Longitude": 22.590449}, "geometry": { "type": "Point", "coordinates": [  22.590449,55.069804] } },
+			{ "type": "Feature", "properties": { "Title": "Koidula , Estonia - Russia", "Type": "Road", "video": "<iframe width=\"100%\" height=\"200\" src=\"https://www.google.com/maps/embed?pb=!4v1538167834500!6m8!1m7!1s6AnWq6l9mtCfLfM4Vto9Rw!2m2!1d57.83955264239995!2d27.59558598635491!3f202.18247329071244!4f1.806835134969731!5f0.7820865974627469frameborder=\"0\" allowfullscreen></iframe>","Latitude": 57.834525, "Longitude": 27.595566}, "geometry": { "type": "Point", "coordinates": [ 27.595566,57.834525] } },
+			{ "type": "Feature", "properties": { "Title": "Koidula , Estonia - Russia", "Type": "Railway", "video": "<iframe width=\"100%\" height=\"200\" src=\"https://www.google.com/maps/embed?pb=!1m14!1m8!1m3!1d1502.3555707945898!2d27.6054963!3d57.837018!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x0%3A0x0!2zNTfCsDUwJzEzLjMiTiAyN8KwMzYnMjguOSJF!5e1!3m2!1sen!2sie!4v1538168117735frameborder=\"0\" allowfullscreen></iframe>","Latitude": 57.837018, "Longitude": 27.608018}, "geometry": { "type": "Point", "coordinates": [ 27.608018,57.837018] } },
+			{ "type": "Feature", "properties": { "Title": "Luhamaa , Estonia - Russia", "Type": "Road", "video": "<iframe width=\"100%\" height=\"200\" src=\"https://www.google.com/maps/embed?pb=!4v1538168283840!6m8!1m7!1sVGpu8pUIVdZTnb-1_LtKTQ!2m2!1d57.64149890734604!2d27.37066193569876!3f72.0422935927196!4f5.847451053940759!5f0.7820865974627469frameborder=\"0\" allowfullscreen></iframe>","Latitude": 57.643354, "Longitude": 27.381023}, "geometry": { "type": "Point", "coordinates": [ 27.381023,57.643354] } },
+			{ "type": "Feature", "properties": { "Title": "Narva , Estonia - Russia", "Type": "Railway", "video": "<iframe width=\"100%\" height=\"200\" src=\"https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d1440.0164110083847!2d28.203944315464614!3d59.36693298167202!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x0%3A0x0!2zNTnCsDIyJzAxLjAiTiAyOMKwMTInMjIuMSJF!5e1!3m2!1sen!2sie!4v1538168930238frameborder=\"0\" allowfullscreen></iframe>","Latitude": 59.366933, "Longitude": 28.206133}, "geometry": { "type": "Point", "coordinates": [ 28.206133,59.366933] } },
+			{ "type": "Feature", "properties": { "Title": "Narva 1 , Estonia - Russia", "Type": "Road", "video": "<iframe width=\"100%\" height=\"200\" src=\"https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d2904.2454121239666!2d28.20154103847915!3d59.37630781724849!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x0%3A0x0!2zNTnCsDIyJzM1LjciTiAyOMKwMTInMTQuOSJF!5e1!3m2!1sen!2sie!4v1538168772798frameborder=\"0\" allowfullscreen></iframe>","Latitude": 59.37658, "Longitude": 28.204135}, "geometry": { "type": "Point", "coordinates": [ 28.204135,59.37658] } },
+			{ "type": "Feature", "properties": { "Title": "Saatse , Estonia - Russia", "Type": "Road", "video": "<iframe width=\"100%\" height=\"200\" src=\"https://www.google.com/maps/embed?pb=!4v1538169136006!6m8!1m7!1ss_3MzzOPCnM-IDimRZ7CJg!2m2!1d57.89277887845662!2d27.81640006749807!3f22.4613582619722!4f-0.8821495737893912!5f0.7820865974627469frameborder=\"0\" allowfullscreen></iframe>","Latitude": 57.891926, "Longitude": 27.815374}, "geometry": { "type": "Point", "coordinates": [ 27.815374,57.891926] } },
+			{ "type": "Feature", "properties": { "Title": "Imatra , Finland - Russia", "Type": "Railway", "video": "<iframe width=\"100%\" height=\"200\" src=\"https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d5309.9231394745775!2d28.822380873192696!3d61.12508044328615!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x0%3A0x0!2zNjHCsDA3JzI5LjIiTiAyOMKwNDknNTYuMSJF!5e1!3m2!1sen!2sie!4v1538169413072frameborder=\"0\" allowfullscreen></iframe>","Latitude": 61.126067, "Longitude": 28.836921}, "geometry": { "type": "Point", "coordinates": [ 28.836921,61.126067] } },
+			{ "type": "Feature", "properties": { "Title": "Imatra , Finland - Russia", "Type": "Road", "video": "<iframe width=\"100%\" height=\"200\" src=\"https://www.google.com/maps/embed?pb=!4v1538169316297!6m8!1m7!1sCAoSK0FGMVFpcE5WYzU5U1pLTmU3UFhTQlpuRGZWRkhaclhld2ZPVTlSUUpWRTg.!2m2!1d61.13082268879762!2d28.82306989038565!3f121.31184984062847!4f9.116677020101406!5f0.7820865974627469frameborder=\"0\" allowfullscreen></iframe>","Latitude": 61.126067, "Longitude": 28.836921}, "geometry": { "type": "Point", "coordinates": [ 28.836921,61.126067] } },
+			{ "type": "Feature", "properties": { "Title": "Inari , Finland - Russia", "Type": "Road", "video": "<iframe width=\"100%\" height=\"200\" src=\"https://www.google.com/maps/embed?pb=!4v1538169680551!6m8!1m7!1s4TXQvvhEsfr4hzl6_D4lxg!2m2!1d68.4765286925671!2d28.46133557813187!3f96.92042863215335!4f0.44612994170365994!5f0.7820865974627469frameborder=\"0\" allowfullscreen></iframe>","Latitude": 68.476033, "Longitude": 28.473092}, "geometry": { "type": "Point", "coordinates": [ 28.473092,68.476033] } },
+			{ "type": "Feature", "properties": { "Title": "Kuusamo , Finland - Russia", "Type": "Road", "video": "<iframe width=\"100%\" height=\"200\" src=\"https://www.google.com/maps/embed?pb=!4v1538169813147!6m8!1m7!1scYfBAbRm-S9H-Hu8aEPf5g!2m2!1d65.79909437461191!2d30.09869740905393!3f139.15387293784502!4f1.491746751061953!5f0.7820865974627469frameborder=\"0\" allowfullscreen></iframe>","Latitude": 65.79824, "Longitude": 30.103247}, "geometry": { "type": "Point", "coordinates": [ 30.103247,65.79824] } },
+			{ "type": "Feature", "properties": { "Title": "Niirala , Finland - Russia", "Type": "Road", "video": "<iframe width=\"100%\" height=\"200\" src=\"https://www.google.com/maps/embed?pb=!4v1538169959813!6m8!1m7!1sdzs1srL2yD3jY-g5yK5acg!2m2!1d62.17385664372409!2d30.6043587888907!3f101.36279287318811!4f2.408598536455699!5f0.7820865974627469frameborder=\"0\" allowfullscreen></iframe>","Latitude": 62.170425, "Longitude": 30.631287}, "geometry": { "type": "Point", "coordinates": [ 30.631287,62.170425] } },
+			{ "type": "Feature", "properties": { "Title": "Niirala , Finland - Russia", "Type": "Railway", "video": "<iframe width=\"100%\" height=\"200\" src=\"https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d1315.1330805850946!2d30.629861315630603!3d62.17041698274149!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x0%3A0x0!2zNjLCsDEwJzEzLjUiTiAzMMKwMzcnNTUuNCJF!5e1!3m2!1sen!2sie!4v1538170022319frameborder=\"0\" allowfullscreen></iframe>","Latitude": 62.170417, "Longitude": 30.63205}, "geometry": { "type": "Point", "coordinates": [ 30.63205,62.170417] } },
+			{ "type": "Feature", "properties": { "Title": "Nuijamaa , Finland - Russia", "Type": "Road", "video": "<iframe width=\"100%\" height=\"200\" src=\"https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d1065.0545591724315!2d28.534673586617828!3d60.95581626905587!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x0%3A0x0!2zNjDCsDU3JzIxLjIiTiAyOMKwMzInMTEuNyJF!5e1!3m2!1sen!2sie!4v1538170181328frameborder=\"0\" allowfullscreen></iframe>","Latitude": 60.955898, "Longitude": 28.536573}, "geometry": { "type": "Point", "coordinates": [ 28.536573,60.955898] } },
+			{ "type": "Feature", "properties": { "Title": "Parikkala , Finland - Russia", "Type": "Road", "video": "<iframe width=\"100%\" height=\"200\" src=\"https://www.google.com/maps/embed?pb=!4v1538170290582!6m8!1m7!1sVy9ZQ9wAaP0lnA_ut3yAbQ!2m2!1d61.50719870822978!2d29.60800438290641!3f177.66703412163963!4f-0.9758317108563119!5f0.7820865974627469frameborder=\"0\" allowfullscreen></iframe>","Latitude": 61.503231, "Longitude": 29.609512}, "geometry": { "type": "Point", "coordinates": [ 29.609512,61.503231] } },
+			{ "type": "Feature", "properties": { "Title": "Raja-Jooseppi , Finland - Russia", "Type": "Road", "video": "<iframe width=\"100%\" height=\"200\" src=\"https://www.google.com/maps/embed?pb=!4v1538170929689!6m8!1m7!1s4TXQvvhEsfr4hzl6_D4lxg!2m2!1d68.4765286925671!2d28.46133557813187!3f96.30446694033398!4f-10.283706190081077!5f0.7820865974627469frameborder=\"0\" allowfullscreen></iframe>","Latitude": 68.476145, "Longitude": 28.473048}, "geometry": { "type": "Point", "coordinates": [ 28.473048,68.476145] } },
+			{ "type": "Feature", "properties": { "Title": "Salla , Finland - Russia", "Type": "Road", "video": "<iframe width=\"100%\" height=\"200\" src=\"https://www.google.com/maps/embed?pb=!4v1538171291944!6m8!1m7!1sWbErRxw6JlCQ_u4rzgiAPg!2m2!1d66.94178431508797!2d29.0185114987943!3f70.43785977815654!4f2.293492850422439!5f0.7820865974627469frameborder=\"0\" allowfullscreen></iframe>","Latitude": 66.94443, "Longitude": 29.034644}, "geometry": { "type": "Point", "coordinates": [ 29.034644,66.94443] } },
+			{ "type": "Feature", "properties": { "Title": "Vaalimaa , Finland - Russia", "Type": "Road", "video": "<iframe width=\"100%\" height=\"200\" src=\"https://www.google.com/maps/embed?pb=!4v1538171504919!6m8!1m7!1sOIBvyiGNU7gWGAy2q7rKkQ!2m2!1d60.60538076894095!2d27.84962271876716!3f76.98990841878957!4f6.079226810466366!5f0.7820865974627469frameborder=\"0\" allowfullscreen></iframe>","Latitude": 60.604696, "Longitude": 27.873505}, "geometry": { "type": "Point", "coordinates": [ 27.873505,60.604696] } },
+			{ "type": "Feature", "properties": { "Title": "Vainikkala  , Finland - Russia", "Type": "Railway", "video": "<iframe width=\"100%\" height=\"200\" src=\"https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d14483.563961590058!2d28.302966243051927!3d60.85783176802255!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x0%3A0x0!2zNjDCsDUxJzE5LjAiTiAyOMKwMjAnMTYuNyJF!5e1!3m2!1sen!2sie!4v1538171604855frameborder=\"0\" allowfullscreen></iframe>","Latitude": 60.855264, "Longitude": 28.337965}, "geometry": { "type": "Point", "coordinates": [ 28.337965,60.855264] } },
+			{ "type": "Feature", "properties": { "Title": "Vartius , Finland - Russia", "Type": "Road", "video": "<iframe width=\"100%\" height=\"200\" src=\"https://www.google.com/maps/embed?pb=!4v1538171682997!6m8!1m7!1sDp6dw8ZgHPzXJyPwEyZIlw!2m2!1d64.54502318654019!2d29.98376952443185!3f108.69407087337476!4f-0.5650317738990935!5f0.7820865974627469frameborder=\"0\" allowfullscreen></iframe>","Latitude": 64.545482, "Longitude": 29.990583}, "geometry": { "type": "Point", "coordinates": [ 29.990583,64.545482] } },
+			{ "type": "Feature", "properties": { "Title": "Vartius , Finland - Russia", "Type": "Railway", "video": "<iframe width=\"100%\" height=\"200\" src=\"https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3840.092753033231!2d29.982808092584246!3d64.54491635225278!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x0%3A0x0!2zNjTCsDMyJzQ1LjQiTiAyOcKwNTknMjYuNyJF!5e1!3m2!1sen!2sie!4v1538171758016frameborder=\"0\" allowfullscreen></iframe>","Latitude": 64.545949, "Longitude": 29.99075}, "geometry": { "type": "Point", "coordinates": [ 29.99075,64.545949] } },
+			{ "type": "Feature", "properties": { "Title": "Barabas , Hungary - Ukraine", "Type": "Road", "video": "<iframe width=\"100%\" height=\"200\" src=\"https://www.google.com/maps/embed?pb=!4v1538171930791!6m8!1m7!1stImngGMXN8ycujOrQ0Xi5Q!2m2!1d48.24483186221281!2d22.44443075289153!3f38.64190867560655!4f0.8560610572378096!5f0.7820865974627469frameborder=\"0\" allowfullscreen></iframe>","Latitude": 48.245787, "Longitude": 22.445887}, "geometry": { "type": "Point", "coordinates": [ 22.445887,48.245787] } },
+			{ "type": "Feature", "properties": { "Title": "Beregsurany , Hungary - Ukraine", "Type": "Road", "video": "<iframe width=\"100%\" height=\"200\" src=\"https://www.google.com/maps/embed?pb=!4v1538172022459!6m8!1m7!1s7eG_fdFcaOHvLvlBJBn-Iw!2m2!1d48.16344749886558!2d22.5678648791821!3f68.99870555452134!4f0.03331208249576889!5f1.9587109090973311frameborder=\"0\" allowfullscreen></iframe>","Latitude": 48.165049, "Longitude": 22.573257}, "geometry": { "type": "Point", "coordinates": [ 22.573257,48.165049] } },
+			{ "type": "Feature", "properties": { "Title": "Eperjeske , Hungary - Ukraine", "Type": "Railway", "video": "<iframe width=\"100%\" height=\"200\" src=\"https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3760.8544801649414!2d22.25201289428855!3d48.37399886996937!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x0%3A0x0!2zNDjCsDIyJzI2LjQiTiAyMsKwMTUnMjMuMCJF!5e1!3m2!1sen!2sie!4v1538172175087frameborder=\"0\" allowfullscreen></iframe>","Latitude": 48.373999, "Longitude": 22.256392}, "geometry": { "type": "Point", "coordinates": [ 22.256392,48.373999] } },
+			{ "type": "Feature", "properties": { "Title": "Lonya , Hungary - Ukraine", "Type": "Road", "video": "<iframe width=\"100%\" height=\"200\" src=\"https://www.google.com/maps/embed?pb=!4v1538172373454!6m8!1m7!1sNLZC3f8CDON2XDIZHvXeuA!2m2!1d48.31998909978658!2d22.31653654225238!3f140.75939301702775!4f1.6312422279778218!5f2.299968626952992frameborder=\"0\" allowfullscreen></iframe>","Latitude": 48.318033, "Longitude": 22.318627}, "geometry": { "type": "Point", "coordinates": [ 22.318627,48.318033] } },
+			{ "type": "Feature", "properties": { "Title": "Nagyhodos , Hungary - Ukraine", "Type": "Road", "video": "<iframe width=\"100%\" height=\"200\" src=\"https://www.google.com/maps/embed?pb=!4v1538172934464!6m8!1m7!1s_wWgxfZE1j70KACcNuCzvg!2m2!1d47.85430295465461!2d22.77144141940716!3f95.91999252452833!4f4.57502648641217!5f0.7820865974627469frameborder=\"0\" allowfullscreen></iframe>","Latitude": 47.852843, "Longitude": 22.77699}, "geometry": { "type": "Point", "coordinates": [ 22.77699,47.852843] } },
+			{ "type": "Feature", "properties": { "Title": "Tiszabecs (River) , Hungary - Ukraine", "Type": "River", "video": "<iframe width=\"100%\" height=\"200\" src=\"https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d5153.872072619068!2d22.823115223890827!3d48.10011054014586!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x0%3A0x0!2zNDjCsDA1JzU3LjAiTiAyMsKwNDknNDAuNiJF!5e1!3m2!1sen!2sie!4v1538173530731frameborder=\"0\" allowfullscreen></iframe>","Latitude": 48.099158, "Longitude": 22.827939}, "geometry": { "type": "Point", "coordinates": [ 22.827939,48.099158] } },
+			{ "type": "Feature", "properties": { "Title": "Tiszabecs (Road) , Hungary - Ukraine", "Type": "Road", "video": "<iframe width=\"100%\" height=\"200\" src=\"https://www.google.com/maps/embed?pb=!4v1538173075014!6m8!1m7!1stZCtqR55c4-a_TIS7SgayQ!2m2!1d48.09224316071148!2d22.82772706264342!3f99.6279483943919!4f-0.5521400165577717!5f1.9587109090973311frameborder=\"0\" allowfullscreen></iframe>","Latitude": 48.09323, "Longitude": 22.834499}, "geometry": { "type": "Point", "coordinates": [ 22.834499,48.09323] } },
+			{ "type": "Feature", "properties": { "Title": "Zahony , Hungary - Ukraine", "Type": "Road", "video": "<iframe width=\"100%\" height=\"200\" src=\"https://www.google.com/maps/embed?pb=!4v1538173989297!6m8!1m7!1sk3k-A4EaP2Gic37MnxINJA!2m2!1d48.41935132656835!2d22.17021078875659!3f172.07422283481066!4f5.051996638295137!5f1.9587109090973311frameborder=\"0\" allowfullscreen></iframe>","Latitude": 48.413579, "Longitude": 22.171686}, "geometry": { "type": "Point", "coordinates": [ 22.171686,48.413579] } },
+			{ "type": "Feature", "properties": { "Title": "Zahony , Hungary - Ukraine", "Type": "Railway", "video": "<iframe width=\"100%\" height=\"200\" src=\"https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d2082.2340538584745!2d22.182593922486753!3d48.41521373224452!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x0%3A0x0!2zNDjCsDI0JzU0LjgiTiAyMsKwMTEnMDUuOSJF!5e1!3m2!1sen!2sie!4v1538174180244frameborder=\"0\" allowfullscreen></iframe>","Latitude": 48.404683, "Longitude": 22.177433}, "geometry": { "type": "Point", "coordinates": [ 22.177433,48.404683] } },
+			{ "type": "Feature", "properties": { "Title": "Grebneva , Latvia - Russia", "Type": "Road", "video": "<iframe width=\"100%\" height=\"200\" src=\"https://www.google.com/maps/embed?pb=!4v1538174453230!6m8!1m7!1sMKIfTM8H6QvVbJTIlh9pPw!2m2!1d56.86538116568232!2d27.82463390216478!3f41.18839118759461!4f0.008889018134809135!5f2.299968626952992frameborder=\"0\" allowfullscreen></iframe>","Latitude": 56.872146, "Longitude": 27.833157}, "geometry": { "type": "Point", "coordinates": [ 27.833157,56.872146] } },
+			{ "type": "Feature", "properties": { "Title": "Kaplava , Latvia - Belarus", "Type": "Road", "video": "<iframe width=\"100%\" height=\"200\" src=\"https://www.google.com/maps/embed?pb=!4v1538176144729!6m8!1m7!1s2WCm7ivEzQ-jPCUZiFD8Aw!2m2!1d55.71937678596095!2d26.86679142041244!3f121.50409607076102!4f-0.1572596919196343!5f1.9587109090973311frameborder=\"0\" allowfullscreen></iframe>","Latitude": 55.718194, "Longitude": 26.873453}, "geometry": { "type": "Point", "coordinates": [ 26.873453,55.718194] } },
+			{ "type": "Feature", "properties": { "Title": "Karsava , Latvia - Russia", "Type": "Railway", "video": "<iframe width=\"100%\" height=\"200\" src=\"https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d1858.5842612461024!2d27.726197266370264!3d56.85332038891504!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x0%3A0x0!2zNTbCsDUxJzExLjYiTiAyN8KwNDMnNDIuNyJF!5e1!3m2!1sen!2sie!4v1538177131881frameborder=\"0\" allowfullscreen></iframe>","Latitude": 56.853221, "Longitude": 27.72852}, "geometry": { "type": "Point", "coordinates": [ 27.72852,56.853221] } },
+			{ "type": "Feature", "properties": { "Title": "Pededze , Latvia - Russia", "Type": "Road", "video": "<iframe width=\"100%\" height=\"200\" src=\"https://www.google.com/maps/embed?pb=!4v1538178570805!6m8!1m7!1scjOyhRR2bb91KnG2TdbqHQ!2m2!1d57.5322265930472!2d27.47480894247356!3f355.543137532725!4f-5.670652523658475!5f0.7820865974627469frameborder=\"0\" allowfullscreen></iframe>","Latitude": 57.53519, "Longitude": 27.472382}, "geometry": { "type": "Point", "coordinates": [ 27.472382,57.53519] } },
+			{ "type": "Feature", "properties": { "Title": "Piedruja , Latvia - Belarus", "Type": "Road", "video": "<iframe width=\"100%\" height=\"200\" src=\"https://www.google.com/maps/embed?pb=!4v1538178822920!6m8!1m7!1ssrF0qBQFp3Xp6PQka59rCQ!2m2!1d55.81987184051477!2d27.62145520382051!3f78.3468125723725!4f-0.6126551097992632!5f0.7820865974627469frameborder=\"0\" allowfullscreen></iframe>","Latitude": 55.796318, "Longitude": 27.443598}, "geometry": { "type": "Point", "coordinates": [ 27.443598,55.796318] } },
+			{ "type": "Feature", "properties": { "Title": "Silene , Latvia - Belarus", "Type": "Road", "video": "<iframe width=\"100%\" height=\"200\" src=\"https://www.google.com/maps/embed?pb=!4v1538178927586!6m8!1m7!1syUSE3-hozNrv61hiW-jQSA!2m2!1d55.71939066237749!2d26.86692094540855!3f118.68551320410944!4f-0.14993039424464882!5f0.7820865974627469frameborder=\"0\" allowfullscreen></iframe>","Latitude": 55.718147, "Longitude": 26.873614}, "geometry": { "type": "Point", "coordinates": [ 26.873614,55.718147] } },
+			{ "type": "Feature", "properties": { "Title": "Terehova , Latvia - Russia", "Type": "Road", "video": "<iframe width=\"100%\" height=\"200\" src=\"https://www.google.com/maps/embed?pb=!4v1538179046752!6m8!1m7!1sDMA4P_X8WgPFObt2Mkv_Bw!2m2!1d56.35539835211905!2d28.18148838554613!3f105.78612835133109!4f5.159952925511178!5f0.7820865974627469frameborder=\"0\" allowfullscreen></iframe>","Latitude": 56.353064, "Longitude": 28.184854}, "geometry": { "type": "Point", "coordinates": [ 28.184854,56.353064] } },
+			{ "type": "Feature", "properties": { "Title": "Vientuli , Latvia - Russia", "Type": "Road", "video": "<iframe width=\"100%\" height=\"200\" src=\"https://www.google.com/maps/embed?pb=!4v1538179240383!6m8!1m7!1srMe-qR1uHC_wIx_0V4UvLw!2m2!1d57.13648809998946!2d27.7693975070784!3f139.04272193943203!4f0.026127972080871587!5f3.325193203789971frameborder=\"0\" allowfullscreen></iframe>","Latitude": 57.134229, "Longitude": 27.773208}, "geometry": { "type": "Point", "coordinates": [ 27.773208,57.134229] } },
+			{ "type": "Feature", "properties": { "Title": "Zilupe , Latvia - Russia", "Type": "Railway", "video": "<iframe width=\"100%\" height=\"200\" src=\"https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d1563.962079665741!2d28.170523729116674!3d56.3888178817202!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x0%3A0x0!2zNTbCsDIzJzE5LjAiTiAyOMKwMTAnMjEuMyJF!5e1!3m2!1sen!2sie!4v1538179301772frameborder=\"0\" allowfullscreen></iframe>","Latitude": 56.387721, "Longitude": 28.119561}, "geometry": { "type": "Point", "coordinates": [ 28.119561,56.387721] } },
+			{ "type": "Feature", "properties": { "Title": "Adutiskis , Lithuania - Belarus", "Type": "Road", "video": "<iframe width=\"100%\" height=\"200\" src=\"https://www.google.com/maps/embed?pb=!4v1538179523578!6m8!1m7!1s53hW4mFItSYc_iNhzL-UbA!2m2!1d55.15082452501044!2d26.62103601585807!3f116.95704861026297!4f-1.5868532120788075!5f0.7820865974627469frameborder=\"0\" allowfullscreen></iframe>","Latitude": 55.149411, "Longitude": 26.625066}, "geometry": { "type": "Point", "coordinates": [ 26.625066,55.149411] } },
+			{ "type": "Feature", "properties": { "Title": "Eisiskes , Lithuania - Belarus", "Type": "Road", "video": "<iframe width=\"100%\" height=\"200\" src=\"https://www.google.com/maps/embed?pb=!4v1538179790483!6m8!1m7!1sHEN6q3t3Adansl80XrlAGw!2m2!1d54.1416408793583!2d25.01618083723455!3f222.46829508337592!4f-5.088351917670337!5f0.7820865974627469frameborder=\"0\" allowfullscreen></iframe>","Latitude": 54.174252, "Longitude": 24.999369}, "geometry": { "type": "Point", "coordinates": [ 24.999369,54.174252] } },
+			 { "type": "Feature", "properties": { "Title": "Kena , Lithuania - Belarus", "Type": "Railway", "video": "<iframe width=\"100%\" height=\"200\" src=\"https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d1007.2749627837634!2d25.755925639397052!3d54.594631973488404!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x0%3A0x0!2zNTTCsDM1JzQwLjYiTiAyNcKwNDUnMjcuMCJF!5e1!3m2!1sen!2sie!4v1538180844533frameborder=\"0\" allowfullscreen></iframe>","Latitude": 54.59462, "Longitude": 25.757485}, "geometry": { "type": "Point", "coordinates": [ 25.757485,54.59462] } },
+			{ "type": "Feature", "properties": { "Title": "Kybartai , Lithuania - Russia", "Type": "Road", "video": "<iframe width=\"100%\" height=\"200\" src=\"https://www.google.com/maps/embed?pb=!4v1538181082277!6m8!1m7!1sGcc5mlDopbycrkvPE5N4RA!2m2!1d54.64166592911258!2d22.74700044955889!3f312.37447019197344!4f4.505052692877243!5f0.7820865974627469frameborder=\"0\" allowfullscreen></iframe>","Latitude": 54.641684, "Longitude": 22.743935}, "geometry": { "type": "Point", "coordinates": [ 22.743935,54.641684] } },
+			{ "type": "Feature", "properties": { "Title": "Kybartai , Lithuania - Russia", "Type": "Railway", "video": "<iframe width=\"100%\" height=\"200\" src=\"https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d1639.7686120404796!2d22.744927315195717!3d54.640089980270496!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x0%3A0x0!2zNTTCsDM4JzI0LjMiTiAyMsKwNDQnNDkuNiJF!5e1!3m2!1sen!2sie!4v1538181329884frameborder=\"0\" allowfullscreen></iframe>","Latitude": 54.64009, "Longitude": 22.747116}, "geometry": { "type": "Point", "coordinates": [ 22.747116,54.64009] } },
+			{ "type": "Feature", "properties": { "Title": "Latezeris , Lithuania - Belarus", "Type": "Road", "video": "<iframe width=\"100%\" height=\"200\" src=\"https://www.google.com/maps/embed?pb=!4v1538181468245!6m8!1m7!1s_6ZoZlQMo9zAP8GGtppE8w!2m2!1d53.93883808457574!2d24.07827533314824!3f142.10948559680935!4f0.14311879756230894!5f0.7820865974627469frameborder=\"0\" allowfullscreen></iframe>","Latitude": 53.937858, "Longitude": 24.080457}, "geometry": { "type": "Point", "coordinates": [ 24.080457,53.937858] } },
+			{ "type": "Feature", "properties": { "Title": "Lavoriskes , Lithuania - Belarus", "Type": "Road", "video": "<iframe width=\"100%\" height=\"200\" src=\"https://www.google.com/maps/embed?pb=!4v1538181594872!6m8!1m7!1svKkrmfaFch2JacqY6n0tIQ!2m2!1d54.7155200372551!2d25.73928702805804!3f89.31666335299174!4f2.5969454660260283!5f0.7820865974627469frameborder=\"0\" allowfullscreen></iframe>","Latitude": 54.718724, "Longitude": 25.745301}, "geometry": { "type": "Point", "coordinates": [ 25.745301,54.718724] } },
+			{ "type": "Feature", "properties": { "Title": "Medininkai , Lithuania - Belarus", "Type": "Road", "video": "<iframe width=\"100%\" height=\"200\" src=\"https://www.google.com/maps/embed?pb=!4v1538181698044!6m8!1m7!1sQ6fduwc7CVJVjX0JsrKAkg!2m2!1d54.54636847938931!2d25.69115036377814!3f78.34724359048658!4f0.40679108224902905!5f0.7820865974627469frameborder=\"0\" allowfullscreen></iframe>","Latitude": 54.544475, "Longitude": 25.699214}, "geometry": { "type": "Point", "coordinates": [ 25.699214,54.544475] } },
+			{ "type": "Feature", "properties": { "Title": "Nida , Lithuania", "Type": "Road", "video": "<iframe width=\"100%\" height=\"200\" src=\"https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d440611.1584884965!2d20.30034845264874!3d55.28560296859837!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x0%3A0x0!2zNTXCsDEzJzQzLjkiTiAyMMKwNTUnMDAuMyJF!5e1!3m2!1sen!2sie!4v1538181837212frameborder=\"0\" allowfullscreen></iframe>","Latitude": 55.228846, "Longitude": 20.916739}, "geometry": { "type": "Point", "coordinates": [ 20.916739,55.228846] } },
+			{ "type": "Feature", "properties": { "Title": "Nida , Lithuania - Russia", "Type": "River-Ferry", "video": "<iframe width=\"100%\" height=\"200\" src=\"https://www.google.com/maps/embed?pb=!4v1539729444466!6m8!1m7!1sSQJS1nDBOhvLtYPaT3VK8Q!2m2!1d55.30249172834408!2d21.00992266128046!3f11.917753032840096!4f10.336809896457595!5f0.7820865974627469frameborder=\"0\" allowfullscreen></iframe>","Latitude": 55.302965, "Longitude": 21.004113}, "geometry": { "type": "Point", "coordinates": [ 21.004113,55.302965] } },
+			{ "type": "Feature", "properties": { "Title": "Norviliskes , Lithuania - Russia", "Type": "Road", "video": "<iframe width=\"100%\" height=\"200\" src=\"https://www.google.com/maps/embed?pb=!4v1539729741265!6m8!1m7!1s4iRVY9KFYPyLmPOz6IxuiA!2m2!1d54.27445792197721!2d25.72926904328896!3f1.1958426623668288!4f15.568207350740863!5f0.7820865974627469frameborder=\"0\" allowfullscreen></iframe>","Latitude": 54.237437, "Longitude": 25.760797}, "geometry": { "type": "Point", "coordinates": [ 25.760797,54.237437] } },
+			{ "type": "Feature", "properties": { "Title": "Pagegiai , Lithuania - Russia", "Type": "Railway", "video": "<iframe width=\"100%\" height=\"200\" src=\"https://www.google.com/maps/embed?pb=!4v1539729956295!6m8!1m7!1s26N1nkASWOKAGLI63NSXwg!2m2!1d55.09363576467305!2d21.88889706431589!3f184.81760526085313!4f4.549586465057899!5f0.7820865974627469frameborder=\"0\" allowfullscreen></iframe>","Latitude": 55.134312, "Longitude": 21.904681}, "geometry": { "type": "Point", "coordinates": [ 21.904681,55.134312] } },
+			{ "type": "Feature", "properties": { "Title": "Panemune , Lithuania - Russia", "Type": "Road", "video": "<iframe width=\"100%\" height=\"200\" src=\"https://www.google.com/maps/embed?pb=!4v1539730203781!6m8!1m7!1sfTHcGwoKXSW4X9AniFy_RQ!2m2!1d55.08674797159374!2d21.90978409448748!3f233.4527721379104!4f3.9316988297677256!5f0.7820865974627469frameborder=\"0\" allowfullscreen></iframe>","Latitude": 55.08944, "Longitude": 21.902155}, "geometry": { "type": "Point", "coordinates": [ 21.902155,55.08944] } },
+			{ "type": "Feature", "properties": { "Title": "Papelekis , Lithuania - Belarus", "Type": "Road", "video": "<iframe width=\"100%\" height=\"200\" src=\"https://www.google.com/maps/embed?pb=!4v1539731218846!6m8!1m7!1sO6XqhhRkarrltApeqOxO7Q!2m2!1d55.08559074661415!2d26.25845960162288!3f136.61352601243829!4f4.528307019144179!5f0.7820865974627469frameborder=\"0\" allowfullscreen></iframe>","Latitude": 55.082622, "Longitude": 26.256693}, "geometry": { "type": "Point", "coordinates": [ 26.256693,55.082622] } },
+			{ "type": "Feature", "properties": { "Title": "Prienai , Lithuania - Belarus", "Type": "Road", "video": "<iframe width=\"100%\" height=\"200\" src=\"https://www.google.com/maps/embed?pb=!4v1539731994529!6m8!1m7!1s0RbKk2KdJfuNnM21D0z8sw!2m2!1d54.87203754064762!2d25.80651565882441!3f107.82334976490915!4f6.084557231220458!5f0.7820865974627469frameborder=\"0\" allowfullscreen></iframe>","Latitude": 54.680498, "Longitude": 25.02213}, "geometry": { "type": "Point", "coordinates": [ 25.02213,54.680498] } },
+			{ "type": "Feature", "properties": { "Title": "Raigardas , Lithuania - Belarus", "Type": "Road", "video": "<iframe width=\"100%\" height=\"200\" src=\"https://www.google.com/maps/embed?pb=!4v1539732338160!6m8!1m7!1s3NIGqp0L7vZplBX12ltORg!2m2!1d53.94437464725777!2d23.97761065711816!3f222.86160139630059!4f5.032322527273465!5f0.7820865974627469frameborder=\"0\" allowfullscreen></iframe>","Latitude": 53.944241, "Longitude": 23.918448}, "geometry": { "type": "Point", "coordinates": [ 23.918448,53.944241] } },
+			{ "type": "Feature", "properties": { "Title": "Rakai , Lithuania - Belarus", "Type": "Road", "video": "<iframe width=\"100%\" height=\"200\" src=\"https://www.google.com/maps/embed?pb=!4v1539732434995!6m8!1m7!1sZkUUl8J2GjCEoRHW8cnTWQ!2m2!1d53.96710757889493!2d24.70626553765432!3f243.34797708772803!4f-0.15851554997742312!5f0.7820865974627469frameborder=\"0\" allowfullscreen></iframe>","Latitude": 53.974543, "Longitude": 24.705869}, "geometry": { "type": "Point", "coordinates": [ 24.705869,53.974543] } },
+			{ "type": "Feature", "properties": { "Title": "Ramoniskiai , Lithuania - Russia", "Type": "Road", "video": "<iframe width=\"100%\" height=\"200\" src=\"https://www.google.com/maps/embed?pb=!4v1539734129728!6m8!1m7!1sfr4__9XYhgcXB38wdYnyww!2m2!1d54.64171628343003!2d22.74677528964944!3f331.142551001851!4f2.163537547376592!5f0.7820865974627469frameborder=\"0\" allowfullscreen></iframe>","Latitude": 54.675679, "Longitude": 23.275987}, "geometry": { "type": "Point", "coordinates": [ 23.275987,54.675679] } },
+			{ "type": "Feature", "properties": { "Title": "Salcininkai , Lithuania - Belarus", "Type": "Road", "video": "<iframe width=\"100%\" height=\"200\" src=\"https://www.google.com/maps/embed?pb=!4v1541540096229!6m8!1m7!1sCEfvU0dbZxlKacsj47biRw!2m2!1d54.27648047428195!2d25.3755878239026!3f184.63841039164583!4f-4.796157535607989!5f0.7820865974627469frameborder=\"0\" allowfullscreen></iframe>","Latitude": 54.2764805, "Longitude": 25.375587}, "geometry": { "type": "Point", "coordinates": [ 25.375587,54.2764805] } },
+			{ "type": "Feature", "properties": { "Title": "Stasylos , Lithuania - Belarus", "Type": "Railway", "video": "<iframe width=\"100%\" height=\"200\" src=\"https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d1638.4623806889078!2d25.35107395072188!3d54.26401898008431!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x0%3A0x0!2zNTTCsDE1JzUwLjUiTiAyNcKwMjEnMTEuOCJF!5e1!3m2!1sen!2sie!4v1541541516630frameborder=\"0\" allowfullscreen></iframe>","Latitude": 54.342497, "Longitude": 25.334284}, "geometry": { "type": "Point", "coordinates": [ 25.334284,54.342497] } },
+			{ "type": "Feature", "properties": { "Title": "Sumskas , Lithuania - Belarus", "Type": "Road", "video": "<iframe width=\"100%\" height=\"200\" src=\"https://www.google.com/maps/embed?pb=!4v1541541586782!6m8!1m7!1sSzBdgj65k_iT6iGV2A7b8A!2m2!1d54.591372104063!2d25.75659184968473!3f67.61066961995778!4f0.6225607871066785!5f0.7820865974627469frameborder=\"0\" allowfullscreen></iframe>","Latitude": 54.5913721, "Longitude": 25.7565918}, "geometry": { "type": "Point", "coordinates": [ 25.7565918,54.5913721] } },
+			{ "type": "Feature", "properties": { "Title": "Svendubre , Lithuania - Belarus", "Type": "River-Ferry", "video": "<iframe width=\"100%\" height=\"200\" src=\"https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d1650.138059292157!2d23.910882315140494!3d53.96969898011437!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x0%3A0x0!2zNTPCsDU4JzEwLjkiTiAyM8KwNTQnNDcuMSJF!5e1!3m2!1sen!2sie!4v1541542260348frameborder=\"0\" allowfullscreen></iframe>","Latitude": 53.969699, "Longitude": 23.913071}, "geometry": { "type": "Point", "coordinates": [ 23.913071,53.969699] } },
+			{ "type": "Feature", "properties": { "Title": "Tverecius , Lithuania - Belarus", "Type": "Road", "video": "<iframe width=\"100%\" height=\"200\" src=\"https://www.google.com/maps/embed?pb=!4v1541543050379!6m8!1m7!1sdScLEowNpAbBZUcpLsbPxw!2m2!1d55.32135381753965!2d26.63463146099416!3f9.803765750428358!4f0.9941831742948608!5f0.7820865974627469frameborder=\"0\" allowfullscreen></iframe>","Latitude": 55.3213538, "Longitude": 26.6346315}, "geometry": { "type": "Point", "coordinates": [ 26.6346315,55.3213538] } },
+			{ "type": "Feature", "properties": { "Title": "Ureliai , Lithuania - Belarus", "Type": "Road", "video": "<iframe width=\"100%\" height=\"200\" src=\"https://www.google.com/maps/embed?pb=!4v1541543154829!6m8!1m7!1sPQ_mbAzFdP0lvW3NxyN1yA!2m2!1d54.2743843233047!2d25.72922315379975!3f5.105469904913829!4f-0.48419707956973923!5f0.7820865974627469frameborder=\"0\" allowfullscreen></iframe>","Latitude": 54.2743843, "Longitude": 25.7292232}, "geometry": { "type": "Point", "coordinates": [ 25.7292232,54.2743843] } },
+			{ "type": "Feature", "properties": { "Title": "Storskog , Norway - Sweden", "Type": "Road", "video": "<iframe width=\"100%\" height=\"200\" src=\"https://www.google.com/maps/embed?pb=!4v1541543367840!6m8!1m7!1sP7xVx7UmKb65QgyQFckV5g!2m2!1d64.56365579312849!2d13.70901592261572!3f191.39030258175117!4f-3.789307436816358!5f0.7820865974627469frameborder=\"0\" allowfullscreen></iframe>","Latitude": 64.5636558, "Longitude": 13.7090159}, "geometry": { "type": "Point", "coordinates": [ 13.7090159,64.5636558] } },
+			{ "type": "Feature", "properties": { "Title": "Bezledy (road) , Poland - Russia", "Type": "Road", "video": "<iframe width=\"100%\" height=\"200\" src=\"https://www.google.com/maps/embed?pb=!4v1541543804489!6m8!1m7!1s_5ajJlpceDMW4U60SutzSg!2m2!1d54.36931358860178!2d20.66345035845958!3f126.76638573349382!4f-9.153475732301445!5f0.7820865974627469frameborder=\"0\" allowfullscreen></iframe>","Latitude": 54.3693136, "Longitude": 20.6634504}, "geometry": { "type": "Point", "coordinates": [ 20.6634504,54.3693136] } },
+			{ "type": "Feature", "properties": { "Title": "Bialowieza (road) , Poland - Belarus", "Type": "Road", "video": "<iframe width=\"100%\" height=\"200\" src=\"https://www.google.com/maps/embed?pb=!4v1541543967721!6m8!1m7!1sebXX0S7QdDFVqTsnaBx91w!2m2!1d52.6693722088534!2d23.8557138140374!3f118.17096289022524!4f-0.5173418892982227!5f3.325193203789971frameborder=\"0\" allowfullscreen></iframe>","Latitude": 52.6693722, "Longitude": 23.8557138}, "geometry": { "type": "Point", "coordinates": [ 23.8557138,52.6693722] } },
+			{ "type": "Feature", "properties": { "Title": "Bobrowniki (road) , Poland - Russia", "Type": "Road", "video": "<iframe width=\"100%\" height=\"200\" src=\"https://www.google.com/maps/embed?pb=!4v1541545167399!6m8!1m7!1scTEGM_6crJ7iBjrs9TwFhA!2m2!1d54.36899617226014!2d20.66429736668566!3f301.56541948195195!4f0.774450274778161!5f1.1924812503605782frameborder=\"0\" allowfullscreen></iframe>","Latitude": 54.3689383, "Longitude": 20.6640216}, "geometry": { "type": "Point", "coordinates": [ 20.6640216,54.3689383] } },
+			{ "type": "Feature", "properties": { "Title": "Braniewo (railway) , Poland - Russia", "Type": "Railway", "video": "<iframe width=\"100%\" height=\"200\" src=\"https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d2173.834670983966!2d19.871151629797595!3d54.43665009351941!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x0%3A0x0!2zNTTCsDI2JzExLjkiTiAxOcKwNTInMjQuMCJF!5e1!3m2!1sen!2sie!4v1541545225728frameborder=\"0\" allowfullscreen></iframe>","Latitude": 54.436647, "Longitude": 19.873341}, "geometry": { "type": "Point", "coordinates": [ 19.873341,54.436647] } },
+			{ "type": "Feature", "properties": { "Title": "Budomierz (road) , Poland - Ukraine", "Type": "Road", "video": "<iframe width=\"100%\" height=\"200\" src=\"https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d2397.6050803294274!2d23.276861951010286!3d50.0969744205516!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x0%3A0x0!2zNTDCsDA1JzQ5LjEiTiAyM8KwMTYnNDQuNiJF!5e1!3m2!1sen!2sie!4v1541545284148frameborder=\"0\" allowfullscreen></iframe>","Latitude": 50.0969744, "Longitude":
+			23.276862}, "geometry": { "type": "Point", "coordinates": [ 23.276862, 50.0969744] } },
+			{ "type": "Feature", "properties": { "Title": "Czeremcha (railway) , Poland - Belarus", "Type": "Railway", "video": "<iframe width=\"100%\" height=\"200\" src=\"https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d2430.8029926216386!2d23.350231951098436!3d52.46459524798736!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x0%3A0x0!2zNTLCsDI3JzUyLjUiTiAyM8KwMjEnMDguNyJF!5e0!3m2!1sen!2sie!4v1541545362531frameborder=\"0\" allowfullscreen></iframe>","Latitude": 52.464592, "Longitude": 23.352426}, "geometry": { "type": "Point", "coordinates": [ 23.352426,52.464592] } },
+			{ "type": "Feature", "properties": { "Title": "Dolhobyczow (road) , Poland - Ukraine", "Type": "Road", "video": "<iframe width=\"100%\" height=\"200\" src=\"https://www.google.com/maps/embed?pb=!4v1541545412763!6m8!1m7!1s16HO72aq6bgzVxFiZ5uxWg!2m2!1d50.57799816228793!2d24.09176434258197!3f269.9665415682368!4f2.2259521544420267!5f0.7820865974627469frameborder=\"0\" allowfullscreen></iframe>","Latitude": 50.5779982, "Longitude": 24.0917643}, "geometry": { "type": "Point", "coordinates": [ 24.0917643,50.5779982] } },
+			{ "type": "Feature", "properties": { "Title": "Dorohusk (railway) , Poland - Ukraine", "Type": "Railway", "video": "<iframe width=\"100%\" height=\"200\" src=\"https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d4651.012514105199!2d23.80802355332139!3d51.179616651554944!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x4723897916fbfa9d%3A0x39048383df80f79a!2sDorohusk+(GR)!5e1!3m2!1sen!2sie!4v1541545560017frameborder=\"0\" allowfullscreen></iframe>","Latitude": 51.1796167, "Longitude": 23.8080236}, "geometry": { "type": "Point", "coordinates": [ 23.8080236,51.1796167] } },
+			{ "type": "Feature", "properties": { "Title": "Dorohusk (road) , Poland - Ukraine", "Type": "Road", "video": "<iframe width=\"100%\" height=\"200\" src=\"https://www.google.com/maps/embed?pb=!4v1541545661381!6m8!1m7!1s9c0bfj5ys14kpW8Fhk-o0A!2m2!1d51.17877128760991!2d23.79959427523625!3f66.01116169663756!4f0.9836301647171695!5f0.7820865974627469frameborder=\"0\" allowfullscreen></iframe>","Latitude": 51.1787713, "Longitude": 23.7995943}, "geometry": { "type": "Point", "coordinates": [ 23.7995943,51.1787713] } },
+			{ "type": "Feature", "properties": { "Title": "Goldap (road) , Poland - Russia", "Type": "Road", "video": "<iframe width=\"100%\" height=\"200\" src=\"https://www.google.com/maps/embed?pb=!4v1541545836321!6m8!1m7!1sG30fZhe_j26YPXgobg8yOA!2m2!1d54.33761222444183!2d22.29657269658662!3f12.883176360327031!4f2.286889270450075!5f1.9587109090973311frameborder=\"0\" allowfullscreen></iframe>","Latitude": 54.340874, "Longitude": 22.2913214}, "geometry": { "type": "Point", "coordinates": [ 22.2913214,54.340874] } },
+			{ "type": "Feature", "properties": { "Title": "Gronowo (road) , Poland - Russia", "Type": "Road", "video": "<iframe width=\"100%\" height=\"200\" src=\"https://www.google.com/maps/embed?pb=!4v1541546087506!6m8!1m7!1s-LuoPk8OOz_BPsK9FDTs7A!2m2!1d54.43174272552996!2d19.89452219174659!3f19.16532079717765!4f10.406768837092827!5f0.7820865974627469frameborder=\"0\" allowfullscreen></iframe>","Latitude": 54.4317427, "Longitude": 19.8945222}, "geometry": { "type": "Point", "coordinates": [ 19.8945222,54.4317427] } },
+			{ "type": "Feature", "properties": { "Title": "Grzechotki (road) , Poland - Ukraine", "Type": "Road", "video": "<iframe width=\"100%\" height=\"200\" src=\"https://www.google.com/maps/embed?pb=!4v1541546192687!6m8!1m7!1szJwyop_xtQ13L4bRAUcobQ!2m2!1d54.41574180632731!2d20.05550381459129!3f47.12596113629597!4f0!5f0.7820865974627469frameborder=\"0\" allowfullscreen></iframe>","Latitude": 54.422012, "Longitude": 20.069183}, "geometry": { "type": "Point", "coordinates": [ 20.069183,54.422012] } },
+			{ "type": "Feature", "properties": { "Title": "Hrebenne (road) , Poland - Ukraine", "Type": "Road", "video": "<iframe width=\"100%\" height=\"200\" src=\"https://www.google.com/maps/embed?pb=!4v1541546242338!6m8!1m7!1s-U6n1auEieb0Dji5XPSZNQ!2m2!1d50.27837646711379!2d23.58453616108493!3f154.9653333202655!4f1.2844177099040763!5f0.7820865974627469frameborder=\"0\" allowfullscreen></iframe>","Latitude": 50.274526, "Longitude": 23.588757}, "geometry": { "type": "Point", "coordinates": [ 23.588757,50.274526] } },
+			{ "type": "Feature", "properties": { "Title": "Hrubieszow (railway) , Poland - Ukraine", "Type": "Railway", "video": "<iframe width=\"100%\" height=\"200\" src=\"https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d2368.2334650821986!2d23.9554809510359!3d50.79378737034688!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x0%3A0x0!2zNTDCsDQ3JzM3LjYiTiAyM8KwNTcnMjcuNiJF!5e1!3m2!1sen!2sie!4v1541546546353frameborder=\"0\" allowfullscreen></iframe>","Latitude": 50.7937874, "Longitude": 23.955481}, "geometry": { "type": "Point", "coordinates": [ 23.955481,50.7937874] } },
+			{ "type": "Feature", "properties": { "Title": "Korczowa (road) , Poland - Ukraine", "Type": "Road", "video": "<iframe width=\"100%\" height=\"200\" src=\"https://www.google.com/maps/embed?pb=!4v1541546593889!6m8!1m7!1sHoTYvjoy2078dycOhWUi7w!2m2!1d49.9573329266562!2d23.10954714123447!3f167.805699898617!4f-4.707366323440368!5f0.7820865974627469frameborder=\"0\" allowfullscreen></iframe>","Latitude": 49.9573329, "Longitude": 23.1095471}, "geometry": { "type": "Point", "coordinates": [ 23.1095471,49.9573329] } },
+		 {"type": "Feature", "properties": { "Title": "Kukuryki (road) , Poland - Belarus", "Type": "Road", "video": "<iframe width=\"100%\" height=\"200\" src=\"https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d6696.787024906313!2d23.56295433397617!3d52.12036056953517!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x0%3A0x0!2zNTLCsDA2JzU3LjciTiAyM8KwMzMnNTYuNSJF!5e1!3m2!1sen!2sie!4v1541548061039frameborder=\"0\" allowfullscreen></iframe>","Latitude": 53.5176467, "Longitude": 23.6524039}, "geometry": { "type": "Point", "coordinates": [ 23.6524039,53.5176467] } },
+		 { "type": "Feature", "properties": { "Title": "Kuznica Bialostocka (railway) , Poland - Belarus", "Type": "Railway", "video": "<iframe width=\"100%\" height=\"200\" src=\"https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d4467.940179038468!2d23.646839757185393!3d53.54410674426954!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x46e075bf802c7a55%3A0xf483f67dbcc8d9a6!2sKu%C5%BAnica+Bia%C5%82ostocka+(GR)!5e1!3m2!1sen!2sie!4v1541548022008frameborder=\"0\" allowfullscreen></iframe>","Latitude": 53.521563, "Longitude": 23.659604}, "geometry": { "type": "Point", "coordinates": [ 23.659604,53.521563] } },
+		 { "type": "Feature", "properties": { "Title": "Kuznica Bialostocka (road) , Poland - Belarus", "Type": "Road", "video": "<iframe width=\"100%\" height=\"200\" src=\"https://www.google.com/maps/embed?pb=!4v1541548153713!6m8!1m7!1sa4cWk0HaL7CGlF6_uOmc7A!2m2!1d53.51764670600363!2d23.65240388688789!3f29.386022439642502!4f0.7525859097044076!5f0.7820865974627469frameborder=\"0\" allowfullscreen></iframe>","Latitude": 53.5215565, "Longitude": 23.6594717}, "geometry": { "type": "Point", "coordinates": [ 23.6594717,53.5215565] } },
+		 {"type": "Feature", "properties": { "Title": "Medyka (road) , Poland - Ukraine", "Type": "Road", "video": "<iframe width=\"100%\" height=\"200\" src=\"https://www.google.com/maps/embed?pb=!4v1541548236931!6m8!1m7!1sIjRW6bGHdNkcncmH5BtLzA!2m2!1d49.80015766855837!2d22.93829732739393!3f88.11999295818441!4f9.953270651489504!5f0.7820865974627469frameborder=\"0\" allowfullscreen></iframe>","Latitude": 49.799692, "Longitude": 22.947636}, "geometry": { "type": "Point", "coordinates": [ 22.947636,49.799692] } },
+		{ "type": "Feature", "properties": { "Title": "Polowce (road) , Poland - Belarus", "Type": "Road", "video": "<iframe width=\"100%\" height=\"200\" src=\"https://www.google.com/maps/embed?pb=!4v1541548343268!6m8!1m7!1spYCBt5pah9VEc1HPuyVEng!2m2!1d52.47223314175312!2d23.35657529034202!3f152.6699371243464!4f3.8914338034062155!5f0.7820865974627469frameborder=\"0\" allowfullscreen></iframe>","Latitude": 52.4703061, "Longitude": 23.3572132}, "geometry": { "type": "Point", "coordinates": [ 23.3572132,52.4703061] } },
+		{ "type": "Feature", "properties": { "Title": "Przemysl (railway) , Poland - Ukraine", "Type": "Railway", "video": "<iframe width=\"100%\" height=\"200\" src=\"https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d2426.699710599614!2d22.81975295099564!3d49.69462844931446!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x0%3A0x0!2zNDnCsDQxJzQwLjciTiAyMsKwNDknMTkuMCJF!5e1!3m2!1sen!2sie!4v1541548571415frameborder=\"0\" allowfullscreen></iframe>","Latitude": 49.6946284, "Longitude": 22.819753}, "geometry": { "type": "Point", "coordinates": [ 22.819753,49.6946284] } },
+		{ "type": "Feature", "properties": { "Title": "Rudawka (river) , Poland - Belarus", "Type": "River", "video": "<iframe width=\"100%\" height=\"200\" src=\"https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d17603.924928184584!2d23.505068002417275!3d53.86739287533288!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x0%3A0x0!2zNTPCsDUyJzAxLjMiTiAyM8KwMzEnMzMuNSJF!5e1!3m2!1sen!2sie!4v1541548839890frameborder=\"0\" allowfullscreen></iframe>","Latitude": 53.867035, "Longitude": 23.525974}, "geometry": { "type": "Point", "coordinates": [ 23.525974,53.867035] } },
+		{ "type": "Feature", "properties": { "Title": "Siemianowka (railway) , Poland - Belarus", "Type": "Railway", "video": "<iframe width=\"100%\" height=\"200\" src=\"https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d4513.565848118907!2d23.91225619103381!3d52.93900360525848!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x0%3A0x0!2zNTLCsDU2JzIwLjQiTiAyM8KwNTQnNTkuOSJF!5e1!3m2!1sen!2sie!4v1541548947985frameborder=\"0\" allowfullscreen></iframe>","Latitude": 52.938945, "Longitude": 23.916626}, "geometry": { "type": "Point", "coordinates": [ 23.916626,52.938945] } },
+		{ "type": "Feature", "properties": { "Title": "Skandawa (railway) , Poland - Russia", "Type": "Railway", "video": "<iframe width=\"100%\" height=\"200\" src=\"https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d2185.490048407652!2d21.3009549511703!3d54.333511107913694!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x0%3A0x0!2zNTTCsDIwJzAwLjYiTiAyMcKwMTgnMTEuMyJF!5e1!3m2!1sen!2sie!4v1541549068914frameborder=\"0\" allowfullscreen></iframe>","Latitude": 54.333508, "Longitude": 21.303149}, "geometry": { "type": "Point", "coordinates": [ 21.303149,54.333508] } },
+		{ "type": "Feature", "properties": { "Title": "Slawatycze (road) , Poland - Belarus", "Type": "Road", "video": "<iframe width=\"100%\" height=\"200\" src=\"https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d2317.1915233525606!2d23.590669951072112!3d51.76554729951712!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x0%3A0x0!2zNTHCsDQ1JzU2LjAiTiAyM8KwMzUnMzQuMyJF!5e1!3m2!1sen!2sie!4v1541550483521frameborder=\"0\" allowfullscreen></iframe>","Latitude": 51.765544, "Longitude": 23.592864}, "geometry": { "type": "Point", "coordinates": [ 23.592864,51.765544] } },
+		{ "type": "Feature", "properties": { "Title": "Terespol (railway) , Poland - Belarus", "Type": "Railway", "video": "<iframe width=\"100%\" height=\"200\" src=\"https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d2302.0506899088746!2d23.615162235501412!3d52.09341410690378!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x0%3A0x0!2zNTLCsDA1JzM4LjUiTiAyM8KwMzcnMDQuNyJF!5e1!3m2!1sen!2sie!4v1541550561038frameborder=\"0\" allowfullscreen></iframe>","Latitude": 52.094029, "Longitude": 23.617982}, "geometry": { "type": "Point", "coordinates": [ 23.617982,52.094029] } },
+		{ "type": "Feature", "properties": { "Title": "Terespol (road) , Poland - Belarus", "Type": "Road", "video": "<iframe width=\"100%\" height=\"200\" src=\"https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d4580.840645468755!2d23.62200773432726!3d52.08848926005497!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x0%3A0x0!2zNTLCsDA1JzE4LjYiTiAyM8KwMzcnMzUuNiJF!5e1!3m2!1sen!2sie!4v1541550665987frameborder=\"0\" allowfullscreen></iframe>","Latitude": 52.088496, "Longitude": 23.626666}, "geometry": { "type": "Point", "coordinates": [ 23.626666,52.088496] } },
+		{ "type": "Feature", "properties": { "Title": "Werchrata (railway) , Poland - Ukraine", "Type": "Railway", "video": "<iframe width=\"100%\" height=\"200\" src=\"https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d1208.5033896288523!2d23.52397000252952!3d50.24081807853143!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x0%3A0x0!2zNTDCsDE0JzI3LjAiTiAyM8KwMzEnMzIuNiJF!5e1!3m2!1sen!2sie!4v1541550791324frameborder=\"0\" allowfullscreen></iframe>","Latitude": 50.240829, "Longitude": 23.52572}, "geometry": { "type": "Point", "coordinates": [ 23.52572,50.240829] } },
+		{ "type": "Feature", "properties": { "Title": "Zosin (road) , Poland - Ukraine", "Type": "Road", "video": "<iframe width=\"100%\" height=\"200\" src=\"https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d2518.606849548666!2d24.139814476025304!3d50.85696421752905!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x0%3A0x0!2zNTDCsDUxJzI1LjEiTiAyNMKwMDgnMjguNSJF!5e0!3m2!1sen!2sie!4v1541550889109frameborder=\"0\" allowfullscreen></iframe>","Latitude": 50.856962, "Longitude": 24.141257}, "geometry": { "type": "Point", "coordinates": [ 24.141257,50.856962] } },
+		{ "type": "Feature", "properties": { "Title": "Albita , Romania - Moldova", "Type": "Road", "video": "<iframe width=\"100%\" height=\"200\" src=\"https://www.google.com/maps/embed?pb=!4v1541551067188!6m8!1m7!1sY2CW3w4iJj6V695sppBlTA!2m2!1d46.78644432838635!2d28.14317142510185!3f39.01595381888865!4f1.2722590446315536!5f0.7820865974627469frameborder=\"0\" allowfullscreen></iframe>","Latitude": 46.792027, "Longitude": 28.154545}, "geometry": { "type": "Point", "coordinates": [ 28.154545,46.792027] } },
+		{ "type": "Feature", "properties": { "Title": "Braila , Romania", "Type": "Port", "video": "<iframe width=\"100%\" height=\"200\" src=\"https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d2636.045964407714!2d27.978431950841397!3d45.27038375427394!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x0%3A0x0!2zNDXCsDE2JzEzLjQiTiAyN8KwNTgnNTAuMyJF!5e1!3m2!1sen!2sie!4v1541551242683frameborder=\"0\" allowfullscreen></iframe>","Latitude": 45.27038, "Longitude": 27.980626}, "geometry": { "type": "Point", "coordinates": [ 27.980626,45.27038] } },
+		{ "type": "Feature", "properties": { "Title": "Galati , Romania", "Type": "Port", "video": "<iframe width=\"100%\" height=\"200\" src=\"https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d20949.461442925924!2d28.07306640854769!3d45.44461836443261!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x40b6dfea8f9c1f8b%3A0xa7da1a499631fb31!2sPortul+Galati!5e1!3m2!1sen!2sie!4v1541551326701frameborder=\"0\" allowfullscreen></iframe>","Latitude": 45.444827, "Longitude": 28.090917}, "geometry": { "type": "Point", "coordinates": [ 28.090917,45.444827] } },
+		{ "type": "Feature", "properties": { "Title": "Galati , Romania - Moldova", "Type": "Road", "video": "<iframe width=\"100%\" height=\"200\" src=\"https://www.google.com/maps/embed?pb=!4v1541551438951!6m8!1m7!1sOdXXK4FGJV7X8EkW8s-GYQ!2m2!1d45.46661142524!2d28.18520298668235!3f71.6999858540462!4f0!5f0.7820865974627469frameborder=\"0\" allowfullscreen></iframe>","Latitude": 45.471509, "Longitude": 28.197064}, "geometry": { "type": "Point", "coordinates": [ 28.197064,45.471509] } },
+		{ "type": "Feature", "properties": { "Title": "Galati , Romania - Moldova", "Type": "Railway", "video": "<iframe width=\"100%\" height=\"200\" src=\"https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d2627.3105471406793!2d28.19605433330979!3d45.47033876729038!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x40b6de4c2dfd7ddb%3A0x4fc15d091b0ba62!2zR2FsYcibaQ!5e1!3m2!1sen!2sie!4v1541551775506frameborder=\"0\" allowfullscreen></iframe>","Latitude": 45.471291, "Longitude": 28.197889}, "geometry": { "type": "Point", "coordinates": [ 28.197889,45.471291] } },
+		{ "type": "Feature", "properties": { "Title": "Halmeu , Romania - Ukraine", "Type": "Road", "video": "<iframe width=\"100%\" height=\"200\" src=\"https://www.google.com/maps/embed?pb=!4v1541551839389!6m8!1m7!1sQyQZb56LsWrBzWxntxxk5A!2m2!1d47.99054024765162!2d23.00416539132751!3f333.2548171760319!4f-0.6911029475315615!5f0.7820865974627469frameborder=\"0\" allowfullscreen></iframe>","Latitude": 47.995839, "Longitude": 23.001719}, "geometry": { "type": "Point", "coordinates": [ 23.001719,47.995839] } },
+		{ "type": "Feature", "properties": { "Title": "Iasi (Ungheni) , Romania - Moldova", "Type": "Railway", "video": "<iframe width=\"100%\" height=\"200\" src=\"https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d2540.5230016977507!2d27.78476031533993!3d47.199969623972514!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x0%3A0x0!2zNDfCsDExJzU5LjkiTiAyN8KwNDcnMTMuMCJF!5e1!3m2!1sen!2sie!4v1541551906858frameborder=\"0\" allowfullscreen></iframe>","Latitude": 47.199849, "Longitude": 27.786976}, "geometry": { "type": "Point", "coordinates": [ 27.786976,47.199849] } },
+		{ "type": "Feature", "properties": { "Title": "Oancea , Romania - Moldova", "Type": "Road", "video": "<iframe width=\"100%\" height=\"200\" src=\"https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d1387.847440546416!2d28.11924965815293!3d45.917409860776466!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x0%3A0x0!2zNDXCsDU1JzAyLjciTiAyOMKwMDcnMTMuMiJF!5e0!3m2!1sen!2sie!4v1541551988905frameborder=\"0\" allowfullscreen></iframe>","Latitude": 45.917408, "Longitude": 28.120344}, "geometry": { "type": "Point", "coordinates": [ 28.120344,45.917408] } },
+		{ "type": "Feature", "properties": { "Title": "Radauti Prut , Romania - Moldova", "Type": "Road", "video": "<iframe width=\"100%\" height=\"200\" src=\"https://www.google.com/maps/embed?pb=!4v1541552089462!6m8!1m7!1sOhNs3HaWP4CM5y5-WueL_Q!2m2!1d45.91734519173089!2d28.1174139802504!3f72.30656812096336!4f-0.9471578540994727!5f1.1924812503605782frameborder=\"0\" allowfullscreen></iframe>","Latitude": 45.9173452, "Longitude": 28.117414}, "geometry": { "type": "Point", "coordinates": [ 28.117414,45.9173452] } },
+		{ "type": "Feature", "properties": { "Title": "Sculeni , Romania - Moldova", "Type": "Road", "video": "<iframe width=\"100%\" height=\"200\" src=\"https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d2511.8429847530747!2d27.607979134479436!3d47.318170431242024!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x0%3A0x0!2zNDfCsDE5JzA0LjAiTiAyN8KwMzYnMzguOCJF!5e1!3m2!1sen!2sie!4v1541552227096frameborder=\"0\" allowfullscreen></iframe>","Latitude": 47.3181704, "Longitude": 27.6079791}, "geometry": { "type": "Point", "coordinates": [ 27.6079791,47.3181704] } },
+		{ "type": "Feature", "properties": { "Title": "Sighetul Marmatiei , Romania - Ukraine", "Type": "Road", "video": "<iframe width=\"100%\" height=\"200\" src=\"https://www.google.com/maps/embed?pb=!4v1541552334564!6m8!1m7!1s8b7gBHfyrVH_pq6M_7MKgQ!2m2!1d47.93840766033711!2d23.87761050609176!3f307.64232752923357!4f-1.1339105448468558!5f0.7820865974627469frameborder=\"0\" allowfullscreen></iframe>","Latitude": 47.9394236, "Longitude": 23.8731963}, "geometry": { "type": "Point", "coordinates": [ 23.8731963, 47.9394236 ] } },
+		{ "type": "Feature", "properties": { "Title": "Siret , Romania - Ukraine", "Type": "Road", "video": "<iframe width=\"100%\" height=\"200\" src=\"https://www.google.com/maps/embed?pb=!4v1541552443637!6m8!1m7!1sCCt-ZcQrtg1tcLsvGTNcnw!2m2!1d47.98589806994184!2d26.06278484187715!3f17.745866181792582!4f0.30145781182405074!5f0.7820865974627469frameborder=\"0\" allowfullscreen></iframe>","Latitude": 47.9858981, "Longitude": 26.0627848}, "geometry": { "type": "Point", "coordinates": [ 26.0627848,47.9858981] } },
+
+		{ "type": "Feature", "properties": { "Title": "Sulina , Romania", "Type": "Port", "video": "<iframe width=\"100%\" height=\"200\" src=\"https://www.google.com/maps/embed?pb=!1m17!1m11!1m3!1d5281.978110159399!2d29.635624165744545!3d45.15872971615518!2m2!1f0!2f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x40b9bb20b859d4a9%3A0x6dcb5bd08817aa8d!2sSulina+825400%2C+Romania!5e1!3m2!1sen!2sie!4v1541552708457frameborder=\"0\" allowfullscreen></iframe>","Latitude": 45.160373, "Longitude": 29.639533}, "geometry": { "type": "Point", "coordinates": [ 29.639533,45.160373] } },
+		{ "type": "Feature", "properties": { "Title": "Tulcea , Romania", "Type": "Port", "video": "<iframe width=\"100%\" height=\"200\" src=\"https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d2646.2251556511146!2d28.805089315271882!3d45.18697075992035!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x40b7594d1142e665%3A0x41cca26080f77e90!2sPORT+DOWNSTREAM+Tulcea!5e1!3m2!1sen!2sie!4v1541552819875frameborder=\"0\" allowfullscreen></iframe>","Latitude": 45.1869891, "Longitude": 28.8069796}, "geometry": { "type": "Point", "coordinates": [ 28.8069796,45.1869891] } },
+		{ "type": "Feature", "properties": { "Title": "Vicsani , Romania - Ukraine", "Type": "Railway", "video": "<iframe width=\"100%\" height=\"200\" src=\"https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d2671.099730791311!2d25.96181731536678!3d47.97313057057948!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x0%3A0x0!2zNDfCsDU4JzIzLjMiTiAyNcKwNTcnNTAuNCJF!5e0!3m2!1sen!2sie!4v1541552902829frameborder=\"0\" allowfullscreen></iframe>","Latitude": 47.973127, "Longitude": 25.964006}, "geometry": { "type": "Point", "coordinates": [ 25.964006,47.973127] } },
+		{ "type": "Feature", "properties": { "Title": "Cierna nad Tisou , Slovakia - Ukraine", "Type": "Railway", "video": "<iframe width=\"100%\" height=\"200\" src=\"https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d1285.5912159072443!2d22.1364588637993!3d48.43263553749089!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x0%3A0x0!2zNDjCsDI1JzU3LjUiTiAyMsKwMDgnMTUuMyJF!5e1!3m2!1sen!2sie!4v1541553000628frameborder=\"0\" allowfullscreen></iframe>","Latitude": 48.432632, "Longitude": 22.137591}, "geometry": { "type": "Point", "coordinates": [ 22.137591,48.432632] } },
+		{ "type": "Feature", "properties": { "Title": "Matovske Vojkovce , Slovakia - Ukraine", "Type": "Railway", "video": "<iframe width=\"100%\" height=\"200\" src=\"https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d621.0372156153621!2d22.159984829216338!3d48.56234388625325!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x0%3A0x0!2zNDjCsDMzJzQ0LjQiTiAyMsKwMDknMzcuOSJF!5e1!3m2!1sen!2sie!4v1541553142619frameborder=\"0\" allowfullscreen></iframe>","Latitude": 48.562336, "Longitude": 22.160537}, "geometry": { "type": "Point", "coordinates": [ 22.160537,48.562336] } },
+		{ "type": "Feature", "properties": { "Title": "Ubla , Slovakia - Ukraine", "Type": "Road", "video": "<iframe width=\"100%\" height=\"200\" src=\"https://www.google.com/maps/embed?pb=!4v1541553252902!6m8!1m7!1svJRU5eOfin_enLceTMsp3A!2m2!1d48.88481891572398!2d22.41927044374224!3f140.92357740219154!4f0.5888002534862977!5f0.7820865974627469frameborder=\"0\" allowfullscreen></iframe>","Latitude": 48.883882, "Longitude": 22.4203}, "geometry": { "type": "Point", "coordinates": [ 22.4203,48.883882] } },
+		{ "type": "Feature", "properties": { "Title": "Velke Slemence , Slovakia - Ukraine", "Type": "Pedestrians", "video": "<iframe width=\"100%\" height=\"200\" src=\"https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d643.4373033863561!2d22.153469109608196!3d48.5111646828763!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x0%3A0x0!2zNDjCsDMwJzM0LjUiTiAyMsKwMDgnNDkuNCJF!5e1!3m2!1sen!2sie!4v1541553347094frameborder=\"0\" allowfullscreen></iframe>","Latitude": 8.511109, "Longitude": 22.154054}, "geometry": { "type": "Point", "coordinates": [ 22.154054,8.511109] } },
+		{ "type": "Feature", "properties": { "Title": "Vysne Nemecke , Slovakia - Ukraine", "Type": "Road", "video": "<iframe width=\"100%\" height=\"200\" src=\"https://www.google.com/maps/embed?pb=!4v1541553422680!6m8!1m7!1s-Wyu3_F0xPysLEhi1ogJUQ!2m2!1d48.65666194866836!2d22.26482178972451!3f167.99566566689964!4f2.446011254725363!5f0.7820865974627469frameborder=\"0\" allowfullscreen></iframe>","Latitude": 48.655063, "Longitude": 22.265165}, "geometry": { "type": "Point", "coordinates": [ 22.265165,48.655063] } },
+
+
+	  ];
+
+
+		var icon1 = L.icon({
+			iconUrl: 'marker.png',
+			iconSize: [20, 20],
+			iconAnchor: [5, 10],
+		});
+
+		var icon2 = L.icon({
+			iconUrl: 'marker.png',
+			iconSize: [31, 21],
+			iconAnchor: [10, 20],
+
+		});
+
+
+
+		function onEachFeature(feature, layer) {
+			layer.on({
+				click: clickFeature,
+			});
+		}
+
+
+		function clickFeature(e) {
+
+			var layer = e.target;
+			layer.setIcon(layer.options.icon = icon2);
+			$('.information').html(info.update(layer.feature.properties));
+
+			layer.setIcon(layer.options.icon = icon2);
+
+			layer.setStyle({
+
+			});
+
+			if (!L.Browser.ie && !L.Browser.opera) {
+				layer.bringToFront();
+			}
+
+			if (clickedFeature) {
+				clickedFeature.setRadius(100)
+			}
+
+			map.on('click', onMapClick);
+
+		}
+
+
+
+		geojson =
+			L.geoJson(locations, {
+				pointToLayer: function(feature, latlng) {
+					return L.marker(latlng, {
+						icon: icon1
+					});
+				},
+				onEachFeature: onEachFeature
+			}).addTo(map);
+
+
+
+		//add custom control
+
+		var info = L.control();
+
+		info.Add = function(map) {
+			this._div = L.DomUtil.create('div', 'info'); // create a div with a class "info"
+			this.update();
+			return this._div;
+		};
+
+		// method that we will use to update the control based on feature properties passed
+		info.update = function(props) {
+			return '' + (props ?
+				' <div><h5 id="sign"><b>'
+        +  '<h4> EU Land Border Crossings<br></h4>'
+				+ '<h5>From the most northernly tip of FInland down to the Baltic Sea, there are 120 established land border crossings between the European Union and the rest of the world. <br> <i>Source: Frontex</i></h5> '
+				+ props.video
+				+ '<h6>Border Crossing:</h6><h7>' + props.Title
+				+ '</h7><br><h6>Crossing Type:</h6><h7> ' + props.Type :
+				+ '</h7><br><h6>Crossing Type:</h6></div>'
+
+			);
+		};
+
+
+	////////////populate map with markers from sample data
+	for(i in data) {
+		var title = data[i].title,	//value searched
+			loc = data[i].loc,		//position found
+			marker = L.Marker(L.latLng(loc), {title: title} );//se property searched
+		marker.bindPopup('title: '+ title );
+		markersLayer.addLayer(marker);
+	}
+
+		info.addTo(map);
+
+
+	</script>
+
+
+</body>
+
+
+</html>
