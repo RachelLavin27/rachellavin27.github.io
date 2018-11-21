@@ -1,0 +1,1506 @@
+
+<html>
+
+
+
+
+
+
+
+
+
+<head>
+
+
+
+
+
+
+
+	<title>Border Map</title>
+
+
+
+
+
+
+
+	<meta charset="utf-8">
+
+
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+
+
+	<link rel="stylesheet" href="https://unpkg.com/leaflet@1.3.0/dist/leaflet.css" />
+	<link rel="stylesheet" href="../src/leaflet-search.css" />
+<link rel="stylesheet" href="style.css" />
+
+
+
+
+
+
+
+	<link rel="stylesheet" href="https://unpkg.com/leaflet@1.3.3/dist/leaflet.css"
+
+
+	   integrity="sha512-Rksm5RenBEKSKFjgI3a41vrjkw4EVPlJ3+OiI65vTjIdo9brlAacEuKOiQ5OFh7cOI1bkDwLqdLw3Zg0cRJAAQ=="
+
+
+	   crossorigin=""/>
+
+
+
+
+
+
+
+		 <!-- Make sure you put this AFTER Leaflet's CSS -->
+
+
+<script src="https://unpkg.com/leaflet@1.3.3/dist/leaflet.js"
+
+
+  integrity="sha512-tAGcCfR4Sc5ZP5ZoVz0quoZDYX5aCtEm/eu1KhSLj2c9eFrylXZknQYmxUssFaVJKvvc0dJQixhGjG2yXWiV9Q=="
+
+
+  crossorigin=""></script>
+
+
+
+
+
+
+
+
+	<script src="dist/leaflet-search.min.js"></script>
+
+
+
+
+
+
+
+	<script src='https://api.mapbox.com/mapbox.js/v3.1.1/mapbox.js'></script>
+
+
+	<link href='https://api.mapbox.com/mapbox.js/v3.1.1/mapbox.css' rel='stylesheet' />
+
+
+
+
+
+
+
+	<!--UIKit 3 --->
+
+
+	<link rel="stylesheet" href="css/uikit.min.css" />
+
+
+	<script src="js/uikit.min.js"></script>
+
+
+	<script src="js/uikit-icons.min.js"></script>
+
+
+
+
+
+
+
+	<!-- Add icon library -->
+
+
+	<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+
+
+
+
+
+
+
+	<!--Jquery --->
+
+
+	<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+	<style>
+
+
+		html,
+
+
+		body {
+
+
+			height: 100%;
+
+
+			margin: 0;
+
+
+		}
+
+
+
+
+
+
+		#map {
+
+
+			width: 100%;
+
+
+			height: 75%;
+
+
+		}
+
+
+
+
+
+
+		.overlay {
+
+
+			 margin-top: -95%;
+
+
+		}
+
+
+
+
+
+
+
+
+
+
+.uk-child-width-1-2\@m>* {
+
+
+   margin-left: 20%;
+
+
+		margin-top: 5%;
+
+
+		margin-right: 10%;
+
+
+		margin-bottom: 0%;
+
+
+}
+
+
+
+
+
+
+		.panel {
+
+
+	    z-index: 100;
+
+
+	    position: absolute;
+
+
+			background: rgba(26, 26, 26, 0.75);
+
+
+		 box-shadow: 0 0 15px rgba(0,0,0,0.5);
+
+
+		 border-radius: 5px;
+
+
+			height: 500px;
+
+
+			padding-top: 10px;
+
+
+			margin:-10px;
+
+
+	    width: 100%;
+
+
+	    height: 260px;
+
+
+	    margin-top: -280px;
+
+
+			padding-left: 35px;
+
+
+				padding-right: 35px;
+
+
+color: white;
+
+
+	}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+#name	 {
+
+
+	position: center;
+
+
+	padding-top: 10px;
+
+
+		font-size: 32px;
+
+
+	color: yellow:
+
+
+}
+
+
+
+h3 {
+	font-size: 18px;
+}
+
+
+h4 {
+
+
+		font-size: 12px;
+
+
+	}
+
+
+
+
+
+
+	h7 {
+
+
+	font-family: Times New Roman Pro Bold;
+
+
+	color: white;
+
+
+	font-size: 22px;
+
+
+}
+
+
+
+
+
+
+	h {
+
+
+		font-size: 24px;
+
+
+	}
+
+
+
+
+
+
+
+
+
+
+		.status {
+
+
+			color: red;
+
+
+		}
+
+
+
+
+		.uk-navbar {
+
+
+			height: 50px;
+			color: ;
+
+
+
+
+
+
+		}
+
+
+
+
+
+
+		.uk-navbar-container:not(.uk-navbar-transparent) {
+
+
+   background: #374f60;
+
+
+}
+
+
+
+
+
+
+
+
+
+
+.uk-navbar-item,
+
+
+.uk-navbar-nav>li>a,
+
+
+.uk-navbar-toggle {
+
+
+	display: flex;
+
+
+	justify-content: center;
+
+
+	align-items: center;
+
+
+	box-sizing: border-box;
+
+
+	height: 0px;
+
+
+	padding: 0 15px;
+
+
+	font-size: .875rem;
+
+
+	font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif;
+
+
+	text-decoration: none;
+
+
+}
+
+
+
+
+
+
+		.uk-card {
+
+
+			height: 2500px;
+
+
+		}
+
+
+
+
+
+
+		.container {
+
+
+			padding: 10px;
+
+
+			padding-bottom: 60px;
+
+
+			/* Height of the footer */
+
+
+			position: relative;
+
+
+			padding-bottom: 150px;
+
+
+			height: 900px;
+
+
+		}
+
+
+
+
+
+
+		#footer {
+
+
+			background-color: black;
+
+
+			color: white;
+
+
+			position: absolute;
+
+
+			width: 100%;
+
+
+			height: 160px;
+
+
+
+
+
+
+		}
+
+
+
+
+
+
+		#footertext {
+
+
+			text-align: center;
+
+
+		}
+
+
+
+
+
+
+		h1 {
+
+
+			font-size: 78px;
+
+
+			padding-bottom: 0px;
+
+
+			margin-bottom: 0px;
+
+
+			color: orange;
+
+
+			line-spacing: 12px;
+
+
+		}
+
+
+
+
+
+
+		h6 {
+
+
+			color: orange;
+
+
+		}
+
+
+.uk-card {
+	height: 300px
+}
+
+
+
+
+		.title {
+
+
+			padding-bottom: 0px;
+
+
+			margin-bottom: 0px;
+
+
+		}
+
+
+
+
+
+
+		#map {
+
+
+			z-index: 1;
+
+
+			position: absolute;
+
+
+		}
+
+
+
+
+
+
+.about {
+	color: #FFC629;
+}
+
+.apply {
+	color: #FFC629;
+}
+
+.attend {
+		color: #FFC629;
+}
+
+
+
+
+
+
+
+
+
+	</style>
+
+
+
+
+
+
+
+
+
+
+
+
+</head>
+
+
+
+
+
+
+
+<body>
+
+
+
+
+
+
+
+
+
+
+
+
+	<!--IT Navigation Bar --->
+
+
+	<nav class="uk-navbar-container" uk-navbar uk-sticky>
+
+
+		<div class="uk-navbar-center">
+
+
+         <h7> </h7>
+
+
+		</div>
+
+
+	</nav>
+
+
+
+
+
+
+
+
+
+
+
+
+	<!--Map --->
+
+
+	<div id="map" class="leaflet-container leaflet-touch leaflet-fade-anim leaflet-grab leaflet-touch-drag leaflet-touch-zoom" tabindex="0" style="position: relative; outline: none;">
+
+
+		<div class="leaflet-pane leaflet-map-pane" style="transform: translate3d(-261px, -133px, 0px);">
+
+
+			<div class="leaflet-pane leaflet-tile-pane">
+
+
+				<div class="leaflet-layer" style="z-index: 1; opacity: 1;">
+
+
+					<div class="leaflet-tile-container leaflet-zoom-animated" style="z-index: 18; transform: translate3d(0px, 0px, 0px) scale(1);">
+
+
+						<img alt="" role="presentation" src="http://a.tiles.wmflabs.org/bw-mapnik/8/123/81.png" class="leaflet-tile leaflet-tile-loaded" style="width: 256px; height: 256px; transform: translate3d(696px, 154px, 0px); opacity: 1;"><img alt="" role="presentation"
+
+
+						  src="http://c.tiles.wmflabs.org/bw-mapnik/8/122/81.png" class="leaflet-tile leaflet-tile-loaded" style="width: 256px; height: 256px; transform: translate3d(440px, 154px, 0px); opacity: 1;">
+
+
+						<img alt="" role="presentation" src="http://c.tiles.wmflabs.org/bw-mapnik/8/123/80.png" class="leaflet-tile leaflet-tile-loaded" style="width: 256px; height: 256px; transform: translate3d(696px, -102px, 0px); opacity: 1;"><img alt="" role="presentation"
+
+
+						  src="http://b.tiles.wmflabs.org/bw-mapnik/8/123/82.png" class="leaflet-tile leaflet-tile-loaded" style="width: 256px; height: 256px; transform: translate3d(696px, 410px, 0px); opacity: 1;">
+
+
+						<img alt="" role="presentation" src="http://b.tiles.wmflabs.org/bw-mapnik/8/122/80.png" class="leaflet-tile leaflet-tile-loaded" style="width: 256px; height: 256px; transform: translate3d(440px, -102px, 0px); opacity: 1;"><img alt="" role="presentation"
+
+
+						  src="http://a.tiles.wmflabs.org/bw-mapnik/8/122/82.png" class="leaflet-tile leaflet-tile-loaded" style="width: 256px; height: 256px; transform: translate3d(440px, 410px, 0px); opacity: 1;">
+
+
+						<img alt="" role="presentation" src="http://b.tiles.wmflabs.org/bw-mapnik/8/121/81.png" class="leaflet-tile leaflet-tile-loaded" style="width: 256px; height: 256px; transform: translate3d(184px, 154px, 0px); opacity: 1;"><img alt="" role="presentation"
+
+
+						  src="http://b.tiles.wmflabs.org/bw-mapnik/8/124/81.png" class="leaflet-tile leaflet-tile-loaded" style="width: 256px; height: 256px; transform: translate3d(952px, 154px, 0px); opacity: 1;">
+
+
+						<img alt="" role="presentation" src="http://c.tiles.wmflabs.org/bw-mapnik/8/124/82.png" class="leaflet-tile leaflet-tile-loaded" style="width: 256px; height: 256px; transform: translate3d(952px, 410px, 0px); opacity: 1;"><img alt="" role="presentation"
+
+
+						  src="http://a.tiles.wmflabs.org/bw-mapnik/8/124/80.png" class="leaflet-tile leaflet-tile-loaded" style="width: 256px; height: 256px; transform: translate3d(952px, -102px, 0px); opacity: 1;"><img alt="" role="presentation" src="http://c.tiles.wmflabs.org/bw-mapnik/8/121/82.png"
+
+
+						  class="leaflet-tile leaflet-tile-loaded" style="width: 256px; height: 256px; transform: translate3d(184px, 410px, 0px); opacity: 1;"><img alt="" role="presentation" src="http://a.tiles.wmflabs.org/bw-mapnik/8/121/80.png" class="leaflet-tile leaflet-tile-loaded"
+
+
+						  style="width: 256px; height: 256px; transform: translate3d(184px, -102px, 0px); opacity: 1;"><img alt="" role="presentation" src="http://c.tiles.wmflabs.org/bw-mapnik/8/125/81.png" class="leaflet-tile leaflet-tile-loaded" style="width: 256px; height: 256px; transform: translate3d(1208px, 154px, 0px); opacity: 1;">
+
+
+						<img alt="" role="presentation" src="http://a.tiles.wmflabs.org/bw-mapnik/8/120/81.png" class="leaflet-tile leaflet-tile-loaded" style="width: 256px; height: 256px; transform: translate3d(-72px, 154px, 0px); opacity: 1;"><img alt="" role="presentation"
+
+
+						  src="http://b.tiles.wmflabs.org/bw-mapnik/8/125/80.png" class="leaflet-tile leaflet-tile-loaded" style="width: 256px; height: 256px; transform: translate3d(1208px, -102px, 0px); opacity: 1;"><img alt="" role="presentation" src="http://b.tiles.wmflabs.org/bw-mapnik/8/120/82.png"
+
+
+						  class="leaflet-tile leaflet-tile-loaded" style="width: 256px; height: 256px; transform: translate3d(-72px, 410px, 0px); opacity: 1;"><img alt="" role="presentation" src="http://c.tiles.wmflabs.org/bw-mapnik/8/120/80.png" class="leaflet-tile leaflet-tile-loaded"
+
+
+						  style="width: 256px; height: 256px; transform: translate3d(-72px, -102px, 0px); opacity: 1;"><img alt="" role="presentation" src="http://a.tiles.wmflabs.org/bw-mapnik/8/125/82.png" class="leaflet-tile leaflet-tile-loaded" style="width: 256px; height: 256px; transform: translate3d(1208px, 410px, 0px); opacity: 1;"></div>
+
+
+				</div>
+
+
+			</div>
+
+
+		</div>
+
+
+
+
+
+
+
+		<!--Map text overlay--->
+
+
+
+
+
+
+
+		<div class="leaflet-control-container">
+
+
+			<div class="leaflet-top leaflet-left">
+
+
+				<div class="leaflet-control-zoom leaflet-bar leaflet-control"><a class="leaflet-control-zoom-in" href="#" title="Zoom in" role="button" aria-label="Zoom in">+</a><a class="leaflet-control-zoom-out" href="#" title="Zoom out" role="button" aria-label="Zoom out">−</a></div>
+
+
+			</div>
+
+
+			<div class="leaflet-top leaflet-right">
+
+
+				<div class="info leaflet-control"></div>
+
+
+			</div>
+
+
+
+			<div class="leaflet-bottom leaflet-right">
+
+
+				<div class="leaflet-control-attribution leaflet-control"><a href="http://leafletjs.com" title="A JS library for interactive maps">Leaflet</a> | © <a href="http://www.openstreetmap.org/copyright">OpenStreetMap</a></div>
+
+
+			</div>
+
+
+		</div>
+
+
+	</div>
+
+
+	</div>
+
+
+	</div>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+ <!--geojson data--->
+
+
+	<script type="text/javascript">
+
+
+	var map = L.map('map',
+
+
+{	scrollWheelZoom: false,})
+
+
+	.setView([37.25,-35.285], 3.25);
+
+
+
+
+
+
+
+
+
+
+var TileLayer = new L.tileLayer('https://{s}.basemaps.cartocdn.com/rastertiles/voyager/{z}/{x}/{y}{r}.png', {
+	attribution: '&copy; <a href="http://www.openstreetmap.org/copyright">OpenStreetMap</a> &copy; <a href="https://carto.com/attributions">CARTO</a>',
+	subdomains: 'abcd',
+	maxZoom: 19
+});
+
+
+
+
+
+
+				TileLayer.addTo(map);
+
+
+
+
+
+
+
+
+
+
+				var locations = [
+
+
+				  {
+
+
+
+
+
+
+				    "type": "Feature",
+
+
+				     "properties": {
+
+
+				     "FID": 1,
+
+
+				     "Name": "Kilderry Lane",
+
+
+				     "R_County": "Culmore - Muff, Derry/Londonderry, Donegal",
+
+
+				     "R_Closed": "Closed",
+
+
+				     "R_Method": "Blockaded with Bollards",
+
+
+				     "R_Openings": "0",
+
+
+				     "N_Incidents": "0",
+
+
+				     "N_Bombings": "0",
+
+
+				     "N_Shootings": "0",
+
+
+				     "N_Arson": "0",
+
+
+				     "N_Other": "0",
+
+
+				     "N_Fatalities": "0",
+
+
+				     "N_Wounded": "0",
+
+
+				     "video": "<iframe width=\"450\" height=\"200\" src=\"https://www.google.com/maps/embed?pb=!4v1532518129520!6m8!1m7!1sOHmcAx1EbPLYfd_tafJyBw!2m2!1d55.06597063253263!2d-7.261453321144318!3f153.06233118964496!4f-7.439207335140509!5f0.7820865974627469frameBorder=\"0\" allowfullscreen></iframe>",
+
+
+				     "history": "This small rural road is the most northerly crossing. It was closed and never reopened.",
+
+
+				     "today": "It remains closed to this day.",
+
+
+				            },
+
+
+
+
+
+
+				            "geometry": {
+
+
+				                  "type": "Point",
+
+
+				                  "coordinates": [-7.2613919,55.0658963]		},
+
+
+				            "className": {
+
+
+				              "baseVal": "line"
+
+
+				            }
+
+
+				            },
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+				            {"type": "Feature",
+
+
+				             "properties": {
+
+
+				             "FID": 12,
+
+
+				             "Name": "Glen Bridge",
+
+
+				             "R_County": "Altaderry, Derry/Londonderry - Donegal",
+
+
+				             "R_Closed": "Closed",
+
+
+				             "R_Method": "Unapproved for use",
+
+
+				             "R_Openings": "0",
+
+
+				             "N_Incidents": "0",
+
+
+				             "N_Bombings": "0",
+
+
+				             "N_Shootings": "0",
+
+
+				             "N_Arson": "0",
+
+
+				             "N_Other": "0",
+
+
+				             "N_Fatalities": "0",
+
+
+				             "N_Wounded": "0",
+
+
+				             "video": "<iframe width=\"450\" height=\"200\"src=\"https://www.google.com/maps/embed?pb=!4v1532536063362!6m8!1m7!1sRNN4jfFn4x4DFPVCV0X34g!2m2!1d54.99488354373388!2d-7.390954461447648!3f273.0154499433805!4f14.068416157887299!5f0.4000000000000002frameBorder=\"0\" allowfullscreen></iframe>",
+
+
+				             "history": "This crossing was relatively uneventful as it was 'unapproved' during the Troubles.", "today": "Today the rural road has no barriers.",
+
+
+				                    },		"geometry": {
+
+
+				                          "type": "Point",
+
+
+				                          "coordinates": [-117.915640,33.834490]		},
+
+
+				                    "className": {
+
+
+				                      "baseVal": "line"
+
+
+				                    }
+
+
+				                    },
+
+
+
+
+														{"type": "Feature",
+
+
+														 "properties": {
+
+
+														 "FID": 12,
+
+
+														 "Name": "Glen Bridge",
+
+
+														 "R_County": "Altaderry, Derry/Londonderry - Donegal",
+
+
+														 "R_Closed": "Closed",
+
+
+														 "R_Method": "Unapproved for use",
+
+
+														 "R_Openings": "0",
+
+
+														 "N_Incidents": "0",
+
+
+														 "N_Bombings": "0",
+
+
+														 "N_Shootings": "0",
+
+
+														 "N_Arson": "0",
+
+
+														 "N_Other": "0",
+
+
+														 "N_Fatalities": "0",
+
+
+														 "N_Wounded": "0",
+
+
+														 "video": "<iframe width=\"450\" height=\"200\"src=\"https://www.google.com/maps/embed?pb=!4v1532536063362!6m8!1m7!1sRNN4jfFn4x4DFPVCV0X34g!2m2!1d54.99488354373388!2d-7.390954461447648!3f273.0154499433805!4f14.068416157887299!5f0.4000000000000002frameBorder=\"0\" allowfullscreen></iframe>",
+
+
+														 "history": "This crossing was relatively uneventful as it was 'unapproved' during the Troubles.", "today": "Today the rural road has no barriers.",
+
+
+																		},		"geometry": {
+
+
+																					"type": "Point",
+
+
+																					"coordinates": [9.189982,45.464203]		},
+
+
+																		"className": {
+
+
+																			"baseVal": "line"
+
+
+																		}
+
+
+																		},
+
+
+
+
+
+
+
+																		{"type": "Feature",
+
+
+																		 "properties": {
+
+
+																		 "FID": 12,
+
+
+																		 "Name": "Glen Bridge",
+
+
+																		 "R_County": "Altaderry, Derry/Londonderry - Donegal",
+
+
+																		 "R_Closed": "Closed",
+
+
+																		 "R_Method": "Unapproved for use",
+
+
+																		 "R_Openings": "0",
+
+
+																		 "N_Incidents": "0",
+
+
+																		 "N_Bombings": "0",
+
+
+																		 "N_Shootings": "0",
+
+
+																		 "N_Arson": "0",
+
+
+																		 "N_Other": "0",
+
+
+																		 "N_Fatalities": "0",
+
+
+																		 "N_Wounded": "0",
+
+
+																		 "video": "<iframe width=\"450\" height=\"200\"src=\"https://www.google.com/maps/embed?pb=!4v1532536063362!6m8!1m7!1sRNN4jfFn4x4DFPVCV0X34g!2m2!1d54.99488354373388!2d-7.390954461447648!3f273.0154499433805!4f14.068416157887299!5f0.4000000000000002frameBorder=\"0\" allowfullscreen></iframe>",
+
+
+																		 "history": "This crossing was relatively uneventful as it was 'unapproved' during the Troubles.", "today": "Today the rural road has no barriers.",
+
+
+																						},		"geometry": {
+
+
+																									"type": "Point",
+
+
+																									"coordinates": [25.485830,42.733883]		},
+
+
+																						"className": {
+
+
+																							"baseVal": "line"
+
+
+																						}
+
+
+																						},
+
+
+
+
+
+
+				];
+
+
+
+
+
+
+
+
+
+
+		var icon1 = L.icon({
+
+
+			iconUrl: 'CP_logo.png',
+
+
+			iconSize: [100, 60],
+
+
+			iconAnchor: [60, 60],
+
+
+		});
+
+
+
+
+
+
+
+
+
+		function onEachFeature(feature, layer) {
+
+			layer.on({
+
+				click: clickFeature,
+
+			});
+
+		}
+
+
+		function clickFeature(e) {
+
+
+			var layer = e.target;
+
+
+			layer.setIcon(layer.options.icon = icon2);
+
+
+			$('.information').html(info.update(layer.feature.properties));
+
+
+
+
+
+
+			layer.setIcon(layer.options.icon = icon2);
+
+
+
+
+
+
+			layer.setStyle({
+
+
+
+
+
+
+			});
+
+
+
+
+
+
+			if (!L.Browser.ie && !L.Browser.opera) {
+
+
+				layer.bringToFront();
+
+
+			}
+
+
+
+
+
+
+			if (clickedFeature) {
+
+
+				clickedFeature.setRadius(100)
+
+
+			}
+
+
+
+
+
+
+			map.on('click', onMapClick);
+
+
+		}
+
+
+
+
+
+
+
+
+
+
+		function zoomToFeature(e) {
+
+
+			map.fitBounds(e.target.getBounds());
+
+
+		}
+
+
+
+
+
+
+
+
+
+
+		geojson =
+
+
+			L.geoJson(locations, {
+
+
+				pointToLayer: function(feature, latlng) {
+
+
+					return L.marker(latlng, {
+
+
+						icon: icon1
+
+
+					});
+
+
+				},
+
+
+				onEachFeature: onEachFeature
+
+
+			}).addTo(map);
+
+
+
+
+		var info = L.control();
+
+
+
+
+
+
+		info.Add = function(map) {
+
+
+			this._div = L.DomUtil.create('div', 'info'); // create a div with a class "info"
+
+
+			this.update();
+
+
+			return this._div;
+
+
+		};
+
+
+
+
+		info.update = function(props) {
+
+
+			return '' + (props ?
+
+
+				'<div class="panel"><div class="uk-text-center"><div style="color:#F3C13A; font-size:28px"> <u>' + props.Name +
+
+
+				'</u></div></div><div class="uk-child-width-1-3" uk-grid><div><br><b>Location: </b></b>' + props.R_County +
+
+
+				'<br><b>Previous Status: </b>' + props.R_Closed +
+
+
+				'<br><b> Method: </b>' + props.R_Method +
+
+
+				'<br><b>No. of Attempted Re-openings: </b>' + props.R_Openings+
+
+
+				'<br><b>No. of Violent incidents: </b>' + props.N_Incidents +
+
+
+				'</div> <div class="uk-child-width-1-3"><br><b>Bombing Atacks: </b>' + props.N_Bombings +
+
+
+				'<br><b>Shooting Attacks: </b>' + props.N_Shootings +
+
+
+				'<br><b>Arson Attacks: </b>' + props.N_Arson +
+
+
+				'<br><b>Other: </b>' + props.N_Other+
+
+
+				'<br><b>No. of Fatalities: </b>' + props.N_Fatalities +
+
+
+				'<br><b>No. of Wounded: </b>' + props.N_Wounded +
+
+
+				'</div> <div class="uk-child-width-2-3 uk-grid">' + props.video +
+
+
+				'</div> </div> </div> <div class="uk-child-width-1-2@m uk-grid"><div><h4 class="uk-card-title"><b>History of ' + props.Name + ' during the Troubles:' +
+
+
+				'</h5><br></b>' + props.history +
+
+
+				'</div><div><h4 class="uk-card-title"><b>' + props.Name +
+
+
+				' Today:</h4><br></b>' + props.today :
+
+
+				'</div>'
+
+
+			);
+
+
+		};
+
+
+
+	info.addControl( controlSearch );
+
+
+
+
+	</script>
+
+	<img src="CP_bar.png">
+
+	<div class="uk-section">
+	    <div class="uk-container">
+
+	<div class="uk-child-width-2-3@m about uk-grid-small uk-grid-match" uk-grid>
+	    <div>
+	        <div class="uk-card uk-card-default uk-card-body">
+	            <h3 class="uk-card-title">About</h3>
+							<p> Coolest Projects International is the w
+	            <b>Where:</b> RDS, Dublin, Ireland</p>
+							 <b>When:</b> 5 May, 2019</p>
+							 	 <b>Who can apply:</b> Any competitor worldwide</p>
+
+								 
+	        </div>
+	    </div>
+	    <div>
+	        <div class="uk-card uk-card-primary apply uk-card-body">
+	            <h3 class="uk-card-title">Apply</h3>
+	            <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit.</p>
+	        </div>
+	    </div>
+	    <div>
+	        <div class=" attend uk-card uk-card-secondary  uk-card-body">
+	            <h4 class="uk-card-title">Attend</h4>Lorem ipsum dolor sit amet, consectetur adipisicing elit.
+	        </div>
+	    </div>
+	</div>
+</div>
+</div>
+
+</body>
+
+
+</html>
