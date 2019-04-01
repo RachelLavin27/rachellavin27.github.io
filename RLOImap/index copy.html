@@ -85,9 +85,9 @@
 
 </style>
 <body>
-<script src="https://d3js.org/d3.v3.min.js"></script>
-<script src="https://d3js.org/queue.v1.min.js"></script>
-<script src="https://d3js.org/topojson.v1.min.js"></script>
+<script src="http://d3js.org/d3.v3.min.js"></script>
+<script src="http://d3js.org/queue.v1.min.js"></script>
+<script src="http://d3js.org/topojson.v1.min.js"></script>
 <script src="https://d3js.org/d3-color.v1.min.js"></script>
 <script src="https://d3js.org/d3-interpolate.v1.min.js"></script>
 <script src="https://d3js.org/d3-scale-chromatic.v1.min.js"></script>
@@ -108,14 +108,12 @@ var margin = {top: 0, right: 0, bottom: 0, left: 0},
             width = 800 - margin.left,
             height = 680  - margin.bottom;
 
-var colors = [ "rgb(222,235,247)","rgb(187, 210, 232)", "rgb(198,219,239)", "rgb(158,202,225)", "rgb(107,174,214)", "rgb(66,146,198)","rgb(33,113,181)","rgb(8,81,156)","rgb(8,48,107)","rgb(3,19,43)"];
+var colors = ["rgb(187, 210, 232)", "rgb(222,235,247)", "rgb(198,219,239)", "rgb(158,202,225)", "rgb(107,174,214)", "rgb(66,146,198)","rgb(33,113,181)","rgb(8,81,156)","rgb(8,48,107)","rgb(3,19,43)"];
 
 
 var color = d3.scale.threshold()
 .domain([0, 1,2,3,4,5,6,70,8,9,10])
   .range(colors);
-
-
 
 
 var path = d3.geo.path();
@@ -136,7 +134,7 @@ var svg = d3.select("body")
                 .attr("y", 55)
                 .attr("class", "sub-title")
                 .attr("fill","rgba(0,0,0,.57)")
-                .text("Country's Government Readiness ranked out of 10");
+                .text(" Government Readiness Score ranked out of 10");
 
 
 
@@ -165,7 +163,7 @@ var svg = d3.select("body")
 
                         d3.select('SVG')
                             .append('image')
-                            .attr('xlink:href','https://rachellavin27.github.io/RLOIImages/logo2.png')
+                            .attr('xlink:href','https://rachellavin27.github.io/RLOIImages/scale.png')
                             .attr('class', 'avengers')
                             .attr('height', '75px')
                             .attr('width', '200px')
