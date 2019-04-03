@@ -108,7 +108,7 @@ var margin = {top: 0, right: 0, bottom: 0, left: 0},
             width = 800 - margin.left,
             height = 680  - margin.bottom;
 
-var colors = [ "rgb(222,235,247)","rgb(187, 210, 232)", "rgb(198,219,239)", "rgb(158,202,225)", "rgb(107,174,214)", "rgb(66,146,198)","rgb(33,113,181)","rgb(8,81,156)","rgb(8,48,107)","rgb(3,19,43)"];
+var colors = [ "rgb(222,235,247)","rgb(187, 210, 232)", "rgb(198,219,239)", "rgb(158,202,225)", "rgb(107,174,214)", "rgb(66,146,198)","rgb(33,113,181)","rgb(8,81,156)","rgb(62, 81, 144)", "rgb(8,48,107)"];
 
 
 var color = d3.scale.threshold()
@@ -151,10 +151,10 @@ var svg = d3.select("body")
           .append('image')
           .attr('xlink:href','https://raw.githubusercontent.com/RachelLavin27/rachellavin27.github.io/master/RLOIImages/greyscale.png')
           .attr('class', 'avengers')
-          .attr('height', '150px')
-          .attr('width', '150px')
-          .attr('x', '665')
-          .attr('y', '559')
+          .attr('height', '100px')
+          .attr('width', '110px')
+          .attr('x', '580')
+          .attr('y', '598.5')
 
 
 
@@ -171,6 +171,16 @@ var svg = d3.select("body")
                             .attr('width', '200px')
                             .attr('x', '30')
                             .attr('y', '610')
+
+
+                            d3.select('SVG')
+                                .append('image')
+                                .attr('xlink:href','https://rachellavin27.github.io/RLOIImages/IDRClogo.png')
+                                .attr('class', 'avengers')
+                                .attr('height', '75px')
+                                .attr('width', '200px')
+                                .attr('x', '620')
+                                .attr('y', '610')
 
                             svg.append("text")
                             .attr('x', '30')

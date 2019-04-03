@@ -1,0 +1,1020 @@
+<!DOCTYPE html>
+<html lang="en">
+	<head>
+		<meta charset="utf-8">
+		<meta name="viewport" content="width=device-width, initial-scale=1">
+		<title>Price - UIkit 3 KickOff</title>
+		<link rel="icon" href="img/favicon.ico">
+
+		<script src="https://cdnjs.cloudflare.com/ajax/libs/uikit/3.0.2/js/uikit.min.js"></script>
+		<script src="https://cdnjs.cloudflare.com/ajax/libs/uikit/3.0.2/js/uikit-icons.min.js"></script>
+	<!-- CSS FILES -->
+		<link rel="stylesheet" type="text/css" href="https://cdnjs.cloudflare.com/ajax/libs/uikit/3.0.2/css/uikit.min.css">
+		<style>
+
+			.uk-container-small {
+				max-width: 1020px;
+
+			}
+
+			.uk-navbar {
+	background-color: #5B85AA
+}
+
+
+
+#page-wrap {
+    margin: 0px;
+}
+
+.uk-container {
+	color: red
+}
+
+.footer {
+background-color: #5B85AA
+}
+
+.uk-container-expand {
+background-color: #5B85AA
+
+}
+
+.logo2 {
+	width: 150px;
+}
+
+.uk-navbar-nav>li>a {
+    color: white;
+	}
+
+
+	.uk-navbar-dropdown {
+	    display: none;
+	    position: absolute;
+	    z-index: 1020;
+	    box-sizing: border-box;
+	    width: 200px;
+	    padding: 25px;
+	    background: black;
+	    color: #666;
+	    box-shadow: 0 5px 12px rgba(0,0,0,.15);
+			opacity: 0%;
+	}
+
+	.uk-navbar-item, .uk-navbar-nav>li>a, .uk-navbar-toggle {
+	    display: flex;
+	    justify-content: center;
+	    align-items: center;
+	    box-sizing: border-box;
+	    min-height: 0px;
+	    padding: 0 15px;
+	    font-size: .875rem;
+	    font-family: -apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,"Helvetica Neue",Arial,"Noto Sans",sans-serif,"Apple Color Emoji","Segoe UI Emoji","Segoe UI Symbol","Noto Color Emoji";
+	    text-decoration: none;
+	}
+
+	.uk-button-default.hover {
+	    background-color: white;
+	    color: white;
+	    border: 1px solid #e5e5e5;
+	}
+
+.uk-accordion-title {
+color: white;
+padding: 1%;
+margin: 10px;
+margin-right: 10px;
+}
+.uk-accordion {
+	background-color: #5B85AA
+}
+
+.uk-accordion-content {
+		background-color: white
+}
+
+	.uk-section-muted {
+	    background: red;
+	}
+
+	.headline {
+		color: #F46036;
+		font-size: 48px;
+
+	}
+
+	.rankedheading {
+		color: #F46036;
+	}
+
+	.subheading {
+		color:#F46036;
+		font-size: 14px;
+	background-color: rgba(255,255,255,.6) ;
+	}
+
+	.uk-card {
+		margin-top: -7%;
+	}
+
+.ranked {
+		color:#F46036;
+		font-size: 28px;
+}
+
+.uk-accordion-title:focus,
+.uk-accordion-title:hover {
+		color:#E6E8E6;
+}
+
+.specialreport {
+		color: #808080;
+}
+
+
+.boldheading {
+	font-weight: bold;
+}
+
+.orangebold {
+		color:#F46036;
+}
+	</style>
+	</head>
+	<body>
+		<!--HEADER-->
+		<header class="uk-box-shadow-small" >
+			<div class="uk-container uk-container-expand">
+				<nav class="uk-navbar" id="navbar" data-uk-navbar>
+					<div class="uk-navbar-left">
+						<a class="uk-navbar-item uk-logo">
+								<img class="logo2" src="img/logo.jpg"></img>
+					</div>
+
+					<div class="uk-navbar-right">
+						<ul class="uk-navbar-nav uk-visible@m">
+
+							<li>
+
+										<div>
+												Artificial Intelligence
+
+										</div>
+
+								<div class="uk-navbar-dropdown">
+										<ul class="uk-nav uk-navbar-dropdown-nav">
+												<li><a href="#">Active</a></li>
+												<li><a href="#">Item</a></li>
+												<li><a href="#">Item</a></li>
+										</ul>
+								</div>
+						</li>
+						<li><a href="#">Media</a></li>
+							<li><a href="#">Insights</a></li>
+
+						<li>
+                <a href="#">
+                    <div>
+                        About
+                    </div>
+                </a>
+                <div class="uk-navbar-dropdown">
+                    <ul class="uk-nav uk-navbar-dropdown-nav">
+                        <li class="uk-active"><a href="#">Active</a></li>
+                        <li><a href="#">Item</a></li>
+                        <li><a href="#">Item</a></li>
+                    </ul>
+                </div>
+            </li>
+
+						</ul>
+						<div class="uk-navbar-item">
+							<a class="uk-navbar-toggle uk-hidden@m" data-uk-toggle data-uk-navbar-toggle-icon href="#offcanvas-nav"></a>
+							<a href="#" class="uk-button uk-light uk-button uk-button-default tm-button-default uk-icon  uk-visible@m"><span></span>Contact US</a>
+						</div>
+					</div>
+				</nav>
+			</div>
+		</header>
+		<!--/HEADER-->
+
+		<!--AUTHOR-->
+
+
+
+
+			<div class=" uk-light" >
+			    <div>
+			        <div class="uk-background-cover uk-height-large uk-panel uk-flex uk-flex-center uk-flex-middle" style="background-image: url(img/overlay.png);">
+								<header class="uk-text-center">
+
+									<div class="headline">Artificial Intelligence Readiness</div>
+									<p class="uk-width-3-5 uk-margin-auto subheading">
+										An index of government aritifical intelligence readiness from around the world.
+									</p>
+								</header>
+			        </div>
+			    </div>
+
+			</div>
+
+
+
+
+
+				<div class="uk-container uk-container-small">
+
+
+
+					<!-- price -->
+
+
+						<div class="uk-card uk-card-default uk-card-hover ">
+							<div class="uk-card-header uk-text-center">
+								<h4 class="specialreport uk-text">Special Report</h4>
+							</div>
+							<div class="uk-card-body uk-flex-1">
+								<div class="uk-flex uk-flex-middle uk-flex-center">
+									<span style="font-size: 2rem; font-weight: 200; line-height: 1em">
+										2018 Government AI Readiness Index
+
+									</span>
+								</div>
+
+								<div class="ranked uk-text-small uk-text-center ">Introduction</div>
+
+
+								<p class="uk-width-3-5 uk-margin-auto">
+									This year’s Government AI Readiness Index marks a departure from last year’s methodology, and an expansion of scope to cover all UN countries (from our previous group of OECD governments). It scores the governments of 195 countries and territories according to their preparedness to use AI in the delivery of public services.
+								</p>
+
+
+							 	<p class="uk-width-3-5 uk-margin-auto">
+As you might expect, the upper rankings of this years Government AI Readiness Index are dominated by countries with strong economies and AI-ready infrastructures and systems of  governance.
+</p>
+
+<div class="uk-flex uk-flex-middle uk-flex-center">
+	<span style="font-size: 1rem; font-weight: 200; line-height: 1.5em; text-align: center">
+"This is a timely reminder of the ongoing inequality<br> around access to AI."
+	</span>
+</div>
+
+	<p class="uk-width-3-5 uk-margin-auto">
+ The USA comes first for AI readiness, with the rest of the top 20 dominated by Western European governments, as well as Canada, Australia, and New Zealand. There are four Asian economies in the top 20: Singapore (2nd), Japan (7th), India (19th), and Israel (20th). There are no Latin American or African countries in the top 20.	</p>
+
+
+
+								<div id="Container2"
+ style="padding-bottom:75%; position:relative; display:block; width: 100%">
+ <iframe id="ViostreamIframe"
+	width="100%"
+	height="1000px"
+	margin-left="900px"
+	src="http://igor.gold.ac.uk/~rlavi001/RLOImap/index.html"
+	frameborder="0"
+	allowfullscreen=""
+	style="position:absolute; top:0; left: 100">
+</iframe>
+</div>
+
+<p class="uk-width-3-5 uk-margin-auto">
+	A surprising outcome is China’s relatively low position of 22nd, despite it being well known that both federal and local governments are already implementing AI in public service delivery. This can largely be explained through methodology design and data availability, something discussed in depth in our methodology annex paper.
+</p>
+<p class="uk-width-3-5 uk-margin-auto ">
+	The best performing region is North America, with an average score of 9.09. The worst performing regions are Africa, with an average score of 2.95, and Asia Pacific, with an average score of 3.74. The index highlights the current inequality in AI readiness among global governments, with higher income countries predictably faring better in the rankings than middle and lower income countries. Given that we are on the cusp of seeing widespread AI implementation across a number of sectors, including public services, this is a timely reminder of the ongoing inequality around access to AI.
+</p>
+
+<p class="uk-width-3-5 uk-margin-auto">
+Policymakers should take heed of these findings, to ensure that these inequalities are not further entrenched or even exacerbated by AI, as we enter the fourth industrial revolution.	</p>
+
+
+
+
+								<div id="Container2"
+								style="padding-bottom:75%; position:relative; display:block; width: 100%">
+								<iframe id="ViostreamIframe"
+								width="100%" height="600px" margin-left="200px" padding-left="40%"
+								src="http://igor.gold.ac.uk/~rlavi001/OxfordInsights_AItable/index.html"
+								frameborder="0" allowfullscreen=""
+								style="position:absolute; top:0; left: 0"></iframe>
+								</div>
+
+								<div class="ranked uk-text-small uk-text-center ">Regional Analysis</div>
+
+
+								<ul uk-accordion>
+    <li>
+        <a class="uk-accordion-title" href="#">Africa</a>
+        <div class="uk-accordion-content">
+<br>
+						<img class="uk-width-4-5 uk-margin-auto uk-align-center " src="img/africa.jpg"></a>
+					<p class="uk-width-3-5 uk-margin-auto ">
+
+					The newly released 2018/19 Government AI Readiness Index paints a familiar picture for the African continent. There are no African countries in the top 50 positions, and only 13 African countries (out of 53 in the list) are in the top 100.  The top five African countries are not surprising, given the well-documented developments of the technology sectors in Tunisia, Kenya, Mauritius, Ghana, and South Africa. The bottom ten countries are also mostly not surprising – nine are classified as Least Developed Countries. 		</p>
+
+					<p class="uk-width-3-5 uk-margin-auto ">
+						The Index distills large amounts of data into a single number, but given the rapidly changing nature of the technology, nuances about that number may only become apparent with further iterations of the Index. Such iterations will hopefully demonstrate the accuracy of the observations below.
+ 		</p>
+
+		<p class="uk-width-3-5 uk-margin-auto boldheading">
+		AI and the African tech scene	</p>
+
+		<p class="uk-width-3-5 uk-margin-auto ">
+			One of the biggest challenges facing the characterisation of AI activities and readiness in Africa is a lack of systematic study on the topic. As a result, there is a relative lack of data, and much of the information about AI in Africa is anecdotal. Nevertheless, the anecdotal is likely indicative of a trend toward greater interest and activity.
+</p>
+
+
+<p class="uk-width-3-5 uk-margin-auto ">
+	Local AI labs and research centres are appearing across Africa. These appear to be mostly connected with tech hubs, either as projects within a tech hub or as a stand-alone unit having a close association with a particular tech hub. The continued rapid proliferation of tech hubs in Africa is now a widely researched phenomenon; the potential for contextually localized research in AI is vastly improved by this association with tech hubs. </p>
+
+			<p class="uk-width-3-5 uk-margin-auto ">
+				Another aspect of the African Tech community is the importance of SMEs and individual developers. It remains to be seen whether AI tools are taken up by these groups and incorporated into startup companies, locally developed open source tools, secondary/tertiary education, etc.
+	</p>
+
+	<p class="uk-width-3-5 uk-margin-auto ">
+		Encouragingly, numerous examples of application development show that AI is being applied to truly local problems. From health monitoring systems in Kenya, to the detection of agricultural diseases in Tanzania, to the tracking of illegal fishing in West Africa by AI-powered drones, the potential for AI to aid localised technology solutions is emerging.
+</p>
+
+<p class="uk-width-3-5 uk-margin-auto boldheading">
+Mitigating the risks	</p>
+
+<p class="uk-width-3-5 uk-margin-auto ">
+	One of the topics driving the worldwide discussion on AI is the impact that it, along with other Fourth Industrial Revolution technologies, will have on jobs. Whereas the negative impact of previous revolutions tended to be greatest for low-skilled labour, the current expectation is that AI will have a greater negative impact on jobs requiring greater levels of certain skills. The nature of the impact of AI on the job market is still highly speculative, but many predictions agree that jobs such as truck drivers, customer service representatives, financial analysts, and lawyers are at risk of being either replaced or dramatically altered by widespread adoption of AI.
+</p>
+
+<p class="uk-width-3-5 uk-margin-auto ">
+	The negative impacts of AI on employment will likely be substantially lower in Africa, even if the adoption of AI is as widespread on the continent as in the rest of the world. A variety of factors will contribute to this phenomenon.
+</p>
+
+<p class="uk-width-3-5 uk-margin-auto ">
+	First, the largest industries in Africa still rely on large numbers of low paid workers. The typical daily wage for a worker in agriculture or construction is less than 10 USD per day. It is simply not economically practical to replace or augment such a low paid workforce until the cost of robotic labour is dramatically reduced from current levels. Second, the informal sector is substantially more important in Africa, and the impacts of AI on this sector will be minimal.
+</p>
+
+
+<p class="uk-width-3-5 uk-margin-auto ">
+	Third, notwithstanding the examples given above, there is relatively little R&D in AI in Africa. This means that implementations of AI will lack contextual relevance, particularly in regards to cultural and infrastructural factors. For example, a lorry in the United States or Europe encounters substantially different challenges to a lorry in most of Africa. A self-driving lorry developed for the roads of developed countries is unlikely to be successful on the roads of developing countries without substantial adaptation.
+</p>
+
+<p class="uk-width-3-5 uk-margin-auto ">
+	As AI and related technologies improve, many of these challenges will eventually be addressed. By the time that this happens, the African continent will be able to learn from the mistakes and successes of pioneer countries (i.e., those in the top 50 positions of the index). As previously observed with the rapid and widespread implementation of mobile communication networks, then, African countries will be able to adopt the most effective forms of AI in a contextually relevant manner.
+
+</p>
+
+<p class="uk-width-3-5 uk-margin-auto boldheading">
+Conclusions	</p>
+
+<p class="uk-width-3-5 uk-margin-auto ">
+	The level of innovation in Africa is often discounted because traditional metrics (such as the number of patent applications filed) are not well suited for the local context. This index presents a global look at AI that is consistent with other metrics for the state of technology in Africa. The trend for Africa is positive in that there is growing interest in the topic from formal research centres and informal developer communities. Future editions of the Index will show whether this trend is sustained.
+</p>
+
+<p class="uk-width-3-5 uk-margin-auto">
+	<i><b>Isaac Rutenberg </b>is a Senior Lecturer and the Director of the Centre for Intellectual Property and Information Technology Law (CIPIT) at Strathmore Law School in Nairobi, Kenya.
+</i></p>
+
+<br>
+
+
+	</div>
+    </li>
+    <li>
+        <a class="uk-accordion-title" href="#">Asia-Pacific</a>
+        <div class="uk-accordion-content">
+					<br>
+											<img class="uk-width-4-5 uk-margin-auto uk-align-center " src="img/asia.jpg"></a>
+
+					<p class="uk-width-3-5 uk-margin-auto ">
+						Two countries in Asia-Pacific come amongst the top ten globally for government AI readiness: Singapore (1st in Asia-Pacific and 2nd globally) and Japan (2nd in Asia-Pacific and 7th globally) lead in Asia-Pacific in AI Government Readiness. But Asia-Pacific also has two countries in the bottom 10 globally: North Korea (last in Asia-Pacific and 192nd out of 194 globally), and the small island Pacific state of Micronesia (second last in Asia-Pacific and 186th out of 194 globally). This is indicative of the uneven progress in government readiness and adoption of AI across Asia-Pacific. However, many governments in the region are working to develop national plans for accelerating AI adoption.
+		</p>
+
+		<p class="uk-width-3-5 uk-margin-auto boldheading">
+		Lessons from the Asia-Pacific context	</p>
+
+		<p class="uk-width-3-5 uk-margin-auto ">
+	There is much to be learned from the strategies that have been adopted by the countries in the top ten in Asia-Pacific, despite the range of different contexts at play.
+</p>
+
+
+		<p class="uk-width-3-5 uk-margin-auto ">
+			We should expect that China, while only placing 5th in Asia-Pacific and 22nd globally in the current rankings, would rise in next year’s rankings. The central government has placed a strong focus on investing in AI capabilities. While China may lag behind in fundamental research, it is catching up fast. For adoption and utilisation of AI in the current context, China’s advantage lies in its abundance of data (and loose privacy laws), and its ever increasing numbers of AI engineers, coupled with a strong and vibrant startup ecosystem. The abundance of data in particular will give China a clear competitive advantage for its AI industries that other countries will struggle to overcome.
+</p>
+
+
+<p class="uk-width-3-5 uk-margin-auto ">
+	We should expect that China, while only placing 5th in Asia-Pacific and 22nd globally in the current rankings, would rise in next year’s rankings. The central government has placed a strong focus on investing in AI capabilities. While China may lag behind in fundamental research, it is catching up fast. For adoption and utilisation of AI in the current context, China’s advantage lies in its abundance of data (and loose privacy laws), and its ever increasing numbers of AI engineers, coupled with a strong and vibrant startup ecosystem. The abundance of data in particular will give China a clear competitive advantage for its AI industries that other countries will struggle to overcome.
+</p>
+
+<p class="uk-width-3-5 uk-margin-auto ">
+	Singapore is also paying heed to managing the concerns around AI. It is one of the few governments that has created an AI Ethics Advisory Council as part of its AI strategy, with strong leadership to “assist the Government to develop ethics standards and reference governance frameworks, issue advisory guidelines, practical guidance and codes of practice for voluntary adoption by businesses”. While not necessarily going as far as Singapore, most other governments with AI strategies are also employing the language of ethics to foster the responsible use of AI. Singapore’s lead in grappling with issues of explainable, transparent, and fair algorithms, as well as in practically incorporating considerations for competition, privacy, and ethics into its policy and regulatory framework, will be a useful resource for other governments in Asia-Pacific as they formulate and incorporate AI strategies.
+</p>
+
+<p class="uk-width-3-5 uk-margin-auto ">
+Australia and New Zealand both do well in this year’s rankings. Both already have privacy and AI strategies in place. Australia in particular has a strong connective role to the rest of Asia-Pacific with their tertiary education system that attract top students from the rest of Asia, molding and feeding the human resource needs for the AI industry for the region as a whole. The strong cross-border academic collaborations between China, Singapore, and Australia would facilitate the growth of fundamental and application driven AI research for the region. Much of the investment in Australia however has flowed mostly towards linking AI to their existing core industries.
+</p>
+
+<p class="uk-width-3-5 uk-margin-auto ">
+	In the Middle East, the oil-rich Gulf economies looking to diversify their economies have given strong signals regarding the importance of AI to their futures: the UAE have announced the world’s first dedicated AI minister, while Saudi Arabia recently gave citizenship to a robot. The UAE, Saudi Arabia, and Qatar have all shown strong commitment to developing their AI capabilities. They have been investing heavily in new technology, with governments serving as initial consumers of said technology. The UAE in particular has various AI-related strategies (around areas such as smart cities and transport) that may accelerate AI adoption. In the short- to medium-term, the Middle-Eastern economies will need to focus heavily on attracting and retaining foreign talent (which is already in short supply) and companies. Oil price volatility can affect investment, but it also creates an incentive for the diversification of the Gulf economies beyond their traditional oil-based industries. While the focus so far has been on investment in AI adoption, much more will need to be done by these governments to prepare society both to take advantage of, and mitigate the potential disruptions from, AI growth.
+</p>
+
+<p class="uk-width-3-5 uk-margin-auto boldheading">
+Regional priorities	</p>
+
+<p class="uk-width-3-5 uk-margin-auto ">
+<i>	Improved skills and data </i>will be needed for widespread AI adoption and utilisation in government. Fostering fundamental research is important, but may not be the solution to short term needs. Rather, it is in applied R&D that countries will have to significantly increase their AI capabilities. Those countries with already strong STEM education systems will have an advantage, but others will need to import these skills in the short term, which means they have to create strong incentives for attracting top foreign talent. This also means that they will have to loosen their labor regulations to facilitate the import of needed skills. Similarly, for AI industries to succeed, governments will have to pay particular attention to increasing both the ‘datafication’ of their economies and the availability of data.
+</p>
+
+
+
+<p class="uk-width-3-5 uk-margin-auto ">
+	<i>Fostering healthy competition:</i> the benefits of AI will be maximised by the biggest companies and governments who are ready to invest heavily. Fostering healthy competition through appropriate regulatory mechanisms will be critical if countries are to build dynamic innovation eco-systems in AI. This would mean enabling the free flow of data beyond existing silos, but in a responsible manner that protects data privacy.
+</p>
+
+<p class="uk-width-3-5 uk-margin-auto ">
+	<i><b>Sriganesh Lokanathan</b> is a Team Leader at LIRNEasia, where he co-established and leads LIRNEasia’s research on responsibly leveraging big data and AI for global development. LIRNEasia is a Sri Lanka-based IT policy and regulation think-tank active in the Asia Pacific region
+	</i></p>
+
+
+
+  </div>
+    </li>
+    <li>
+        <a class="uk-accordion-title" href="#">Australia and New Zealand</a>
+        <div class="uk-accordion-content">
+					<br>
+											<img class="uk-width-4-5 uk-margin-auto uk-align-center " src="img/oz.jpg"></a>
+											<p class="uk-width-3-5 uk-margin-auto ">
+						Australia and New Zealand both rank relatively well in the 2018 Government AI Readiness Index at 12th and 13th places respectively, with almost identical scores. Both countries’ high scores are partly a result of being wealthy economies with well-educated populations and digitally savvy governments. Each government has shown increased interest and investment in AI, but both will need to do more to break into the top ten next year.
+			</p>
+
+			<p class="uk-width-3-5 uk-margin-auto boldheading">
+			Australia	</p>
+					<p class="uk-width-3-5 uk-margin-auto ">
+						The Australian Government announced its intention to increase government investment in AI in the 2018-19 Budget, in which it committed AU$29.9 million to AI projects including research funding, more PhD places, and educational programmes in schools and at the undergraduate level. It also put aside funding to develop a national AI Ethics Framework, though almost one year later there has been limited public progress on this commitment. This is a very small commitment of funds compared with other comparable countries (Canada, for example, is investing more than ten times as much in AI programmes, with a population less than 50 per cent larger than Australia’s and a smaller GDP per capita).
+	</p>
+
+					<p class="uk-width-3-5 uk-margin-auto ">
+						Some state governments, such as Queensland and South Australia, have also declared their intention to develop AI capabilities, often within innovation precincts. This is an area in which there could be substantial growth over the coming year as state capitals compete for AI talent. And while government efforts have been relatively small thus far, Australia has some outstanding AI experts and multiple centres of AI research, including Data61 and the 3A Institute (at the Australian National University).
+		</p>
+
+					<p class="uk-width-3-5 uk-margin-auto ">
+				Australia’s ranking suffers from its relatively small number of AI startups compared with other countries, as many Australian entrepreneurs look overseas for greater opportunities and funding (and a more convenient time zone). While government efforts cannot do much about the time zone, they could help encourage more technology startups through greater tax concessions, export support, visa assistance, or even funding.
+		</p>
+
+		<p class="uk-width-3-5 uk-margin-auto boldheading">
+		New Zealand	</p>
+
+		<p class="uk-width-3-5 uk-margin-auto ">
+			New Zealand has a very active AI community which is helping to drive efforts towards a national AI strategy, with NGO the AI Forum producing a report Artificial Intelligence: Shaping a Future New Zealand in partnership with the New Zealand Government which was launched in May 2018. While New Zealand does not yet have a formal AI strategy, its government has an ambitious approach to digital technology, with the goal of making ICT the second-largest contributor to GDP by 2025.
+
+</p>
+
+<p class="uk-width-3-5 uk-margin-auto ">
+	New Zealand, with a population about one fifth the size of Australia’s, suffers even more than Australia from a relatively small startup ecosystem. It also lags behind Australia in Index metrics such as the number of AI startups and the innovation capability of its private sector. Nonetheless, its strong performance in the Index is partly due to a central government that ranks very highly on international measures, with sophisticated joined-up service delivery creating opportunities for effective digital services. New Zealand’s continued strong performance in the Index depends on its Government producing a strategy (or in the words of its government, Action Plan) for artificial intelligence. The strategy should take advantage of New Zealand’s small size and efficient government to create a niche for itself globally, perhaps in piloting innovative AI applications in government.
+
+</p>
+
+<p class="uk-width-3-5 uk-margin-auto ">
+	<i><b>Emma Martinho-Truswell</b>  is co-founder and COO of Oxford Insights, and heads up their Australia office from Sydney.
+	</i></p>
+</div>
+
+    </li>
+
+
+<li>
+		<a class="uk-accordion-title" href="#">Eastern Europe</a>
+		<div class="uk-accordion-content">
+			<br>
+									<img class="uk-width-4-5 uk-margin-auto uk-align-center " src="img/east.jpg"></a>
+									<p class="uk-width-3-5 uk-margin-auto ">
+				This year’s Government AI Readiness Index for Eastern Europe covers 22 countries across the region. The region’s overall average score is 5.75, which is higher than the global average of 4.22. The top five ranked governments - Estonia, Poland, the Czech Republic, Russia, and Latvia - are already making advances in AI policy, as they have either adopted national AI strategies or announced plans to do so in the near future. Their strengths also include good data capability in government, technology skills among the general population, and private sectors capable of innovation.
+
+		</p>
+
+		<p class="uk-width-3-5 uk-margin-auto ">
+			All of the top ten ranked countries in the region are EU member states, with the exception of Russia (4th in the region). There are increasing cross-national initiatives and cooperation on AI among EU member states in Eastern Europe. In April 2018, the European Commission presented their <a href="http://europa.eu/rapid/press-release_IP-18-6689_en.html">strategy</a> to increase the coordination of investment for research and innovation for AI, with an aim of reaching at least €20 billion by the end of 2020, and more than €20 billion per year over the following decade. Estonia, Latvia and Lithuania released the <a href="https://www.regeringen.se/49a602/globalassets/regeringen/dokument/naringsdepartementet/20180514_nmr_deklaration-slutlig-webb.pdf">Declaration on AI in the Nordic-Baltic Region</a> in May 2018, and the Visegrad Group - the Czech Republic, Hungary, Poland and the Slovak Republic - published a Joint Declaration on Future Cooperation on Industry 4.0 Projects, with the emphasis on AI, in 2018.
+
+	</p>
+
+	<p class="uk-width-3-5 uk-margin-auto ">
+		All of the top ten ranked countries in the region are EU member states, with the exception of Russia (4th in the region). There are increasing cross-national initiatives and cooperation on AI among EU member states in Eastern Europe. In April 2018, the European Commission presented their <a href="http://europa.eu/rapid/press-release_IP-18-6689_en.html">strategy</a> to increase the coordination of investment for research and innovation for AI, with an aim of reaching at least €20 billion by the end of 2020, and more than €20 billion per year over the following decade. Estonia, Latvia and Lithuania released the <a href="https://www.regeringen.se/49a602/globalassets/regeringen/dokument/naringsdepartementet/20180514_nmr_deklaration-slutlig-webb.pdf">Declaration on AI in the Nordic-Baltic Region</a> in May 2018, and the Visegrad Group - the Czech Republic, Hungary, Poland and the Slovak Republic - published a Joint Declaration on Future Cooperation on Industry 4.0 Projects, with the emphasis on AI, in 2018.
+
+</p>
+
+<p class="uk-width-3-5 uk-margin-auto ">
+	Estonia is ranked first in the region (and 24th globally), which is little surprise given <a href="https://blogs.wsj.com/cio/2018/11/28/estonias-cio-tackles-ai-strategy-for-government/">" the way it has embraced digital technologies in recent years</a>, as seen through its high score in indices such as the UN eGovernment Development Index. The government has already started applying machine learning in its operations and public service delivery, through initiatives such as integrated government data exchange portal <a href="https://e-estonia.com/solutions/interoperability-services/x-road/">X-Road</a>. It is looking for <a href="https://e-estonia.com/estonia-springboard-global-startups-ai-apps/">other ways to capitalise on the vast amounts of data held by the government </a>to improve public services through AI, such as detecting icy roads using satellite imagery, or improving the E-Tax system.
+
+</p>
+
+<p class="uk-width-3-5 uk-margin-auto ">
+Russia is also actively prioritising investment and research in AI, and in March 2018 hosted a conference on AI with the Ministry of Defence, the Ministry of Education and Science, and the Russian Academy of Sciences. Although the Russian Government hasn’t officially released an official strategy for AI, <a href="http://mil.ru/conferences/is-intellekt.htm">the conference concluded with 10 policies that lay the foundation for a national AI strategy.</a> It is estimated that Russia <a href="https://www.brookings.edu/research/weapons-of-the-weak-russia-and-ai-driven-asymmetric-warfare/">currently spends US$12.5 Million a year on AI research</a>, mostly focused on education and military operations.
+</p>
+
+<p class="uk-width-3-5 uk-margin-auto ">
+	Among the non-EU countries in the region, one of the major reasons for their lower rankings - especially in the Western Balkans and South Caucasus - is the lack of an adequate innovation, to nurture AI skills advanced technologies, as reflected in the Crunchbase data. To some extent, these countries have government buy-in for using data and incorporating ICTs into policies and public services. However, the main challenges of nurturing an AI-friendly ecosystem are the <a href="http://www.worldbank.org/en/region/eca/publication/western-balkan-labor-market-report">stagnant economic growth and brain drain</a>, caused by the high emigration of the skilled labour forces.
+</p>
+
+<p class="uk-width-3-5 uk-margin-auto ">
+	Nevertheless, the countries in the Western Balkans and South Caucasus are joining forces and working together on national action plans to incorporate advanced technologies in government operations. In October 2018, leaders from the Western Balkans agreed to establish an affiliate <a href="https://www.weforum.org/press/2018/10/leaders-from-western-balkans-commit-to-strengthen-economic-social-ties-and-prepare-the-region-for-the-future/">Center for the Fourth Industrial Revolution</a>, focusing on emerging technologies such as AI. In Armenia, the first<a href="https://www.lragir.am/2019/01/28/412971/"> innovation and technology park for the CIS region</a> has been announced, which will host more than 6,000 innovators and technicians working on ICT.</p>
+
+
+	<p class="uk-width-3-5 uk-margin-auto ">
+		The government of Belarus scores poorly overall for AI readiness due to a number of missing data points in the index. This does not fully reflect the efforts of the government to foster and apply new and emerging technologies, through programmes such as the creation of <a href="http://www.park.by/?lng=en">‘hi-tech parks’</a> aimed at becoming the Silicon Valley of Eastern Europe. The government has also recently signed a <a href="https://www.aspistrategist.org.au/china-belarus-and-the-bear-in-the-room/">deal with China </a>to cooperate and invest in future technologies including artificial intelligence. These developments point to a more advanced level of government AI readiness in Belarus than the index might suggest.
+	</p>
+
+	<p class="uk-width-3-5 uk-margin-auto ">
+		The varying scores of governments in Eastern Europe clearly shows the uneven pace of developments across the region. The leaders in the region are mainly EU member states (and Russia), while low-ranking countries are mostly non-EU states, perhaps suggesting that EU membership gives states some advantage in terms of preparing for the coming AI revolution. The Index results show that the areas which need the most improvement in the region are building a better data infrastructure, including making data open and available to the public, and fostering a strong innovation ecosystem to help local tech communities thrive and ultimately contribute to government AI readiness.
+	</p>
+
+	<p class="uk-width-3-5 uk-margin-auto ">
+	<i><b>Yaera Chunga</b> Consultant working on Innovations for Data and Civic Engagement within the Open Government and Accountable Institutions team at the UNDP Istanbul Regional Hub. She has a Master of Public Administration from Columbia University and has worked with World Vision and the World Bank.
+	</i></p>
+
+
+		</li>
+
+
+		<li>
+				<a class="uk-accordion-title" href="#">Latin America</a>
+				<div class="uk-accordion-content">
+					<br>
+											<img class="uk-width-4-5 uk-margin-auto uk-align-center " src="img/latin.jpg"></a>
+
+					<p class="uk-width-3-5 uk-margin-auto ">
+						The rise of artificial intelligence poses several promises and risks for Latin American governments and societies. As in other regions, AI technologies could help to enhance government effectiveness, favour transparency and revolutionise the economy. Nevertheless this could come at the cost of significant social consequences, considering the structural inequality and democratic deficit in the region. Latin America faces three key challenges in harnessing the use of AI for the common good: policies, capacity, and adequate resources.
+		</p>
+
+
+					<p class="uk-width-3-5 uk-margin-auto ">
+						To date, only two Latin American countries (México and Uruguay) have developed, or are developing, AI policies and strategies. These are important milestones for structuring the use of AI in the public sector, as well as for signalling to the private sector where investments should be directed. As a region, Latin America does not have a coherent strategy or approach to this matter. To some degree, this situation is not unusual and follows a similar path as has been seen in other related fields such as open data and digital government. Usually, a few governments take the lead in terms of policy making and agenda setting, and then other countries in the region later follow their example. The absence of clear policy and ethical frameworks around AI allows for experimentation without proper guidance, as ILDA noticed in our research paper <a href="https://idatosabiertos.org/automatizar-con-cautela-datos-e-inteligencia-artificial-en-america-latina/">“Automating with Caution”</a>. It is important for policy-makers to engage more thoughtfully with this field to prevent unforeseen or unwanted consequences when implementing AI in public service delivery. Finally, while more countries in Latin America are considering privacy laws, following the example of the EU’s GDPR, there is still much to discuss about how these types of regulation will be implemented in the Latin American context.
+		</p>
+
+		<p class="uk-width-3-5 uk-margin-auto ">
+			Capacity is also a challenge for Latin American countries, and in particular for their governments. To date, it has been difficult for them to identify local technical, knowledge and social partners to develop AI projects with. While there are some businesses, academics and social enterprises working in the field, they are unlikely to be familiar with the unique context and challenges of the public sector. Furthermore, there is a challenge (similar to other parts of the world) in terms of helping citizens to understand how data algorithms and AI work, in order to protect their own rights. This is particularly important if AI technologies are to scale and be applied in social services, tax administration and justice, where the issue of “algorithmic due process” is most pressing. As shown by the Index, some governments in the region score well below the global average for AI readiness, which leads to the question of what kind of strategies could work to help them be better prepared for the AI revolution. Unlike global leaders in the field such as Canada, the US or the UK , Latin America and the Caribbean has not yet connected its academic resources with public and private capital to enable the establishment of AI centres. AI centres could help to spearhead much of the needed innovation and connections to address social and economic issues.
+</p>
+
+<p class="uk-width-3-5 uk-margin-auto ">
+	The way forward is still uncertain. At ILDA we will be using the results of the Index to inform a new project in partnership with several Latin American governments and organisations. We will explore how to structure better AI policies, test and explore relevant AI solutions, as well as build a network of practitioners to enable relevant and timely knowledge in this area. In the short run, the region needs more investment tailored for the Latin American context, and the right ethical and policy framework to kickstart an inclusive AI development cycle.
+</p>
+
+<p class="uk-width-3-5 uk-margin-auto ">
+	<i><b>Fabrizio Scrollini</b> is the executive director of the Open Data Latin American Initiative (ILDA), and a member of the Open Data Network for Development (OD4D). He is also the chairman of DATA Uruguay, a civic association based in Uruguay that builds civic technology to promote human development, co-founder of Abrelatam and the Open Data Regional Conference for Latin America and the Caribbean, and is one of the Lead Stewards of the International Charter of Open Data.
+</i></p>
+
+	</li>
+	<li>
+			<a class="uk-accordion-title" href="#">North America</a>
+			<div class="uk-accordion-content">
+				<br>
+										<img class="uk-width-4-5 uk-margin-auto uk-align-center " src="img/north.jpg"></a>
+
+				<p class="uk-width-3-5 uk-margin-auto ">
+					The United States and Canada are the 1st and 8th highest ranked countries in the world for government AI readiness, making North America a highly competitive region for AI. Both countries boast highly skilled workforces, innovative private sectors, good data availability, and effective governance, which are all key factors for determining whether a government can take advantage of AI quickly and effectively. Additionally, both countries have identified AI as a key national priority, with Canada publishing its <a href="https://www.cifar.ca/ai/pan-canadian-artificial-intelligence-strategy">Pan-Canadian Artificial Intelligence Strategy</a> in 2017, the first country to launch a national AI strategy, and the United States launching a series of initiatives since 2016 devoted to increasing AI readiness, culminating in the Trump administration’s national AI strategy, called the <a href="https://www.whitehouse.gov/presidential-actions/executive-order-maintaining-american-leadership-artificial-intelligence"> American AI Initiative</a>, presented in February 2019. Despite these countries’ leading positions, both have opportunities for improvement.
+
+		</p>
+
+				<p class="uk-width-3-5 uk-margin-auto ">
+				<b>Canada</b>
+			<br>
+			Whereas many countries are pursuing policies to boost investment in AI and leverage AI for national competitiveness, the Pan-Canadian Artificial Intelligence Strategy is unique among national AI strategies in that it focuses almost exclusively on establishing Canada as the human capital leader in AI by cultivating and attracting highly skilled AI talent. This is a valuable niche for Canada to occupy, given the high-demand for AI talent globally. However, Canada lags among other leading nations in the amount of AI startups located in the country. This is not necessarily a bad thing for Canada given that a country will benefit far more from robust AI adoption than simply having successful AI companies. But, given how aggressively Canada is courting high-skilled AI talent, Canada will likely see a considerable growth in its domestic AI industry in the coming years.
+	</p>
+
+	<p class="uk-width-3-5 uk-margin-auto ">
+	<b>United States</b>
+<br>
+The United States has lagged behind most leading nations in developing a national AI strategy, but its government has been working to advance AI development and adoption since 2016, most notably with the launch of its <a href="https://obamawhitehouse.archives.gov/sites/default/files/whitehouse_files/microsites/ostp/NSTC/national_ai_rd_strategic_plan.pdf">Artificial Research and Development Strategic Plan</a>. The strategy shapes national AI R&D priorities to emphasise high-impact research such as AI safety and a common environment and resources for AI development. Since then, the government has made important strides in AI, most notably a US$2 billion investment in the Defense Advanced Projects Research Agency’s <a href="https://www.darpa.mil/news-events/2018-09-07">AI Next campaign</a>, which aims to develop the next wave of AI technologies while advancing research into key governance concerns about AI, particularly explainability. The American AI Initiative is a sign of the government’s continued interest in AI and emphasises the importance of AI for national competitiveness. However, the American AI Initiative is considerably less comprehensive than the AI strategies of other leading nations, lacking new funding and with few tangible policy objectives. To be maximally effective, US policymakers should build on the American AI Initiative with concrete policies to advance AI, such as spurring public sector AI adoption and allocating new funding for AI R&D, rather than simply repurposing existing funds.
+ </p>
+
+
+ <p class="uk-width-3-5 uk-margin-auto ">
+
+<br>
+The United States is also world leader in innovative industries, thanks in part to its highly skilled workforce, innovation-friendly regulatory environment, and access to technological infrastructure and data. And though the United States was one of the first countries to develop a comprehensive open data policy, it only passed legislation mandating government agencies treat their data as open by default <a href="https://www.congress.gov/bill/115th-congress/house-bill/4174">in January 2019</a>. This has led to the United States falling behind other nations in terms of data availability, but this new legislation could make the United States even more competitive in the coming years.
+
+ </p>
+
+ <p class="uk-width-3-5 uk-margin-auto ">
+ 	<i><b>Joshua New</b> is an AI and data policy expert based in Washington, DC. Joshua works as a Senior Policy Analyst for the Center for Data Innovation, a nonprofit, nonpartisan technology policy think tank associated with the Information Technology and Innovation Foundation, ranked for the last several years as the world’s leading science and technology think tank.
+ </i></p>
+
+	</li>
+</ul>
+
+<div class="ranked uk-text-small uk-text-center ">Annex: methodology</div>
+<p class="uk-width-3-5 uk-margin-auto">
+
+<div class="orangebold uk-width-3-5 uk-margin-auto"> <b>Approach and structure</div>
+</b>
+<p class="uk-width-3-5 uk-margin-auto">
+To start the process of designing our 2018 Government AI Readiness Index methodology, we set out our ‘exam question’: how ready is a given government to implement AI in the delivery of public services to their citizens? From this, we devised a number of working hypotheses around what makes a government ‘ready’ to use AI in public service delivery.
+</p>
+
+<table class="uk-table uk-table-divider uk-width-3-5 uk-margin-auto">
+    <thead>
+			<td></td>
+			<td>
+	</td>			</tr>
+
+        <tr>
+            <th>Cluster</th>
+            <th>Hypothesis</th>
+
+        </tr>
+    </thead>
+    <tbody>
+			<tr>
+
+        <tr>
+            <td>Governance</td>
+            <td>
+Governments need to implement AI in a way that builds trust and legitimacy, which ideally requires legal and ethical frameworks to be in place for handling and protecting citizens’ data. A coherent national AI strategy is a good proxy for measuring the strength of AI-focused governance.
+</td>
+
+        </tr>
+
+				<tr>
+						<td>Infrastructure and data</td>
+						<td>
+
+						Artificial intelligence systems are built on data. Therefore the quality and availability of data, as well as the ability of a government to work with it effectively, are critical.
+	</td>
+
+				</tr>
+
+				<tr>
+						<td>Skills and education</td>
+						<td>
+In order to develop and implement AI in public service delivery, there is ideally a strong pool of in-country talent, which can be measured both through AI  skills/education and the strength of the AI sector (which can be measured through a proxy such as the number of start-ups).	</td>
+				</tr>
+
+
+				<tr>
+						<td>Government and public services</td>
+						<td>
+	An AI-ready government will display both strong political will and capacity to push for innovation. This can be measured through the proxies of general effectiveness of the government, and the degree of innovation already in place through digital public services.	</td>			</tr>
+
+
+					<tr>
+						<td></td>
+						<td>
+				</td>			</tr>
+
+					</tbody>
+</table>
+
+
+
+
+							<p class="uk-width-3-5 uk-margin-auto ">
+
+							The approach and hypotheses for our 2017 Government AI Readiness Index formed the basis of our thinking about 2018’s index. We also knew that there were a number of changes we wanted to make this time round, based both on our own ideas and feedback we received last year.
+			</p>
+
+
+			<p class="uk-width-3-5 uk-margin-auto ">
+
+				As a starting point, we wanted this year’s index to be more globally representative than last year’s group of OECD governments, so we decided to include all UN countries, plus Taiwan. This was important in guiding our data selection, as we needed to find data sets which covered as many of these as possible (some of last year’s datasets were OECD specific).
+	</p>
+
+
+	<p class="uk-width-3-5 uk-margin-auto ">
+
+		We followed a similar structure to last year of high-level ‘clusters’ containing multiple indicators or proxies for measuring government AI readiness. We re-evaluated every cluster and indicator. This time, we added a fourth cluster that we felt was missing from last year’s index: governance, to measure a government’s AI-related vision, policies, and ethical and legal frameworks, all of which are vital prerequisites for widespread AI implementation in public service delivery.
+</p>
+
+<p class="uk-width-3-5 uk-margin-auto ">
+
+We added new indicators and removed some from last year, and have ended up with 11 indicators in total, up from nine last year:</p>
+
+
+
+<table class="uk-table uk-table-divider uk-width-3-5 uk-margin-auto">
+    <thead>
+			<td></td>
+			<td>
+	</td>			</tr>
+
+        <tr>
+            <th>Cluster</th>
+            <th>Indicator</th>
+						  <th>Source</th>
+							  <th>What source shows</th>
+
+        </tr>
+    </thead>
+    <tbody>
+			<tr>
+
+        <tr>
+            <td>Governance</td>
+            <td>
+Data protection/privacy laws - yes/no</td>
+<td>
+<a href="https://unctad.org/en/Pages/DTL/STI_and_ICTs/ICT4D-Legislation/eCom-Data-Protection-Laws.aspx"> UN data protection and privacy legislation</td>
+	<td>
+Existence of data protection or privacy laws</td>
+<td>
+
+        </tr>
+
+				<tr>
+						<td></td>
+						<td>
+National AI strategy - yes/no/pending	</td>
+<td>
+<a href="http://www.caict.ac.cn/kxyj/qwfb/bps/201809/P020180918696200669434.pdf">Gartner paper, Medium article, Nesta article</a><br>(yes/pending/no) </td>
+<td>
+
+	Existence of a comprehensive national AI strategy
+</td>
+			</tr>
+
+
+
+			<tr>
+					<td>Infrastructure and data</td>
+					<td>
+Data availability</td>
+<td>
+<a href="https://index.okfn.org/"> OKFN Open Data Index 2016/2017</td>
+<td>
+	Scores for open government data publication
+</td>
+<td>
+
+			</tr>
+
+			<tr>
+					<td></td>
+					<td>
+
+						Government procurement of advanced technology products
+	</td>
+<td>
+
+(Sub-indicator in)
+<a href="http://reports.weforum.org/global-information-technology-report-2016/networked-readiness-index/">WEF Networked Readiness Index 2016
+ </td>
+<td>
+
+	Score out of seven in response to the question ‘in your country, to what extent do government purchasing decisions foster innovation?’, from the WEF Executive Opinion Survey
+
+</td>
+		</tr>
+
+
+		<tr>
+				<td></td>
+				<td>
+Data/AI capability (in government)
+</td>
+<td>
+
+(Sub-indicator in)
+<a href="https://publicadministration.un.org/egovkb/data-center">UN eGovernment index 2018
+
+</td>
+<td>
+
+	A composite measure of three dimensions of e-government: online services, telecommunication connectivity and human capacity
+
+</td>
+	</tr>
+
+
+
+
+
+
+	<tr>
+			<td>Skills and education</td>
+			<td>
+Technology skills</td>
+<td>
+	Sub-indicator in
+<a href="http://reports.weforum.org/global-competitiveness-report-2018/competitiveness-rankings/#series=EOSQ508"> WEF Global Competitiveness Report 2018
+</td>
+<td>
+
+	Score out of seven for perceptions of the extent of digital skills among the active population from the WEF Executive Opinion Survey
+
+</td>
+<td>
+
+	</tr>
+
+	<tr>
+			<td></td>
+			<td>
+
+				Private sector innovation capability
+</td>
+<td>
+
+Pillar in
+<a href="http://reports.weforum.org/global-competitiveness-report-2018/competitiveness-rankings/#series=GCI4.D.12">WEF Global Competitiveness Report 2018
+
+</td>
+<td>
+
+
+	Combined measure of: diversity of workforce, state of cluster development, international co-inventions, multi-stakeholder collaboration, scientific publications, patent applications, R&D expenditures, research institutions prominence, buyer sophistication, and trademark applications
+
+</td>
+</tr>
+
+
+<tr>
+		<td></td>
+		<td>
+Number of AI startups
+</td>
+<td>
+
+<a href="https://www.crunchbase.com/">Crunchbase
+
+</td>
+<td>
+
+Number of AI startups per country as registered on Crunchbase
+</td>
+</tr>
+
+
+
+<tr>
+		<td>Government and public services</td>
+		<td>
+Digital public services</td>
+<td>
+Sub-indicator in
+<a href="https://publicadministration.un.org/egovkb/data-center"> UN online service index from UN eGovernment Survey
+</td>
+<td>
+
+Scope and quality of online services
+</td>
+<td>
+
+</tr>
+
+<tr>
+		<td></td>
+		<td>
+
+		Effectiveness of government
+</td>
+<td>
+
+
+<a href="https://govdata360.worldbank.org/indicators/h580f9aa5?country=CHN&indicator=388&viz=line_chart&years=1996,2017">Word Bank 2017 Government Effectiveness
+
+</td>
+<td>
+
+
+	Perceptions of the quality of public services, the quality of the civil service and the degree of its independence from political pressures, the quality of policy formulation and implementation, and the credibility of the government's commitment to such policies
+
+</td>
+</tr>
+
+
+<tr>
+	<td></td>
+	<td>
+Importance of IT to government’s vision of the  future
+</td>
+<td>
+Sub-indicator in
+<a href="http://reports.weforum.org/global-information-technology-report-2016/networked-readiness-index/">WEF Networked Readiness Index 2016
+
+</td>
+<td>
+
+	Score out of seven in response to the question ‘to what extent does the government have a clear implementation plan for utilising ICTs to improve your country’s overall competitiveness?’,  from the WEF Executive Opinion Survey
+
+</td>
+</tr>
+		<td></td>
+						<td>
+				</td>			</tr>
+
+					</tbody>
+</table>
+
+<p class="uk-width-3-5 uk-margin-auto">
+
+<div class="orangebold uk-width-3-5 uk-margin-auto"> <b>Calculating the rankings</div>
+</b>
+<p class="uk-width-3-5 uk-margin-auto">
+	We took the data sets for each indicator and normalised the scores for each country. We then added these together to get our final scores for government AI readiness. We decided to weight each cluster equally based on the feedback we received when consulting on our methodology, as it was felt that each category was of equal importance.
+
+</p>
+
+
+<p class="uk-width-3-5 uk-margin-auto">
+
+<div class="orangebold uk-width-3-5 uk-margin-auto"> <b>Limitations</div>
+</b>
+<p class="uk-width-3-5 uk-margin-auto">
+	We recognise that there are a number of limitations to our method, so will do our best to lay them out here. We also greatly welcome any feedback and ideas for how we can improve next year’s index.
+
+</p>
+
+<p class="uk-width-3-5 uk-margin-auto">
+
+<div class="uk-width-3-5 uk-margin-auto"> <b>Missing data points</div>
+</b>
+<p class="uk-width-3-5 uk-margin-auto">
+As we started with the aim of including all UN governments, we were faced with the problem of trying to find high quality datasets containing as wide a sample of countries in each as possible. Some (UN) datasets, such as the eGovernment Index, are complete and cover all countries in our survey. Others are not, and contain much smaller samples of countries, such as the OKFN Open Data Index. Where we have included a dataset which contains gaps such as this one, it is only after a thorough search for better indicators or proxies to capture what we are trying to measure. In the absence of any alternative, we reverted to less comprehensive datasets we still judged to be of a high quality.
+</p>
+
+<p class="uk-width-3-5 uk-margin-auto">
+	We did not attempt to estimate missing data points, and so the scores of governments who have missing data have suffered as a result. Unfortunately, this tends to benefit countries with stronger economies, who were generally be better represented in the data. In the case of China, which is not represented in the OKFN Open Data Index, the government received a lower score for AI readiness than we feel is reflective of reality. China has prioritised implementing AI in public service delivery, and indeed they already have widespread use of AI in a number of public service programmes. As a result, we would expect China to be at the top, or very near to the top, of our rankings. Its actual place (21st) can therefore be attributed at least in part to missing data points. However, we felt that data availability was too vital of a precondition for widespread AI implementation to leave out, and we could not find a better dataset or proxy to capture this which included more countries.
+</p>
+
+<div class="uk-width-3-5 uk-margin-auto"> <b>Other limitations in the data</div>
+</b>
+<p class="uk-width-3-5 uk-margin-auto">
+	While most of our datasets are from 2018, some (the WEF Networked Readiness Report and the OKFN Open Data Index) are from 2016 or 2017. We have decided to include these, as no higher quality, more recent datasets were available, and we felt these captured vital aspects of our rankings. Given that our Government AI Readiness Index is the first of its kind in the world, and that we are not comparing results with last year’s index due to the changes in scope and methodology, we judged that these were acceptable to include for this year’s index. For next year’s index, however, we will need to reconsider including these indicators if more up-to-date data is not available, due to the problems it will cause for comparability.
+</p>
+
+<div class="orangebold uk-width-3-5 uk-margin-auto"> <b>Future research and the limits of the quantitative method
+</div>
+</b>
+<p class="uk-width-3-5 uk-margin-auto">
+	There is the risk that indices such as these create a global race for AI. Our rankings are quite closely correlated with GDP, which highlights the risk of cementing the global dominance of countries with a history of funding scientific and technological research and development.
+</p>
+
+
+<p class="uk-width-3-5 uk-margin-auto">
+We are well aware that the Government AI Readiness Index does not show a complete picture; rather it simply shows one specifically quantitative way of viewing a government’s AI readiness. There are a number of things that might make a government AI ready that are unquantifiable, and therefore out of the scope of our study. Ghana’s relatively low ranking, for example, does not also acknowledge developments such as Google recently choosing to open the first AI research facility in Africa there. Further qualitative studies would hopefully draw out more of these unquantified elements, to produce a more balanced view of global government AI readiness.
+</p>
+
+
+
+
+
+
+	</div>
+						</div>
+					</div>
+
+					<div>
+					<br>
+						</div>
+					</div>
+
+
+
+		</section>
+
+		<!--FOOTER-->
+		<footer class="footer" class="uk-section-secondary">
+			<div class="uk-container uk-section">
+				<div class="uk-grid uk-child-width-1-3@l" data-uk-grid>
+					<div>
+
+					</div>
+
+
+					<div>
+
+
+					</div>
+				</div>
+			</div>
+
+		</footer>
+		<!--/FOOTER-->
+
+
+		<!-- OFFCANVAS -->
+		<div id="offcanvas-nav" data-uk-offcanvas="flip: true; overlay: true">
+			<div class="uk-offcanvas-bar uk-offcanvas-bar-animation uk-offcanvas-slide">
+				<button class="uk-offcanvas-close uk-close uk-icon" type="button" data-uk-close></button>
+				<ul class="uk-nav uk-nav-default">
+					<li class="uk-active"><a href="#">Active</a></li>
+					<li class="uk-parent">
+						<a href="#">Parent</a>
+						<ul class="uk-nav-sub">
+							<li><a href="#">Sub item</a></li>
+							<li><a href="#">Sub item</a></li>
+						</ul>
+					</li>
+					<li class="uk-nav-header">Header</li>
+					<li><a href="#js-options"><span class="uk-margin-small-right uk-icon" data-uk-icon="icon: table"></span> Item</a></li>
+					<li><a href="#"><span class="uk-margin-small-right uk-icon" data-uk-icon="icon: thumbnails"></span> Item</a></li>
+					<li class="uk-nav-divider"></li>
+					<li><a href="#"><span class="uk-margin-small-right uk-icon" data-uk-icon="icon: trash"></span> Item</a></li>
+				</ul>
+				<h3>Title</h3>
+				<p>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.</p>
+			</div>
+		</div>
+		<!-- /OFFCANVAS -->
+
+		<!-- JS FILES -->
+
+	</body>
+</html>
