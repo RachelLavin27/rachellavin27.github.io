@@ -34,11 +34,15 @@
 
     /* Eastward tooltips */
     .d3-tip.n:after {
-      content: "\25C0";
-      margin: -10px 0 0 0;
-      top: 50%;
-      left: -13px;
+      content: "\25B6";
+     margin: -4px 0 0 -1px;
+     top: 50%;
+     left: 100%;
     }
+
+    /* Westward tooltips */
+
+
 
 
 /*    text{
@@ -101,14 +105,14 @@ var format = d3.format(",");
 // Set tooltips
 var tip = d3.tip()
             .attr('class', 'd3-tip')
-            .offset([50, 150])
+            .offset([50, -150])
             .html(function(d) {
               return "<strong>Country: </strong><span class='details'>" + d.properties.name + "<br></span>" + "<strong>AI Readiness Score: </strong><span class='details'>" + format(d.population) +"</span>";
             })
 
-var margin = {top: 0, right: 0, bottom: 0, left: 0},
-            width = 1000 - margin.left,
-            height = 680  - margin.bottom;
+var margin = {top: 0, right: 0, bottom: 0, left: -0},
+            width = 1390 ,
+            height = 1000  - margin.bottom;
 
 var colors = [ "rgb(222,235,247)","rgb(187, 210, 232)", "rgb(198,219,239)", "rgb(158,202,225)", "rgb(107,174,214)", "rgb(66,146,198)","rgb(33,113,181)","rgb(8,81,156)","rgb(62, 81, 144)", "rgb(8,48,107)"];
 
@@ -137,7 +141,7 @@ var svg = d3.select("body")
 
   var SVG = d3.select("#viz")
           .append("svg")
-          .attr("width", 1200)
+          .attr("width", 1000)
           .attr("height", 600)
 
 
@@ -147,8 +151,8 @@ var svg = d3.select("body")
           .attr('class', 'avengers')
           .attr('height', '100px')
           .attr('width', '110px')
-          .attr('x', '740')
-          .attr('y', '598.5')
+          .attr('x', '1110')
+          .attr('y', '898.5')
 
 
 
@@ -164,7 +168,7 @@ var svg = d3.select("body")
                             .attr('height', '75px')
                             .attr('width', '200px')
                             .attr('x', '30')
-                            .attr('y', '610')
+                            .attr('y', '910')
 
 
                             d3.select('SVG')
@@ -173,36 +177,36 @@ var svg = d3.select("body")
                                 .attr('class', 'avengers')
                                 .attr('height', '75px')
                                 .attr('width', '180px')
-                                .attr('x', '830')
-                                .attr('y', '615')
+                                .attr('x', '1200')
+                                .attr('y', '915')
 
                             svg.append("text")
                             .attr('x', '30')
-                            .attr('y', '630')
+                            .attr('y', '930')
                               .attr("class", "scale")
                               .text(" Government Readiness Score");
 
                               svg.append("text")
                               .attr('x', '10')
-                              .attr('y', '650')
+                              .attr('y', '950')
                                 .attr("class", "scale")
                                 .text(" Low");
 
                                 svg.append("text")
                                 .attr('x', '30')
-                                .attr('y', '670')
+                                .attr('y', '970')
                                   .attr("class", "scale")
                                   .text(" 0");
 
                                   svg.append("text")
                                   .attr('x', '232')
-                                  .attr('y', '650')
+                                  .attr('y', '950')
                                     .attr("class", "scale")
                                     .text("High");
 
                                     svg.append("text")
                                     .attr('x', '220')
-                                    .attr('y', '670')
+                                    .attr('y', '970')
                                       .attr("class", "scale")
                                       .text("10");
 
@@ -211,7 +215,7 @@ var svg = d3.select("body")
 
 
 var projection = d3.geo.mercator()
-                   .scale(150)
+                   .scale(220)
                   .translate( [width / 2, height / 1.6]);
 
 var path = d3.geo.path().projection(projection);
