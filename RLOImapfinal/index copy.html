@@ -1,0 +1,272 @@
+<!DOCTYPE html>
+<meta charset="utf-8">
+<style>
+
+  .names {
+  fill: none;
+  stroke: #fff;
+  stroke-linejoin: round;
+  }
+
+    /* Tooltip CSS */
+    .d3-tip {
+    line-height: 1.5;
+    font-weight: ;
+    font-family: "HelveticaNeue-Light", "Helvetica Neue Light", "Helvetica Neue", Helvetica, Arial, "Lucida Grande", sans-serif;
+    padding: 6px;
+    background: rgba(0, 0, 0, 0.6);
+    color: #F46036;
+    border-radius: 13px;
+    pointer-events: none;
+    }
+
+    /* Creates a small triangle extender for the tooltip */
+    .d3-tip:after {
+      box-sizing: border-box;
+      display: inline;
+      width: 100%;
+      line-height: 1.5;
+      color: rgba(0, 0, 0, 0.6);
+      position: absolute;
+      pointer-events: none;
+
+    }
+
+    /* Eastward tooltips */
+    .d3-tip.n:after {
+      content: "\25C0";
+      margin: -10px 0 0 0;
+      top: 50%;
+      left: -13px;
+    }
+
+
+/*    text{
+      pointer-events:none;
+    }*/
+
+    .details{
+      color:white;
+      font-family: "HelveticaNeue-Light", "Helvetica Neue Light", "Helvetica Neue", Helvetica, Arial, "Lucida Grande", sans-serif;
+
+    }
+
+    .vis-title {
+      font-size: 32px;
+      font-family: "HelveticaNeue-Light", "Helvetica Neue Light", "Helvetica Neue", Helvetica, Arial, "Lucida Grande", sans-serif;
+      padding-bottom: 0;
+
+    }
+
+    .sub-title {
+      font-size: 16px;
+      font-family: "HelveticaNeue-Light", "Helvetica Neue Light", "Helvetica Neue", Helvetica, Arial, "Lucida Grande", sans-serif;
+      padding-bottom: 0;
+    }
+
+    .source {
+      font-size: 10px;
+      font-family: "HelveticaNeue-Light", "Helvetica Neue Light", "Helvetica Neue", Helvetica, Arial, "Lucida Grande", sans-serif;
+      padding-bottom: 0;
+    }
+
+    .block {
+      width:60px;
+      height: 60px;
+      float: left;
+      margin: 1px;
+    }
+
+    .scale {
+      font-size: 8px;
+      font-family: "HelveticaNeue-Light", "Helvetica Neue Light", "Helvetica Neue", Helvetica, Arial, "Lucida Grande", sans-serif;
+      }
+
+
+</style>
+<body>
+<script src="http://d3js.org/d3.v3.min.js"></script>
+<script src="http://d3js.org/queue.v1.min.js"></script>
+<script src="http://d3js.org/topojson.v1.min.js"></script>
+<script src="https://d3js.org/d3-color.v1.min.js"></script>
+<script src="https://d3js.org/d3-interpolate.v1.min.js"></script>
+<script src="https://d3js.org/d3-scale-chromatic.v1.min.js"></script>
+<script src="d3-tip.js"></script>
+<script>
+
+var format = d3.format(",");
+
+// Set tooltips
+var tip = d3.tip()
+            .attr('class', 'd3-tip')
+            .offset([50, 150])
+            .html(function(d) {
+              return "<strong>Country: </strong><span class='details'>" + d.properties.name + "<br></span>" + "<strong>AI Readiness Score: </strong><span class='details'>" + format(d.population) +"</span>";
+            })
+
+var margin = {top: 0, right: 0, bottom: 0, left: 0},
+            width = 800 - margin.left,
+            height = 680  - margin.bottom;
+
+var colors = ["rgb(187, 210, 232)", "rgb(222,235,247)", "rgb(198,219,239)", "rgb(158,202,225)", "rgb(107,174,214)", "rgb(66,146,198)","rgb(33,113,181)","rgb(8,81,156)","rgb(8,48,107)","rgb(3,19,43)"];
+
+
+var color = d3.scale.threshold()
+.domain([0, 1,2,3,4,5,6,70,8,9,10])
+  .range(colors);
+
+
+var path = d3.geo.path();
+
+var svg = d3.select("body")
+            .append("svg")
+            .attr("width", width)
+            .attr("height", height)
+            .append('g')
+            .attr('class', 'map');
+
+            svg.append("text")
+              .attr("y", 30)
+              .attr("class", "vis-title")
+              .text("Global Artificial Intelligence Readiness 2018");
+
+              svg.append("text")
+                .attr("y", 55)
+                .attr("class", "sub-title")
+                .attr("fill","rgba(0,0,0,.57)")
+                .text(" Government Readiness Score ranked out of 10");
+
+
+
+
+  var SVG = d3.select("#viz")
+          .append("svg")
+          .attr("width", 900)
+          .attr("height", 900)
+
+
+      d3.select('SVG')
+          .append('image')
+          .attr('xlink:href','https://raw.githubusercontent.com/RachelLavin27/rachellavin27.github.io/master/RLOIImages/greyscale.png')
+          .attr('class', 'avengers')
+          .attr('height', '150px')
+          .attr('width', '150px')
+          .attr('x', '665')
+          .attr('y', '559')
+
+
+
+                    var SVG = d3.select("#viz")
+                            .append("svg")
+                            .attr("width", 870)
+                            .attr("height", 800)
+
+                        d3.select('SVG')
+                            .append('image')
+                            .attr('xlink:href','https://rachellavin27.github.io/RLOIImages/scale.png')
+                            .attr('class', 'avengers')
+                            .attr('height', '75px')
+                            .attr('width', '200px')
+                            .attr('x', '30')
+                            .attr('y', '610')
+
+                            svg.append("text")
+                            .attr('x', '30')
+                            .attr('y', '630')
+                              .attr("class", "scale")
+                              .text(" Government Readiness Score");
+
+                              svg.append("text")
+                              .attr('x', '10')
+                              .attr('y', '650')
+                                .attr("class", "scale")
+                                .text(" Low");
+
+                                svg.append("text")
+                                .attr('x', '30')
+                                .attr('y', '670')
+                                  .attr("class", "scale")
+                                  .text(" 0");
+
+                                  svg.append("text")
+                                  .attr('x', '232')
+                                  .attr('y', '650')
+                                    .attr("class", "scale")
+                                    .text("High");
+
+                                    svg.append("text")
+                                    .attr('x', '220')
+                                    .attr('y', '670')
+                                      .attr("class", "scale")
+                                      .text("10");
+
+
+
+
+
+var projection = d3.geo.mercator()
+                   .scale(130)
+                  .translate( [width / 2, height / 1.5]);
+
+var path = d3.geo.path().projection(projection);
+
+svg.call(tip);
+
+queue()
+    .defer(d3.json, "world_countries.json")
+    .defer(d3.tsv, "world_population.tsv")
+    .await(ready);
+
+function ready(error, data, population) {
+  var populationById = {};
+
+  population.forEach(function(d) { populationById[d.id] = +d.population; });
+  data.features.forEach(function(d) { d.population = populationById[d.id] });
+
+  svg.append("g")
+      .attr("class", "countries")
+    .selectAll("path")
+      .data(data.features)
+    .enter().append("path")
+      .attr("d", path)
+      .style("fill", function(d) { return color(populationById[d.id]); })
+      .style('stroke', 'white')
+      .style('stroke-width', 0.5)
+      .style("opacity",2)
+      // tooltips
+        .style("stroke","w")
+        .style('stroke-width', 0.3)
+        .on('mouseover',function(d){
+          tip.show(d);
+
+          d3.select(this)
+            .style("opacity", 1)
+            .style("fill","#F46036")
+            .style("stroke-width",2);
+
+        })
+        .on('mouseout', function(d){
+
+          tip.hide(d);
+
+          d3.select(this)
+            .style("opacity", 2)
+            .style("stroke","white")
+
+
+            .style("fill", function(d) { return color(populationById[d.id]); })
+            .style("stroke-width",0.3);
+        });
+
+  svg.append("path")
+      .datum(topojson.mesh(data.features, function(a, b) { return a.id !== b.id; }))
+       // .datum(topojson.mesh(data.features, function(a, b) { return a !== b; }))
+      .attr("class", "names")
+      .attr("d", path);
+}
+
+
+
+</script>
+</body>
+</html>
