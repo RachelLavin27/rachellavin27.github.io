@@ -107,7 +107,7 @@ var tip = d3.tip()
             })
 
 var margin = {top: 0, right: 0, bottom: 0, left: 0},
-            width = 800 - margin.left,
+            width = 1000 - margin.left,
             height = 680  - margin.bottom;
 
 var colors = [ "rgb(222,235,247)","rgb(187, 210, 232)", "rgb(198,219,239)", "rgb(158,202,225)", "rgb(107,174,214)", "rgb(66,146,198)","rgb(33,113,181)","rgb(8,81,156)","rgb(62, 81, 144)", "rgb(8,48,107)"];
@@ -137,8 +137,8 @@ var svg = d3.select("body")
 
   var SVG = d3.select("#viz")
           .append("svg")
-          .attr("width", 900)
-          .attr("height", 900)
+          .attr("width", 1200)
+          .attr("height", 600)
 
 
       d3.select('SVG')
@@ -147,7 +147,7 @@ var svg = d3.select("body")
           .attr('class', 'avengers')
           .attr('height', '100px')
           .attr('width', '110px')
-          .attr('x', '540')
+          .attr('x', '740')
           .attr('y', '598.5')
 
 
@@ -173,14 +173,14 @@ var svg = d3.select("body")
                                 .attr('class', 'avengers')
                                 .attr('height', '75px')
                                 .attr('width', '180px')
-                                .attr('x', '630')
+                                .attr('x', '830')
                                 .attr('y', '615')
 
                             svg.append("text")
                             .attr('x', '30')
                             .attr('y', '630')
                               .attr("class", "scale")
-                              .text(" Government Readiness Index");
+                              .text(" Government Readiness Score");
 
                               svg.append("text")
                               .attr('x', '10')
@@ -211,8 +211,8 @@ var svg = d3.select("body")
 
 
 var projection = d3.geo.mercator()
-                   .scale(130)
-                  .translate( [width / 2, height / 1.5]);
+                   .scale(150)
+                  .translate( [width / 2, height / 1.6]);
 
 var path = d3.geo.path().projection(projection);
 
