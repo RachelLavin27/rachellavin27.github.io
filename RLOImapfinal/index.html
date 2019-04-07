@@ -13,7 +13,8 @@
     line-height: 1.5;
     font-weight: ;
     font-family: "HelveticaNeue-Light", "Helvetica Neue Light", "Helvetica Neue", Helvetica, Arial, "Lucida Grande", sans-serif;
-    padding: 6px;
+    padding: 5px;
+    font-size: 12px;
     background: rgba(0, 0, 0, 0.6);
     color: #F46036;
     border-radius: 13px;
@@ -24,7 +25,7 @@
     .d3-tip:after {
       box-sizing: border-box;
       display: inline;
-      width: 100%;
+      width: 30px;
       line-height: 1.5;
       color: rgba(0, 0, 0, 0.6);
       position: absolute;
@@ -105,14 +106,14 @@ var format = d3.format(",");
 // Set tooltips
 var tip = d3.tip()
             .attr('class', 'd3-tip')
-            .offset([50, -150])
+            .offset([30, -100])
             .html(function(d) {
               return "<strong>Country: </strong><span class='details'>" + d.properties.name + "<br></span>" + "<strong>AI Readiness Score: </strong><span class='details'>" + format(d.population) +"</span>";
             })
 
 var margin = {top: 0, right: 0, bottom: 0, left: -0},
-            width = 1390 ,
-            height = 1000  - margin.bottom;
+            width = 1000 ,
+            height = 800  - margin.bottom;
 
 var colors = [ "rgb(222,235,247)","rgb(187, 210, 232)", "rgb(198,219,239)", "rgb(158,202,225)", "rgb(107,174,214)", "rgb(66,146,198)","rgb(33,113,181)","rgb(8,81,156)","rgb(62, 81, 144)", "rgb(8,48,107)"];
 
@@ -149,12 +150,19 @@ var svg = d3.select("body")
           .append('image')
           .attr('xlink:href','https://raw.githubusercontent.com/RachelLavin27/rachellavin27.github.io/master/RLOIImages/greyscale.png')
           .attr('class', 'avengers')
-          .attr('height', '100px')
-          .attr('width', '110px')
-          .attr('x', '1110')
-          .attr('y', '898.5')
+          .attr('height', '80px')
+          .attr('width', '95px')
+          .attr('x', '810')
+          .attr('y', '623')
 
-
+          d3.select('SVG')
+              .append('image')
+              .attr('xlink:href','https://rachellavin27.github.io/RLOIImages/IDRClogo.png')
+              .attr('class', 'avengers')
+              .attr('height', '75px')
+              .attr('width', '150px')
+              .attr('x', '880')
+              .attr('y', '630')
 
                     var SVG = d3.select("#viz")
                             .append("svg")
@@ -168,45 +176,38 @@ var svg = d3.select("body")
                             .attr('height', '75px')
                             .attr('width', '200px')
                             .attr('x', '30')
-                            .attr('y', '910')
+                            .attr('y', '630')
 
 
-                            d3.select('SVG')
-                                .append('image')
-                                .attr('xlink:href','https://rachellavin27.github.io/RLOIImages/IDRClogo.png')
-                                .attr('class', 'avengers')
-                                .attr('height', '75px')
-                                .attr('width', '180px')
-                                .attr('x', '1200')
-                                .attr('y', '915')
+
 
                             svg.append("text")
                             .attr('x', '30')
-                            .attr('y', '930')
+                            .attr('y', '655')
                               .attr("class", "scale")
                               .text(" Government Readiness Score");
 
                               svg.append("text")
                               .attr('x', '10')
-                              .attr('y', '950')
+                              .attr('y', '670')
                                 .attr("class", "scale")
                                 .text(" Low");
 
                                 svg.append("text")
                                 .attr('x', '30')
-                                .attr('y', '970')
+                                .attr('y', '685')
                                   .attr("class", "scale")
                                   .text(" 0");
 
                                   svg.append("text")
                                   .attr('x', '232')
-                                  .attr('y', '950')
+                                  .attr('y', '670')
                                     .attr("class", "scale")
                                     .text("High");
 
                                     svg.append("text")
                                     .attr('x', '220')
-                                    .attr('y', '970')
+                                    .attr('y', '685')
                                       .attr("class", "scale")
                                       .text("10");
 
@@ -215,7 +216,7 @@ var svg = d3.select("body")
 
 
 var projection = d3.geo.mercator()
-                   .scale(220)
+                   .scale(150)
                   .translate( [width / 2, height / 1.6]);
 
 var path = d3.geo.path().projection(projection);
