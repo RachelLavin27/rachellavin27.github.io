@@ -113,7 +113,7 @@ var tip = d3.tip()
 
 var margin = {top: 0, right: 0, bottom: 0, left: -0},
             width = 1000 ,
-            height = 800  - margin.bottom;
+            height = 700  - margin.bottom;
 
 var colors = [ "rgb(222,235,247)","rgb(187, 210, 232)", "rgb(198,219,239)", "rgb(158,202,225)", "rgb(107,174,214)", "rgb(66,146,198)","rgb(33,113,181)","rgb(8,81,156)","rgb(62, 81, 144)", "rgb(8,48,107)"];
 
@@ -151,9 +151,9 @@ var svg = d3.select("body")
           .attr('xlink:href','https://raw.githubusercontent.com/RachelLavin27/rachellavin27.github.io/master/RLOIImages/greyscale.png')
           .attr('class', 'avengers')
           .attr('height', '80px')
-          .attr('width', '95px')
-          .attr('x', '810')
-          .attr('y', '623')
+          .attr('width', '97px')
+          .attr('x', '805')
+          .attr('y', '563')
 
           d3.select('SVG')
               .append('image')
@@ -162,7 +162,7 @@ var svg = d3.select("body")
               .attr('height', '75px')
               .attr('width', '150px')
               .attr('x', '880')
-              .attr('y', '630')
+              .attr('y', '570')
 
                     var SVG = d3.select("#viz")
                             .append("svg")
@@ -176,38 +176,38 @@ var svg = d3.select("body")
                             .attr('height', '75px')
                             .attr('width', '200px')
                             .attr('x', '30')
-                            .attr('y', '630')
+                            .attr('y', '570')
 
 
 
 
                             svg.append("text")
                             .attr('x', '30')
-                            .attr('y', '655')
+                            .attr('y', '595')
                               .attr("class", "scale")
                               .text(" Government Readiness Score");
 
                               svg.append("text")
                               .attr('x', '10')
-                              .attr('y', '670')
+                              .attr('y', '610')
                                 .attr("class", "scale")
                                 .text(" Low");
 
                                 svg.append("text")
                                 .attr('x', '30')
-                                .attr('y', '685')
+                                .attr('y', '625')
                                   .attr("class", "scale")
                                   .text(" 0");
 
                                   svg.append("text")
                                   .attr('x', '232')
-                                  .attr('y', '670')
+                                  .attr('y', '610')
                                     .attr("class", "scale")
                                     .text("High");
 
                                     svg.append("text")
                                     .attr('x', '220')
-                                    .attr('y', '685')
+                                    .attr('y', '625')
                                       .attr("class", "scale")
                                       .text("10");
 
