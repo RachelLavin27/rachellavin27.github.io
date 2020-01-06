@@ -1,23 +1,23 @@
 var data = [
-  {"year": 2000,    "debt": 39096},
-  {"year": 2001,    "debt": 40538},
-  {"year": 2002,    "debt": 41538},
-  {"year": 2003,    "debt": 43560},
-  {"year": 2004,    "debt": 44056},
-  {"year": 2005,    "debt": 44379},
-  {"year": 2006,    "debt": 43692},
-  {"year": 2007,    "debt": 47148},
-  {"year": 2008,    "debt": 79621},
-  {"year": 2009,    "debt": 104686},
-  {"year": 2010,    "debt": 144230},
-  {"year": 2011,    "debt": 189727},
-  {"year": 2012,    "debt": 210036},
-  {"year": 2013,    "debt": 215352},
-  {"year": 2014,    "debt": 203378},
-  {"year": 2015,    "debt": 201654},
-  {"year": 2016,    "debt": 200709},
-  {"year": 2017,    "debt": 201363},
-  {"year": 2018,    "debt": 205978},
+  {"year": 2000,    "debt": 39.096},
+  {"year": 2001,    "debt": 40.538},
+  {"year": 2002,    "debt": 41.538},
+  {"year": 2003,    "debt": 43.560},
+  {"year": 2004,    "debt": 44.056},
+  {"year": 2005,    "debt": 44.379},
+  {"year": 2006,    "debt": 43.692},
+  {"year": 2007,    "debt": 47.148},
+  {"year": 2008,    "debt": 79.621},
+  {"year": 2009,    "debt": 104.686},
+  {"year": 2010,    "debt": 144.230},
+  {"year": 2011,    "debt": 189.727},
+  {"year": 2012,    "debt": 210.036},
+  {"year": 2013,    "debt": 215.352},
+  {"year": 2014,    "debt": 203.378},
+  {"year": 2015,    "debt": 201.654},
+  {"year": 2016,    "debt": 200.709},
+  {"year": 2017,    "debt": 201.363},
+  {"year": 2018,    "debt": 205.978},
 
 ]
 
@@ -33,11 +33,11 @@ var c = d3.conventions({
 
 c.svg.append('rect').at({width: c.width, height: c.height, opacity: 0})
 
-c.x.domain([2000, 2019])
-c.y.domain([0, 250000])
+c.x.domain([2000, 2018])
+c.y.domain([0, 250])
 
 c.xAxis.ticks(10).tickFormat(ƒ())
-c.yAxis.ticks(5).tickFormat(d => d + '')
+c.yAxis.ticks(5).tickFormat(d => '€' + d + 'bn')
 
 var area = d3.area().x(ƒ('year', c.x)).y0(ƒ('debt', c.y)).y1(c.height)
 var line = d3.area().x(ƒ('year', c.x)).y(ƒ('debt', c.y))
