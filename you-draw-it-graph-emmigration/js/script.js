@@ -34,7 +34,7 @@ var c = d3.conventions({
 c.svg.append('rect').at({width: c.width, height: c.height, opacity: 0})
 
 c.x.domain([2000, 2019])
-c.y.domain([20000, 90000])
+c.y.domain([0, 90000])
 
 c.xAxis.ticks(10).tickFormat(ƒ())
 c.yAxis.ticks(5).tickFormat(d => d + '')
