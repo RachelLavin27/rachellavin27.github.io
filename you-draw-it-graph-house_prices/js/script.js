@@ -178,6 +178,8 @@ var data = [
   {"year": 2019.581, "debt":108.6},
   {"year": 2019.664, "debt":108.7},
   {"year": 2019.747, "debt":108.8},
+    {"year": 2019.83, "debt":108.9},
+  {"year": 2019.913, "debt":109},
 
 ]
 
@@ -196,7 +198,7 @@ c.svg.append('rect').at({width: c.width, height: c.height, opacity: 0})
 c.x.domain([2005, 2020])
 c.y.domain([0, 200])
 
-c.xAxis.ticks(20).tickFormat(ƒ())
+c.xAxis.ticks(10).tickFormat(ƒ())
 c.yAxis.ticks(10).tickFormat(d => d + '')
 
 var area = d3.area().x(ƒ('year', c.x)).y0(ƒ('debt', c.y)).y1(c.height)
