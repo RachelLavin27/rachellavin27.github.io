@@ -9,16 +9,16 @@ body{
 }
 
 h1 {
-  font-family: 'Arial';
+  font-family: 'myFirstFont';
   font-size: 1.3em;
   text-align: left;
-	font-weight: normal;
+	font-weight: bold;
 	padding-left: 10px;
 }
 
 
 h2 {
-  font-family: 'Arial';
+  font-family: 'myFirstFont';
   font-size: 1em;
   text-align: left;
 	font-weight: normal;
@@ -26,7 +26,7 @@ h2 {
 }
 
 h3 {
-  font-family: 'Arial';
+  font-family: 'myFirstFont';
   font-size: 0.75em;
   text-align: left;
 	font-weight: normal;
@@ -34,7 +34,7 @@ h3 {
 }
 
 h4 {
-  font-family: 'Arial';
+  font-family: 'myFirstFont';
   font-size: 0.75em;
   text-align: left;
 	font-weight: normal;
@@ -57,7 +57,7 @@ h4 {
 }
 
 .your-line{
-  stroke: #EC5F65;
+  stroke: #F98A9F;
   stroke-width: 3;
   stroke-dasharray: 5 1;
 }
