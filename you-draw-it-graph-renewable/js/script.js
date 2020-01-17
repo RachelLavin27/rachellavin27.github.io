@@ -1,22 +1,15 @@
 var data = [
-  {"year": 2000,    "debt": 1.7},
-  {"year": 2001,    "debt": 1.63},
-  {"year": 2002,    "debt": 1.81},
-  {"year": 2003,    "debt": 1.67},
-  {"year": 2004,    "debt": 1.95},
-  {"year": 2005,    "debt": 2.51},
-  {"year": 2006,    "debt": 2.89},
-  {"year": 2007,    "debt": 3.19},
-  {"year": 2008,    "debt": 3.87},
-  {"year": 2009,    "debt": 4.61},
-  {"year": 2010,    "debt": 4.6},
-  {"year": 2011,    "debt": 5.83},
-  {"year": 2012,    "debt": 5.92},
-  {"year": 2013,    "debt": 6.43},
-  {"year": 2014,    "debt": 7.51},
-  {"year": 2015,    "debt": 8.08},
-  {"year": 2016,    "debt": 7.92},
-  {"year": 2017,    "debt": 9.67},
+  {"year": 2005,    "debt": 7.19},
+  {"year": 2010,    "debt": 15.64},
+  {"year": 2011,    "debt": 18.25},
+  {"year": 2012,    "debt": 19.83},
+  {"year": 2013,    "debt": 21.25},
+  {"year": 2014,    "debt": 23.50},
+  {"year": 2015,    "debt": 25.53},
+  {"year": 2016,    "debt": 26.84},
+  {"year": 2017,    "debt": 30.10},
+  {"year": 2018,    "debt": 33.25},
+
 
 
 ]
@@ -33,10 +26,10 @@ var c = d3.conventions({
 
 c.svg.append('rect').at({width: c.width, height: c.height, opacity: 0})
 
-c.x.domain([2000, 2017])
+c.x.domain([2005, 2018])
 c.y.domain([0, 100])
 
-c.xAxis.ticks(10).tickFormat(ƒ())
+c.xAxis.ticks(5).tickFormat(ƒ())
 c.yAxis.ticks(6).tickFormat(d => d + '%')
 
 var area = d3.area().x(ƒ('year', c.x)).y0(ƒ('debt', c.y)).y1(c.height)
