@@ -25,9 +25,8 @@
 
   <style type="text/css">
     .ticksource {
-      font-size: 10px;
-      font-style;
-      italic;
+      font-size: 14px;
+      font-style: italic;
       font-family: myFirstFont;
     }
 
@@ -187,7 +186,7 @@
 
       svg.append("text")
         .attr("class", "vis-title")
-        .text("First fortnight: Coronavirus cases in Ireland:")
+        .text("First fortnight: How Covid-19 initially spread")
         .call(wrap, width / 1.05);
 
 
@@ -246,36 +245,36 @@
 
       ticker.append("text")
         .attr("class", "ticksource")
-        .attr("transform", "translate(" + 220 + "," + (height / tickerprojection + 195) + ")")
-        .text("West -------->").call(wrap, width / 1.1);
+        .attr("transform", "translate(" + 205 + "," + (height / tickerprojection + 197) + ")")
+        .text("West ------->").call(wrap, width / 1.1);
 
 
       ticker.append("text")
         .attr("class", "ticksource")
-        .attr("transform", "translate(" + 260 + "," + (height / tickerprojection - 20) + ")")
+        .attr("transform", "translate(" + 240 + "," + (height / tickerprojection - 12) + ")")
         .text("North-West ------>").call(wrap, width / 1.1);
 
 
       ticker.append("text")
         .attr("class", "ticksource")
         .attr("transform", "translate(" + 560 + "," + (height / tickerprojection - 57) + ")")
-        .text("<------------ North").call(wrap, width / 1.1);
+        .text("<------ North").call(wrap, width / 1.1);
 
       ticker.append("text")
         .attr("class", "ticksource")
-        .attr("transform", "translate(" + 595 + "," + (height / tickerprojection + 185) + ")")
+        .attr("transform", "translate(" + 575 + "," + (height / tickerprojection + 185) + ")")
         .text("<---- East").call(wrap, width / 1.1);
 
 
       ticker.append("text")
         .attr("class", "ticksource")
-        .attr("transform", "translate(" + 425 + "," + (height / tickerprojection + 406) + ")")
+        .attr("transform", "translate(" + 398 + "," + (height / tickerprojection + 407) + ")")
         .text("<---- South").call(wrap, width / 1.1);
 
       ticker.append("text")
         .attr("class", "ticksource")
-        .attr("transform", "translate(" + 555 + "," + (height / tickerprojection + 440) + ")")
-        .text("<---- Unspecified").call(wrap, width / 1.1);
+        .attr("transform", "translate(" + 535 + "," + (height / tickerprojection + 440) + ")")
+        .text("<--- Unspecified").call(wrap, width / 1.1);
 
 
       // ---------- END OF TICKER -----------
