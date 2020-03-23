@@ -5,7 +5,7 @@
 
   <meta charset="utf-8">
 
-  <title>Taking the Toll</title>
+  <title>Tracking the Virus</title>
 
   <!--UIKit 3 --->
   <link rel="stylesheet" href="css/uikit.min.css" />
@@ -25,18 +25,25 @@
 
   <style type="text/css">
     .ticksource {
-      font-size: 14px;
-      font-style: italic;
+      font-size: 15px;
       font-family: myFirstFont;
     }
 
+    .ticksource3 {
+      font-size: 16px;
+      font-family: myFirstFont;
+    }
+
+    .ticksource4 {
+      font-size: 16px;
+      font-family: myFirstFont;
+    }
 
 
     @font-face {
       font-family: myFirstFont;
       src: url(ClanOT-NarrBold.otf);
     }
-
     @font-face {
       font-family: BPlogo;
       src: url(Nimrod.otf);
@@ -49,16 +56,15 @@
 
     .ticksource2 {
       fill: #00B86F;
-      font-size: 18px;
+      font-size: 20px;
       font-family: BPlogo;
     }
 
     .logo-image {
       padding-top: 32px;
       height: 22px;
-    }
 
-
+}
   </style>
 
 </head>
@@ -118,17 +124,17 @@
     var path = d3.geo.path()
       .projection(projection);
 
-    // scale function
-    var timeScale = d3.time.scale()
-      .domain([new Date('2020-02-28'), new Date('2020-03-14')])
-      .range([75, width])
-      .clamp(true);
+
+      // scale function
+      var timeScale = d3.time.scale()
+          .domain([new Date('2020-02-28'), new Date('2020-03-14')])
+          .range([75, width])
+          .clamp(true);
 
 
-    // initial value
-    var startValue = timeScale(new Date('2020-02-28'));
-    startingValue = new Date('2020-03-14');
-
+          // initial value
+          var startValue = timeScale(new Date('2020-02-28'));
+              startingValue = new Date('2020-03-14');
 
     // icons
     var playWidth = 30,
@@ -234,18 +240,18 @@
         .text("of Ireland.").call(wrap, width / 1.1);
 
       ticker.append("text")
-        .attr("class", "ticksource")
+        .attr("class", "ticksource4")
         .attr("transform", "translate(" + 0 + "," + (height / tickerprojection + 605) + ")")
         .text("Businesss Post Data").call(wrap, width / 1.1);
 
       ticker.append("text")
         .attr("class", "ticksource2")
-        .attr("transform", "translate(" + 500 + "," + (height / tickerprojection + 605) + ")")
+        .attr("transform", "translate(" + 495 + "," + (height / tickerprojection + 605) + ")")
         .text("Businesss Post").call(wrap, width / 1.1);
 
       ticker.append("text")
-        .attr("class", "ticksource")
-        .attr("transform", "translate(" + 0 + "," + (height / tickerprojection + 590) + ")")
+        .attr("class", "ticksource3")
+        .attr("transform", "translate(" + 0 + "," + (height / tickerprojection + 585) + ")")
         .text("Source: Johns Hopkins Coronavirus Resource Center").call(wrap, width / 1.1);
 
       ticker.append("text")
@@ -267,19 +273,19 @@
 
       ticker.append("text")
         .attr("class", "ticksource")
-        .attr("transform", "translate(" + 575 + "," + (height / tickerprojection + 185) + ")")
-        .text("<---- East").call(wrap, width / 1.1);
+        .attr("transform", "translate(" + 585 + "," + (height / tickerprojection + 192) + ")")
+        .text("<---East").call(wrap, width / 1.1);
 
 
       ticker.append("text")
         .attr("class", "ticksource")
-        .attr("transform", "translate(" + 398 + "," + (height / tickerprojection + 407) + ")")
-        .text("<---- South").call(wrap, width / 1.1);
+        .attr("transform", "translate(" + 400 + "," + (height / tickerprojection + 407) + ")")
+        .text("<---South").call(wrap, width / 1.1);
 
       ticker.append("text")
         .attr("class", "ticksource")
-        .attr("transform", "translate(" + 535 + "," + (height / tickerprojection + 440) + ")")
-        .text("<--- Unspecified").call(wrap, width / 1.1);
+        .attr("transform", "translate(" + 545 + "," + (height / tickerprojection + 440) + ")")
+        .text("<--Unspecified").call(wrap, width / 1.1);
 
 
       // ---------- END OF TICKER -----------
@@ -392,22 +398,6 @@
       // ---------- CAVEAT + LOGO -----------
 
 
-
-              //  svg.append("g").attr("class", "caveat").attr("transform", "translate(" + [100, height-caveatprojection] + ")").append("text").text("").call(wrap, width/1.2)
-
-          //  var logo = svg.append("g").attr("class", "logo-image");
-          var logoSize = width/8
-
-          logo.append("svg:image")
-              .attr("class", "logo")
-              .attr("x",width-logoSize)
-              .attr("y", height-logoSize)
-              .attr("width", logoSize)
-              .attr("height", logoSize)
-              .attr("opacity", 1)
-              .attr("xlink:href", "../logo.jpg");
-
-      -->
 
       // ---------- END OF CAVEAT + LOGO -----------
 
