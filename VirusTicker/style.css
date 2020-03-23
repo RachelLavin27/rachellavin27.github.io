@@ -1,6 +1,6 @@
 body {
   font-size: 14px;
-  font-family: "Futura",sans-serif;
+  font-family: myFirstFont;
   background-color: white;
 }
 
@@ -83,7 +83,7 @@ apr 1970
   margin-top: 1em;
   font-size: 26px;
   line-height: 30px;
-  font-family: futura;
+  font-family: myFirstFont;
   color: grey;
   text-align: center;
 }
