@@ -78,16 +78,9 @@
         bottom: 8,
         left: 2
       },
-      width = 600 - margin.left - margin.right,
-      height = 800 - margin.bottom - margin.top;
+      width = 650 - margin.left - margin.right,
+        height = 800 - margin.bottom - margin.top;
 
-    // change map projection according to screen size
-    if (x <= 600) {
-      height = 0;
-      projection = smallScreenProjection
-    } else if (x >= 10) {
-      width = 600;
-    }
 
     var smallScreenProjection = d3.geo.albers()
       .center([0, 54.6])
@@ -103,6 +96,14 @@
       .scale(10000)
       .translate([width / 0.75, height / 2]);
 
+      // change map projection according to screen size
+      if (x <= 600) {
+        height = 700 - margin.bottom - margin.top;
+        projection = smallScreenProjection
+      } else if (x >= 650) {
+        width = 650 - margin.left - margin.right;
+      }
+
     var path = d3.geo.path()
       .projection(projection);
 
@@ -117,13 +118,6 @@
     var startValue = timeScale(new Date('2020-02-27'));
     startingValue = new Date('2020-03-16');
 
-
-
-    var svg = d3.select("body").append("svg")
-      .attr("width", width)
-      .attr("height", height);
-
-    var radiusScale = d3.scale.linear().range([4, 40]);
 
     // icons
     var playWidth = 30,
@@ -473,9 +467,6 @@
           })
           .style("fill", "#85DD99")
           .style("opacity", 1);
-
-
-
 
         farms.exit()
           .transition().duration(500)
