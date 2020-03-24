@@ -127,14 +127,14 @@
 
       // scale function
       var timeScale = d3.time.scale()
-          .domain([new Date('2020-02-28'), new Date('2020-03-14')])
+          .domain([new Date('2020-02-28'), new Date('2020-03-15')])
           .range([75, width])
           .clamp(true);
 
 
           // initial value
           var startValue = timeScale(new Date('2020-02-28'));
-              startingValue = new Date('2020-03-14');
+              startingValue = new Date('2020-03-15');
 
     // icons
     var playWidth = 30,
@@ -215,7 +215,7 @@
         caveatprojection = 18
       } else {
         tickerprojection = 4
-        sliderprojection = 19
+        sliderprojection = 15.5
         caveatprojection = 20
       }
 
@@ -263,13 +263,13 @@
       ticker.append("text")
         .attr("class", "ticksource")
         .attr("transform", "translate(" + 155 + "," + (height / tickerprojection + 30) + ")")
-        .text("Northwest ---->").call(wrap, width / 1.1);
+        .text("Northwest---->").call(wrap, width / 1.1);
 
 
       ticker.append("text")
         .attr("class", "ticksource")
         .attr("transform", "translate(" + 375 + "," + (height / tickerprojection + 15) + ")")
-        .text("<--- North").call(wrap, width / 1.1);
+        .text("<---North").call(wrap, width / 1.1);
 
       ticker.append("text")
         .attr("class", "ticksource")
@@ -531,7 +531,7 @@
     function init() {
       queue()
         .defer(d3.json, "uk.json")
-        .defer(d3.csv, "deathsuk.csv")
+        .defer(d3.csv, "deathsuk2.csv")
         .await(function(error, uk, farmsdata) {
 
           window.farmsdata = farmsdata

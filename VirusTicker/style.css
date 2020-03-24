@@ -4,7 +4,7 @@ body {
   background-color: white;
 }
 
-.subunit.SCT { fill: grey; opacity: 0.7; }
+.subunit.SCT { fill: white; opacity: 0.7; }
 .subunit.WLS { fill: grey; opacity: 0.7; }
 .subunit.NIR { fill: grey; opacity: 0.7; }
 .subunit.ENG { fill: grey; opacity: 0.7; }
@@ -54,6 +54,7 @@ apr 1970
 
 .slider .handle text {
   fill: black;
+
   text-align: center;
   font-size: 18px;
 }
@@ -81,8 +82,8 @@ apr 1970
 /*TITLES*/
 .vis-title {
   margin-top: 1em;
-  font-size: 24px;
-  line-height: 30px;
+  font-size: 19px;
+  line-height: 18px;
   font-family: myFirstFont;
   color: grey;
   text-align: center;
