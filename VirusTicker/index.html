@@ -25,18 +25,19 @@
 
   <style type="text/css">
     .ticksource {
-      font-size: 15px;
+      font-size: 12px;
       font-family: myFirstFont;
     }
 
     .ticksource3 {
-      font-size: 16px;
+      font-size: 10px;
       font-family: myFirstFont;
     }
 
     .ticksource4 {
-      font-size: 16px;
+      font-size: 10px;
       font-family: myFirstFont;
+      font-style: italic;
     }
 
 
@@ -56,20 +57,27 @@
 
     .ticksource2 {
       fill: #00B86F;
-      font-size: 20px;
+      font-size: 16px;
       font-family: BPlogo;
     }
 
     .logo-image {
       padding-top: 32px;
-      height: 22px;
+      height: 12px;
 
 }
 
-	@media only screen and (max-width:650px) {
+
+.vis-title {
+  margin-top: 1em;
+  font-size: 19px;
+  line-height: 18px;
+  font-family: myFirstFont;
+  color: grey;
+  text-align: center;
+}
 
 
-  }
 
   </style>
 
@@ -102,23 +110,16 @@
         left: 2
       },
       width = 450 - margin.left - margin.right,
-        height = 800  - margin.top;
+        height = 550  - margin.top;
 
 
     var projection = d3.geo.albers()
-      .center([-3.2, 53.12])
+      .center([-0.79, 53.65])
       .rotate([3.3, 0])
       .parallels([100, 60])
-      .scale(10000)
+      .scale(7000)
       .translate([width / 0.75, height / 2]);
 
-      // change map projection according to screen size
-      if (x <= 600) {
-        height = 700 - margin.bottom - margin.top;
-        projection = smallScreenProjection
-      } else if (x >= 650) {
-        width = 650 - margin.left - margin.right;
-      }
 
     var path = d3.geo.path()
       .projection(projection);
@@ -209,13 +210,13 @@
 
       // change map projection for mobile display
       if (x <= 400) {
-        tickerprojection = 23
+        tickerprojection = 13
         sliderprojection = 8.8
         caveatprojection = 18
       } else {
-        tickerprojection = 5
-        sliderprojection = 16
-        caveatprojection = 10
+        tickerprojection = 4
+        sliderprojection = 19
+        caveatprojection = 20
       }
 
       ticker.append("text")
@@ -240,51 +241,51 @@
 
       ticker.append("text")
         .attr("class", "ticksource4")
-        .attr("transform", "translate(" + 0 + "," + (height / tickerprojection + 605) + ")")
+        .attr("transform", "translate(" + 0 + "," + (height / tickerprojection + 400) + ")")
         .text("Businesss Post Data").call(wrap, width / 1.1);
 
       ticker.append("text")
         .attr("class", "ticksource2")
-        .attr("transform", "translate(" + 495 + "," + (height / tickerprojection + 605) + ")")
+        .attr("transform", "translate(" + 320 + "," + (height / tickerprojection + 400) + ")")
         .text("Businesss Post").call(wrap, width / 1.1);
 
       ticker.append("text")
         .attr("class", "ticksource3")
-        .attr("transform", "translate(" + 0 + "," + (height / tickerprojection + 585) + ")")
+        .attr("transform", "translate(" + 0 + "," + (height / tickerprojection + 390) + ")")
         .text("Source: Johns Hopkins Coronavirus Resource Center").call(wrap, width / 1.1);
 
       ticker.append("text")
         .attr("class", "ticksource")
-        .attr("transform", "translate(" + 220 + "," + (height / tickerprojection + 200) + ")")
+        .attr("transform", "translate(" + 140 + "," + (height / tickerprojection + 167) + ")")
         .text("West--->").call(wrap, width / 1.1);
 
 
       ticker.append("text")
         .attr("class", "ticksource")
-        .attr("transform", "translate(" + 255 + "," + (height / tickerprojection + 2) + ")")
-        .text("North-West ---->").call(wrap, width / 1.1);
+        .attr("transform", "translate(" + 155 + "," + (height / tickerprojection + 30) + ")")
+        .text("Northwest ---->").call(wrap, width / 1.1);
 
 
       ticker.append("text")
         .attr("class", "ticksource")
-        .attr("transform", "translate(" + 555 + "," + (height / tickerprojection - 20) + ")")
+        .attr("transform", "translate(" + 375 + "," + (height / tickerprojection + 15) + ")")
         .text("<--- North").call(wrap, width / 1.1);
 
       ticker.append("text")
         .attr("class", "ticksource")
-        .attr("transform", "translate(" + 595 + "," + (height / tickerprojection + 205) + ")")
+        .attr("transform", "translate(" + 405 + "," + (height / tickerprojection + 175) + ")")
         .text("<--East").call(wrap, width / 1.1);
 
 
       ticker.append("text")
         .attr("class", "ticksource")
-        .attr("transform", "translate(" + 400 + "," + (height / tickerprojection + 407) + ")")
+        .attr("transform", "translate(" + 270 + "," + (height / tickerprojection + 312) + ")")
         .text("<---South").call(wrap, width / 1.1);
 
       ticker.append("text")
         .attr("class", "ticksource")
-        .attr("transform", "translate(" + 550 + "," + (height / tickerprojection + 440) + ")")
-        .text("<--Unspecified").call(wrap, width / 1.1);
+        .attr("transform", "translate(" + 375 + "," + (height / tickerprojection + 335) + ")")
+        .text("<Unspecified").call(wrap, width / 1.1);
 
 
       // ---------- END OF TICKER -----------
