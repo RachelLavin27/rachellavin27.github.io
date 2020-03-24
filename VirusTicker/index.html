@@ -65,6 +65,12 @@
       height: 22px;
 
 }
+
+	@media only screen and (max-width:650px) {
+
+
+  }
+
   </style>
 
 </head>
@@ -95,21 +101,14 @@
         bottom: 8,
         left: 2
       },
-      width = 650 - margin.left - margin.right,
-        height = 800 - margin.bottom - margin.top;
+      width = 450 - margin.left - margin.right,
+        height = 800  - margin.top;
 
-
-    var smallScreenProjection = d3.geo.albers()
-      .center([0, 54.6])
-      .rotate([3.3, 0])
-      .parallels([48, 62])
-      .scale(3100)
-      .translate([width / 2, height / 2]);
 
     var projection = d3.geo.albers()
-      .center([-0.5, 53.1])
+      .center([-3.2, 53.12])
       .rotate([3.3, 0])
-      .parallels([30, 60])
+      .parallels([100, 60])
       .scale(10000)
       .translate([width / 0.75, height / 2]);
 
@@ -197,7 +196,7 @@
 
       svg.append("text")
         .attr("class", "vis-title")
-        .text("First Fortnight: How Covid-19 initially spread in Ireland:")
+        .text("How Covid-19 initially spread in Ireland:")
         .call(wrap, width / 1.05);
 
 
@@ -256,25 +255,25 @@
 
       ticker.append("text")
         .attr("class", "ticksource")
-        .attr("transform", "translate(" + 205 + "," + (height / tickerprojection + 197) + ")")
-        .text("West ------->").call(wrap, width / 1.1);
+        .attr("transform", "translate(" + 220 + "," + (height / tickerprojection + 200) + ")")
+        .text("West--->").call(wrap, width / 1.1);
 
 
       ticker.append("text")
         .attr("class", "ticksource")
-        .attr("transform", "translate(" + 240 + "," + (height / tickerprojection - 12) + ")")
-        .text("North-West ------>").call(wrap, width / 1.1);
+        .attr("transform", "translate(" + 255 + "," + (height / tickerprojection + 2) + ")")
+        .text("North-West ---->").call(wrap, width / 1.1);
 
 
       ticker.append("text")
         .attr("class", "ticksource")
-        .attr("transform", "translate(" + 560 + "," + (height / tickerprojection - 57) + ")")
-        .text("<------ North").call(wrap, width / 1.1);
+        .attr("transform", "translate(" + 555 + "," + (height / tickerprojection - 20) + ")")
+        .text("<--- North").call(wrap, width / 1.1);
 
       ticker.append("text")
         .attr("class", "ticksource")
-        .attr("transform", "translate(" + 585 + "," + (height / tickerprojection + 192) + ")")
-        .text("<---East").call(wrap, width / 1.1);
+        .attr("transform", "translate(" + 595 + "," + (height / tickerprojection + 205) + ")")
+        .text("<--East").call(wrap, width / 1.1);
 
 
       ticker.append("text")
@@ -284,7 +283,7 @@
 
       ticker.append("text")
         .attr("class", "ticksource")
-        .attr("transform", "translate(" + 545 + "," + (height / tickerprojection + 440) + ")")
+        .attr("transform", "translate(" + 550 + "," + (height / tickerprojection + 440) + ")")
         .text("<--Unspecified").call(wrap, width / 1.1);
 
 
